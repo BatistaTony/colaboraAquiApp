@@ -1,3 +1,10 @@
+import Hero from "../components/hero/hero";
+import Layout from "../components/layout/layout";
+
 export default function Index() {
-  return <div>Hello COlaboraAqui structure and test husky</div>;
+  return (
+    <Layout>
+      <Hero />
+    </Layout>
+  );
 }
