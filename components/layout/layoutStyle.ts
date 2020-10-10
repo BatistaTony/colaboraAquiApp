@@ -17,6 +17,9 @@ export const LayoutStyled = styled.div`
   height: 100vh;
   background: ${({ title }) => chooseBgByTitle(title)};
   background-size: cover;
+  display: grid;
+  grid-template-rows: 100px auto;
+  overflow: hidden;
 `;
 
 export const GlobalStyle = createGlobalStyle`
@@ -25,9 +28,35 @@ padding:0;
 margin:0;
 }
 
+
+.my-node {
+  @media (min-width: 750px) {
+    display: none;
+  }
+}
+
+.my-node-enter {
+  opacity: 0;
+  display: block;
+}
+
+.my-node-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.my-node-exit {
+  opacity: 1;
+}
+
+.my-node-exit-active {
+  opacity: 0;
+  display: none;
+}
+
 `;
 
-export const Flexbox = (
+export const flexbox = (
   direction: string = "row",
   justify: string = "center",
   align: string = "center"
@@ -56,4 +85,20 @@ export const colorsApp = {
   roxo: "#4b55ba",
   kindaBlue: "#80b5f3",
   soDark: "#27353B",
+};
+
+export const sizesForEachScreens = (
+  screens: Array<number>,
+  valuesForScreen: Array<number>,
+  property: string,
+  unit: string
+) => {
+  return screens
+    .map(
+      (value, index) =>
+        `@media (max-width:${value}px)  {
+      ${property}:${valuesForScreen[index] + unit};
+    }`
+    )
+    .join(" ");
 };
