@@ -9,9 +9,11 @@ export const MyNavbar = styled.div`
   padding-left: 6%;
   padding-right: 8%;
   box-sizing: border-box;
+  z-index: 10;
 
   @media (max-width: 750px) {
     height: 70px;
+    padding-top: 3%;
   }
 
   @media (max-height: 633px) {
@@ -41,7 +43,7 @@ export const Menu = styled.ul`
 
 export const ItemMenu = styled.li`
   padding: 5px;
-  font-size: 17pt;
+  font-size: 27pt;
   ${getFont("Medium")};
   transition: 0.5s;
   cursor: default;
@@ -53,17 +55,12 @@ export const ItemMenu = styled.li`
     color: ${colorsApp.orange};
   }
 
-  @media (max-width: 2000px) {
-    font-size: 15pt;
-  }
-
-  @media (max-width: 1500px) {
-    font-size: 13pt;
-  }
-
-  @media (max-width: 1300px) {
-    font-size: 12pt;
-  }
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 1930, 1500],
+    [23, 22, 19, 17, 12],
+    "font-size",
+    "pt"
+  )};
 
   @media (max-width: 750px) {
     padding: 5px;
@@ -78,16 +75,21 @@ export const Logo = styled.div`
   transition: 0.5s;
 
   img {
-    width: 27rem;
+    width: 40rem;
 
-    ${sizesForEachScreens([2000, 1500, 750], [24, 21, 15.5], "width", "rem")};
+    ${sizesForEachScreens(
+      [3200, 2500, 2000, 1500, 1370, 750],
+      [34, 27, 24, 20, 17, 14],
+      "width",
+      "rem"
+    )};
   }
 `;
 
 export const ButtonLogin = styled.button`
-  height: 50px;
-  padding-left: 26px;
-  padding-right: 26px;
+  height: 70px;
+  padding-left: 50px;
+  padding-right: 50px;
   background: ${colorsApp.soDark};
   border-radius: 5px;
   transition: 0.5s;
@@ -96,20 +98,35 @@ export const ButtonLogin = styled.button`
   border: none;
   outline: none;
   ${getFont("Medium")};
-  font-size: 17pt;
+  font-size: 25pt;
 
   &:hover {
     background: ${colorsApp.roxo};
   }
+  @media (max-width: 3200px) {
+    font-size: 20pt;
+    height: 60px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (max-width: 2500) {
+    font-size: 18pt;
+    height: 55px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 
   @media (max-width: 2000px) {
     font-size: 15pt;
-    height: 40px;
+    height: 50px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
 
   @media (max-width: 1500px) {
     font-size: 12pt;
-    height: 35px;
+    height: 40px;
   }
 
   @media (max-width: 750px) {
@@ -120,61 +137,48 @@ export const ButtonLogin = styled.button`
 `;
 
 export const UserName = styled.h5`
-  font-size: 16pt;
+  font-size: 25pt;
   ${getFont()};
   color: black;
   cursor: default;
   ${flexbox()};
 
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 1930, 1500],
+    [26, 22, 19, 17, 12],
+    "font-size",
+    "pt"
+  )}
+
   span {
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     background: ${colorsApp.orange};
     border-radius: 100%;
-    margin-right: 7px;
+    margin-right: 10px;
+
+    ${sizesForEachScreens([3200, 3000, 2500], [17, 12, 7], "width", "px")}
+    ${sizesForEachScreens([3200, 3000, 2500], [17, 12, 7], "height", "px")}
   }
 
   svg {
     fill: ${colorsApp.orange};
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     margin-left: 5px;
-  }
 
-  @media (max-width: 2000px) {
-    font-size: 14pt;
-
-    span {
-      width: 6px;
-      height: 6px;
-      margin-right: 5px;
-    }
-
-    svg {
-      width: 40px;
-      height: 40px;
-      margin-left: 5px;
-    }
-  }
-
-  @media (max-width: 1500px) {
-    font-size: 12pt;
-
-    span {
-      width: 5px;
-      height: 5px;
-      margin-right: 5px;
-    }
-
-    svg {
-      width: 30px;
-      height: 30px;
-      margin-left: 5px;
-    }
-  }
-
-  @media (max-width: 1350px) {
-    font-size: 11pt;
+    ${sizesForEachScreens(
+      [3200, 3000, 2500, 1930, 1500],
+      [60, 50, 40, 30, 25],
+      "width",
+      "px"
+    )}
+    ${sizesForEachScreens(
+      [3200, 3000, 2500, 1930, 1500],
+      [60, 50, 40, 30, 25],
+      "height",
+      "px"
+    )}
   }
 `;
 
@@ -184,10 +188,12 @@ export const DivUser = styled.div`
   ${flexbox("column")};
   position: relative;
   margin-left: 30px;
+
+  ${sizesForEachScreens([3000, 2500, 1930], [20, 15, 10], "margin-left", "px")};
 `;
 
 export const MenuUser = styled.ul`
-  width: 200px;
+  width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "300px")};
   height: auto;
   box-shadow: 0 0 5px black;
   border-radius: 3px;
@@ -196,10 +202,24 @@ export const MenuUser = styled.ul`
   overflow: hidden;
   position: absolute;
   left: 0;
-  top: 50px;
+  top: 70px;
+  z-index: 9;
+
+  @media (max-width: 3200px) {
+    top: 60px;
+  }
+
+  @media (max-width: 2500px) {
+    top: 50px;
+  }
+
+  @media (max-width: 1930px) {
+    width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "250px")};
+  }
 
   @media (max-width: 1500px) {
-    top: 35px;
+    top: 40px;
+    width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "200px")};
   }
 
   @media (max-width: 750px) {
@@ -210,16 +230,30 @@ export const MenuUser = styled.ul`
 
   li {
     width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 10px;
+    padding: 20px;
     padding-right: 10px;
     color: ${colorsApp.darkGray};
     ${getFont("Medium")};
-    font-size: 15pt;
+    font-size: 20pt;
     ${flexbox("row", "flex-start", "center")};
     cursor: default;
     transition: 0.5s;
+
+    ${sizesForEachScreens(
+      [3200, 2500, 1930, 1500],
+      [18, 16, 13, 12, 11],
+      "font-size",
+      "pt"
+    )};
+
+    @media (max-width: 1930px) {
+      padding: 15px;
+      padding-right: 10px;
+    }
+
+    @media (max-width: 1530px) {
+      padding: 10px;
+    }
 
     &:nth-child(1) {
       border-bottom: 0.5px solid rgb(0, 0, 0, 0.3);
@@ -230,31 +264,12 @@ export const MenuUser = styled.ul`
     }
 
     img {
-      width: 30px;
-      height: 30px;
-      margin-right: 8px;
-    }
+      width: 40px;
+      height: 40px;
+      margin-right: 15px;
 
-    @media (max-width: 2000px) {
-      font-size: 15pt;
-
-      img {
-        width: 25px;
-        height: 25px;
-      }
-    }
-
-    @media (max-width: 1500px) {
-      font-size: 12pt;
-
-      img {
-        width: 20px;
-        height: 20px;
-      }
-    }
-
-    @media (max-width: 1300px) {
-      font-size: 11pt;
+      ${sizesForEachScreens([3200, 2500, 1930], [35, 25, 20], "width", "px")};
+      ${sizesForEachScreens([3200, 2500, 1930], [35, 25, 20], "height", "px")};
     }
   }
 `;
@@ -273,7 +288,7 @@ export const ButtonMobile = styled.div`
   padding-top: 3px;
   z-index: 99;
   position: fixed;
-  right: 4%;
+  right: 4.5%;
 
   .line {
     width: 25px;

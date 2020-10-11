@@ -4,12 +4,13 @@ import { DivUser, UserName, MenuUser } from "./navbarStyle";
 
 export default function UserMenu() {
   const [menuUser, setMEnuUser] = useState<boolean>(false);
+  const [nameUser, setUserName] = useState<string>("Batista");
 
   return (
     <DivUser>
       <UserName onClick={() => setMEnuUser(!menuUser)}>
         <span></span>
-        Batista Tony
+        {nameUser}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g data-name="Layer 2">
             <g data-name="arrow-downward">
@@ -31,7 +32,7 @@ export default function UserMenu() {
         in={menuUser}
         classNames="my-node"
       >
-        <MenuUser>
+        <MenuUser nameLength={nameUser.length}>
           <li>
             <img src="/images/profile.png" alt="" /> Meu perfil
           </li>

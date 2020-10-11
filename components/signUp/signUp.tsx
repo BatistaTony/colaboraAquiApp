@@ -15,7 +15,6 @@ export default function SignUp() {
       <Modal>
         <ModalIllustration>
           <ButtonBack>
-            {" "}
             <img src="/images/icons8-left.png" alt="" /> Voltar ao inicio
           </ButtonBack>
         </ModalIllustration>

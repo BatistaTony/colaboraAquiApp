@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  ButtonBack,
   ButtonSignUp,
   DivGridForm,
   FormGroup,
@@ -24,6 +25,7 @@ export default function FormSignUp() {
 
   const [showCounty, setShowCounty] = useState<boolean>(false);
   const [showAgeRanges, setShowAgeRanges] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const [ageRanges, setAgeRange] = useState<string[]>([
     "15 a 16",
@@ -155,9 +157,7 @@ export default function FormSignUp() {
             name="ageRange"
             id="ageRange"
             placeholder="Faixa etária"
-            defaultValue={
-              consumerData.ageRange ? consumerData.ageRange + " anos" : null
-            }
+            defaultValue={consumerData.ageRange}
             onClick={() => showSelectList("ages")}
             className="customSelect"
           />
@@ -190,13 +190,13 @@ export default function FormSignUp() {
 
         <FormGroup>
           <input
-            type="password"
+            type={showPassword ? "text" : "password"}
             name="password"
             id="password"
             onChange={handleChange}
             placeholder="Senha"
           />
-          <InputIcon>
+          <InputIcon onClick={() => setShowPassword(!showPassword)}>
             <img src="/images/icons8-eye.png" alt="" />
           </InputIcon>
         </FormGroup>
@@ -206,6 +206,9 @@ export default function FormSignUp() {
         </QuestionSignUp>
 
         <ButtonSignUp>Continuar</ButtonSignUp>
+        <ButtonBack mobile={true}>
+          <img src="/images/icons8-left.png" alt="" /> Voltar ao inicio
+        </ButtonBack>
       </DivGridForm>
     </form>
   );

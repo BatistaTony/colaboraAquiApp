@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   colorsApp,
   flexbox,
@@ -13,19 +13,42 @@ export const HeroStyle = styled.div`
   ${flexbox("column", "flex-start", "center")};
   box-sizing: border-box;
   position: relative;
+  z-index: 1;
+`;
+
+const pullPaddingLeft = () => `
+  @media (max-width: 1370px) {
+    margin-left: -10%;
+  }
+
+  @media (max-width: 925px) {
+    margin-left: -18%;
+  }
+
+  @media (max-width: 820px) {
+    margin-left: 0%;
+  }
+
+  
 `;
 
 export const LogoHero = styled(Logo)`
   margin-top: 50px;
   img {
-    width: 70rem;
+    width: 90rem;
 
     ${sizesForEachScreens(
-      [1920, 1700, 1500, 1330, 1000, 750],
-      [60, 50, 40, 35, 24, 20, 15],
+      [3200, 2700, 1920, 1700, 1500, 1330, 1000, 750],
+      [80, 70, 60, 50, 40, 35, 24, 20, 15],
       "width",
       "rem"
     )};
+  }
+
+  ${pullPaddingLeft};
+
+  @media (max-width: 1500px) {
+    margin-top: 20px;
   }
 
   @media (max-width: 600px) {
@@ -37,19 +60,11 @@ export const LogoHero = styled(Logo)`
   }
 `;
 
-export const DivText = styled.div`
-  width: 100%;
+export const DivHero = styled.div`
+  width: auto;
   height: auto;
   position: relative;
-  ${flexbox()};
-
-  @media (max-width: 768px) and (max-height: 1024px) {
-    ${flexbox("column")};
-  }
-
-  @media (max-width: 1024px) and (max-height: 1366px) {
-    ${flexbox("column")};
-  }
+  ${flexbox("column")};
 `;
 
 export const Text = styled.p`
@@ -58,15 +73,17 @@ export const Text = styled.p`
   height: auto;
   text-align: center;
   color: ${colorsApp.soDark};
-  font-size: 35pt;
+  font-size: 45pt;
   ${getFont("Medium")};
 
   ${sizesForEachScreens([1000, 750, 450, 300], [60, 75, 80, 90], "width", "%")};
   ${sizesForEachScreens([1500], [0], "margin-top", "")};
 
+  ${pullPaddingLeft};
+
   ${sizesForEachScreens(
-    [2000, 1500, 1300, 450],
-    [28, 17, 14, 13],
+    [3200, 2500, 2000, 1500, 1300, 450],
+    [40, 35, 28, 17, 14, 13],
     "font-size",
     "pt"
   )};
@@ -74,7 +91,7 @@ export const Text = styled.p`
 
 export const ListStep = styled.ul`
   ${flexbox()};
-  margin-top: 60px;
+  margin-top: 70px;
 
   ${sizesForEachScreens([1500, 750], [30, 25], "margin-top", "px")};
 
@@ -82,25 +99,34 @@ export const ListStep = styled.ul`
     flex-direction: column;
     width: 100%;
   }
+
+  ${pullPaddingLeft};
 `;
 
 export const Step = styled.li`
   width: auto;
   ${flexbox("row", "flex-start", "center")};
-  margin-left: 20px;
+  margin-left: 50px;
 
   @media (max-width: 600px) {
     margin-bottom: 15px;
     width: 150px;
   }
 
+  ${sizesForEachScreens(
+    [2500, 2000, 1500, 1000],
+    [40, 30, 20, 15],
+    "margin-left",
+    "px"
+  )};
+
   span {
-    font-size: 23pt;
+    font-size: 38pt;
     ${getFont("SemiBold")};
 
     ${sizesForEachScreens(
-      [1500, 1000, 750, 450],
-      [16, 13, 12, 11],
+      [2500, 2000, 1500, 1000, 750, 450],
+      [30, 25, 16, 13, 12, 11],
       "font-size",
       "pt"
     )};
@@ -108,25 +134,57 @@ export const Step = styled.li`
 `;
 
 export const StepNumber = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
   border-radius: 100%;
   color: white;
   background: ${colorsApp.soDark};
   border: ${({ borderColor }) =>
-    borderColor ? `3px solid ${borderColor}` : "3px solid gray"};
+    borderColor ? `8px solid ${borderColor}` : "8px solid gray"};
   ${flexbox()};
-  margin-right: 10px;
+  margin-right: 20px;
 
-  ${sizesForEachScreens([1500, 750, 450], [28, 25, 23], "width", "px")};
+  @media (max-width: 3200px) {
+    width: 60px;
+    height: 60px;
+    border-width: 7px;
+    margin-right: 15px;
+  }
 
-  ${sizesForEachScreens([1500, 750, 450], [28, 25, 23], "height", "px")};
+  @media (max-width: 2700px) {
+    width: 50px;
+    height: 50px;
+    border-width: 7px;
+  }
+
+  @media (max-width: 2300px) {
+    width: 40px;
+    height: 40px;
+    border-width: 5px;
+    margin-right: 10px;
+  }
+
+  @media (max-width: 1500px) {
+    width: 30px;
+    height: 30px;
+    border-width: 3px;
+  }
+
+  @media (max-width: 1000px) {
+    width: 27px;
+    height: 27px;
+  }
 
   h1 {
-    font-size: 17pt;
+    font-size: 30pt;
     ${getFont("ExtraBold")};
 
-    ${sizesForEachScreens([1500, 750, 450], [15, 13, 10], "font-size", "pt")};
+    ${sizesForEachScreens(
+      [3200, 2500, 2000, 1500, 750, 450],
+      [20, 22, 18, 12, 12, 10],
+      "font-size",
+      "pt"
+    )};
   }
 `;
 
@@ -135,19 +193,27 @@ export const ButtonStartRate = styled(ButtonLogin)`
   ${getFont("Medium")};
   ${flexbox()};
   height: 50px;
-  font-size: 25pt;
+  font-size: 30pt;
+  border-radius: 12px;
   color: ${colorsApp.soDark};
-  padding-right: 20px;
-  border-radius: 10px;
-  padding-left: 20px;
-  padding-top: 2%;
-  padding-bottom: 2%;
-  margin-top: 90px;
+  padding: 60px;
+  padding-top: 65px;
+  padding-bottom: 65px;
+  margin-top: 3%;
   box-shadow: 0 0 10px ${colorsApp.orange};
 
+  ${pullPaddingLeft};
+
+  ${sizesForEachScreens(
+    [3200, 2700, 2200, 1500, 1000],
+    [50, 40, 30, 25, 20],
+    "padding",
+    "px"
+  )};
+
   img {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     margin-left: 15px;
 
     ${sizesForEachScreens([1500, 1000], [30, 25], "height", "px")};
@@ -162,48 +228,20 @@ export const ButtonStartRate = styled(ButtonLogin)`
   ${sizesForEachScreens([1500, 600, 450], [50, 30, 20], "margin-top", "px")};
 `;
 
-const tableStyleIllustration = ` position: relative;
-top: 0;
-margin-top: 20px;`;
-
 export const IllustrationRating = styled.div`
   position: absolute;
   width: auto;
   right: 0;
-  top: 10%;
+  bottom: 5%;
 
-  ${sizesForEachScreens(
-    [1920, 1650, 1370, 1270, 1080, 750],
-    [14, 17, 19, 25, 30, 25],
-    "top",
-    "%"
-  )};
-
-  @media (max-width: 768px) and (max-height: 1024px) {
-    ${tableStyleIllustration};
-  }
-
-  @media (max-width: 1024px) and (max-height: 1366px) {
-    ${tableStyleIllustration};
-  }
-
-  @media (max-width: 750px) {
+  @media (max-width: 820px) {
     display: none;
   }
 
   img {
-    width: 40rem;
+    width: 67rem;
     margin-left: 20px;
 
-    @media (max-width: 1370px) {
-      width: 22rem;
-    }
-
-    ${sizesForEachScreens(
-      [1920, 1650, 1370, 1150, 1000, 750],
-      [32, 25, 22, 20, 18, 15],
-      "width",
-      "rem"
-    )};
+    ${sizesForEachScreens([1920, 1650, 1370], [32, 25, 22], "width", "rem")};
   }
 `;

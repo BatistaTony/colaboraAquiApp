@@ -18,8 +18,20 @@ export const LayoutStyled = styled.div`
   background: ${({ title }) => chooseBgByTitle(title)};
   background-size: cover;
   display: grid;
-  grid-template-rows: 100px auto;
+  grid-template-rows: 15% 85%;
   overflow: hidden;
+
+  @media (max-width: 3200px) {
+    grid-template-rows: 10% 90%;
+  }
+
+  @media (max-width: 2700px) {
+    grid-template-rows: 10% 90%;
+  }
+
+  @media (max-width: 2200px) {
+    grid-template-rows: 100px auto;
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`

@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <MyNavbar>
-      <Logo>{isLogged && <img src="/images/logo.png" alt="" />}</Logo>
+      <Logo>{!isLogged && <img src="/images/logo.png" alt="" />}</Logo>
 
       <Menu>
         <ItemMenu active>Inicio</ItemMenu>
