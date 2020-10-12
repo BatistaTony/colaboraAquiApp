@@ -11,22 +11,29 @@ import {
   DivUser,
   MenuUser,
 } from "./navbarStyle";
+import Link from "next/link";
 
 import { CSSTransition } from "react-transition-group";
 import UserMenu from "./userMenu";
 
-export default function Navbar() {
+export default function Navbar(props: any) {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [isLogged, setIsLogged] = useState<boolean>(false);
 
   return (
     <MyNavbar>
-      <Logo>{!isLogged && <img src="/images/logo.png" alt="" />}</Logo>
+      <Logo>{isLogged && <img src="/images/logo.png" alt="" />}</Logo>
 
       <Menu>
-        <ItemMenu active>Inicio</ItemMenu>
-        <ItemMenu>Avaliar</ItemMenu>
-        <ItemMenu>Ranking</ItemMenu>
+        <Link href="/">
+          <ItemMenu active={props.title === "ColaboraAqui"}>Inicio</ItemMenu>
+        </Link>
+        <Link href="rate">
+          <ItemMenu active={props.title === "Avaliar"}>Avaliar</ItemMenu>
+        </Link>
+        <Link href="ranking">
+          <ItemMenu active={props.title === "Ranking"}>Ranking</ItemMenu>
+        </Link>
 
         {!isLogged && <ButtonLogin>Entrar</ButtonLogin>}
 
@@ -49,9 +56,17 @@ export default function Navbar() {
         <Overlay>
           <div className="container">
             <Menu mobile={true}>
-              <ItemMenu active>Inicio</ItemMenu>
-              <ItemMenu>Avaliar</ItemMenu>
-              <ItemMenu>Ranking</ItemMenu>
+              <Link href="/">
+                <ItemMenu active={props.title === "ColaboraAqui"}>
+                  Inicio
+                </ItemMenu>
+              </Link>
+              <Link href="rate">
+                <ItemMenu active={props.title === "Avaliar"}>Avaliar</ItemMenu>
+              </Link>
+              <Link href="ranking">
+                <ItemMenu active={props.title === "Ranking"}>Ranking</ItemMenu>
+              </Link>
               {isLogged && <UserMenu />}
 
               {!isLogged && <ButtonLogin>Entrar</ButtonLogin>}

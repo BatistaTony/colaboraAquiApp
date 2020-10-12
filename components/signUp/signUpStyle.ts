@@ -5,6 +5,7 @@ import {
   getFont,
   sizesForEachScreens,
 } from "../layout/layoutStyle";
+import { ButtonLogin } from "../navbar/navbarStyle";
 
 export const OverlaySignUp = styled.div`
   width: 100%;
@@ -19,7 +20,7 @@ export const OverlaySignUp = styled.div`
   form {
     width: 100%;
     height: auto;
-    ${flexbox()};
+    ${flexbox("column")};
   }
 
   @media (max-width: 750px) {
@@ -45,6 +46,7 @@ export const Modal = styled.div`
   grid-template-columns: 35% 65%;
   position: relative;
   overflow: hidden;
+  z-index: 9999;
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500],
@@ -71,7 +73,7 @@ export const Modal = styled.div`
 export const ModalIllustration = styled.div`
   width: 100%;
   height: 100%;
-  background: url(/images/signup.png);
+  background: ${({ img }) => ` url(${img})`};
   background-size: 90% 100%;
   background-repeat: no-repeat;
 
@@ -92,8 +94,8 @@ export const ButtonBack = styled.button`
   bottom: 5%;
   left: ${({ mobile }) => (mobile ? "0" : "20px")};
 
-  @media (min-width: 900px) {
-    display: ${({ mobile }) => (mobile ? "none" : "block")};
+  @media (max-width: 900px) {
+    display: ${({ mobile }) => (mobile ? "flex" : "none")};
   }
 
   img {
@@ -184,7 +186,6 @@ export const DivGridForm = styled.div`
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(3, 100px) auto auto;
-  margin-top: 20px;
   grid-gap: 30px;
 
   @media (max-height: 670px) {
@@ -225,6 +226,18 @@ export const DivGridForm = styled.div`
   }
 `;
 
+export const ErrorMessage = styled.p`
+  width: 100%;
+  font-size: 30pt;
+  text-align: center;
+  ${getFont()};
+  color: red;
+  margin-top: 20px;
+  margin-bottom: 5px;
+
+  ${NormalFontSize()};
+`;
+
 export const FormGroup = styled.div`
   width: 100%;
   border-radius: 7px;
@@ -232,13 +245,21 @@ export const FormGroup = styled.div`
   grid-template-columns: 90% 10%;
   grid-template-rows: 100%;
   background: #f1f0f4;
+  border: ${({ isEmpty }) => (isEmpty ? "2px solid red" : "none")};
 
   @media (max-width: 750px) {
     height: 40px;
     margin-bottom: 13px;
   }
 
-  input {
+  button {
+    span {
+      width: 100%;
+    }
+  }
+
+  input,
+  button {
     font-size: 30pt;
     height: 100%;
     ${getFont()};
@@ -248,6 +269,7 @@ export const FormGroup = styled.div`
     background: transparent;
     padding-left: 40px;
     box-sizing: border-box;
+    text-align: left;
 
     &::placeholder {
       color: ${colorsApp.soDark};
@@ -270,8 +292,9 @@ export const FormGroup = styled.div`
 
   &:first-child {
     grid-column: 1/3;
-    border: 2px solid ${colorsApp.orange};
     background: white;
+    border: ${({ isEmpty }) =>
+      isEmpty ? `2px solid red` : `2px solid ${colorsApp.orange}`};
   }
 `;
 
@@ -308,13 +331,34 @@ export const FormSelect = styled(FormGroup)`
 export const SelectList = styled.ul`
   list-style: none;
   width: 100%;
-  height: ${({ length }) => (length > 5 ? "180px" : "auto")};
+  height: ${({ length }) => (length > 5 ? "380px" : "auto")};
   position: absolute;
   overflow-y: ${({ length }) => (length > 5 ? "auto" : "hidden")};
   top: 0;
   background: white;
   border-radius: 7px;
-  box-shadow: 0 0 5px;
+  z-index: 10;
+  box-shadow: 0 0 20px;
+
+  @media (max-width: 3200px) {
+    height: ${({ length }) => (length > 5 ? "300px" : "auto")};
+    box-shadow: 0 0 15px;
+  }
+
+  @media (max-width: 2500px) {
+    height: ${({ length }) => (length > 5 ? "270px" : "auto")};
+    box-shadow: 0 0 10px;
+  }
+
+  @media (max-width: 1930px) {
+    height: ${({ length }) => (length > 5 ? "250px" : "auto")};
+    box-shadow: 0 0 7px;
+  }
+
+  @media (max-width: 1500px) {
+    height: ${({ length }) => (length > 5 ? "185px" : "auto")};
+    box-shadow: 0 0 5px;
+  }
 
   li {
     width: 100%;
@@ -379,4 +423,113 @@ export const ButtonSignUp = styled.button`
     height: 50px;
     font-size: 12.5pt;
   }
+`;
+
+export const ModalSucess = styled(Modal)`
+  background: ${colorsApp.orange};
+  grid-template-columns: 35% 30% 35%;
+
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 1930, 1500, 1370],
+    [1900, 1700, 1500, 1200, 750, 670],
+    "width",
+    "px"
+  )}
+
+  ${sizesForEachScreens([1500, 1370], [500, 400], "height", "px")} 
+
+  @media  (max-width:900px) {
+    height: 82vh;
+    width: 100%;
+    border-radius: 0;
+    z-index: 99999;
+    grid-template-columns: 25% auto auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    align-self: flex-end;
+  }
+
+  .illustration2 {
+    margin-left: 150px;
+
+    @media (max-width: 1500px) {
+      margin-left: 50px;
+    }
+
+    @media (max-width: 900px) {
+      display: block;
+      margin-right: -90px;
+    }
+
+    @media (max-width: 750px) {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 650px) {
+      margin-right: -30px;
+    }
+  }
+
+  .illustration1 {
+    @media (max-width: 900px) {
+      display: block;
+      opacity: 0;
+    }
+  }
+
+  .div2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    ${flexbox("column")};
+    box-sizing: border-box;
+
+    @media (max-width: 900px) {
+      justify-content: flex-start;
+      padding-top: 10%;
+    }
+
+    @media (max-width: 750px) {
+      padding-top: 7%;
+    }
+
+    @media (max-width: 650px) {
+      padding-top: 5%;
+    }
+  }
+
+  .miniDiv {
+    width: 50%;
+    ${flexbox("column")};
+
+    ${sizesForEachScreens(
+      [3000, 2500, 1930, 1370, 1000, 900],
+      [45, 50, 60, 65, 70],
+      "width",
+      "%"
+    )}
+  }
+`;
+
+export const TitleSucess = styled(Title)`
+  color: ${colorsApp.soDark};
+  ${getFont("Medium")};
+  text-align: center;
+`;
+
+export const TextSucess = styled(TextForm)`
+  color: white;
+  ${getFont("Medium")};
+  width: 90%;
+`;
+
+export const ButtonSucess = styled(ButtonLogin)`
+  background: ${colorsApp.soDark};
+  color: white;
+  margin-top: 40px;
+  height: 70px;
+
+  ${sizesForEachScreens([3000, 2500, 1930], [60, 50, 40], "height", "px")}
+
+  ${sizesForEachScreens([3000, 2500, 1930], [30, 20, 10], "margin-top", "px")}
 `;

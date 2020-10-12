@@ -3,6 +3,7 @@ import {
   ButtonBack,
   ButtonSignUp,
   DivGridForm,
+  ErrorMessage,
   FormGroup,
   FormSelect,
   InputIcon,
@@ -11,26 +12,26 @@ import {
 } from "./signUpStyle";
 import { CSSTransition } from "react-transition-group";
 import { IConsumer } from "../../types";
+import CustomSelect from "./select";
 
 const initialState: IConsumer = {
   userName: "",
+  province: "",
   county: "",
   ageRange: "",
   password: "",
-  province: "",
 };
 
 export default function FormSignUp() {
   const [consumerData, setConsumerData] = useState<IConsumer>(initialState);
-
-  const [showCounty, setShowCounty] = useState<boolean>(false);
-  const [showAgeRanges, setShowAgeRanges] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [errorIsOn, setWhereIsError] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const [ageRanges, setAgeRange] = useState<string[]>([
-    "15 a 16",
-    "17 a 25",
-    "30 a 40",
+    "15 a 16 anos",
+    "17 a 25 anos",
+    "30 a 40 anos",
   ]);
   const [counties, setCounties] = useState<string[]>([
     "Luanda",
@@ -47,21 +48,13 @@ export default function FormSignUp() {
     event.preventDefault();
   };
 
-  const showSelectList = (property: string) => {
-    if (property === "ages") {
-      setShowAgeRanges(!showAgeRanges);
-      setShowCounty(false);
-    } else if (property === "county") {
-      setShowCounty(!showCounty);
-      setShowAgeRanges(false);
-    }
-  };
-
   const handleChange = (event: any) => {
     setConsumerData({
       ...consumerData,
       [event.target.name]: event.target.value,
     });
+    setWhereIsError(null);
+    setErrorMsg(null);
   };
 
   const handleChooseSelect = (property: string, value: string) => {
@@ -69,26 +62,63 @@ export default function FormSignUp() {
       ...consumerData,
       [property]: value,
     });
-
-    setShowCounty(false);
-    setShowAgeRanges(false);
+    setWhereIsError(null);
+    setErrorMsg(null);
   };
 
-  useEffect(() => {
-    document.addEventListener("click", HideOpenedDiv, true);
+  const translateProperty = (property: string): string => {
+    switch (property) {
+      case "userName": {
+        return "Nome utilizador";
+      }
 
-    function HideOpenedDiv(event) {
-      if (event.target.className !== "customSelect") {
-        setShowCounty(false);
-        setShowAgeRanges(false);
+      case "ageRange": {
+        return "Faixa étaria";
+      }
+
+      case "county": {
+        return "Municipio";
+      }
+
+      case "province": {
+        return "Província";
+      }
+
+      case "password": {
+        return "Senha";
+      }
+
+      default: {
+        return "";
       }
     }
-  });
+  };
+
+  const checkError = (): boolean => {
+    const arrayConsumerData = Object.entries(consumerData).sort();
+
+    const emptyProperties = arrayConsumerData.filter((value) => {
+      if (value[1] === "") {
+        setWhereIsError(value[0]);
+        setErrorMsg(`${translateProperty(value[0])} é obrigatório`);
+      }
+
+      return value[1] === "";
+    });
+
+    return emptyProperties.length > 0;
+  };
+
+  const signUpUser = (): void => {
+    if (!checkError()) {
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
+      <ErrorMessage>{errorMsg}</ErrorMessage>
       <DivGridForm>
-        <FormGroup>
+        <FormGroup isEmpty={errorIsOn === "userName"}>
           <input
             type="text"
             name="userName"
@@ -98,7 +128,7 @@ export default function FormSignUp() {
           />
         </FormGroup>
 
-        <FormGroup>
+        <FormGroup isEmpty={errorIsOn === "province"}>
           <input
             type="text"
             name="province"
@@ -109,86 +139,21 @@ export default function FormSignUp() {
           />
         </FormGroup>
 
-        <FormSelect>
-          <input
-            type="text"
-            name="county"
-            id="county"
-            placeholder="Municipio"
-            defaultValue={consumerData.county}
-            onClick={() => showSelectList("county")}
-            className="customSelect"
-          />
-          <InputIcon
-            className="customSelect"
-            onClick={() => showSelectList("county")}
-          >
-            <img
-              className="customSelect"
-              id="county"
-              src="/images/icons8-eye.png"
-              alt=""
-            />
-          </InputIcon>
+        <CustomSelect
+          defaultValueSelect={consumerData.county || "Municipio"}
+          handleChange={(value) => handleChooseSelect("county", value)}
+          values={counties}
+          isEmpty={errorIsOn === "county"}
+        />
 
-          <CSSTransition
-            unmountOnExit
-            addEndListener={() => {}}
-            timout={200}
-            in={showCounty}
-            classNames="my-node"
-          >
-            <SelectList length={counties.length}>
-              {counties.map((value, index) => (
-                <li
-                  onClick={() => handleChooseSelect("county", value)}
-                  key={index}
-                >
-                  {value}
-                </li>
-              ))}
-            </SelectList>
-          </CSSTransition>
-        </FormSelect>
+        <CustomSelect
+          defaultValueSelect={consumerData.ageRange || "Faixa etaria"}
+          handleChange={(value) => handleChooseSelect("ageRange", value)}
+          values={ageRanges}
+          isEmpty={errorIsOn === "ageRange"}
+        />
 
-        <FormSelect>
-          <input
-            type="text"
-            name="ageRange"
-            id="ageRange"
-            placeholder="Faixa etária"
-            defaultValue={consumerData.ageRange}
-            onClick={() => showSelectList("ages")}
-            className="customSelect"
-          />
-          <InputIcon
-            className="customSelect"
-            onClick={() => showSelectList("ages")}
-          >
-            <img id="ageRange" src="/images/icons8-eye.png" alt="" />
-          </InputIcon>
-
-          <CSSTransition
-            unmountOnExit
-            addEndListener={() => {}}
-            timout={200}
-            in={showAgeRanges}
-            classNames="my-node"
-          >
-            <SelectList length={ageRanges.length}>
-              {ageRanges.map((value, index) => (
-                <li
-                  onClick={() => handleChooseSelect("ageRange", value)}
-                  key={index}
-                >
-                  {value + " anos"}
-                </li>
-              ))}
-            </SelectList>
-          </CSSTransition>
-        </FormSelect>
-
-        <FormGroup>
+        <FormGroup isEmpty={errorIsOn === "password"}>
           <input
             type={showPassword ? "text" : "password"}
             name="password"
@@ -205,7 +170,7 @@ export default function FormSignUp() {
           Já tens uma conta ? clique aqui para <span>entrar</span>
         </QuestionSignUp>
 
-        <ButtonSignUp>Continuar</ButtonSignUp>
+        <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
         <ButtonBack mobile={true}>
           <img src="/images/icons8-left.png" alt="" /> Voltar ao inicio
         </ButtonBack>

@@ -1,5 +1,6 @@
 import { colorsApp } from "../layout/layoutStyle";
 import SignUp from "../signUp/signUp";
+import SucessModal from "../signUp/sucessModal";
 import {
   ButtonStartRate,
   HeroStyle,
@@ -31,6 +32,7 @@ export default function Hero() {
   return (
     <HeroStyle>
       {/* <SignUp /> */}
+      <SucessModal />
 
       <DivHero>
         <LogoHero>

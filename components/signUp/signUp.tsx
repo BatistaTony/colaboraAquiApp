@@ -13,7 +13,7 @@ export default function SignUp() {
   return (
     <OverlaySignUp>
       <Modal>
-        <ModalIllustration>
+        <ModalIllustration img={"/images/signup.png"}>
           <ButtonBack>
             <img src="/images/icons8-left.png" alt="" /> Voltar ao inicio
           </ButtonBack>

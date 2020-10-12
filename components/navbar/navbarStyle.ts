@@ -9,7 +9,7 @@ export const MyNavbar = styled.div`
   padding-left: 6%;
   padding-right: 8%;
   box-sizing: border-box;
-  z-index: 10;
+  z-index: 5;
 
   @media (max-width: 750px) {
     height: 70px;

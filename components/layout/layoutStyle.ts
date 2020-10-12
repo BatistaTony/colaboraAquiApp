@@ -7,7 +7,7 @@ const chooseBgByTitle = (title: string) => {
     }
 
     default: {
-      return "red";
+      return "white";
     }
   }
 };

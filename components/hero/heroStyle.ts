@@ -17,15 +17,24 @@ export const HeroStyle = styled.div`
 `;
 
 const pullPaddingLeft = () => `
+
+@media (max-width: 1500px) {
+  margin-left: -6%;
+}
+
   @media (max-width: 1370px) {
     margin-left: -10%;
+  }
+
+  @media (max-width: 1100px) {
+    margin-left: -15%;
   }
 
   @media (max-width: 925px) {
     margin-left: -18%;
   }
 
-  @media (max-width: 820px) {
+  @media (max-width: 850px) {
     margin-left: 0%;
   }
 
@@ -204,10 +213,26 @@ export const ButtonStartRate = styled(ButtonLogin)`
 
   ${pullPaddingLeft};
 
+  ${sizesForEachScreens([3200, 2700, 2200], [55, 45, 35], "height", "px")};
+
   ${sizesForEachScreens(
     [3200, 2700, 2200, 1500, 1000],
     [50, 40, 30, 25, 20],
     "padding",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [3200, 2700, 2200, 1500],
+    [55, 45, 35, 27],
+    "padding-top",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [3200, 2700, 2200, 1500],
+    [55, 45, 35, 27],
+    "padding-bottom",
     "px"
   )};
 
@@ -216,15 +241,31 @@ export const ButtonStartRate = styled(ButtonLogin)`
     height: 60px;
     margin-left: 15px;
 
-    ${sizesForEachScreens([1500, 1000], [30, 25], "height", "px")};
-    ${sizesForEachScreens([1500, 1000], [30, 25], "width", "px")};
+    ${sizesForEachScreens(
+      [3200, 2700, 2200, 1500, 1000],
+      [50, 40, 35, 30, 25],
+      "height",
+      "px"
+    )};
+    ${sizesForEachScreens(
+      [3200, 2700, 2200, 1500, 1000],
+      [50, 40, 35, 30, 25],
+      "width",
+      "px"
+    )};
   }
 
   &:hover {
     background: ${colorsApp.kindaBlue};
   }
 
-  ${sizesForEachScreens([1500, 1000], [14, 13], "font-size", "pt")};
+  ${sizesForEachScreens(
+    [3200, 2700, 2200, 1500, 1000],
+    [27, 24, 18, 14, 13],
+    "font-size",
+    "pt"
+  )};
+
   ${sizesForEachScreens([1500, 600, 450], [50, 30, 20], "margin-top", "px")};
 `;
 
@@ -233,8 +274,9 @@ export const IllustrationRating = styled.div`
   width: auto;
   right: 0;
   bottom: 5%;
+  transition: 0.5s;
 
-  @media (max-width: 820px) {
+  @media (max-width: 850px) {
     display: none;
   }
 
@@ -242,6 +284,11 @@ export const IllustrationRating = styled.div`
     width: 67rem;
     margin-left: 20px;
 
-    ${sizesForEachScreens([1920, 1650, 1370], [32, 25, 22], "width", "rem")};
+    ${sizesForEachScreens(
+      [3200, 2700, 2200, 1920, 1650, 1370],
+      [60, 50, 40, , 32, 25, 22],
+      "width",
+      "rem"
+    )};
   }
 `;

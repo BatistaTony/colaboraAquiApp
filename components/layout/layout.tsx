@@ -8,13 +8,15 @@ interface IProps {
 }
 
 export default function Layout({ title, ...props }: IProps) {
+  const pageTitle = title || "ColaboraAqui";
+
   return (
-    <LayoutStyled title={title || "ColaboraAqui"}>
+    <LayoutStyled title={pageTitle}>
       <Head>
-        <title>{title || "ColaboraAqui"}</title>
+        <title>{pageTitle}</title>
       </Head>
 
-      <Navbar />
+      <Navbar title={pageTitle} />
       {props.children}
     </LayoutStyled>
   );
