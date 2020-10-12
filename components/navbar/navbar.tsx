@@ -12,13 +12,19 @@ import {
   MenuUser,
 } from "./navbarStyle";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 import { CSSTransition } from "react-transition-group";
 import UserMenu from "./userMenu";
+import { IConsumer } from "../../types";
 
 export default function Navbar(props: any) {
+  const consumerState: IConsumer = useSelector((state) => state.Consumer);
+
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-  const [isLogged, setIsLogged] = useState<boolean>(false);
+  const [isLogged, setIsLogged] = useState<boolean>(
+    consumerState.userName.length > 0
+  );
 
   return (
     <MyNavbar>

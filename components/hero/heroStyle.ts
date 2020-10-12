@@ -14,6 +14,25 @@ export const HeroStyle = styled.div`
   box-sizing: border-box;
   position: relative;
   z-index: 1;
+
+  .my-overlay-enter {
+    opacity: 0;
+    display: flex;
+  }
+
+  .my-overlay-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+
+  .my-overlay-exit {
+    opacity: 1;
+  }
+
+  .my-overlay-exit-active {
+    opacity: 0;
+    display: none;
+  }
 `;
 
 const pullPaddingLeft = () => `

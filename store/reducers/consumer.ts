@@ -1,7 +1,11 @@
 import { IConsumer } from "./../../types";
 
 const initialState: IConsumer = {
-  name: "tony",
+  ageRange: "",
+  county: "",
+  password: "",
+  province: "",
+  userName: "",
 };
 
 interface IAction {

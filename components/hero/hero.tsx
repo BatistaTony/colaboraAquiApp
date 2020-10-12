@@ -1,3 +1,5 @@
+import { useContext, useState } from "react";
+import { appContext } from "../appContext";
 import { colorsApp } from "../layout/layoutStyle";
 import SignUp from "../signUp/signUp";
 import SucessModal from "../signUp/sucessModal";
@@ -12,6 +14,10 @@ import {
   StepNumber,
   DivHero,
 } from "./heroStyle";
+import { CSSTransition } from "react-transition-group";
+import Route from "next/router";
+import { useSelector } from "react-redux";
+import { IConsumer } from "../../types";
 
 export default function Hero() {
   const steps = [
@@ -29,10 +35,31 @@ export default function Hero() {
     },
   ];
 
+  const consumerState: IConsumer = useSelector((state) => state.Consumer);
+  const [showSignUp, toggleSignUp] = useContext(appContext);
+  const [isLogged, setIsLogged] = useState<boolean>(
+    consumerState.userName.length > 0
+  );
+
+  const startRate = () => {
+    if (isLogged) {
+      Route.push("/search");
+    } else {
+      toggleSignUp();
+    }
+  };
+
   return (
     <HeroStyle>
-      {/* <SignUp /> */}
-      <SucessModal />
+      <CSSTransition
+        unmountOnExit
+        addEndListener={() => {}}
+        timout={200}
+        in={showSignUp}
+        classNames="my-overlay"
+      >
+        <SignUp />
+      </CSSTransition>
 
       <DivHero>
         <LogoHero>
@@ -52,7 +79,7 @@ export default function Hero() {
             </Step>
           ))}
         </ListStep>
-        <ButtonStartRate>
+        <ButtonStartRate onClick={startRate}>
           Começar a avaliar <img src="/images/start.png" alt="" />{" "}
         </ButtonStartRate>
       </DivHero>

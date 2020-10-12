@@ -82,7 +82,7 @@ export const ModalIllustration = styled.div`
   }
 `;
 
-export const ButtonBack = styled.button`
+export const ButtonBackStyle = styled.button`
   color: ${colorsApp.soDark};
   outline: none;
   border: none;
@@ -90,13 +90,9 @@ export const ButtonBack = styled.button`
   ${getFont("Medium")};
   font-size: 30pt;
   ${flexbox()};
-  position: ${({ mobile }) => (mobile ? "relative" : "absolute")};
+  position: absolute;
   bottom: 5%;
-  left: ${({ mobile }) => (mobile ? "0" : "20px")};
-
-  @media (max-width: 900px) {
-    display: ${({ mobile }) => (mobile ? "flex" : "none")};
-  }
+  left: 20px;
 
   img {
     width: 45px;
@@ -128,6 +124,14 @@ export const DivForm = styled.div`
   @media (max-height: 670px) {
     padding-top: 10px;
     padding-bottom: 50px;
+  }
+
+  .mobileBtn {
+    display: none;
+    @media (max-width: 900px) {
+      position: relative;
+      display: flex;
+    }
   }
 `;
 

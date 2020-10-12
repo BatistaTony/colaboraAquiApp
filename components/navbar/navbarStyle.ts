@@ -287,7 +287,7 @@ export const ButtonMobile = styled.div`
   box-sizing: border-box;
   padding-top: 3px;
   z-index: 99;
-  position: fixed;
+  position: absolute;
   right: 4.5%;
 
   .line {

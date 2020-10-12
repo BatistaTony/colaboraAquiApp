@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import {
-  ButtonBack,
   ButtonSignUp,
   DivGridForm,
   ErrorMessage,
@@ -13,6 +12,7 @@ import {
 import { CSSTransition } from "react-transition-group";
 import { IConsumer } from "../../types";
 import CustomSelect from "./select";
+import ButtonBack from "./buttonBack";
 
 const initialState: IConsumer = {
   userName: "",
@@ -111,6 +111,7 @@ export default function FormSignUp() {
 
   const signUpUser = (): void => {
     if (!checkError()) {
+      //waiting for API
     }
   };
 
@@ -171,9 +172,7 @@ export default function FormSignUp() {
         </QuestionSignUp>
 
         <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
-        <ButtonBack mobile={true}>
-          <img src="/images/icons8-left.png" alt="" /> Voltar ao inicio
-        </ButtonBack>
+        <ButtonBack classNames="mobileBtn" />
       </DivGridForm>
     </form>
   );

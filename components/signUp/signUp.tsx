@@ -1,3 +1,4 @@
+import ButtonBack from "./buttonBack";
 import FormSignUp from "./formSignUp";
 import {
   OverlaySignUp,
@@ -6,7 +7,6 @@ import {
   DivForm,
   Title,
   TextForm,
-  ButtonBack,
 } from "./signUpStyle";
 
 export default function SignUp() {
@@ -14,9 +14,7 @@ export default function SignUp() {
     <OverlaySignUp>
       <Modal>
         <ModalIllustration img={"/images/signup.png"}>
-          <ButtonBack>
-            <img src="/images/icons8-left.png" alt="" /> Voltar ao inicio
-          </ButtonBack>
+          <ButtonBack />
         </ModalIllustration>
         <DivForm>
           <Title>
