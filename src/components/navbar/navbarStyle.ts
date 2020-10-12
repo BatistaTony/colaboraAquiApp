@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { colorsApp, flexbox, getFont } from "../layout/layoutStyle";
-import { sizesForEachScreens } from "./../layout/layoutStyle";
+import { sizesForEachScreens } from "../layout/layoutStyle";
 
 export const MyNavbar = styled.div`
   width: 100%;

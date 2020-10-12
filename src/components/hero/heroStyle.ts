@@ -5,7 +5,7 @@ import {
   getFont,
   sizesForEachScreens,
 } from "../layout/layoutStyle";
-import { ButtonLogin, Logo } from "./../navbar/navbarStyle";
+import { ButtonLogin, Logo } from "../navbar/navbarStyle";
 
 export const HeroStyle = styled.div`
   width: 100%;

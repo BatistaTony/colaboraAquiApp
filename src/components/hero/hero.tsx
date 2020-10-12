@@ -16,7 +16,7 @@ import {
 import { CSSTransition } from "react-transition-group";
 import Route from "next/router";
 import { useSelector } from "react-redux";
-import { IConsumer } from "../../types";
+import { IConsumer } from "../../../types";
 
 export default function Hero() {
   const steps = [

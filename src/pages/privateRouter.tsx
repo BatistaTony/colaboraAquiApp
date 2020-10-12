@@ -1,7 +1,7 @@
 import { Fragment, Component, useEffect } from "react";
 import Router from "next/router";
 import { useSelector } from "react-redux";
-import { IConsumer } from "../types";
+import { IConsumer } from "../../types";
 import Consumer from "../store/reducers/consumer";
 
 export default function PrivateRouter(

@@ -1,4 +1,4 @@
-import { IConsumer } from "./../../types";
+import { IConsumer } from "../../../types";
 
 const initialState: IConsumer = {
   ageRange: "",

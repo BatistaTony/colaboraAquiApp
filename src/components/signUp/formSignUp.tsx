@@ -10,7 +10,7 @@ import {
   SelectList,
 } from "./signUpStyle";
 import { CSSTransition } from "react-transition-group";
-import { IConsumer } from "../../types";
+import { IConsumer } from "../../../types";
 import CustomSelect from "./select";
 import ButtonBack from "./buttonBack";
 

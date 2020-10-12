@@ -16,7 +16,7 @@ import { useSelector } from "react-redux";
 
 import { CSSTransition } from "react-transition-group";
 import UserMenu from "./userMenu";
-import { IConsumer } from "../../types";
+import { IConsumer } from "../../../types";
 
 export default function Navbar(props: any) {
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
