@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { appContext } from "../appContext";
 import { colorsApp } from "../layout/layoutStyle";
 import SignUp from "../signUp/signUp";
-import SucessModal from "../signUp/sucessModal";
 import {
   ButtonStartRate,
   HeroStyle,
