@@ -10,7 +10,9 @@ import { ButtonLogin } from "../navbar/navbarStyle";
 export const OverlaySignUp = styled.div`
   width: 100%;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.5);
+  background: ${({ isSinglePage }) =>
+    isSinglePage ? " url(/images/Grupo978.svg)" : "rgba(255, 255, 255, 0.5)"};
+  background-size: 100% 100%;
   position: fixed;
   left: 0;
   top: 0;
@@ -158,6 +160,7 @@ export const Title = styled.h1`
   span {
     ${getFont("Medium")};
     color: ${colorsApp.orange};
+    cursor: default;
   }
 
   ${sizesForEachScreens(
@@ -401,6 +404,7 @@ export const QuestionSignUp = styled.p`
   span {
     margin-left: 10px;
     color: ${colorsApp.orange};
+    cursor: default;
   }
   ${NormalFontSize()};
 

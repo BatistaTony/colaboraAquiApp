@@ -108,7 +108,10 @@ export default function SignInConsumer() {
             </ButtonSignUp>
 
             <QuestionSignUp className="FormGroup">
-              Ainda não tem uma conta ? <span>Registar-se</span>
+              Ainda não tem uma conta ?{" "}
+              <Link href="/signup">
+                <span>Registar-se</span>
+              </Link>
             </QuestionSignUp>
 
             <ButtonBack classNames="mobileBtn" />

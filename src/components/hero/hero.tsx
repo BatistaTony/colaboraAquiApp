@@ -18,6 +18,7 @@ import { CSSTransition } from "react-transition-group";
 import Route from "next/router";
 import { useSelector } from "react-redux";
 import { IConsumer } from "../../../types";
+import SignUpConsumer from "../signUp/signUp";
 
 export default function Hero() {
   const steps = [
@@ -62,7 +63,7 @@ export default function Hero() {
         in={showSignUp}
         classNames="my-overlay"
       >
-        <SignUp />
+        <SignUpConsumer />
       </CSSTransition>
 
       <DivHero>

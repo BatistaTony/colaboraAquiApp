@@ -18,7 +18,7 @@ export const OverlaySignIn = styled.div`
 
 export const ModalSignIn = styled(Modal)`
   grid-template-columns: 62% 37%;
-  box-shadow: 2px 2px 0px 0px gray;
+  box-shadow: 0 0 0.5px gray;
 
   .btnBackSign {
     margin-right: 100px;
@@ -84,14 +84,14 @@ export const DivForm = styled.div`
 
 export const IllustrationObjectSignIn = styled.div`
   width: 60%;
-  height: 100%;
+  height: 90%;
   background: url(/images/Grupo95.svg);
   background-size: 70% 70%;
   background-position: -20% -20%;
   background-repeat: no-repeat;
   position: absolute;
   top: 0;
-  left: 0;
+  left: -5%;
   transform: rotate(4deg);
   z-index: -1;
 `;

@@ -16,6 +16,7 @@ import ButtonBack from "./buttonBack";
 import SucessModal from "./sucessModal";
 import InputPassword from "./inputPassword";
 import { translateProperty } from "../utils";
+import Link from "next/link";
 
 const initialState: IConsumer = {
   userName: "",
@@ -152,7 +153,10 @@ export default function FormSignUp() {
         <InputPassword errorIsOn={errorIsOn} handleChange={handleChange} />
 
         <QuestionSignUp>
-          Já tens uma conta ? clique aqui para <span>entrar</span>
+          Já tens uma conta ? clique aqui para{" "}
+          <Link href="/signin">
+            <span>entrar</span>
+          </Link>
         </QuestionSignUp>
 
         <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>

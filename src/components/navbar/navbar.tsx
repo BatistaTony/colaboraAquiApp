@@ -34,14 +34,20 @@ export default function Navbar(props: any) {
         <Link href="/">
           <ItemMenu active={props.title === "ColaboraAqui"}>Inicio</ItemMenu>
         </Link>
-        <Link href="rate">
-          <ItemMenu active={props.title === "Avaliar"}>Avaliar</ItemMenu>
-        </Link>
+        {isLogged && (
+          <Link href="rate">
+            <ItemMenu active={props.title === "Avaliar"}>Avaliar</ItemMenu>
+          </Link>
+        )}
         <Link href="ranking">
           <ItemMenu active={props.title === "Ranking"}>Ranking</ItemMenu>
         </Link>
 
-        {!isLogged && <Link href="/signin"><ButtonLogin>Entrar</ButtonLogin></Link> }
+        {!isLogged && (
+          <Link href="/signin">
+            <ButtonLogin>Entrar</ButtonLogin>
+          </Link>
+        )}
 
         {isLogged && <UserMenu />}
       </Menu>
@@ -67,15 +73,23 @@ export default function Navbar(props: any) {
                   Inicio
                 </ItemMenu>
               </Link>
-              <Link href="rate">
-                <ItemMenu active={props.title === "Avaliar"}>Avaliar</ItemMenu>
-              </Link>
+              {isLogged && (
+                <Link href="rate">
+                  <ItemMenu active={props.title === "Avaliar"}>
+                    Avaliar
+                  </ItemMenu>
+                </Link>
+              )}
               <Link href="ranking">
                 <ItemMenu active={props.title === "Ranking"}>Ranking</ItemMenu>
               </Link>
               {isLogged && <UserMenu />}
 
-              {!isLogged && <Link href="/signin"><ButtonLogin>Entrar</ButtonLogin></Link> }
+              {!isLogged && (
+                <Link href="/signin">
+                  <ButtonLogin>Entrar</ButtonLogin>
+                </Link>
+              )}
             </Menu>
           </div>
         </Overlay>

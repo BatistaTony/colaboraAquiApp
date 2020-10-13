@@ -6,6 +6,7 @@ import {
   TextSucess,
   ButtonSucess,
 } from "./signUpStyle";
+import Link from "next/link";
 
 export default function SucessModal() {
   return (
@@ -22,7 +23,9 @@ export default function SucessModal() {
             <TextSucess>
               Ajude as empresa e orgãos nacionas a melhorarem os seus serviços
             </TextSucess>
-            <ButtonSucess>Começar</ButtonSucess>
+            <Link href="/search">
+              <ButtonSucess>Começar</ButtonSucess>
+            </Link>
           </div>
         </div>
         <ModalIllustration

@@ -1,8 +1,7 @@
-import { Fragment, Component, useEffect } from "react";
+import { useEffect } from "react";
 import Router from "next/router";
 import { useSelector } from "react-redux";
 import { IConsumer } from "../../types";
-import Consumer from "../store/reducers/consumer";
 
 export default function PrivateRouter(
   WrappedComponent: React.FC | React.ComponentClass
@@ -11,11 +10,11 @@ export default function PrivateRouter(
     const consumer: IConsumer = useSelector((state) => state.Consumer);
 
     useEffect(() => {
-      if (!consumer.name) {
+      if (consumer.userName.length <= 0) {
         Router.push("/");
       }
-    }, [consumer.name]);
+    }, [consumer.userName]);
 
-    return consumer.name ? <WrappedComponent /> : <h1>You Need to log in</h1>;
+    return consumer.userName ? <WrappedComponent /> : <h1>{"  "}</h1>;
   };
 }

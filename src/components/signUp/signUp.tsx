@@ -1,3 +1,4 @@
+import Route from "next/router";
 import { useContext } from "react";
 import { appContext } from "../appContext";
 import ButtonBack from "./buttonBack";
@@ -11,15 +12,24 @@ import {
   TextForm,
 } from "./signUpStyle";
 
-export default function SignUp() {
-  const [showSIgnUp, toggleSignUp] = useContext(appContext);
+interface IProps {
+  isSinglePage?: boolean;
+}
+
+export default function SignUpConsumer({ isSinglePage }: IProps) {
+  const [showSignUp, toggleSignUp] = useContext(appContext);
 
   const backToHome = () => {
-    toggleSignUp();
+    if (isSinglePage) {
+      Route.push("/");
+      toggleSignUp();
+    } else {
+      toggleSignUp();
+    }
   };
 
   return (
-    <OverlaySignUp>
+    <OverlaySignUp isSinglePage={isSinglePage}>
       <Modal>
         <ModalIllustration onClick={backToHome} img={"/images/signup.png"}>
           <ButtonBack />

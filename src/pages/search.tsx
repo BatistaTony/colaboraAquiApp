@@ -1,5 +1,8 @@
 import Layout from "./../components/layout/layout";
+import PrivateRouter from "./privateRouter";
 
-export default function SearchEnterprise() {
+function SearchEnterprise() {
   return <Layout>Search Enterprise !</Layout>;
 }
+
+export default PrivateRouter(SearchEnterprise);
