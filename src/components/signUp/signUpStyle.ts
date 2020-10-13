@@ -76,6 +76,8 @@ export const ModalIllustration = styled.div`
   background: ${({ img }) => ` url(${img})`};
   background-size: 90% 100%;
   background-repeat: no-repeat;
+  position: relative;
+  ${flexbox()};
 
   @media (max-width: 900px) {
     display: none;
@@ -97,6 +99,7 @@ export const ButtonBackStyle = styled.button`
   img {
     width: 45px;
     height: 45px;
+    margin-right: 7px;
 
     ${sizesForEachScreens(
       [3200, 3000, 2500, 1930, 1500],
@@ -206,7 +209,7 @@ export const DivGridForm = styled.div`
 
   @media (max-width: 1930px) {
     grid-template-rows: repeat(3, 60px) auto auto;
-    grid-gap: 10px;
+    grid-gap: 11px;
   }
 
   @media (max-width: 1500px) {
@@ -236,7 +239,7 @@ export const ErrorMessage = styled.p`
   text-align: center;
   ${getFont()};
   color: red;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 5px;
 
   ${NormalFontSize()};
@@ -287,11 +290,6 @@ export const FormGroup = styled.div`
       "padding-left",
       "px"
     )}
-  }
-
-  &:nth-child(3),
-  &:nth-child(4) {
-    cursor: default();
   }
 
   &:first-child {

@@ -1,16 +1,12 @@
-import { useContext } from "react";
-import { appContext } from "../appContext";
 import { ButtonBackStyle } from "./signUpStyle";
 
-export default function ButtonBack({ classNames, ...props }) {
-  const [showSIgnUp, toggleSignUp] = useContext(appContext);
+interface IProps {
+  classNames?: string;
+}
 
-  const backToHome = () => {
-    toggleSignUp();
-  };
-
+export default function ButtonBack({ classNames }: IProps) {
   return (
-    <ButtonBackStyle className={classNames} onClick={backToHome} {...props}>
+    <ButtonBackStyle className={classNames}>
       <img src="/images/icons8-left.png" alt="" /> Voltar ao inicio
     </ButtonBackStyle>
   );

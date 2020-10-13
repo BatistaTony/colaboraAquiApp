@@ -13,6 +13,7 @@ import { CSSTransition } from "react-transition-group";
 import { IConsumer } from "../../../types";
 import CustomSelect from "./select";
 import ButtonBack from "./buttonBack";
+import SucessModal from "./sucessModal";
 
 const initialState: IConsumer = {
   userName: "",
@@ -27,6 +28,7 @@ export default function FormSignUp() {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
 
   const [ageRanges, setAgeRange] = useState<string[]>([
     "15 a 16 anos",
@@ -111,12 +113,22 @@ export default function FormSignUp() {
 
   const signUpUser = (): void => {
     if (!checkError()) {
-      //waiting for API
+      setShowModalSucess(!showModalSucess);
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <CSSTransition
+        unmountOnExit
+        addEndListener={() => {}}
+        timout={200}
+        in={showModalSucess}
+        classNames="my-node"
+      >
+        <SucessModal />
+      </CSSTransition>
+
       <ErrorMessage>{errorMsg}</ErrorMessage>
       <DivGridForm>
         <FormGroup isEmpty={errorIsOn === "userName"}>
