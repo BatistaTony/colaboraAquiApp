@@ -12,6 +12,7 @@ import {
   IllustrationRating,
   StepNumber,
   DivHero,
+  BackGroundWithIllustration,
 } from "./heroStyle";
 import { CSSTransition } from "react-transition-group";
 import Route from "next/router";
@@ -50,6 +51,10 @@ export default function Hero() {
 
   return (
     <HeroStyle>
+      <BackGroundWithIllustration>
+        <div className="illustration1_e"></div>
+        <div className="illustration2_e"></div>
+      </BackGroundWithIllustration>
       <CSSTransition
         unmountOnExit
         addEndListener={() => {}}

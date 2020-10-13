@@ -4,9 +4,9 @@ interface IProps {
   classNames?: string;
 }
 
-export default function ButtonBack({ classNames }: IProps) {
+export default function ButtonBack({ classNames, ...props }: IProps) {
   return (
-    <ButtonBackStyle className={classNames}>
+    <ButtonBackStyle className={classNames} {...props}>
       <img src="/images/icons8-left.png" alt="" /> Voltar ao inicio
     </ButtonBackStyle>
   );

@@ -12,15 +12,23 @@ export const OverlaySignIn = styled.div`
   height: 100vh;
   ${flexbox()};
   background: url(/images/Grupo978.svg);
-  background-size: cover;
+  background-size: 100% 100%;
+  overflow: hidden;
 `;
 
 export const ModalSignIn = styled(Modal)`
-  grid-template-columns: 65% 35%;
-  box-shadow: 0 0 10px gray;
+  grid-template-columns: 62% 37%;
+  box-shadow: 2px 2px 0px 0px gray;
 
   .btnBackSign {
-    left: 60px;
+    margin-right: 100px;
+
+    ${sizesForEachScreens(
+      [3200, 3000, 2500, 1930],
+      [70, 60, 50, 40],
+      "margin-right",
+      "px"
+    )};
   }
 
   .grid-form-sign {
@@ -36,8 +44,7 @@ export const ModalSignIn = styled(Modal)`
     .textForgetPassword {
       color: ${colorsApp.orange};
       font-size: 27pt;
-      ${flexbox("row", "flex-start", "center")};
-      height: 30px;
+      ${flexbox("row", "flex-start", "flex-end")};
       ${getFont()};
       cursor: default;
       width: 100%;
@@ -50,6 +57,24 @@ export const ModalSignIn = styled(Modal)`
       )}
     }
   }
+
+  .illustration1_ {
+    ${flexbox("column", "flex-end", "flex-end")};
+    background-size: 95% 100%;
+    background-position: right;
+    margin-left: 30px;
+
+    ${sizesForEachScreens(
+      [2500, 1930, 1500],
+      [25, 20, 15],
+      "margin-left",
+      "px"
+    )};
+
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
 `;
 
 export const DivForm = styled.div`
@@ -58,12 +83,15 @@ export const DivForm = styled.div`
 `;
 
 export const IllustrationObjectSignIn = styled.div`
-  width: 50%;
+  width: 60%;
   height: 100%;
   background: url(/images/Grupo95.svg);
   background-size: 70% 70%;
+  background-position: -20% -20%;
   background-repeat: no-repeat;
   position: absolute;
   top: 0;
   left: 0;
+  transform: rotate(4deg);
+  z-index: -1;
 `;

@@ -40,13 +40,14 @@ const NormalFontSize = () =>
 export const Modal = styled.div`
   width: 60%;
   height: 70vh;
-  background: white;
   border-radius: 15px;
   display: grid;
   grid-template-columns: 35% 65%;
   position: relative;
+  background: white;
   overflow: hidden;
   z-index: 9999;
+  padding: 0;
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500],
@@ -76,8 +77,11 @@ export const ModalIllustration = styled.div`
   background: ${({ img }) => ` url(${img})`};
   background-size: 90% 100%;
   background-repeat: no-repeat;
+  background-position: left;
   position: relative;
-  ${flexbox()};
+  ${flexbox("column", "flex-end", "flex-start")};
+  margin: 0;
+  padding: 0;
 
   @media (max-width: 900px) {
     display: none;
@@ -92,9 +96,17 @@ export const ButtonBackStyle = styled.button`
   ${getFont("Medium")};
   font-size: 30pt;
   ${flexbox()};
-  position: absolute;
-  bottom: 5%;
-  left: 20px;
+  margin-bottom: 50px;
+  margin-left: 40px;
+
+  ${sizesForEachScreens(
+    [3200, 3000, 1930],
+    [40, 30, 20],
+    "margin-bottom",
+    "px"
+  )};
+
+  ${sizesForEachScreens([3200, 2500, 1930], [35, 30, 25], "margin-left", "px")};
 
   img {
     width: 45px;
@@ -473,6 +485,8 @@ export const ModalSucess = styled(Modal)`
   }
 
   .illustration1 {
+    background-position: right;
+
     @media (max-width: 900px) {
       display: block;
       opacity: 0;

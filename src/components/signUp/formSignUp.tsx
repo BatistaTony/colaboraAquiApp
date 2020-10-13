@@ -14,6 +14,8 @@ import { IConsumer } from "../../../types";
 import CustomSelect from "./select";
 import ButtonBack from "./buttonBack";
 import SucessModal from "./sucessModal";
+import InputPassword from "./inputPassword";
+import { translateProperty } from "../utils";
 
 const initialState: IConsumer = {
   userName: "",
@@ -25,7 +27,6 @@ const initialState: IConsumer = {
 
 export default function FormSignUp() {
   const [consumerData, setConsumerData] = useState<IConsumer>(initialState);
-  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
@@ -44,6 +45,20 @@ export default function FormSignUp() {
     "Cacuaco",
     "Benguela",
     "Viana",
+  ]);
+
+  const [provinces, setProvinces] = useState<string[]>([
+    "Luanda",
+    "Malanje",
+    "Cabina",
+    "Kuanza Sul",
+    "Huambo",
+    "Uige",
+    "Huila",
+    "Muxico",
+    "Kuanza Norte",
+    "Zaire",
+    "Benguela",
   ]);
 
   const handleSubmit = (event) => {
@@ -66,34 +81,6 @@ export default function FormSignUp() {
     });
     setWhereIsError(null);
     setErrorMsg(null);
-  };
-
-  const translateProperty = (property: string): string => {
-    switch (property) {
-      case "userName": {
-        return "Nome utilizador";
-      }
-
-      case "ageRange": {
-        return "Faixa étaria";
-      }
-
-      case "county": {
-        return "Municipio";
-      }
-
-      case "province": {
-        return "Província";
-      }
-
-      case "password": {
-        return "Senha";
-      }
-
-      default: {
-        return "";
-      }
-    }
   };
 
   const checkError = (): boolean => {
@@ -141,16 +128,12 @@ export default function FormSignUp() {
           />
         </FormGroup>
 
-        <FormGroup isEmpty={errorIsOn === "province"}>
-          <input
-            type="text"
-            name="province"
-            id="province"
-            onChange={handleChange}
-            value={consumerData.province}
-            placeholder="Provincia"
-          />
-        </FormGroup>
+        <CustomSelect
+          defaultValueSelect={consumerData.province || "Província"}
+          handleChange={(value) => handleChooseSelect("province", value)}
+          values={provinces}
+          isEmpty={errorIsOn === "province"}
+        />
 
         <CustomSelect
           defaultValueSelect={consumerData.county || "Municipio"}
@@ -166,18 +149,7 @@ export default function FormSignUp() {
           isEmpty={errorIsOn === "ageRange"}
         />
 
-        <FormGroup isEmpty={errorIsOn === "password"}>
-          <input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            id="password"
-            onChange={handleChange}
-            placeholder="Senha"
-          />
-          <InputIcon onClick={() => setShowPassword(!showPassword)}>
-            <img src="/images/icons8-eye.png" alt="" />
-          </InputIcon>
-        </FormGroup>
+        <InputPassword errorIsOn={errorIsOn} handleChange={handleChange} />
 
         <QuestionSignUp>
           Já tens uma conta ? clique aqui para <span>entrar</span>

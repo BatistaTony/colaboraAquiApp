@@ -35,6 +35,43 @@ export const HeroStyle = styled.div`
   }
 `;
 
+export const BackGroundWithIllustration = styled.div`
+  width: 100%;
+  height: 110vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  justify-content: space-between;
+
+  grid-template-rows: 100%;
+
+  .illustration1_e {
+    width: 40%;
+    height: 100%;
+    background: url(/images/bg2.svg);
+    background-size: 100% 100%;
+    background-position: left;
+    position: absolute;
+    left: 0;
+
+    bottom: -3%;
+  }
+
+  .illustration2_e {
+    width: 60%;
+    height: 100%;
+    background: url(/images/caminho.svg);
+    background-size: 100% 100%;
+    background-position: right;
+    position: absolute;
+    right: -10%;
+    bottom: -5%;
+  }
+`;
+
 const pullPaddingLeft = () => `
 
 @media (max-width: 1500px) {

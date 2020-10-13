@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { DivUser, UserName, MenuUser } from "./navbarStyle";
+import {useSelector} from 'react-redux'
+import { IConsumer } from "../../../types";
 
 export default function UserMenu() {
+
+  const consumerState: IConsumer = useSelector(state=> state.Consumer);
   const [menuUser, setMEnuUser] = useState<boolean>(false);
-  const [nameUser, setUserName] = useState<string>("Batista");
 
   return (
     <DivUser>
       <UserName onClick={() => setMEnuUser(!menuUser)}>
         <span></span>
-        {nameUser}
+        {consumerState.userName}
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
           <g data-name="Layer 2">
             <g data-name="arrow-downward">

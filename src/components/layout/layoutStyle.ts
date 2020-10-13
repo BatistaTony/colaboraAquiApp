@@ -1,25 +1,13 @@
 import styled, { createGlobalStyle } from "styled-components";
 
-const chooseBgByTitle = (title: string) => {
-  switch (title) {
-    case "ColaboraAqui": {
-      return "url(/images/bg1.png)";
-    }
-
-    default: {
-      return "white";
-    }
-  }
-};
-
 export const LayoutStyled = styled.div`
   width: 100%;
   height: 100vh;
-  background: ${({ title }) => chooseBgByTitle(title)};
   background-size: cover;
   display: grid;
   grid-template-rows: 15% 85%;
   overflow: hidden;
+  position: absolute;
 
   @media (max-width: 3200px) {
     grid-template-rows: 10% 90%;

@@ -41,7 +41,7 @@ export default function Navbar(props: any) {
           <ItemMenu active={props.title === "Ranking"}>Ranking</ItemMenu>
         </Link>
 
-        {!isLogged && <ButtonLogin>Entrar</ButtonLogin>}
+        {!isLogged && <Link href="/signin"><ButtonLogin>Entrar</ButtonLogin></Link> }
 
         {isLogged && <UserMenu />}
       </Menu>
@@ -75,7 +75,7 @@ export default function Navbar(props: any) {
               </Link>
               {isLogged && <UserMenu />}
 
-              {!isLogged && <ButtonLogin>Entrar</ButtonLogin>}
+              {!isLogged && <Link href="/signin"><ButtonLogin>Entrar</ButtonLogin></Link> }
             </Menu>
           </div>
         </Overlay>

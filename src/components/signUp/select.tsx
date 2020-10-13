@@ -6,7 +6,6 @@ interface ISelectProps {
   handleChange: any;
   values: Array<string>;
   defaultValueSelect: string;
-  props: any;
 }
 
 export default function CustomSelect({
@@ -14,7 +13,7 @@ export default function CustomSelect({
   values,
   defaultValueSelect,
   ...props
-}) {
+}: ISelectProps) {
   const [showList, setShowList] = useState<boolean>(false);
 
   const chooseValue = (value: string) => {
