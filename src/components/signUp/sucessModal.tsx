@@ -23,7 +23,7 @@ export default function SucessModal() {
             <TextSucess>
               Ajude as empresa e orgãos nacionas a melhorarem os seus serviços
             </TextSucess>
-            <Link href="/search">
+            <Link href="/companies">
               <ButtonSucess>Começar</ButtonSucess>
             </Link>
           </div>

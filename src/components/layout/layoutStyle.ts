@@ -1,11 +1,25 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+const chooseBackgroundByTitle = (title: string) => {
+  switch (title) {
+    case "Empresas" || "Avaliar": {
+      return " url(/images/Grupo978.svg)";
+    }
+
+    default: {
+      return "white";
+    }
+  }
+};
+
 export const LayoutStyled = styled.div`
   width: 100%;
   height: 100vh;
   background-size: cover;
   display: grid;
   grid-template-rows: 15% 85%;
+  background: ${({ title }) => chooseBackgroundByTitle(title)};
+  background-size: 100% 100%;
   overflow: hidden;
   position: absolute;
 
@@ -102,3 +116,11 @@ export const sizesForEachScreens = (
     )
     .join(" ");
 };
+
+export const NormalFontSize = () =>
+  sizesForEachScreens(
+    [3200, 3000, 2500, 1930, 1500],
+    [26, 22, 19, 17, 12],
+    "font-size",
+    "pt"
+  );

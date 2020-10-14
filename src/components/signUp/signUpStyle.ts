@@ -4,6 +4,7 @@ import {
   flexbox,
   getFont,
   sizesForEachScreens,
+  NormalFontSize,
 } from "../layout/layoutStyle";
 import { ButtonLogin } from "../navbar/navbarStyle";
 
@@ -30,14 +31,6 @@ export const OverlaySignUp = styled.div`
     box-box-sizing: border-box;
   }
 `;
-
-const NormalFontSize = () =>
-  sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500],
-    [26, 22, 19, 17, 12],
-    "font-size",
-    "pt"
-  );
 
 export const Modal = styled.div`
   width: 60%;

@@ -28,7 +28,11 @@ export default function Navbar(props: any) {
 
   return (
     <MyNavbar>
-      <Logo>{isLogged && <img src="/images/logo.png" alt="" />}</Logo>
+      <Logo>
+        {!(props.title === "ColaboraAqui") && (
+          <img src="/images/logo.png" alt="" />
+        )}
+      </Logo>
 
       <Menu>
         <Link href="/">

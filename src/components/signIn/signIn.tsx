@@ -63,7 +63,7 @@ export default function SignInConsumer() {
 
   const signInUser = () => {
     if (!checkError()) {
-      Route.push("/search");
+      Route.push("/companies");
     }
   };
 
