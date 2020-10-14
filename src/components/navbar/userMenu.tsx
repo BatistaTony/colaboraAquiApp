@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { DivUser, UserName, MenuUser } from "./navbarStyle";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
 import { IConsumer } from "../../../types";
 
 export default function UserMenu() {
-
-  const consumerState: IConsumer = useSelector(state=> state.Consumer);
+  const consumerState: IConsumer = useSelector((state) => state.Consumer);
   const [menuUser, setMEnuUser] = useState<boolean>(false);
 
   return (
@@ -35,7 +34,7 @@ export default function UserMenu() {
         in={menuUser}
         classNames="my-node"
       >
-        <MenuUser nameLength={nameUser.length}>
+        <MenuUser nameLength={consumerState.userName.length}>
           <li>
             <img src="/images/profile.png" alt="" /> Meu perfil
           </li>
