@@ -17,8 +17,8 @@ export const OverlaySignUp = styled.div`
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 999;
   ${flexbox()};
+  z-index: 999;
 
   form {
     width: 100%;
@@ -305,6 +305,7 @@ export const FormGroup = styled.div`
     background: white;
     border: ${({ isEmpty }) =>
       isEmpty ? `2px solid red` : `2px solid ${colorsApp.orange}`};
+    box-sizing: border-box;
   }
 `;
 
@@ -420,6 +421,10 @@ export const ButtonSignUp = styled.button`
   ${getFont("Medium")};
   font-size: 35pt;
   grid-column: 1/3;
+
+  @media (max-width: 1500px) {
+    border-radius: 5px;
+  }
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930],

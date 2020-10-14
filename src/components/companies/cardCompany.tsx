@@ -6,6 +6,7 @@ import {
   DescriptionCard,
   StarsRated,
 } from "./companiesStyle";
+import StarsRatedCompany from "./starsRated";
 
 export default function CardCompany() {
   return (
@@ -23,8 +24,9 @@ export default function CardCompany() {
             </CompanyRateNumbers>
           </div>
         </div>
-
-        {/* <StarsRated /> */}
+        <div className="start_div_cmpy">
+          <StarsRatedCompany />
+        </div>
       </div>
 
       <DescriptionCard>

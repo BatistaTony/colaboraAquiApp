@@ -6,12 +6,14 @@ interface ISelectProps {
   handleChange: any;
   values: Array<string>;
   defaultValueSelect: string;
+  isEmpty: boolean;
 }
 
 export default function CustomSelect({
   handleChange,
   values,
   defaultValueSelect,
+  isEmpty,
   ...props
 }: ISelectProps) {
   const [showList, setShowList] = useState<boolean>(false);
@@ -32,7 +34,7 @@ export default function CustomSelect({
   });
 
   return (
-    <FormSelect {...props}>
+    <FormSelect isEmpty={isEmpty} {...props}>
       <button onClick={() => setShowList(!showList)} className="customSelect">
         <span className="customSelect">{defaultValueSelect} </span>
       </button>
