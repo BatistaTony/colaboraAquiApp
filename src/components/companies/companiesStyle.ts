@@ -24,6 +24,25 @@ export const ContentCompanies = styled.div`
     width: 100%;
     ${flexbox("column")};
   }
+
+  .my-node-enter {
+    opacity: 0;
+    display: block;
+  }
+
+  .my-node-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+  }
+
+  .my-node-exit {
+    opacity: 1;
+  }
+
+  .my-node-exit-active {
+    opacity: 0;
+    display: none;
+  }
 `;
 
 export const TextCompanies = styled.p`
@@ -446,16 +465,25 @@ export const OverlaySuggestion = styled.div`
   left: 0;
   top: 0;
   ${flexbox()};
-  z-index: 999; ;
+  z-index: 999;
+
+  .w_d_itr_ {
+    width: 100%;
+    height: 100%;
+    ${flexbox()};
+  }
 `;
 
 export const ModalSuggestion = styled.div`
-  width: 42%;
-  height: 63vh;
+  width: 45%;
+  height: auto;
   border-radius: 10px;
   ${flexbox()};
   background: white;
   box-shadow: 0 0 5px;
+  box-sizing: border-box;
+  padding-top: 30px;
+  position: relative;
 
   form {
     ${flexbox()};
@@ -464,6 +492,7 @@ export const ModalSuggestion = styled.div`
   .text_simple {
     width: 100%;
     text-align: center;
+    margin-bottom: 20px;
   }
 
   .grid-form-suggest {
@@ -480,8 +509,9 @@ export const ModalSuggestion = styled.div`
 export const ButtonSuggestForm = styled(ButtonSignUp)``;
 
 export const TextArea = styled.div`
-  height: 100px;
+  height: 100%;
   width: 100%;
+  grid-row: 3/5;
   ${getFont()};
   color: ${colorsApp.soDark};
   box-sizing: border-box;
@@ -504,7 +534,7 @@ export const TextArea = styled.div`
     font-size: 30pt;
     outline: none;
     box-sizing: border-box;
-    padding-top: 15px;
+    padding: 10px;
 
     ${sizesForEachScreens(
       [3200, 3000, 2500, 1930],
@@ -513,5 +543,25 @@ export const TextArea = styled.div`
       "px"
     )}
     ${NormalFontSize()};
+  }
+`;
+
+export const ButtonCloseSuggestion = styled.button`
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  border: none;
+  outline: none;
+  background: ${colorsApp.soDark};
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  ${flexbox()};
+
+  svg {
+    width: 80%;
+    height: 80%;
+    fill: white;
   }
 `;

@@ -43,11 +43,7 @@ margin:0;
 }
 
 
-.my-node {
-  @media (min-width: 750px) {
-    display: none;
-  }
-}
+
 
 .my-node-enter {
   opacity: 0;

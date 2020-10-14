@@ -7,34 +7,40 @@ import {
   ContentCompanies,
   FilterStyled,
   GroupCard,
-  OverlaySuggestion,
   SearchStyled,
   TextCompanies,
-  ModalSuggestion,
 } from "../components/companies/companiesStyle";
 import Suggestion from "../components/companies/suggestion";
 import Layout from "../components/layout/layout";
-import {
-  FormGroup,
-  InputIcon,
-  DivForm,
-  TextForm,
-  ErrorMessage,
-  Title,
-  DivGridForm,
-} from "../components/signUp/signUpStyle";
+import { CSSTransition } from "react-transition-group";
 import PrivateRouter from "./privateRouter";
+import { InputIcon } from "../components/signUp/signUpStyle";
 
 function Companies() {
   const [filterBy, setFilterBy] = useState<string>("Todas");
+  const [showSuggestion, setShowSuggestion] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>("");
 
-  const handleChange = (event) => {};
+  const handleChange = (event: any) => {
+    setSearch(event.target.name);
+  };
+
+  const toggleSuggestion = () => {
+    setShowSuggestion(!showSuggestion);
+  };
 
   return (
     <Layout title="Empresas">
-      <Suggestion />
-
       <ContentCompanies>
+        <CSSTransition
+          unmountOnExit
+          addEndListener={() => {}}
+          timout={200}
+          in={showSuggestion}
+          classNames="my-node"
+        >
+          <Suggestion toggleSuggestion={toggleSuggestion} />
+        </CSSTransition>
         <div className="cmp_f_g">
           <TextCompanies>
             <span>Pesquise</span> por empresas ou orgãos. <span>Escolhe</span> a
@@ -46,9 +52,16 @@ function Companies() {
                 <InputIcon>
                   <img src="/images/search.svg" alt="" />
                 </InputIcon>
-                <input type="text" placeholder="pesquise por empresas" />
+                <input
+                  type="text"
+                  onChange={handleChange}
+                  defaultValue={search}
+                  placeholder="pesquise por empresas"
+                />
               </SearchStyled>
-              <ButtonSuggest>Sugerir empresa</ButtonSuggest>
+              <ButtonSuggest onClick={toggleSuggestion}>
+                Sugerir empresa
+              </ButtonSuggest>
             </div>
 
             <ul className="filter_status">
