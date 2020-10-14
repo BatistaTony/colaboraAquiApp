@@ -1,5 +1,6 @@
 import Route from "next/router";
 import { useContext } from "react";
+import { IAppContext } from "../../../types";
 import { appContext } from "../appContext";
 import ButtonBack from "./buttonBack";
 import FormSignUp from "./formSignUp";
@@ -17,7 +18,7 @@ interface IProps {
 }
 
 export default function SignUpConsumer({ isSinglePage }: IProps) {
-  const [showSignUp, toggleSignUp] = useContext(appContext);
+  const { showSignUp, toggleSignUp } = useContext<IAppContext>(appContext);
 
   const backToHome = () => {
     if (isSinglePage) {

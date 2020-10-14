@@ -37,7 +37,7 @@ export default function Hero() {
   ];
 
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
-  const [showSignUp, toggleSignUp] = useContext(appContext);
+  const { showSignUp, toggleSignUp } = useContext(appContext);
   const [isLogged, setIsLogged] = useState<boolean>(
     consumerState.userName.length > 0
   );
