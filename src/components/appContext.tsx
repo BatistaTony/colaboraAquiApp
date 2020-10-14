@@ -1,9 +1,14 @@
-import { createContext, useState } from "react";
+import { createContext, Dispatch, SetStateAction, useState } from "react";
 
-export const appContext = createContext({});
+interface IAppContext {
+  showSignUp: boolean;
+  toggleSignUp: Dispatch<SetStateAction<boolean>>;
+}
+
+export const appContext = createContext<IAppContext | null>(null);
 
 export const AppContextProvider = ({ children }) => {
-  const [showSignUp, setShowSignUp] = useState(false);
+  const [showSignUp, setShowSignUp] = useState<boolean>(false);
 
   const toggleSignUp = () => {
     setShowSignUp(!showSignUp);
