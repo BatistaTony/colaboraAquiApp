@@ -17,7 +17,7 @@ import {
 import { CSSTransition } from "react-transition-group";
 import Route from "next/router";
 import { useSelector } from "react-redux";
-import { IConsumer } from "../../../types";
+import { IAppContext, IConsumer } from "../../../types";
 import SignUpConsumer from "../signUp/signUp";
 
 export default function Hero() {
@@ -37,7 +37,7 @@ export default function Hero() {
   ];
 
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
-  const { showSignUp, toggleSignUp } = useContext(appContext);
+  const { showSignUp, toggleSignUp } = useContext<IAppContext>(appContext);
   const [isLogged, setIsLogged] = useState<boolean>(
     consumerState.userName.length > 0
   );
