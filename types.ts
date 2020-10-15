@@ -13,4 +13,5 @@ export interface ICompany {
   companyDescription: string;
   companyRatesNumber: number;
   companyPositionRanking: number;
+  companyStatus: string;
 }

@@ -99,9 +99,9 @@ export const colorsApp = {
 
 export const sizesForEachScreens = (
   screens: Array<number>,
-  valuesForScreen: Array<number>,
+  valuesForScreen: Array<number | string>,
   property: string,
-  unit: string
+  unit?: string
 ) => {
   return screens
     .map(

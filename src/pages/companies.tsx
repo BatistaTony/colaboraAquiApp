@@ -24,21 +24,23 @@ function Companies() {
   const [companies, setCompanies] = useState<Array<ICompany>>([
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 120,
-      companyName: "Unitel",
+      companyRatesNumber: 150,
+      companyName: "Movicel",
       companyLogo: "/images/Movicel-2.png",
-      companyStars: 5,
+      companyStars: 2,
       companyDescription:
         "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Privada",
     },
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 120,
+      companyRatesNumber: 450,
       companyName: "Unitel",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 3,
+      companyLogo: "/images/unite.png",
+      companyStars: 4,
       companyDescription:
         "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Privada",
     },
   ]);
 
