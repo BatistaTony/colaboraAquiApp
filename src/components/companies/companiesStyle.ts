@@ -459,7 +459,7 @@ export const ButtonControl = styled.div`
 export const OverlaySuggestion = styled.div`
   width: 100%;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
   background-size: 100% 100%;
   position: fixed;
   left: 0;
@@ -484,6 +484,7 @@ export const ModalSuggestion = styled.div`
   box-sizing: border-box;
   padding-top: 30px;
   position: relative;
+  padding-bottom: 30px;
 
   form {
     ${flexbox()};
