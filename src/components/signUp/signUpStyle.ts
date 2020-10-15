@@ -26,6 +26,13 @@ export const OverlaySignUp = styled.div`
     ${flexbox("column")};
   }
 
+  .wrp_div_vdg {
+    width:100%;
+    height:100%;
+    ${flexbox()};
+
+  }
+
   @media (max-width: 750px) {
     overflow: auto;
     box-box-sizing: border-box;
