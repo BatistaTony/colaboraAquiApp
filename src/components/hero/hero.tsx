@@ -19,23 +19,9 @@ import Route from "next/router";
 import { useSelector } from "react-redux";
 import { IConsumer } from "../../../types";
 import SignUpConsumer from "../signUp/signUp";
+import { StepsHero } from "./hero.data";
 
 export default function Hero() {
-  const steps = [
-    {
-      text: "Escolha",
-      borderColor: colorsApp.roxo,
-    },
-    {
-      text: "Avalie",
-      borderColor: colorsApp.orange,
-    },
-    {
-      text: "Sugira",
-      borderColor: colorsApp.kindaBlue,
-    },
-  ];
-
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
   const { showSignUp, toggleSignUp } = useContext(appContext);
   const [isLogged, setIsLogged] = useState<boolean>(
@@ -75,7 +61,7 @@ export default function Hero() {
           orgão e empresas nacionais
         </Text>
         <ListStep>
-          {steps.map((value, index) => (
+          {StepsHero.map((value, index) => (
             <Step>
               <StepNumber borderColor={value.borderColor}>
                 <h1>{index + 1}</h1>

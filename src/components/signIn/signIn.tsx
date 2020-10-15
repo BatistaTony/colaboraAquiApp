@@ -8,7 +8,6 @@ import {
   TextForm,
   DivGridForm,
   FormGroup,
-  InputIcon,
   QuestionSignUp,
   ButtonSignUp,
   ErrorMessage,
@@ -121,7 +120,7 @@ export default function SignInConsumer() {
           className="illustration1_"
           img={"/images/illust.png"}
         >
-          <ButtonBack onClick={backToHome} classNames={"btnBackSign"} />
+          <ButtonBack onChange={backToHome} classNames={"btnBackSign"} />
         </ModalIllustration>
       </ModalSignIn>
     </OverlaySignIn>
