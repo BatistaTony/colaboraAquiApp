@@ -15,11 +15,32 @@ import Layout from "../components/layout/layout";
 import { CSSTransition } from "react-transition-group";
 import PrivateRouter from "./privateRouter";
 import { InputIcon } from "../components/signUp/signUpStyle";
+import { ICompany } from "../../types";
 
 function Companies() {
   const [filterBy, setFilterBy] = useState<string>("Todas");
   const [showSuggestion, setShowSuggestion] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
+  const [companies, setCompanies] = useState<Array<ICompany>>([
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 120,
+      companyName: "Unitel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 5,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 120,
+      companyName: "Unitel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 3,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+    },
+  ]);
 
   const handleChange = (event: any) => {
     setSearch(event.target.name);
@@ -97,8 +118,9 @@ function Companies() {
             </button>
           </ButtonControl>
           <GroupCard>
-            <CardCompany />
-            <CardCompany />
+            {companies.map((value: ICompany, index) => (
+              <CardCompany data={value} />
+            ))}
           </GroupCard>
         </CompanyList>
       </ContentCompanies>

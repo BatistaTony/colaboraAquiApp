@@ -5,3 +5,12 @@ export interface IConsumer {
   ageRange: string;
   password: string;
 }
+
+export interface ICompany {
+  companyName: string;
+  companyLogo: string;
+  companyStars: number;
+  companyDescription: string;
+  companyRatesNumber: number;
+  companyPositionRanking: number;
+}
