@@ -1,7 +1,5 @@
 import Route from "next/router";
-import { useContext } from "react";
-import { IAppContext } from "../../../types";
-import { appContext } from "../appContext";
+
 import ButtonBack from "./buttonBack";
 import FormSignUp from "./formSignUp";
 import {
@@ -15,11 +13,10 @@ import {
 
 interface IProps {
   isSinglePage?: boolean;
+  toggleSignUp: () => void;
 }
 
-export default function SignUpConsumer({ isSinglePage }: IProps) {
-  const { showSignUp, toggleSignUp } = useContext<IAppContext>(appContext);
-
+export default function SignUpConsumer({ isSinglePage, toggleSignUp }: IProps) {
   const backToHome = () => {
     if (isSinglePage) {
       Route.push("/");

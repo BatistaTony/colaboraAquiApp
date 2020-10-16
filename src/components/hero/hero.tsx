@@ -1,7 +1,4 @@
-import { useContext, useState } from "react";
-import { appContext } from "../appContext";
-import { colorsApp } from "../layout/layoutStyle";
-import SignUp from "../signUp/signUp";
+import { useCallback, useState } from "react";
 import {
   ButtonStartRate,
   HeroStyle,
@@ -23,10 +20,14 @@ import { StepsHero } from "./hero.data";
 
 export default function Hero() {
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
-  const { showSignUp, toggleSignUp } = useContext(appContext);
+  const [showSignUp, setShowSignUp] = useState<boolean>(false);
   const [isLogged, setIsLogged] = useState<boolean>(
     consumerState.userName.length > 0
   );
+
+  const toggleSignUp = useCallback((): void => {
+    setShowSignUp(!showSignUp);
+  }, [showSignUp]);
 
   const startRate = () => {
     if (isLogged) {
@@ -49,7 +50,7 @@ export default function Hero() {
         in={showSignUp}
         classNames="my-overlay"
       >
-        <SignUpConsumer />
+        <SignUpConsumer toggleSignUp={toggleSignUp} />
       </CSSTransition>
 
       <DivHero>
