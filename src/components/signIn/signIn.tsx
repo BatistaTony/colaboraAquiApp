@@ -74,7 +74,11 @@ export default function SignInConsumer() {
     <OverlaySignIn>
       <IllustrationObjectSignIn />
       <ModalSignIn>
-        <DivForm>
+        <DivForm className="divForm_sign_p">
+          <div className="divBtnBackT">
+            <ButtonBack classNames="mobileBtn" onChange={backToHome} />
+          </div>
+
           <Title>
             Começa agora no <span>Colabora</span>
           </Title>
@@ -112,8 +116,6 @@ export default function SignInConsumer() {
                 <span>Registar-se</span>
               </Link>
             </QuestionSignUp>
-
-            <ButtonBack classNames="mobileBtn" />
           </DivGridForm>
         </DivForm>
         <ModalIllustration
