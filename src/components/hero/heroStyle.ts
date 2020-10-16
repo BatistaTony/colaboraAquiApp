@@ -69,33 +69,20 @@ export const BackGroundWithIllustration = styled.div`
     position: absolute;
     right: -10%;
     bottom: -5%;
+
+    @media (max-width: 850px) {
+      display: none;
+    }
   }
 `;
 
-const pullPaddingLeft = () => `
-
-@media (max-width: 1500px) {
-  margin-left: -6%;
-}
-
-  @media (max-width: 1370px) {
-    margin-left: -10%;
-  }
-
-  @media (max-width: 1100px) {
-    margin-left: -15%;
-  }
-
-  @media (max-width: 925px) {
-    margin-left: -18%;
-  }
-
-  @media (max-width: 850px) {
-    margin-left: 0%;
-  }
-
-  
-`;
+const pullPaddingLeft = () =>
+  sizesForEachScreens(
+    [1500, 1370, 1100, 970, 950, 900, 850],
+    [-6, -10, -15, -20, -23, -25, 0],
+    "margin-left",
+    "%"
+  );
 
 export const LogoHero = styled(Logo)`
   margin-top: 50px;

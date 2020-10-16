@@ -217,11 +217,11 @@ export const TextForm = styled.p`
   }
 
   @media (max-width: 900px) {
-    width: 70%;
+    width: 60%;
   }
 
   @media (max-width: 750px) {
-    font-size: 11pt;
+    font-size: 12pt;
     width: 80%;
   }
 `;
@@ -260,7 +260,7 @@ export const DivGridForm = styled.div`
   }
 
   @media (max-width: 900px) {
-    width: 70%;
+    width: 60%;
   }
 
   @media (max-width: 750px) {
