@@ -106,4 +106,4 @@ function Companies() {
   );
 }
 
-export default Companies;
+export default PrivateRouter(Companies);

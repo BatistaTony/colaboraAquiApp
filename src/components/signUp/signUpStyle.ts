@@ -18,7 +18,7 @@ export const OverlaySignUp = styled.div`
   left: 0;
   top: 0;
   ${flexbox()};
-  z-index: 999;
+  z-index: 99;
 
   form {
     width: 100%;
@@ -27,15 +27,19 @@ export const OverlaySignUp = styled.div`
   }
 
   .wrp_div_vdg {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     ${flexbox()};
-
   }
 
   @media (max-width: 750px) {
     overflow: auto;
     box-box-sizing: border-box;
+  }
+
+  @media (max-width: 900px) {
+    background: white;
+    z-index: 99999;
   }
 `;
 
@@ -60,16 +64,36 @@ export const Modal = styled.div`
 
   ${sizesForEachScreens([1500, 1370], [500, 450], "height", "px")} 
   
+
+  
   
   @media (max-width: 900px) {
     ${flexbox()};
     height: auto;
     border-radius: 0;
     width: 100%;
-  }
 
-  @media (max-width: 900px) and (max-height: 640px) {
-    padding-top: 120px;
+    .divBtnBackT {
+      width: 100%;
+      ${flexbox("row", "flex-start", "center")};
+      padding-top: 20px;
+      box-sizing: border-box;
+      padding-left: 5%;
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      @media (max-width: 750px) {
+        position: relative;
+      }
+    }
+
+    @media (max-width: 750px) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
   }
 `;
 
@@ -270,7 +294,7 @@ export const FormGroup = styled.div`
   border: ${({ isEmpty }) => (isEmpty ? "2px solid red" : "none")};
 
   @media (max-width: 750px) {
-    height: 40px;
+    height: 45px;
     margin-bottom: 13px;
   }
 

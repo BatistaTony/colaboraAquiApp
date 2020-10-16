@@ -12,7 +12,6 @@ import {
 import { CSSTransition } from "react-transition-group";
 import { IConsumer } from "../../../types";
 import CustomSelect from "./select";
-import ButtonBack from "./buttonBack";
 import SucessModal from "./sucessModal";
 import InputPassword from "./inputPassword";
 import { translateProperty } from "../utils";
@@ -93,7 +92,7 @@ export default function FormSignUp() {
       >
         <SucessModal />
       </CSSTransition>
-
+     
       <ErrorMessage>{errorMsg}</ErrorMessage>
       <DivGridForm>
         <FormGroup isEmpty={errorIsOn === "userName"}>
@@ -137,7 +136,6 @@ export default function FormSignUp() {
         </QuestionSignUp>
 
         <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
-        <ButtonBack classNames="mobileBtn" />
       </DivGridForm>
     </form>
   );

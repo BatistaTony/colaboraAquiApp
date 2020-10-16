@@ -31,14 +31,14 @@ export default function Hero() {
 
   const startRate = () => {
     if (isLogged) {
-      Route.push("/search");
+      Route.push("/companies");
     } else {
       toggleSignUp();
     }
   };
 
   return (
-    <HeroStyle>
+    <HeroStyle showSignUp={showSignUp}>
       <BackGroundWithIllustration>
         <div className="illustration1_e"></div>
         <div className="illustration2_e"></div>

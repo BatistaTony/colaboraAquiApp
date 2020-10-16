@@ -5,7 +5,7 @@ import {
   getFont,
   sizesForEachScreens,
 } from "../layout/layoutStyle";
-import { ButtonLogin, Logo } from "../navbar/navbarStyle";
+import { Logo } from "../navbar/navbarStyle";
 
 export const HeroStyle = styled.div`
   width: 100%;
@@ -13,7 +13,7 @@ export const HeroStyle = styled.div`
   ${flexbox("column", "flex-start", "center")};
   box-sizing: border-box;
   position: relative;
-  z-index: 1;
+  z-index: ${({ showSignUp }) => (showSignUp ? "99" : "1")};
 
   .my-overlay-enter {
     opacity: 0;
@@ -161,8 +161,7 @@ export const ListStep = styled.ul`
   ${sizesForEachScreens([1500, 750], [30, 25], "margin-top", "px")};
 
   @media (max-width: 600px) {
-    flex-direction: column;
-    width: 100%;
+    width: 80%;
   }
 
   ${pullPaddingLeft};
@@ -173,14 +172,9 @@ export const Step = styled.li`
   ${flexbox("row", "flex-start", "center")};
   margin-left: 50px;
 
-  @media (max-width: 600px) {
-    margin-bottom: 15px;
-    width: 150px;
-  }
-
   ${sizesForEachScreens(
-    [2500, 2000, 1500, 1000],
-    [40, 30, 20, 15],
+    [2500, 2000, 1500, 1000, 750],
+    [40, 30, 20, 15, 10],
     "margin-left",
     "px"
   )};
@@ -240,6 +234,12 @@ export const StepNumber = styled.div`
     height: 27px;
   }
 
+  @media (max-width: 750px) {
+    width: 25px;
+    height: 25px;
+    margin-right: 7px;
+  }
+
   h1 {
     font-size: 30pt;
     ${getFont("ExtraBold")};
@@ -253,7 +253,7 @@ export const StepNumber = styled.div`
   }
 `;
 
-export const ButtonStartRate = styled(ButtonLogin)`
+export const ButtonStartRate = styled.button`
   background: ${colorsApp.orange};
   ${getFont("Medium")};
   ${flexbox()};
@@ -266,28 +266,30 @@ export const ButtonStartRate = styled(ButtonLogin)`
   padding-bottom: 65px;
   margin-top: 3%;
   box-shadow: 0 0 10px ${colorsApp.orange};
+  border: none;
+  outline: none;
 
   ${pullPaddingLeft};
 
   ${sizesForEachScreens([3200, 2700, 2200], [55, 45, 35], "height", "px")};
 
   ${sizesForEachScreens(
-    [3200, 2700, 2200, 1500, 1000],
-    [50, 40, 30, 25, 20],
+    [3200, 2700, 2200, 1500, 1000, 750],
+    [50, 40, 30, 25, 20, 18],
     "padding",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3200, 2700, 2200, 1500],
-    [55, 45, 35, 27],
+    [3200, 2700, 2200, 1500, 1000],
+    [55, 45, 35, 27, 25],
     "padding-top",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3200, 2700, 2200, 1500],
-    [55, 45, 35, 27],
+    [3200, 2700, 2200, 1500, 1000],
+    [55, 45, 35, 27, 25],
     "padding-bottom",
     "px"
   )};
@@ -298,31 +300,27 @@ export const ButtonStartRate = styled(ButtonLogin)`
     margin-left: 15px;
 
     ${sizesForEachScreens(
-      [3200, 2700, 2200, 1500, 1000],
-      [50, 40, 35, 30, 25],
+      [3200, 2700, 2200, 1500, 1000, 750],
+      [50, 40, 35, 30, 25, 20],
       "height",
       "px"
     )};
     ${sizesForEachScreens(
-      [3200, 2700, 2200, 1500, 1000],
-      [50, 40, 35, 30, 25],
+      [3200, 2700, 2200, 1500, 1000, 750],
+      [50, 40, 35, 30, 25, 20],
       "width",
       "px"
     )};
   }
 
-  &:hover {
-    background: ${colorsApp.kindaBlue};
-  }
-
   ${sizesForEachScreens(
-    [3200, 2700, 2200, 1500, 1000],
-    [27, 24, 18, 14, 13],
+    [3200, 2700, 2200, 1500, 1000, 750],
+    [27, 24, 18, 14, 13, 12],
     "font-size",
     "pt"
   )};
 
-  ${sizesForEachScreens([1500, 600, 450], [50, 30, 20], "margin-top", "px")};
+  ${sizesForEachScreens([1500, 750], [50, 70], "margin-top", "px")};
 `;
 
 export const IllustrationRating = styled.div`

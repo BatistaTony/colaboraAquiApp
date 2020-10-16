@@ -29,10 +29,15 @@ export default function SignUpConsumer({ isSinglePage, toggleSignUp }: IProps) {
   return (
     <OverlaySignUp isSinglePage={isSinglePage}>
       <Modal>
-        <ModalIllustration onClick={backToHome} img={"/images/signup.png"}>
-          <ButtonBack />
+        <ModalIllustration img={"/images/signup.png"}>
+          <ButtonBack onChange={backToHome} />
         </ModalIllustration>
+
         <DivForm>
+          <div className="divBtnBackT">
+            <ButtonBack classNames="mobileBtn" onChange={backToHome} />
+          </div>
+
           <Title>
             Começa agora no <span>Colabora</span>
           </Title>
