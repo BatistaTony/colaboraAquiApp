@@ -48,6 +48,10 @@ export const BackGroundWithIllustration = styled.div`
 
   grid-template-rows: 100%;
 
+  @media (max-width: 850px) {
+    height: 100vh;
+  }
+
   .illustration1_e {
     width: 40%;
     height: 100%;
@@ -58,6 +62,10 @@ export const BackGroundWithIllustration = styled.div`
     left: 0;
 
     bottom: -3%;
+
+    @media (max-width: 850px) {
+      bottom: -10%;
+    }
   }
 
   .illustration2_e {
@@ -69,6 +77,10 @@ export const BackGroundWithIllustration = styled.div`
     position: absolute;
     right: -10%;
     bottom: -5%;
+
+    @media (max-width: 850px) {
+      bottom: -15%;
+    }
   }
 `;
 
