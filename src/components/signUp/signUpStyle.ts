@@ -486,7 +486,7 @@ export const ModalSucess = styled(Modal)`
   ${sizesForEachScreens([1500, 1370], [500, 400], "height", "px")} 
 
   @media  (max-width:900px) {
-    height: 82vh;
+    height: 100vh;
     width: 100%;
     border-radius: 0;
     z-index: 99999;
@@ -494,6 +494,7 @@ export const ModalSucess = styled(Modal)`
     box-sizing: border-box;
     overflow: hidden;
     align-self: flex-end;
+    ${flexbox("column")};
   }
 
   .illustration2 {
@@ -504,16 +505,8 @@ export const ModalSucess = styled(Modal)`
     }
 
     @media (max-width: 900px) {
-      display: block;
+      display: none;
       margin-right: -90px;
-    }
-
-    @media (max-width: 750px) {
-      margin-right: -50px;
-    }
-
-    @media (max-width: 650px) {
-      margin-right: -30px;
     }
   }
 
@@ -522,7 +515,9 @@ export const ModalSucess = styled(Modal)`
 
     @media (max-width: 900px) {
       display: block;
-      opacity: 0;
+      position: relative;
+      width: auto;
+      height: auto;
     }
   }
 
@@ -535,15 +530,7 @@ export const ModalSucess = styled(Modal)`
 
     @media (max-width: 900px) {
       justify-content: flex-start;
-      padding-top: 10%;
-    }
-
-    @media (max-width: 750px) {
-      padding-top: 7%;
-    }
-
-    @media (max-width: 650px) {
-      padding-top: 5%;
+      position: relative;
     }
   }
 
@@ -552,11 +539,32 @@ export const ModalSucess = styled(Modal)`
     ${flexbox("column")};
 
     ${sizesForEachScreens(
-      [3000, 2500, 1930, 1370, 1000, 900],
-      [45, 50, 60, 65, 70],
+      [3000, 2500, 1930, 1370, 1000, 750, 600],
+      [45, 50, 60, 65, 70, 85],
       "width",
       "%"
     )}
+  }
+`;
+
+export const IllustrationMobile = styled.div`
+  @media (min-width: 900px) {
+    display: none;
+  }
+
+  display: block;
+  ${flexbox("column")};
+
+  width: 100%;
+  height: 60vh;
+
+  @media (max-height: 570px) {
+    height: 70vh;
+  }
+
+  img {
+    width: 17rem;
+    height: 100%;
   }
 `;
 
@@ -564,12 +572,18 @@ export const TitleSucess = styled(Title)`
   color: ${colorsApp.soDark};
   ${getFont("Medium")};
   text-align: center;
+
+  @media (max-width: 900px) {
+    margin-top: 0;
+  }
 `;
 
 export const TextSucess = styled(TextForm)`
   color: white;
   ${getFont("Medium")};
   width: 90%;
+
+  ${sizesForEachScreens([750, 600], [70, 90], "width", "%")}
 `;
 
 export const ButtonSucess = styled(ButtonLogin)`
@@ -577,8 +591,26 @@ export const ButtonSucess = styled(ButtonLogin)`
   color: white;
   margin-top: 40px;
   height: 70px;
+  border-radius: 7px;
 
-  ${sizesForEachScreens([3000, 2500, 1930], [60, 50, 40], "height", "px")}
+  @media (max-width: 600px) {
+    position: absolute;
+    bottom: 5%;
+  }
 
-  ${sizesForEachScreens([3000, 2500, 1930], [30, 20, 10], "margin-top", "px")}
+  ${sizesForEachScreens([750, 600, 550], [50, 70, 85], "width", "%")}
+
+  ${sizesForEachScreens(
+    [3000, 2500, 1930, 750],
+    [60, 50, 45, 50],
+    "height",
+    "px"
+  )}
+
+  ${sizesForEachScreens(
+    [3000, 2500, 1930, 1500, 1000, 750],
+    [30, 20, 10, 15, 20, 25],
+    "margin-top",
+    "px"
+  )}
 `;

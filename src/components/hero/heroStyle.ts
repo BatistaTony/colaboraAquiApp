@@ -256,7 +256,6 @@ export const StepNumber = styled.div`
 export const ButtonStartRate = styled.button`
   background: ${colorsApp.orange};
   ${getFont("Medium")};
-  ${flexbox()};
   height: 50px;
   font-size: 30pt;
   border-radius: 12px;
@@ -268,6 +267,7 @@ export const ButtonStartRate = styled.button`
   box-shadow: 0 0 10px ${colorsApp.orange};
   border: none;
   outline: none;
+  ${flexbox()};
 
   ${pullPaddingLeft};
 

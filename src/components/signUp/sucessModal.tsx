@@ -5,6 +5,7 @@ import {
   TitleSucess,
   TextSucess,
   ButtonSucess,
+  IllustrationMobile,
 } from "./signUpStyle";
 import Link from "next/link";
 
@@ -18,6 +19,9 @@ export default function SucessModal() {
             img={"/images/signup.png"}
           ></ModalIllustration>
           <div></div>
+          <IllustrationMobile>
+            <img src="/images/Grupo572.png" alt="" />
+          </IllustrationMobile>
           <div className="div2">
             <div className="miniDiv">
               <TitleSucess>Tu és o consumidor, Tu tens o poder</TitleSucess>
