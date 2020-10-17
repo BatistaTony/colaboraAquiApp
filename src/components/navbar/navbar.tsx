@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   ItemMenu,
   Logo,
@@ -7,9 +7,6 @@ import {
   ButtonLogin,
   ButtonMobile,
   Overlay,
-  UserName,
-  DivUser,
-  MenuUser,
 } from "./navbarStyle";
 import Link from "next/link";
 import { useSelector } from "react-redux";
@@ -18,8 +15,19 @@ import { CSSTransition } from "react-transition-group";
 import UserMenu from "./userMenu";
 import { IConsumer } from "../../../types";
 
+interface IItemMenu {
+  page: string;
+  title: string;
+  link: string;
+}
+
 export default function Navbar(props: any) {
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
+
+  const menu: Array<IItemMenu> = [
+    { page: "Inicio", title: "ColaboraAqui", link: "/" },
+    { page: "Ranking", title: "Ranking", link: "ranking" },
+  ];
 
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [isLogged, setIsLogged] = useState<boolean>(
@@ -35,30 +43,32 @@ export default function Navbar(props: any) {
       </Logo>
 
       <Menu>
-        <Link href="/">
-          <ItemMenu active={props.title === "ColaboraAqui"}>Inicio</ItemMenu>
-        </Link>
+        {menu.map((value, index) => (
+          <Link href={value.link}>
+            <ItemMenu key={index} active={props.title === value.title}>
+              {value.page}
+            </ItemMenu>
+          </Link>
+        ))}
+
         {isLogged && (
-          <Link href="rate">
+          <Link href="/rate">
             <ItemMenu active={props.title === "Avaliar"}>Avaliar</ItemMenu>
           </Link>
         )}
-        <Link href="ranking">
-          <ItemMenu active={props.title === "Ranking"}>Ranking</ItemMenu>
-        </Link>
 
-        {!isLogged && (
+        {!isLogged ? (
           <Link href="/signin">
             <ButtonLogin>Entrar</ButtonLogin>
           </Link>
+        ) : (
+          <UserMenu />
         )}
-
-        {isLogged && <UserMenu />}
       </Menu>
 
       <ButtonMobile openMenu={openMenu} onClick={() => setOpenMenu(!openMenu)}>
         <div className="line"></div>
-        <div className="line line2"></div>
+        <div className="line"></div>
         <div className="line"></div>
       </ButtonMobile>
 
@@ -72,27 +82,28 @@ export default function Navbar(props: any) {
         <Overlay>
           <div className="container">
             <Menu mobile={true}>
-              <Link href="/">
-                <ItemMenu active={props.title === "ColaboraAqui"}>
-                  Inicio
-                </ItemMenu>
-              </Link>
+              {menu.map((value, index) => (
+                <Link href={value.link}>
+                  <ItemMenu key={index} active={props.title === value.title}>
+                    {value.page}
+                  </ItemMenu>
+                </Link>
+              ))}
+
               {isLogged && (
-                <Link href="rate">
+                <Link href="/rate">
                   <ItemMenu active={props.title === "Avaliar"}>
                     Avaliar
                   </ItemMenu>
                 </Link>
               )}
-              <Link href="ranking">
-                <ItemMenu active={props.title === "Ranking"}>Ranking</ItemMenu>
-              </Link>
-              {isLogged && <UserMenu />}
 
-              {!isLogged && (
+              {!isLogged ? (
                 <Link href="/signin">
                   <ButtonLogin>Entrar</ButtonLogin>
                 </Link>
+              ) : (
+                <UserMenu />
               )}
             </Menu>
           </div>

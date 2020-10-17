@@ -12,11 +12,11 @@ import {
 import { CSSTransition } from "react-transition-group";
 import { IConsumer } from "../../../types";
 import CustomSelect from "./select";
-import ButtonBack from "./buttonBack";
 import SucessModal from "./sucessModal";
 import InputPassword from "./inputPassword";
 import { translateProperty } from "../utils";
 import Link from "next/link";
+import { counties, provinces } from "./signUp.data";
 
 const initialState: IConsumer = {
   userName: "",
@@ -36,30 +36,6 @@ export default function FormSignUp() {
     "15 a 16 anos",
     "17 a 25 anos",
     "30 a 40 anos",
-  ]);
-  const [counties, setCounties] = useState<string[]>([
-    "Luanda",
-    "Maianga",
-    "Cazenga",
-    "Bengo",
-    "KIlamaba",
-    "Cacuaco",
-    "Benguela",
-    "Viana",
-  ]);
-
-  const [provinces, setProvinces] = useState<string[]>([
-    "Luanda",
-    "Malanje",
-    "Cabina",
-    "Kuanza Sul",
-    "Huambo",
-    "Uige",
-    "Huila",
-    "Muxico",
-    "Kuanza Norte",
-    "Zaire",
-    "Benguela",
   ]);
 
   const handleSubmit = (event) => {
@@ -116,7 +92,7 @@ export default function FormSignUp() {
       >
         <SucessModal />
       </CSSTransition>
-
+     
       <ErrorMessage>{errorMsg}</ErrorMessage>
       <DivGridForm>
         <FormGroup isEmpty={errorIsOn === "userName"}>
@@ -160,7 +136,6 @@ export default function FormSignUp() {
         </QuestionSignUp>
 
         <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
-        <ButtonBack classNames="mobileBtn" />
       </DivGridForm>
     </form>
   );

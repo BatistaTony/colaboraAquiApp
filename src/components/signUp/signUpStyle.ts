@@ -18,7 +18,7 @@ export const OverlaySignUp = styled.div`
   left: 0;
   top: 0;
   ${flexbox()};
-  z-index: 999;
+  z-index: 99;
 
   form {
     width: 100%;
@@ -26,9 +26,20 @@ export const OverlaySignUp = styled.div`
     ${flexbox("column")};
   }
 
+  .wrp_div_vdg {
+    width: 100%;
+    height: 100%;
+    ${flexbox()};
+  }
+
   @media (max-width: 750px) {
     overflow: auto;
     box-box-sizing: border-box;
+  }
+
+  @media (max-width: 900px) {
+    background: white;
+    z-index: 99999;
   }
 `;
 
@@ -53,16 +64,36 @@ export const Modal = styled.div`
 
   ${sizesForEachScreens([1500, 1370], [500, 450], "height", "px")} 
   
+
+  
   
   @media (max-width: 900px) {
     ${flexbox()};
     height: auto;
     border-radius: 0;
     width: 100%;
-  }
 
-  @media (max-width: 900px) and (max-height: 640px) {
-    padding-top: 120px;
+    .divBtnBackT {
+      width: 100%;
+      ${flexbox("row", "flex-start", "center")};
+      padding-top: 20px;
+      box-sizing: border-box;
+      padding-left: 5%;
+      position: fixed;
+      top: 0;
+      left: 0;
+
+      @media (max-width: 750px) {
+        position: relative;
+      }
+    }
+
+    @media (max-width: 750px) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
   }
 `;
 
@@ -186,11 +217,11 @@ export const TextForm = styled.p`
   }
 
   @media (max-width: 900px) {
-    width: 70%;
+    width: 60%;
   }
 
   @media (max-width: 750px) {
-    font-size: 11pt;
+    font-size: 12pt;
     width: 80%;
   }
 `;
@@ -223,7 +254,7 @@ export const DivGridForm = styled.div`
   )}
 
   @media (max-width: 900px) {
-    width: 70%;
+    width: 60%;
   }
 
   @media (max-width: 750px) {
@@ -257,7 +288,7 @@ export const FormGroup = styled.div`
   border: ${({ isEmpty }) => (isEmpty ? "2px solid red" : "none")};
 
   @media (max-width: 750px) {
-    height: 40px;
+    height: 45px;
     margin-bottom: 13px;
   }
 
@@ -449,7 +480,7 @@ export const ModalSucess = styled(Modal)`
   ${sizesForEachScreens([1500, 1370], [500, 400], "height", "px")} 
 
   @media  (max-width:900px) {
-    height: 82vh;
+    height: 100vh;
     width: 100%;
     border-radius: 0;
     z-index: 99999;
@@ -457,6 +488,7 @@ export const ModalSucess = styled(Modal)`
     box-sizing: border-box;
     overflow: hidden;
     align-self: flex-end;
+    ${flexbox("column")};
   }
 
   .illustration2 {
@@ -467,16 +499,8 @@ export const ModalSucess = styled(Modal)`
     }
 
     @media (max-width: 900px) {
-      display: block;
+      display: none;
       margin-right: -90px;
-    }
-
-    @media (max-width: 750px) {
-      margin-right: -50px;
-    }
-
-    @media (max-width: 650px) {
-      margin-right: -30px;
     }
   }
 
@@ -485,7 +509,9 @@ export const ModalSucess = styled(Modal)`
 
     @media (max-width: 900px) {
       display: block;
-      opacity: 0;
+      position: relative;
+      width: auto;
+      height: auto;
     }
   }
 
@@ -498,15 +524,7 @@ export const ModalSucess = styled(Modal)`
 
     @media (max-width: 900px) {
       justify-content: flex-start;
-      padding-top: 10%;
-    }
-
-    @media (max-width: 750px) {
-      padding-top: 7%;
-    }
-
-    @media (max-width: 650px) {
-      padding-top: 5%;
+      position: relative;
     }
   }
 
@@ -515,11 +533,32 @@ export const ModalSucess = styled(Modal)`
     ${flexbox("column")};
 
     ${sizesForEachScreens(
-      [3000, 2500, 1930, 1370, 1000, 900],
-      [45, 50, 60, 65, 70],
+      [3000, 2500, 1930, 1370, 1000, 750, 600],
+      [45, 50, 60, 65, 70, 85],
       "width",
       "%"
     )}
+  }
+`;
+
+export const IllustrationMobile = styled.div`
+  @media (min-width: 900px) {
+    display: none;
+  }
+
+  display: block;
+  ${flexbox("column")};
+
+  width: 100%;
+  height: 60vh;
+
+  @media (max-height: 570px) {
+    height: 70vh;
+  }
+
+  img {
+    width: 17rem;
+    height: 100%;
   }
 `;
 
@@ -527,12 +566,18 @@ export const TitleSucess = styled(Title)`
   color: ${colorsApp.soDark};
   ${getFont("Medium")};
   text-align: center;
+
+  @media (max-width: 900px) {
+    margin-top: 0;
+  }
 `;
 
 export const TextSucess = styled(TextForm)`
   color: white;
   ${getFont("Medium")};
   width: 90%;
+
+  ${sizesForEachScreens([750, 600], [70, 90], "width", "%")}
 `;
 
 export const ButtonSucess = styled(ButtonLogin)`
@@ -540,8 +585,26 @@ export const ButtonSucess = styled(ButtonLogin)`
   color: white;
   margin-top: 40px;
   height: 70px;
+  border-radius: 7px;
 
-  ${sizesForEachScreens([3000, 2500, 1930], [60, 50, 40], "height", "px")}
+  @media (max-width: 600px) {
+    position: absolute;
+    bottom: 5%;
+  }
 
-  ${sizesForEachScreens([3000, 2500, 1930], [30, 20, 10], "margin-top", "px")}
+  ${sizesForEachScreens([750, 600, 550], [50, 70, 85], "width", "%")}
+
+  ${sizesForEachScreens(
+    [3000, 2500, 1930, 750],
+    [60, 50, 45, 50],
+    "height",
+    "px"
+  )}
+
+  ${sizesForEachScreens(
+    [3000, 2500, 1930, 1500, 1000, 750],
+    [30, 20, 10, 15, 20, 25],
+    "margin-top",
+    "px"
+  )}
 `;

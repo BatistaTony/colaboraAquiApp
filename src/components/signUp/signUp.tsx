@@ -1,6 +1,5 @@
 import Route from "next/router";
-import { useContext } from "react";
-import { appContext } from "../appContext";
+
 import ButtonBack from "./buttonBack";
 import FormSignUp from "./formSignUp";
 import {
@@ -14,11 +13,10 @@ import {
 
 interface IProps {
   isSinglePage?: boolean;
+  toggleSignUp?: () => void;
 }
 
-export default function SignUpConsumer({ isSinglePage }: IProps) {
-  const [showSignUp, toggleSignUp] = useContext(appContext);
-
+export default function SignUpConsumer({ isSinglePage, toggleSignUp }: IProps) {
   const backToHome = () => {
     if (isSinglePage) {
       Route.push("/");
@@ -31,10 +29,15 @@ export default function SignUpConsumer({ isSinglePage }: IProps) {
   return (
     <OverlaySignUp isSinglePage={isSinglePage}>
       <Modal>
-        <ModalIllustration onClick={backToHome} img={"/images/signup.png"}>
-          <ButtonBack />
+        <ModalIllustration img={"/images/signup.png"}>
+          <ButtonBack onChange={backToHome} />
         </ModalIllustration>
+
         <DivForm>
+          <div className="divBtnBackT">
+            <ButtonBack classNames="mobileBtn" onChange={backToHome} />
+          </div>
+
           <Title>
             Começa agora no <span>Colabora</span>
           </Title>

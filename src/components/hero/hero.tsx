@@ -1,7 +1,4 @@
-import { useContext, useState } from "react";
-import { appContext } from "../appContext";
-import { colorsApp } from "../layout/layoutStyle";
-import SignUp from "../signUp/signUp";
+import { useCallback, useState } from "react";
 import {
   ButtonStartRate,
   HeroStyle,
@@ -19,39 +16,29 @@ import Route from "next/router";
 import { useSelector } from "react-redux";
 import { IConsumer } from "../../../types";
 import SignUpConsumer from "../signUp/signUp";
+import { StepsHero } from "./hero.data";
 
 export default function Hero() {
-  const steps = [
-    {
-      text: "Escolha",
-      borderColor: colorsApp.roxo,
-    },
-    {
-      text: "Avalie",
-      borderColor: colorsApp.orange,
-    },
-    {
-      text: "Sugira",
-      borderColor: colorsApp.kindaBlue,
-    },
-  ];
-
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
-  const [showSignUp, toggleSignUp] = useContext(appContext);
+  const [showSignUp, setShowSignUp] = useState<boolean>(false);
   const [isLogged, setIsLogged] = useState<boolean>(
     consumerState.userName.length > 0
   );
 
+  const toggleSignUp = useCallback((): void => {
+    setShowSignUp(!showSignUp);
+  }, [showSignUp]);
+
   const startRate = () => {
     if (isLogged) {
-      Route.push("/search");
+      Route.push("/companies");
     } else {
       toggleSignUp();
     }
   };
 
   return (
-    <HeroStyle>
+    <HeroStyle showSignUp={showSignUp}>
       <BackGroundWithIllustration>
         <div className="illustration1_e"></div>
         <div className="illustration2_e"></div>
@@ -63,7 +50,7 @@ export default function Hero() {
         in={showSignUp}
         classNames="my-overlay"
       >
-        <SignUpConsumer />
+        <SignUpConsumer toggleSignUp={toggleSignUp} />
       </CSSTransition>
 
       <DivHero>
@@ -75,7 +62,7 @@ export default function Hero() {
           orgão e empresas nacionais
         </Text>
         <ListStep>
-          {steps.map((value, index) => (
+          {StepsHero.map((value, index) => (
             <Step>
               <StepNumber borderColor={value.borderColor}>
                 <h1>{index + 1}</h1>

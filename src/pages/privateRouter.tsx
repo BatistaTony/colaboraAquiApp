@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Router from "next/router";
 import { useSelector } from "react-redux";
 import { IConsumer } from "../../types";
+import Spinner from "../components/spinner/spinner";
 
 export default function PrivateRouter(
   WrappedComponent: React.FC | React.ComponentClass
@@ -15,6 +16,6 @@ export default function PrivateRouter(
       }
     }, [consumer.userName]);
 
-    return consumer.userName ? <WrappedComponent /> : <h1>{"  "}</h1>;
+    return consumer.userName ? <WrappedComponent /> : <Spinner />;
   };
 }

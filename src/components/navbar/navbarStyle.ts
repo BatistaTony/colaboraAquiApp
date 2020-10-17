@@ -9,7 +9,7 @@ export const MyNavbar = styled.div`
   padding-left: 6%;
   padding-right: 8%;
   box-sizing: border-box;
-  z-index: 5;
+  z-index: 14;
 
   @media (max-width: 750px) {
     height: 70px;
@@ -17,7 +17,7 @@ export const MyNavbar = styled.div`
   }
 
   @media (max-height: 633px) {
-    height: 100px;
+    height: 80px;
   }
 
   @media (max-width: 1230px) {
@@ -37,7 +37,8 @@ export const Menu = styled.ul`
     background: white;
     width: 100%;
 
-    display: ${({ mobile }) => (mobile ? flexbox("column") : "none")};
+    display: ${({ mobile }) =>
+      mobile ? flexbox("column", "flex-start", "center") : "none"};
   }
 `;
 
@@ -63,9 +64,11 @@ export const ItemMenu = styled.li`
   )};
 
   @media (max-width: 750px) {
-    padding: 5px;
+    padding: 10px;
     margin-right: 0;
     font-size: 11pt;
+    width: 100%;
+    text-align: center;
   }
 `;
 
@@ -133,6 +136,9 @@ export const ButtonLogin = styled.button`
     margin-left: 0;
     margin-top: 15px;
     font-size: 11pt;
+    width: 100%;
+    text-align: center;
+    border-radius: 0;
   }
 `;
 
@@ -180,6 +186,10 @@ export const UserName = styled.h5`
       "px"
     )}
   }
+
+  @media (min-width: 750px) {
+    width: 100%;
+  }
 `;
 
 export const DivUser = styled.div`
@@ -188,6 +198,10 @@ export const DivUser = styled.div`
   ${flexbox("column")};
   position: relative;
   margin-left: 30px;
+
+  @media (min-width: 750px) {
+    width: 100%;
+  }
 
   ${sizesForEachScreens([3000, 2500, 1930], [20, 15, 10], "margin-left", "px")};
 `;
@@ -225,7 +239,8 @@ export const MenuUser = styled.ul`
   @media (max-width: 750px) {
     position: relative;
     top: 0;
-    margin-top: 10px;
+    width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "100%")};
+    box-shadow: 0 0 0px;
   }
 
   li {
@@ -255,8 +270,17 @@ export const MenuUser = styled.ul`
       padding: 10px;
     }
 
+    @media (max-width: 750px) {
+      padding: 5px;
+      border: none;
+    }
+
     &:nth-child(1) {
       border-bottom: 0.5px solid rgb(0, 0, 0, 0.3);
+
+      @media (max-width: 750px) {
+        border: none;
+      }
     }
 
     &:hover {
@@ -270,6 +294,10 @@ export const MenuUser = styled.ul`
 
       ${sizesForEachScreens([3200, 2500, 1930], [35, 25, 20], "width", "px")};
       ${sizesForEachScreens([3200, 2500, 1930], [35, 25, 20], "height", "px")};
+
+      @media (max-width: 750px) {
+        margin-right: 7px;
+      }
     }
   }
 `;
@@ -280,27 +308,25 @@ export const ButtonMobile = styled.div`
   }
 
   ${flexbox("column")};
-  border-radius: 5px;
-  border: 2px solid ${colorsApp.orange};
-  width: 38px;
-  height: 33px;
+  border-radius: 100%;
+  border: 2px solid ${colorsApp.soDark};
+  width: 35px;
+  height: 35px;
   box-sizing: border-box;
   padding-top: 3px;
-  z-index: 99;
-  position: absolute;
-  right: 4.5%;
+  z-index: 3;
 
   .line {
-    width: 25px;
-    border-radius: 10px;
-    height: 4px;
+    width: 17px;
+    border-radius: 25px;
+    height: 2px;
     background-color: ${colorsApp.soDark};
     margin-bottom: 3px;
     transition: 0.5s;
 
     &:nth-child(1) {
       transform: ${({ openMenu }) =>
-        openMenu ? " rotate(40deg) translate(5px, 6px)" : null};
+        openMenu ? " rotate(40deg) translate(2.5px, 3px)" : null};
     }
 
     &:nth-child(2) {
@@ -317,11 +343,12 @@ export const ButtonMobile = styled.div`
 export const Overlay = styled.div`
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
-  position: fixed;
-  top: 0;
+  padding-top: 170px;
+  background: white;
+  position: absolute;
+  bottom: 0;
   left: 0;
-  z-index: 9;
+  z-index: 2;
   box-sizing: border-box;
 
   @media (min-width: 750px) {
@@ -330,7 +357,7 @@ export const Overlay = styled.div`
 
   .container {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     ${flexbox()};
     box-sizing: border-box;
   }

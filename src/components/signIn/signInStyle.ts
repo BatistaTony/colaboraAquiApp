@@ -31,6 +31,35 @@ export const ModalSignIn = styled(Modal)`
     )};
   }
 
+  @media (max-width: 750px) {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .divForm_sign_p {
+    @media (max-width: 750px) {
+      height: 100vh;
+      ${flexbox("column", "flex-end", "center")};
+      padding-bottom: 2%;
+      box-sizing: border-box;
+
+      .divBtnBackT {
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    border: 0;
+    box-shadow: 0 0 0px;
+  }
+
+  @media (max-width: 750px) {
+    align-items: flex-end;
+  }
+
   .grid-form-sign {
     grid-template-columns: 100%;
     margin-top: 20px;
@@ -92,11 +121,6 @@ export const ModalSignIn = styled(Modal)`
   }
 `;
 
-export const DivForm = styled.div`
-  width: 100%;
-  background-color: red;
-`;
-
 export const IllustrationObjectSignIn = styled.div`
   width: 60%;
   height: 90%;
@@ -109,4 +133,8 @@ export const IllustrationObjectSignIn = styled.div`
   left: -5%;
   transform: rotate(4deg);
   z-index: -1;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
