@@ -308,6 +308,7 @@ export const GroupCard = styled.div`
   grid-template-columns: 50% 50%;
   grid-gap: 60px;
   align-items: center;
+  overflow: auto;
 
   ${sizesForEachScreens(
     [2500, 1500, 1390, 1040, 935],

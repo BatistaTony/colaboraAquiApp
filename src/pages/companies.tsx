@@ -136,9 +136,8 @@ function Companies() {
             </button>
           </ButtonControl>
           <GroupCard>
-            {companies.map((value: ICompany, index) => (
-              <CardCompany data={value} />
-            ))}
+            <CardCompany data={companies[0]} />
+            <CardCompany data={companies[1]} />
           </GroupCard>
         </CompanyList>
       </ContentCompanies>
