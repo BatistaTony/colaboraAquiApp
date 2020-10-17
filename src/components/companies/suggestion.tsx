@@ -84,7 +84,7 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
     }
   };
 
-  const suggest = () => {
+  const sendSuggestion = () => {
     if (!checkError()) {
       alert("suggested");
     }
@@ -150,8 +150,8 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
                 ></textarea>
               </TextArea>
 
-              <ButtonSuggestForm className="FormGroup" onClick={suggest}>
-                Sugerir
+              <ButtonSuggestForm className="FormGroup" onClick={sendSuggestion}>
+                Enviar sugestão
               </ButtonSuggestForm>
             </DivGridForm>
           </DivForm>
