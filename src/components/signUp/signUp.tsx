@@ -13,7 +13,7 @@ import {
 
 interface IProps {
   isSinglePage?: boolean;
-  toggleSignUp: () => void;
+  toggleSignUp?: () => void;
 }
 
 export default function SignUpConsumer({ isSinglePage, toggleSignUp }: IProps) {
