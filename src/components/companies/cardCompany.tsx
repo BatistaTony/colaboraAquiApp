@@ -27,12 +27,12 @@ export default function CardCompany({ data }: IProps) {
     <Card>
       <div className="header_card">
         <div className="div1_er_">
-          <CompanyLogo>
-            <img src={companyLogo} alt="" />
-          </CompanyLogo>
+          <CompanyLogo img={companyLogo}></CompanyLogo>
 
           <div className="company_info_">
-            <CompanyName>#{companyPositionRanking}. {companyName}</CompanyName>
+            <CompanyName>
+              #{companyPositionRanking}. {companyName}
+            </CompanyName>
             <CompanyRateNumbers>
               <span>{companyRatesNumber}</span> avaliações
             </CompanyRateNumbers>
@@ -43,9 +43,7 @@ export default function CardCompany({ data }: IProps) {
         </div>
       </div>
 
-      <DescriptionCard>
-        {companyDescription}
-      </DescriptionCard>
+      <DescriptionCard>{companyDescription}</DescriptionCard>
     </Card>
   );
 }

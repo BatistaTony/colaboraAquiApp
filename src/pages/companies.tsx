@@ -5,6 +5,7 @@ import {
   ButtonSuggest,
   CompanyList,
   ContentCompanies,
+  DivBtnMobile,
   FilterStyled,
   GroupCard,
   SearchStyled,
@@ -66,8 +67,15 @@ function Companies() {
         </CSSTransition>
         <div className="cmp_f_g">
           <TextCompanies>
-            <span>Pesquise</span> por empresas ou orgãos. <span>Escolhe</span> a
-            que deseja avaliar. <span>Avalie</span> e sugira melhorias !
+            <span>
+              <mark>Pesquise</mark> por empresas ou orgãos.
+            </span>
+            <span>
+              <mark>Escolhe</mark> a que deseja avaliar.
+            </span>
+            <span>
+              <mark>Avalie</mark> e sugira melhorias !
+            </span>
           </TextCompanies>
           <FilterStyled>
             <div className="filter_1_">
@@ -108,6 +116,14 @@ function Companies() {
               </li>
             </ul>
           </FilterStyled>
+          <DivBtnMobile>
+            <ButtonSuggest
+              className="btnMobile_suggest"
+              onClick={toggleSuggestion}
+            >
+              Sugerir empresa
+            </ButtonSuggest>
+          </DivBtnMobile>
         </div>
 
         <CompanyList>
