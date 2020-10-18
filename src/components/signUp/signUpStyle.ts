@@ -594,7 +594,7 @@ export const ButtonSucess = styled(ButtonLogin)`
   border-radius: 7px;
 
   @media (max-width: 600px) {
-    position: absolute;
+    position: fixed;
     bottom: 5%;
   }
 

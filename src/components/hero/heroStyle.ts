@@ -48,6 +48,11 @@ export const BackGroundWithIllustration = styled.div`
 
   grid-template-rows: 100%;
 
+  @media (max-width: 850px) {
+    height: 100vh;
+    grid-template-columns: 100%;
+  }
+
   .illustration1_e {
     width: 40%;
     height: 100%;
@@ -58,6 +63,10 @@ export const BackGroundWithIllustration = styled.div`
     left: 0;
 
     bottom: -3%;
+
+    @media (max-width: 850px) {
+      display: none;
+    }
   }
 
   .illustration2_e {
@@ -69,6 +78,35 @@ export const BackGroundWithIllustration = styled.div`
     position: absolute;
     right: -10%;
     bottom: -5%;
+<<<<<<< HEAD
+=======
+
+    @media (max-width: 850px) {
+      bottom: -15%;
+      width: 100%;
+      background-position: 100% -70%;
+    }
+  }
+`;
+
+const pullPaddingLeft = () => `
+
+@media (max-width: 1500px) {
+  margin-left: -6%;
+}
+
+  @media (max-width: 1370px) {
+    margin-left: -10%;
+  }
+
+  @media (max-width: 1100px) {
+    margin-left: -15%;
+  }
+
+  @media (max-width: 925px) {
+    margin-left: -18%;
+  }
+>>>>>>> task/colabora-front-1
 
     @media (max-width: 850px) {
       display: none;
