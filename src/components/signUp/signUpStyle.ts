@@ -76,7 +76,7 @@ export const Modal = styled.div`
     .divBtnBackT {
       width: 100%;
       ${flexbox("row", "flex-start", "center")};
-      padding-top: 10px;
+      padding-top: 15px;
       box-sizing: border-box;
       padding-left: 5%;
       position: fixed;
