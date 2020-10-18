@@ -238,26 +238,20 @@ export const DivGridForm = styled.div`
     grid-gap: 15px;
   }
 
-  @media (max-width: 3200px) {
-    grid-template-rows: repeat(3, 90px) auto auto;
-  }
+  ${sizesForEachScreens([1930, 1500], [20, 15], "grid-gap", "px")}
 
-  @media (max-width: 2500px) {
-    grid-template-rows: repeat(3, 70px) auto auto;
-  }
-
-  @media (max-width: 1930px) {
-    grid-template-rows: repeat(3, 60px) auto auto;
-    grid-gap: 11px;
-  }
-
-  @media (max-width: 1500px) {
-    grid-template-rows: repeat(3, 45px) auto auto;
-  }
-
-  @media (max-width: 1370px) {
-    grid-template-rows: repeat(3, 40px) auto auto;
-  }
+  ${sizesForEachScreens(
+    [3200, 2500, 1930, 1500, 1370],
+    [
+      "repeat(3, 90px) auto auto",
+      "repeat(3, 70px) auto auto",
+      "repeat(3, 60px) auto auto",
+      "repeat(3, 45px) auto auto",
+      "repeat(3, 40px) auto auto",
+    ],
+    "grid-template-rows",
+    ""
+  )}
 
   @media (max-width: 900px) {
     width: 60%;

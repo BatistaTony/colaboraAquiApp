@@ -65,6 +65,20 @@ export const ModalSignIn = styled(Modal)`
     margin-top: 20px;
     grid-gap: 15px;
     justify-content: center;
+    grid-template-rows: repeat(2, 100px) auto auto;
+
+    ${sizesForEachScreens(
+      [3200, 2500, 1930, 1500, 1370],
+      [
+        "repeat(2, 90px) auto auto",
+        "repeat(2, 70px) auto auto",
+        "repeat(2, 60px) auto auto",
+        "repeat(2, 45px) auto auto",
+        "repeat(2, 40px) auto auto",
+      ],
+      "grid-template-rows",
+      ""
+    )}
 
     .FormGroup {
       grid-column: 1/2;
@@ -73,9 +87,14 @@ export const ModalSignIn = styled(Modal)`
     .textForgetPassword {
       color: ${colorsApp.orange};
       font-size: 27pt;
-      ${flexbox("row", "flex-start", "flex-end")};
+      ${flexbox("row", "flex-start", "center")};
       ${getFont()};
       cursor: default;
+
+      @media (max-width: 850px) {
+        margin-top: -10px;
+      }
+
       width: 100%;
       text-align: left;
       ${sizesForEachScreens(

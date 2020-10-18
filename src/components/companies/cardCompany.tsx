@@ -1,3 +1,4 @@
+import { ICompany } from "../../../types";
 import {
   Card,
   CompanyLogo,
@@ -8,33 +9,41 @@ import {
 } from "./companiesStyle";
 import StarsRatedCompany from "./starsRated";
 
-export default function CardCompany() {
+interface IProps {
+  data: ICompany;
+}
+
+export default function CardCompany({ data }: IProps) {
+  const {
+    companyDescription,
+    companyLogo,
+    companyName,
+    companyPositionRanking,
+    companyRatesNumber,
+    companyStars,
+  } = data;
+
   return (
     <Card>
       <div className="header_card">
         <div className="div1_er_">
-          <CompanyLogo>
-            <img src="/images/Movicel-2.png" alt="" />
-          </CompanyLogo>
+          <CompanyLogo img={companyLogo}></CompanyLogo>
 
           <div className="company_info_">
-            <CompanyName>#2. MOVICEL</CompanyName>
+            <CompanyName>
+              #{companyPositionRanking}. {companyName}
+            </CompanyName>
             <CompanyRateNumbers>
-              <span>123</span> avaliações
+              <span>{companyRatesNumber}</span> avaliações
             </CompanyRateNumbers>
           </div>
         </div>
         <div className="start_div_cmpy">
-          <StarsRatedCompany />
+          <StarsRatedCompany stars={companyStars} />
         </div>
       </div>
 
-      <DescriptionCard>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-        cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque
-        sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis
-        dolor.
-      </DescriptionCard>
+      <DescriptionCard>{companyDescription}</DescriptionCard>
     </Card>
   );
 }
