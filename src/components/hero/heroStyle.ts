@@ -78,38 +78,11 @@ export const BackGroundWithIllustration = styled.div`
     position: absolute;
     right: -10%;
     bottom: -5%;
-<<<<<<< HEAD
-=======
 
     @media (max-width: 850px) {
       bottom: -15%;
       width: 100%;
       background-position: 100% -70%;
-    }
-  }
-`;
-
-const pullPaddingLeft = () => `
-
-@media (max-width: 1500px) {
-  margin-left: -6%;
-}
-
-  @media (max-width: 1370px) {
-    margin-left: -10%;
-  }
-
-  @media (max-width: 1100px) {
-    margin-left: -15%;
-  }
-
-  @media (max-width: 925px) {
-    margin-left: -18%;
-  }
->>>>>>> task/colabora-front-1
-
-    @media (max-width: 850px) {
-      display: none;
     }
   }
 `;
