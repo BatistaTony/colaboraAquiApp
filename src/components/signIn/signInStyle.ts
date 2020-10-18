@@ -91,10 +91,6 @@ export const ModalSignIn = styled(Modal)`
       ${getFont()};
       cursor: default;
 
-      @media (max-width: 850px) {
-        margin-top: -10px;
-      }
-
       width: 100%;
       text-align: left;
       ${sizesForEachScreens(

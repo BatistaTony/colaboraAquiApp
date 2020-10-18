@@ -8,6 +8,7 @@ import {
   DivBtnMobile,
   FilterStyled,
   GroupCard,
+  ListCompanyMobile,
   SearchStyled,
   TextCompanies,
 } from "../components/companies/companiesStyle";
@@ -17,6 +18,7 @@ import { CSSTransition } from "react-transition-group";
 import PrivateRouter from "./privateRouter";
 import { InputIcon } from "../components/signUp/signUpStyle";
 import { ICompany } from "../../types";
+import ListOfCompanies from "./../components/companies/listCompanies";
 
 function Companies() {
   const [filterBy, setFilterBy] = useState<string>("Todas");
@@ -43,15 +45,113 @@ function Companies() {
         "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
       companyStatus: "Privada",
     },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 450,
+      companyName: "AngolaTelecom",
+      companyLogo: "/images/unite.png",
+      companyStars: 4,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 450,
+      companyName: "ENDE",
+      companyLogo: "/images/unite.png",
+      companyStars: 4,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Publica",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 450,
+      companyName: "KEro",
+      companyLogo: "/images/unite.png",
+      companyStars: 4,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Publica",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 450,
+      companyName: "Canadando",
+      companyLogo: "/images/unite.png",
+      companyStars: 4,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 450,
+      companyName: "Unitel",
+      companyLogo: "/images/unite.png",
+      companyStars: 4,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 450,
+      companyName: "AngolaTelecom",
+      companyLogo: "/images/unite.png",
+      companyStars: 4,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 450,
+      companyName: "ENDE",
+      companyLogo: "/images/unite.png",
+      companyStars: 4,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Publica",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 450,
+      companyName: "KEro",
+      companyLogo: "/images/unite.png",
+      companyStars: 4,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Publica",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 450,
+      companyName: "Canadando",
+      companyLogo: "/images/unite.png",
+      companyStars: 4,
+      companyDescription:
+        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+      companyStatus: "Privada",
+    },
   ]);
-
-  const handleChange = (event: any) => {
-    setSearch(event.target.name);
-  };
 
   const toggleSuggestion = () => {
     setShowSuggestion(!showSuggestion);
   };
+
+  const regex = new RegExp(`${search}`, "gi");
+
+  const filteredCompanies = companies
+    .filter((company) => {
+      if (filterBy === "Todas") {
+        return company;
+      } else {
+        return company.companyStatus === filterBy;
+      }
+    })
+    .filter((company) => company.companyName.match(regex));
 
   return (
     <Layout title="Empresas">
@@ -85,7 +185,7 @@ function Companies() {
                 </InputIcon>
                 <input
                   type="text"
-                  onChange={handleChange}
+                  onChange={(event) => setSearch(event.target.value)}
                   defaultValue={search}
                   placeholder="pesquise por empresas"
                 />
@@ -126,23 +226,15 @@ function Companies() {
           </DivBtnMobile>
         </div>
 
-        <CompanyList>
-          <ButtonControl>
-            <button>
-              <img src="images/back.png" alt="" />
-            </button>
-            <button>
-              <img src="images/next.png" alt="" />
-            </button>
-          </ButtonControl>
-          <GroupCard>
-            <CardCompany data={companies[0]} />
-            <CardCompany data={companies[1]} />
-          </GroupCard>
-        </CompanyList>
+        <ListOfCompanies companies={filteredCompanies} search={search} />
+        <ListCompanyMobile companies={companies.length}>
+          {filteredCompanies.map((value: ICompany, index: number) => (
+            <CardCompany key={index} data={value} />
+          ))}
+        </ListCompanyMobile>
       </ContentCompanies>
     </Layout>
   );
 }
 
-export default Companies;
+export default PrivateRouter(Companies);

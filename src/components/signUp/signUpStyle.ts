@@ -76,7 +76,7 @@ export const Modal = styled.div`
     .divBtnBackT {
       width: 100%;
       ${flexbox("row", "flex-start", "center")};
-      padding-top: 20px;
+      padding-top: 10px;
       box-sizing: border-box;
       padding-left: 5%;
       position: fixed;
@@ -235,7 +235,11 @@ export const DivGridForm = styled.div`
   grid-gap: 30px;
 
   @media (max-height: 670px) {
-    grid-gap: 15px;
+    grid-gap: 10px;
+  }
+
+  @media (max-width: 750px) {
+    grid-gap: 10px;
   }
 
   ${sizesForEachScreens([1930, 1500], [20, 15], "grid-gap", "px")}
@@ -289,7 +293,6 @@ export const FormGroup = styled.div`
 
   @media (max-width: 750px) {
     height: 45px;
-    margin-bottom: 13px;
   }
 
   button {

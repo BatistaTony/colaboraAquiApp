@@ -73,8 +73,8 @@ export const TextCompanies = styled.p`
   )};
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500, 1300, 450],
-    [40, 35, 28, 17, 14, 13],
+    [3200, 2500, 2000, 1500, 1300, 900, 750, 550],
+    [40, 35, 28, 17, 14, 13, 12, 11],
     "font-size",
     "pt"
   )};
@@ -140,8 +140,8 @@ export const FilterStyled = styled.div`
       transition: 0.5s;
 
       ${sizesForEachScreens(
-        [3200, 3000, 2500, 1930, 1500, 850],
-        [20, 17, 15, 13, 11, 10],
+        [3200, 3000, 2500, 1930, 1500, 850, 500],
+        [20, 17, 15, 13, 11, 10, 9],
         "font-size",
         "pt"
       )};
@@ -161,6 +161,12 @@ export const FilterStyled = styled.div`
       @media (max-width: 1500px) {
         padding-left: 7px;
         padding-right: 7px;
+      }
+
+      @media (max-width: 900px) {
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-left: 10px;
       }
 
       &:hover {
@@ -184,9 +190,12 @@ export const SearchStyled = styled.div`
   box-shadow: 0 0 3px ${colorsApp.orange};
   padding-left: 10px;
 
-  @media (max-width: 1390px) {
-    padding-left: 20px;
-  }
+  ${sizesForEachScreens(
+    [1390, 1500, 1000],
+    [20, 15, 10],
+    "padding-left",
+    "px"
+  )};
 
   @media (max-width: 850px) {
     width: 80%;
@@ -222,16 +231,21 @@ export const DivBtnMobile = styled.div`
   @media (max-width: 925px) {
     display: block;
     width: 100%;
-    height: 45px;
+    height: 30px;
     position: relative;
     ${flexbox()};
-    margin-top: 20px;
+    margin-top: 10px;
 
     .btnMobile_suggest {
       display: block;
       position: relative;
       right: 0;
       margin: 0;
+      ${flexbox()};
+
+      @media (max-width: 600px) {
+        font-size: 10pt;
+      }
     }
   }
 `;
@@ -286,6 +300,14 @@ export const CompanyList = styled.div`
   position: absolute;
   bottom: 15%;
 
+  @media (max-width: 935px) {
+    display: none;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    display: none;
+  }
+
   ${sizesForEachScreens([1500, 1380], [250, 200], "height", "px")}
 
   ${sizesForEachScreens([1930, 1500, 1380], [10, 5, 4], "bottom", "%")};
@@ -301,6 +323,69 @@ export const CompanyList = styled.div`
   }
 `;
 
+export const ListCompanyMobile = styled.div`
+  width: 94%;
+  height: 65vh;
+  display: none;
+  grid-template-columns: 45% 45%;
+  grid-gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: auto;
+  box-sizing: border-box;
+  padding-bottom: 50px;
+  padding-top: 15px;
+
+  @media (max-width: 935px) {
+    display: grid;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    display: grid;
+    padding-bottom: 100px;
+  }
+
+  @media (max-width: 855px) {
+    grid-template-columns: 90%;
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: 100%;
+  }
+
+  @media (max-height: 1290px) {
+    height: 60vh;
+  }
+
+  @media (max-height: 1134px) {
+    height: 57vh;
+  }
+
+  @media (max-height: 1050px) {
+    height: 55vh;
+  }
+
+  @media (max-height: 990px) {
+    height: 50vh;
+  }
+
+  @media (max-height: 900px) {
+    height: 46vh;
+  }
+
+  @media (max-height: 790px) {
+    height: 40vh;
+  }
+
+  @media (max-height: 697px) {
+    height: 36vh;
+  }
+
+  @media (max-height: 650px) {
+    height: 32vh;
+  }
+`;
+
 export const GroupCard = styled.div`
   width: 70%;
   height: auto;
@@ -308,7 +393,6 @@ export const GroupCard = styled.div`
   grid-template-columns: 50% 50%;
   grid-gap: 60px;
   align-items: center;
-  overflow: auto;
 
   ${sizesForEachScreens(
     [2500, 1500, 1390, 1040, 935],
@@ -343,10 +427,8 @@ export const Card = styled.div`
 
   box-sizing: border-box;
 
-  @media (max-height: 740px) {
-    &:first-child {
-      display: none;
-    }
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    height: 220px;
   }
 
   ${sizesForEachScreens(
@@ -410,15 +492,15 @@ export const CompanyLogo = styled.div`
   background-repeat: no-repeat;
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 1200, 900, 850],
-    [100, 90, 80, 70, 60, 50, 40, 30],
+    [3200, 3000, 2500, 1930, 1500, 1200, 900, 850, 500],
+    [100, 90, 80, 70, 60, 50, 40, 30, 25],
     "width",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 1200, 900, 850],
-    [100, 90, 80, 70, 60, 50, 40, 30],
+    [3200, 3000, 2500, 1930, 1500, 1200, 900, 850, 500],
+    [100, 90, 80, 70, 60, 50, 40, 30, 25],
     "height",
     "px"
   )};
@@ -438,8 +520,8 @@ export const CompanyName = styled.h1`
   color: white;
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1500, 1200, 1000, 900],
-    [25, 20, 16, 14, 13, 12, 11],
+    [3200, 3000, 2500, 1500, 1200, 1000, 900, 500],
+    [25, 20, 16, 14, 13, 12, 11, 10],
     "font-size",
     "pt"
   )};
@@ -455,6 +537,10 @@ export const CompanyRateNumbers = styled.p`
   }
 
   ${NormalFontSize};
+
+  @media (max-width: 500px) {
+    font-size: 9pt;
+  }
 `;
 
 export const StarsRated = styled.div`
@@ -481,15 +567,15 @@ export const StarRate = styled.div`
   ${flexbox()};
 
   ${sizesForEachScreens(
-    [3200, 2500, 1930, 1500, 1080, 850],
-    [40, 30, 20, 18, 15, 13],
+    [3200, 2500, 1930, 1500, 1080, 850, 500],
+    [40, 30, 20, 18, 15, 13, 12],
     "width",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3200, 2500, 1930, 1500, 1080, 850],
-    [40, 30, 20, 18, 15, 13],
+    [3200, 2500, 1930, 1500, 1080, 850, 500],
+    [40, 30, 20, 18, 15, 13, 12],
     "height",
     "px"
   )};
@@ -497,7 +583,7 @@ export const StarRate = styled.div`
   svg {
     width: 100%;
     height: 100%;
-    fill: ${colorsApp.orange};
+    fill: ${({ isRated }) => (isRated ? `${colorsApp.orange}` : "gray")};
   }
 `;
 
@@ -510,11 +596,15 @@ export const DescriptionCard = styled.p`
   text-align: justify;
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 1370, 850],
-    [25, 22, 18, 14, 12, 11, 10],
+    [3200, 3000, 2500, 1930, 1500, 1370, 850, 500],
+    [25, 22, 18, 14, 12, 11, 10, 9],
     "font-size",
     "pt"
   )};
+
+  @media (max-width: 500px) {
+    text-align: justify;
+  }
 `;
 
 export const ButtonControl = styled.div`

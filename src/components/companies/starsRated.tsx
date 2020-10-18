@@ -9,8 +9,8 @@ export default function StarsRatedCompany({ stars }: IProps) {
   return (
     <StarsRated>
       {[1, 2, 3, 4, 5].map((value, index: number) => (
-        <StarRate key={index}>
-          <Star isRated={stars - index > 0} />
+        <StarRate key={index} isRated={stars - index > 0}>
+          <Star />
         </StarRate>
       ))}
     </StarsRated>
