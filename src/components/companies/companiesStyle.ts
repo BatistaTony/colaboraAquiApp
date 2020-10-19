@@ -817,6 +817,10 @@ export const ButtonCloseSuggestion = styled.button`
     margin: 30px;
   }
 
+  @media (max-width: 750px) {
+    margin: 20px;
+  }
+
   ${sizesForEachScreens([1930, 1500, 1370], [45, 30, 25], "width", "px")};
 
   ${sizesForEachScreens([1930, 1500, 1370], [45, 30, 25], "height", "px")};
