@@ -64,9 +64,13 @@ export const Modal = styled.div`
 
   ${sizesForEachScreens([1500, 1370], [500, 450], "height", "px")} 
   
+  @media (max-width: 750px) and (min-height: 620px) and (max-height: 850px) {
+    height: 100vh;
+    position: absolute;
+    bottom: 0;
+    justify-content: flex-end;
+  }
 
-  
-  
   @media (max-width: 900px) {
     ${flexbox()};
     height: auto;
@@ -85,6 +89,11 @@ export const Modal = styled.div`
 
       @media (max-width: 750px) {
         position: relative;
+      }
+
+      @media (max-width: 750px) and (min-height: 620px) and (max-height: 850px) {
+        position: absolute;
+        top: 0;
       }
     }
 
@@ -222,7 +231,7 @@ export const TextForm = styled.p`
 
   @media (max-width: 750px) {
     font-size: 12pt;
-    width: 80%;
+    width: 87%;
   }
 `;
 
@@ -266,7 +275,7 @@ export const DivGridForm = styled.div`
   }
 
   @media (max-width: 650px) {
-    width: 80%;
+    width: 87%;
   }
 `;
 
@@ -431,7 +440,7 @@ export const QuestionSignUp = styled.p`
   ${NormalFontSize()};
 
   @media (max-width: 750px) {
-    width: 80%;
+    width: 90%;
     margin-bottom: 10px;
     font-size: 11pt;
   }

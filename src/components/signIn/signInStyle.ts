@@ -18,7 +18,7 @@ export const OverlaySignIn = styled.div`
 
 export const ModalSignIn = styled(Modal)`
   grid-template-columns: 62% 37%;
-  box-shadow: 0 0 0.5px gray;
+  box-shadow: 0 0 0.5px rgba(0, 0, 0, 0.3);
 
   .btnBackSign {
     margin-right: 100px;
@@ -38,7 +38,7 @@ export const ModalSignIn = styled(Modal)`
   }
 
   .divForm_sign_p {
-    @media (max-width: 750px) {
+    @media (max-width: 600px) {
       height: 100vh;
       ${flexbox("column", "flex-end", "center")};
       padding-bottom: 2%;
@@ -82,6 +82,12 @@ export const ModalSignIn = styled(Modal)`
 
     .FormGroup {
       grid-column: 1/2;
+    }
+
+    .btnLOgin {
+      @media (max-width: 600px) {
+        margin-top: 50px;
+      }
     }
 
     .textForgetPassword {

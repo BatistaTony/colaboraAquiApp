@@ -84,16 +84,27 @@ export const BackGroundWithIllustration = styled.div`
       width: 100%;
       background-position: 100% -70%;
     }
+
+    @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+      bottom: -24%;
+    }
   }
 `;
 
-const pullPaddingLeft = () =>
-  sizesForEachScreens(
-    [1500, 1370, 1100, 970, 950, 900, 850],
-    [-6, -10, -15, -20, -23, -25, 0],
-    "margin-left",
-    "%"
-  );
+const pullPaddingLeft = () => `
+ ${sizesForEachScreens(
+   [1500, 1370, 1100, 970, 950, 900, 850],
+   [-6, -10, -15, -20, -23, -25, 0],
+   "margin-left",
+   "%"
+ )} 
+  
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    margin-left:0;
+  }
+  
+  
+  `;
 
 export const LogoHero = styled(Logo)`
   margin-top: 50px;
@@ -128,6 +139,10 @@ export const DivHero = styled.div`
   height: auto;
   position: relative;
   ${flexbox("column")};
+
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    margin-top: 20%;
+  }
 `;
 
 export const Text = styled.p`

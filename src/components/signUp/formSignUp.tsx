@@ -92,7 +92,7 @@ export default function FormSignUp() {
       >
         <SucessModal />
       </CSSTransition>
-     
+
       <ErrorMessage>{errorMsg}</ErrorMessage>
       <DivGridForm>
         <FormGroup isEmpty={errorIsOn === "userName"}>
@@ -129,9 +129,9 @@ export default function FormSignUp() {
         <InputPassword errorIsOn={errorIsOn} handleChange={handleChange} />
 
         <QuestionSignUp>
-          Já tens uma conta ? clique aqui para{" "}
+          Já tens uma conta ?
           <Link href="/signin">
-            <span>entrar</span>
+            <span>entrar agora</span>
           </Link>
         </QuestionSignUp>
 

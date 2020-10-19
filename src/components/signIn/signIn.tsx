@@ -106,7 +106,7 @@ export default function SignInConsumer() {
 
             <p className="textForgetPassword">Esqueci a senha </p>
 
-            <ButtonSignUp className="FormGroup" onClick={signInUser}>
+            <ButtonSignUp className="FormGroup btnLOgin" onClick={signInUser}>
               Entrar
             </ButtonSignUp>
 
