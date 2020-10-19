@@ -577,12 +577,19 @@ export const IllustrationMobile = styled.div`
   }
 
   @media (max-width: 600px) {
-    height: 90vh;
+    height: 60vh;
+  }
+
+  @media (max-height: 568px) {
+    height: 55vh;
   }
 
   img {
-    width: 17rem;
-    height: 100%;
+    width: 14rem;
+
+    @media (max-height: 575px) {
+      width: 10rem;
+    }
   }
 `;
 

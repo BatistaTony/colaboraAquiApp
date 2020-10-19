@@ -729,6 +729,10 @@ ${sizesForEachScreens(
       grid-column: 1/2;
       width: 100%;
       margin: 0;
+
+      @media (max-width: 600px) {
+        margin-bottom: 15px;
+      }
     }
 
     @media (max-width: 800px) {
@@ -738,6 +742,10 @@ ${sizesForEachScreens(
 
     @media (max-width: 700px) {
       width: 85%;
+    }
+
+    @media (max-width: 600px) {
+      grid-gap: 0px;
     }
   }
 `;
@@ -763,6 +771,11 @@ export const TextArea = styled.div`
   @media (max-width: 750px) {
     margin: 0;
     margin-top: -10px;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 10px;
+    margin-bottom: 15px;
   }
 
   textarea {
