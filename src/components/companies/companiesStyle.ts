@@ -682,7 +682,7 @@ export const ModalSuggestion = styled.div`
   padding-bottom: 100px;
 
   ${sizesForEachScreens(
-    [2300, 1980, 1500, 1000, 950, 850, 800],
+    [2300, 1980, 1500, 1200, 950, 850, 800],
     [55, 60, 40, 65, 70, 80, 100],
     "width",
     "%"
@@ -717,7 +717,7 @@ ${sizesForEachScreens(
     margin-bottom: 20px;
 
     @media (max-width: 800px) {
-      width: 70%;
+      width: 80%;
     }
   }
 
@@ -729,10 +729,6 @@ ${sizesForEachScreens(
       grid-column: 1/2;
       width: 100%;
       margin: 0;
-
-      @media (max-width: 750px) {
-        margin-bottom: 10px;
-      }
     }
 
     @media (max-width: 800px) {
@@ -742,7 +738,6 @@ ${sizesForEachScreens(
 
     @media (max-width: 700px) {
       width: 85%;
-      grid-gap: 15px;
     }
   }
 `;
@@ -765,7 +760,7 @@ export const TextArea = styled.div`
     color: ${colorsApp.soDark};
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 750px) {
     margin: 0;
     margin-top: -10px;
   }

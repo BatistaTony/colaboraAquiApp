@@ -123,8 +123,8 @@ export const LogoHero = styled(Logo)`
     width: 90rem;
 
     ${sizesForEachScreens(
-      [3200, 2700, 1920, 1700, 1500, 1330, 1000, 750],
-      [80, 70, 60, 50, 40, 35, 24, 20, 15],
+      [3200, 2700, 1920, 1700, 1500, 1330, 1000, 750, 325],
+      [80, 70, 60, 50, 40, 35, 24, 20, 15, 13],
       "width",
       "rem"
     )};
@@ -171,8 +171,8 @@ export const Text = styled.p`
   ${pullPaddingLeft};
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500, 1300, 450],
-    [40, 35, 28, 17, 14, 13],
+    [3200, 2500, 2000, 1500, 1300, 450, 325],
+    [40, 35, 28, 17, 14, 13, 12],
     "font-size",
     "pt"
   )};
@@ -188,6 +188,10 @@ export const ListStep = styled.ul`
     width: 80%;
   }
 
+  @media (max-width: 325px) {
+    flex-direction: column;
+  }
+
   ${pullPaddingLeft};
 `;
 
@@ -195,6 +199,12 @@ export const Step = styled.li`
   width: auto;
   ${flexbox("row", "flex-start", "center")};
   margin-left: 50px;
+
+  @media (max-width: 325px) {
+    margin-bottom: 10px;
+    width: 100px;
+    justify-content: flex-start;
+  }
 
   ${sizesForEachScreens(
     [2500, 2000, 1500, 1000, 750],
@@ -295,6 +305,10 @@ export const ButtonStartRate = styled.button`
   ${flexbox()};
 
   ${pullPaddingLeft};
+
+  @media (max-width: 325px) {
+    margin-top: -40px;
+  }
 
   ${sizesForEachScreens([3200, 2700, 2200], [55, 45, 35], "height", "px")};
 
