@@ -270,7 +270,7 @@ export const StepNumber = styled.div`
     ${getFont("ExtraBold")};
 
     ${sizesForEachScreens(
-      [3200, 2500, 2000, 1500, 750, 450],
+      [3200, 2500, 2000, 1500, 750, 600],
       [20, 22, 18, 12, 12, 10],
       "font-size",
       "pt"

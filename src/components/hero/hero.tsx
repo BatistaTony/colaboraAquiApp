@@ -33,7 +33,7 @@ export default function Hero() {
     if (isLogged) {
       Route.push("/companies");
     } else {
-      toggleSignUp();
+      setShowSignUp(!showSignUp);
     }
   };
 
@@ -72,7 +72,7 @@ export default function Hero() {
           ))}
         </ListStep>
 
-        <ButtonStartRate id="btn_hero" onClick={startRate}>
+        <ButtonStartRate onClick={startRate}>
           Começar a avaliar <img src="/images/start.png" alt="" />{" "}
         </ButtonStartRate>
       </DivHero>

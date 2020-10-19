@@ -64,7 +64,7 @@ export const Modal = styled.div`
 
   ${sizesForEachScreens([1500, 1370], [500, 450], "height", "px")} 
   
-  @media (max-width: 750px) and (min-height: 620px) and (max-height: 850px) {
+  @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
     height: 100vh;
     position: absolute;
     bottom: 0;
@@ -91,7 +91,7 @@ export const Modal = styled.div`
         position: relative;
       }
 
-      @media (max-width: 750px) and (min-height: 620px) and (max-height: 850px) {
+      @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
         position: absolute;
         top: 0;
       }
