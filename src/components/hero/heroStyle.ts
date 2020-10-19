@@ -73,6 +73,7 @@ export const BackGroundWithIllustration = styled.div`
     width: 60%;
     height: 100%;
     background: url(/images/caminho.svg);
+    background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: right;
     position: absolute;
@@ -80,9 +81,19 @@ export const BackGroundWithIllustration = styled.div`
     bottom: -5%;
 
     @media (max-width: 850px) {
+      height: 100vh;
       bottom: -15%;
       width: 100%;
-      background-position: 100% -70%;
+      background-position: bottom;
+      background-size: 100% 80%;
+    }
+
+    @media (max-width: 380px) and (max-height: 850px) {
+      bottom: -20%;
+    }
+
+    @media (max-width: 1617px) and (max-height: 1392px) {
+      bottom: -25%;
     }
 
     @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {

@@ -171,7 +171,7 @@ function Companies() {
               <mark>Pesquise</mark> por empresas ou orgãos.
             </span>
             <span>
-              <mark>Escolhe</mark> a que deseja avaliar.
+              <mark>Escolhe</mark> a que desejas avaliar.
             </span>
             <span>
               <mark>Avalie</mark> e sugira melhorias !

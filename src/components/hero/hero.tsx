@@ -59,7 +59,7 @@ export default function Hero() {
         </LogoHero>
         <Text>
           Uma plataforma Web que te permite avaliar os serviços prestados pelos
-          orgão e empresas nacionais
+          órgãos e empresas nacionais
         </Text>
         <ListStep>
           {StepsHero.map((value, index) => (
