@@ -73,8 +73,8 @@ export const TextCompanies = styled.p`
   )};
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500, 1300, 900, 750, 550],
-    [40, 35, 28, 17, 14, 13, 12, 11],
+    [3200, 2500, 2000, 1500, 1300, 900, 750],
+    [40, 35, 28, 17, 14, 13, 12],
     "font-size",
     "pt"
   )};
@@ -729,11 +729,20 @@ ${sizesForEachScreens(
       grid-column: 1/2;
       width: 100%;
       margin: 0;
+
+      @media (max-width: 750px) {
+        margin-bottom: 10px;
+      }
     }
 
     @media (max-width: 800px) {
-      width: 70%;
-      grid-gap: 10px;
+      width: 75%;
+      grid-gap: 15px;
+    }
+
+    @media (max-width: 700px) {
+      width: 85%;
+      grid-gap: 15px;
     }
   }
 `;

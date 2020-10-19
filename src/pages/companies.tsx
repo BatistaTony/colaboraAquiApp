@@ -78,7 +78,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 450,
-      companyName: "Canadando",
+      companyName: "Zap",
       companyLogo: "/images/unite.png",
       companyStars: 4,
       companyDescription:
@@ -88,7 +88,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 450,
-      companyName: "Unitel",
+      companyName: "tvCAbo",
       companyLogo: "/images/unite.png",
       companyStars: 4,
       companyDescription:
@@ -108,7 +108,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 450,
-      companyName: "ENDE",
+      companyName: "MINSA",
       companyLogo: "/images/unite.png",
       companyStars: 4,
       companyDescription:
@@ -118,7 +118,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 450,
-      companyName: "KEro",
+      companyName: "MAxi",
       companyLogo: "/images/unite.png",
       companyStars: 4,
       companyDescription:

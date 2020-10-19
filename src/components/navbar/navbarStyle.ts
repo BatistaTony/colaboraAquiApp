@@ -237,7 +237,7 @@ export const MenuUser = styled.ul`
 
   @media (max-width: 1500px) {
     top: 40px;
-    width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "200px")};
+    width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "160px")};
   }
 
   @media (max-width: 750px) {
@@ -331,7 +331,7 @@ export const ButtonMobile = styled.div`
 
     &:nth-child(1) {
       transform: ${({ openMenu }) =>
-        openMenu ? " rotate(40deg) translate(3px, 2.5px)" : null};
+        openMenu ? " rotate(40deg) translate(3px,2px)" : null};
     }
 
     &:nth-child(2) {
@@ -340,7 +340,7 @@ export const ButtonMobile = styled.div`
 
     &:nth-child(3) {
       transform: ${({ openMenu }) =>
-        openMenu ? " rotate(-40deg) translate(3px, -3px)" : null};
+        openMenu ? " rotate(-40deg) translate(3px, -2.5px)" : null};
     }
   }
 `;

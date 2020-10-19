@@ -226,6 +226,7 @@ export const StepNumber = styled.div`
     borderColor ? `8px solid ${borderColor}` : "8px solid gray"};
   ${flexbox()};
   margin-right: 20px;
+  box-sizing: border-box;
 
   @media (max-width: 3200px) {
     width: 60px;

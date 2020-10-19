@@ -221,6 +221,10 @@ export const TextForm = styled.p`
 
   ${NormalFontSize()};
 
+  @media (max-width: 1500px) {
+    width: 84%;
+  }
+
   @media (max-width: 1190px) {
     width: 90%;
   }
@@ -248,7 +252,7 @@ export const DivGridForm = styled.div`
   }
 
   @media (max-width: 750px) {
-    grid-gap: 10px;
+    grid-gap: 15px;
   }
 
   ${sizesForEachScreens([1930, 1500], [20, 15], "grid-gap", "px")}
@@ -302,6 +306,10 @@ export const FormGroup = styled.div`
 
   @media (max-width: 750px) {
     height: 45px;
+  }
+
+  @media (max-width: 750px) {
+    margin-bottom: 10px;
   }
 
   button {
@@ -566,6 +574,10 @@ export const IllustrationMobile = styled.div`
 
   @media (max-height: 570px) {
     height: 70vh;
+  }
+
+  @media (max-width: 600px) {
+    height: 90vh;
   }
 
   img {

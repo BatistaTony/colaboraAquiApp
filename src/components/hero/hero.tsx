@@ -71,7 +71,8 @@ export default function Hero() {
             </Step>
           ))}
         </ListStep>
-        <ButtonStartRate onClick={startRate}>
+
+        <ButtonStartRate id="btn_hero" onClick={startRate}>
           Começar a avaliar <img src="/images/start.png" alt="" />{" "}
         </ButtonStartRate>
       </DivHero>
