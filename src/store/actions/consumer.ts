@@ -1,10 +1,17 @@
 import { IConsumer } from "../../../types";
 
-export const consumerSignUp = "SING_UP";
+export const CONSUMER_SIGNUP = "CONSUMER_SIGNUP";
+export const CONSUMER_SIGNOUT = "CONSUMER_SIGNOUT";
 
-export const addConsumer = (payload: IConsumer) => {
+export const registerConsumer = (payload: IConsumer) => {
   return {
-    type: consumerSignUp,
+    type: CONSUMER_SIGNUP,
     payload,
+  };
+};
+
+export const signOutConsumer = () => {
+  return {
+    type: CONSUMER_SIGNOUT,
   };
 };

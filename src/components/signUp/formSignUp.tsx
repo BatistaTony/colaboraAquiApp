@@ -18,7 +18,7 @@ import { translateProperty } from "../utils";
 import Link from "next/link";
 import { counties, provinces } from "./signUp.data";
 import { useDispatch, useSelector } from "react-redux";
-import { addConsumer } from "../../store/actions/consumer";
+import { registerConsumer } from "../../store/actions/consumer";
 
 const initialState: IConsumer = {
   userName: "",
@@ -81,8 +81,7 @@ export default function FormSignUp() {
 
   const signUpUser = (): void => {
     if (!checkError()) {
-      dispatch(addConsumer(consumerData));
-
+      dispatch(registerConsumer(consumerData));
       setShowModalSucess(!showModalSucess);
     }
   };
