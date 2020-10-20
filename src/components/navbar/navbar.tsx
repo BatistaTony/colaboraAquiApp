@@ -44,8 +44,8 @@ export default function Navbar(props: any) {
 
       <Menu>
         {menu.map((value, index) => (
-          <Link href={value.link}>
-            <ItemMenu key={index} active={props.title === value.title}>
+          <Link key={index} href={value.link}>
+            <ItemMenu active={props.title === value.title}>
               {value.page}
             </ItemMenu>
           </Link>
@@ -83,8 +83,8 @@ export default function Navbar(props: any) {
           <div className="container">
             <Menu mobile={true}>
               {menu.map((value, index) => (
-                <Link href={value.link}>
-                  <ItemMenu key={index} active={props.title === value.title}>
+                <Link key={index} href={value.link}>
+                  <ItemMenu active={props.title === value.title}>
                     {value.page}
                   </ItemMenu>
                 </Link>

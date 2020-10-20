@@ -33,7 +33,7 @@ export default function Hero() {
     if (isLogged) {
       Route.push("/companies");
     } else {
-      toggleSignUp();
+      setShowSignUp(!showSignUp);
     }
   };
 
@@ -59,7 +59,7 @@ export default function Hero() {
         </LogoHero>
         <Text>
           Uma plataforma Web que te permite avaliar os serviços prestados pelos
-          orgão e empresas nacionais
+          órgãos e empresas nacionais
         </Text>
         <ListStep>
           {StepsHero.map((value, index) => (
@@ -71,6 +71,7 @@ export default function Hero() {
             </Step>
           ))}
         </ListStep>
+
         <ButtonStartRate onClick={startRate}>
           Começar a avaliar <img src="/images/start.png" alt="" />{" "}
         </ButtonStartRate>

@@ -1,4 +1,5 @@
 import { IConsumer } from "../../../types";
+import { CONSUMER_SIGNUP, CONSUMER_SIGNOUT } from "../actions/consumer";
 
 const initialState: IConsumer = {
   ageRange: "",
@@ -10,6 +11,7 @@ const initialState: IConsumer = {
 
 interface IAction {
   type: string;
+  payload: IConsumer | any;
 }
 
 export default function Consumer(
@@ -17,8 +19,12 @@ export default function Consumer(
   action: IAction
 ) {
   switch (action.type) {
-    case "": {
-      break;
+    case CONSUMER_SIGNUP: {
+      return action.payload;
+    }
+
+    case CONSUMER_SIGNOUT: {
+      return initialState;
     }
 
     default: {

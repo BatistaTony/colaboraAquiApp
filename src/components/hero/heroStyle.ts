@@ -48,6 +48,11 @@ export const BackGroundWithIllustration = styled.div`
 
   grid-template-rows: 100%;
 
+  @media (max-width: 850px) {
+    height: 100vh;
+    grid-template-columns: 100%;
+  }
+
   .illustration1_e {
     width: 40%;
     height: 100%;
@@ -58,12 +63,17 @@ export const BackGroundWithIllustration = styled.div`
     left: 0;
 
     bottom: -3%;
+
+    @media (max-width: 850px) {
+      display: none;
+    }
   }
 
   .illustration2_e {
     width: 60%;
     height: 100%;
     background: url(/images/caminho.svg);
+    background-repeat: no-repeat;
     background-size: 100% 100%;
     background-position: right;
     position: absolute;
@@ -71,18 +81,41 @@ export const BackGroundWithIllustration = styled.div`
     bottom: -5%;
 
     @media (max-width: 850px) {
-      display: none;
+      height: 100vh;
+      bottom: -15%;
+      width: 100%;
+      background-position: bottom;
+      background-size: 100% 80%;
+    }
+
+    @media (max-width: 380px) and (max-height: 850px) {
+      bottom: -20%;
+    }
+
+    @media (max-width: 1617px) and (max-height: 1392px) {
+      bottom: -25%;
+    }
+
+    @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+      bottom: -24%;
     }
   }
 `;
 
-const pullPaddingLeft = () =>
-  sizesForEachScreens(
-    [1500, 1370, 1100, 970, 950, 900, 850],
-    [-6, -10, -15, -20, -23, -25, 0],
-    "margin-left",
-    "%"
-  );
+const pullPaddingLeft = () => `
+ ${sizesForEachScreens(
+   [1500, 1370, 1100, 970, 950, 900, 850],
+   [-6, -10, -15, -20, -23, -25, 0],
+   "margin-left",
+   "%"
+ )} 
+  
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    margin-left:0;
+  }
+  
+  
+  `;
 
 export const LogoHero = styled(Logo)`
   margin-top: 50px;
@@ -90,8 +123,8 @@ export const LogoHero = styled(Logo)`
     width: 90rem;
 
     ${sizesForEachScreens(
-      [3200, 2700, 1920, 1700, 1500, 1330, 1000, 750],
-      [80, 70, 60, 50, 40, 35, 24, 20, 15],
+      [3200, 2700, 1920, 1700, 1500, 1330, 1000, 750, 325],
+      [80, 70, 60, 50, 40, 35, 24, 20, 15, 13],
       "width",
       "rem"
     )};
@@ -117,6 +150,10 @@ export const DivHero = styled.div`
   height: auto;
   position: relative;
   ${flexbox("column")};
+
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    margin-top: 20%;
+  }
 `;
 
 export const Text = styled.p`
@@ -134,8 +171,8 @@ export const Text = styled.p`
   ${pullPaddingLeft};
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500, 1300, 450],
-    [40, 35, 28, 17, 14, 13],
+    [3200, 2500, 2000, 1500, 1300, 450, 325],
+    [40, 35, 28, 17, 14, 13, 12],
     "font-size",
     "pt"
   )};
@@ -151,6 +188,10 @@ export const ListStep = styled.ul`
     width: 80%;
   }
 
+  @media (max-width: 325px) {
+    flex-direction: column;
+  }
+
   ${pullPaddingLeft};
 `;
 
@@ -158,6 +199,12 @@ export const Step = styled.li`
   width: auto;
   ${flexbox("row", "flex-start", "center")};
   margin-left: 50px;
+
+  @media (max-width: 325px) {
+    margin-bottom: 10px;
+    width: 100px;
+    justify-content: flex-start;
+  }
 
   ${sizesForEachScreens(
     [2500, 2000, 1500, 1000, 750],
@@ -189,6 +236,7 @@ export const StepNumber = styled.div`
     borderColor ? `8px solid ${borderColor}` : "8px solid gray"};
   ${flexbox()};
   margin-right: 20px;
+  box-sizing: border-box;
 
   @media (max-width: 3200px) {
     width: 60px;
@@ -232,7 +280,7 @@ export const StepNumber = styled.div`
     ${getFont("ExtraBold")};
 
     ${sizesForEachScreens(
-      [3200, 2500, 2000, 1500, 750, 450],
+      [3200, 2500, 2000, 1500, 750, 600],
       [20, 22, 18, 12, 12, 10],
       "font-size",
       "pt"
@@ -257,6 +305,10 @@ export const ButtonStartRate = styled.button`
   ${flexbox()};
 
   ${pullPaddingLeft};
+
+  @media (max-width: 325px) {
+    margin-top: -40px;
+  }
 
   ${sizesForEachScreens([3200, 2700, 2200], [55, 45, 35], "height", "px")};
 

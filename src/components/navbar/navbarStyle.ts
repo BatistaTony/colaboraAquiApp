@@ -77,6 +77,10 @@ export const Logo = styled.div`
   height: auto;
   transition: 0.5s;
 
+  @media (max-width: 700px) {
+    margin-top: 10px;
+  }
+
   img {
     width: 40rem;
 
@@ -233,7 +237,7 @@ export const MenuUser = styled.ul`
 
   @media (max-width: 1500px) {
     top: 40px;
-    width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "200px")};
+    width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "160px")};
   }
 
   @media (max-width: 750px) {
@@ -285,6 +289,10 @@ export const MenuUser = styled.ul`
 
     &:hover {
       background: rgba(0, 0, 0, 0.1);
+
+      @media (max-width: 750px) {
+        background-color: transparent;
+      }
     }
 
     img {
@@ -310,23 +318,24 @@ export const ButtonMobile = styled.div`
   ${flexbox("column")};
   border-radius: 100%;
   border: 2px solid ${colorsApp.soDark};
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   box-sizing: border-box;
   padding-top: 3px;
   z-index: 3;
+  padding-right: ${({ openMenu }) => (openMenu ? "1px" : 0)};
 
   .line {
-    width: 17px;
+    width: 15px;
     border-radius: 25px;
-    height: 2px;
+    height: 1.7px;
     background-color: ${colorsApp.soDark};
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     transition: 0.5s;
 
     &:nth-child(1) {
       transform: ${({ openMenu }) =>
-        openMenu ? " rotate(40deg) translate(2.5px, 3px)" : null};
+        openMenu ? " rotate(40deg) translate(3px,2px)" : null};
     }
 
     &:nth-child(2) {
@@ -335,7 +344,7 @@ export const ButtonMobile = styled.div`
 
     &:nth-child(3) {
       transform: ${({ openMenu }) =>
-        openMenu ? " rotate(-40deg) translate(4px, -5px)" : null};
+        openMenu ? " rotate(-40deg) translate(3px, -2.5px)" : null};
     }
   }
 `;

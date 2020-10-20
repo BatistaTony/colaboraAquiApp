@@ -3,10 +3,17 @@ import { CSSTransition } from "react-transition-group";
 import { DivUser, UserName, MenuUser } from "./navbarStyle";
 import { useSelector } from "react-redux";
 import { IConsumer } from "../../../types";
+import { useDispatch } from "react-redux";
+import { signOutConsumer } from "./.././../store/actions/consumer";
 
 export default function UserMenu() {
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
   const [menuUser, setMEnuUser] = useState<boolean>(false);
+  const dispatch = useDispatch();
+
+  const signOut = () => {
+    dispatch(signOutConsumer());
+  };
 
   return (
     <DivUser>
@@ -38,7 +45,7 @@ export default function UserMenu() {
           <li>
             <img src="/images/profile.png" alt="" /> Meu perfil
           </li>
-          <li>
+          <li onClick={signOut}>
             <img src="/images/logout.png" alt="" /> Sair
           </li>
         </MenuUser>

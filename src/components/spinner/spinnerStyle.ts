@@ -21,8 +21,8 @@ export const SpinnerSpinning = styled.div`
     width: 40px;
     height: 40px;
 
-    animation-name: ${SpinninerAnimation};
-    animation-duration: 0.6s;
+    animation: ${SpinninerAnimation} linear;
+    animation-duration: 0.5s;
     animation-iteration-count: infinite;
   }
 `;

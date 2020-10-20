@@ -64,9 +64,13 @@ export const Modal = styled.div`
 
   ${sizesForEachScreens([1500, 1370], [500, 450], "height", "px")} 
   
+  @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
+    height: 100vh;
+    position: absolute;
+    bottom: 0;
+    justify-content: flex-end;
+  }
 
-  
-  
   @media (max-width: 900px) {
     ${flexbox()};
     height: auto;
@@ -76,7 +80,7 @@ export const Modal = styled.div`
     .divBtnBackT {
       width: 100%;
       ${flexbox("row", "flex-start", "center")};
-      padding-top: 20px;
+      padding-top: 15px;
       box-sizing: border-box;
       padding-left: 5%;
       position: fixed;
@@ -85,6 +89,11 @@ export const Modal = styled.div`
 
       @media (max-width: 750px) {
         position: relative;
+      }
+
+      @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
+        position: absolute;
+        top: 0;
       }
     }
 
@@ -212,6 +221,10 @@ export const TextForm = styled.p`
 
   ${NormalFontSize()};
 
+  @media (max-width: 1500px) {
+    width: 84%;
+  }
+
   @media (max-width: 1190px) {
     width: 90%;
   }
@@ -222,7 +235,7 @@ export const TextForm = styled.p`
 
   @media (max-width: 750px) {
     font-size: 12pt;
-    width: 80%;
+    width: 87%;
   }
 `;
 
@@ -235,6 +248,10 @@ export const DivGridForm = styled.div`
   grid-gap: 30px;
 
   @media (max-height: 670px) {
+    grid-gap: 10px;
+  }
+
+  @media (max-width: 750px) {
     grid-gap: 15px;
   }
 
@@ -262,7 +279,7 @@ export const DivGridForm = styled.div`
   }
 
   @media (max-width: 650px) {
-    width: 80%;
+    width: 87%;
   }
 `;
 
@@ -289,7 +306,10 @@ export const FormGroup = styled.div`
 
   @media (max-width: 750px) {
     height: 45px;
-    margin-bottom: 13px;
+  }
+
+  @media (max-width: 750px) {
+    margin-bottom: 10px;
   }
 
   button {
@@ -428,7 +448,7 @@ export const QuestionSignUp = styled.p`
   ${NormalFontSize()};
 
   @media (max-width: 750px) {
-    width: 80%;
+    width: 90%;
     margin-bottom: 10px;
     font-size: 11pt;
   }
@@ -556,9 +576,20 @@ export const IllustrationMobile = styled.div`
     height: 70vh;
   }
 
+  @media (max-width: 600px) {
+    height: 60vh;
+  }
+
+  @media (max-height: 568px) {
+    height: 55vh;
+  }
+
   img {
-    width: 17rem;
-    height: 100%;
+    width: 14rem;
+
+    @media (max-height: 575px) {
+      width: 10rem;
+    }
   }
 `;
 
@@ -588,7 +619,7 @@ export const ButtonSucess = styled(ButtonLogin)`
   border-radius: 7px;
 
   @media (max-width: 600px) {
-    position: absolute;
+    position: fixed;
     bottom: 5%;
   }
 
