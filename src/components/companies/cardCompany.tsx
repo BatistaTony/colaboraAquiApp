@@ -5,7 +5,6 @@ import {
   CompanyName,
   CompanyRateNumbers,
   DescriptionCard,
-  StarsRated,
 } from "./companiesStyle";
 import StarsRatedCompany from "./starsRated";
 import { motion } from "framer-motion";
@@ -13,10 +12,9 @@ import { useEffect } from "react";
 
 interface IProps {
   data: ICompany;
-  key: number;
 }
 
-export default function CardCompany({ data, key }: IProps) {
+export default function CardCompany({ data }: IProps) {
   const {
     companyDescription,
     companyLogo,
@@ -27,13 +25,13 @@ export default function CardCompany({ data, key }: IProps) {
   } = data;
 
   const variants = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 },
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: -200 },
   };
 
   useEffect(() => {
     console.log("Change");
-  }, [companyName]);
+  }, [data]);
 
   return (
     <motion.div initial="hidden" animate="visible" variants={variants}>

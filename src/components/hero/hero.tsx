@@ -17,6 +17,7 @@ import { useSelector } from "react-redux";
 import { IConsumer } from "../../../types";
 import SignUpConsumer from "../signUp/signUp";
 import { StepsHero } from "./hero.data";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Hero() {
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
@@ -33,14 +34,25 @@ export default function Hero() {
     if (isLogged) {
       Route.push("/companies");
     } else {
-      setShowSignUp(!showSignUp);
+      toggleSignUp();
     }
   };
 
+  const animateStep = [
+    { y: 20, transition: 0.2 },
+    { y: 20, transition: 0.3 },
+    { y: 20, transition: 0.5 },
+  ];
+
   return (
     <HeroStyle showSignUp={showSignUp}>
-      <BackGroundWithIllustration>
+      <BackGroundWithIllustration
+        initial={{ opacity: 1, y: -1000 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0 }}
+      >
         <div className="illustration1_e"></div>
+
         <div className="illustration2_e"></div>
       </BackGroundWithIllustration>
       <CSSTransition
@@ -59,11 +71,15 @@ export default function Hero() {
         </LogoHero>
         <Text>
           Uma plataforma Web que te permite avaliar os serviços prestados pelos
-          órgãos e empresas nacionais
+          orgão e empresas nacionais
         </Text>
         <ListStep>
           {StepsHero.map((value, index) => (
-            <Step>
+            <Step
+              initial={{ opacity: 1, y: animateStep[index].y }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: animateStep[index].transition }}
+            >
               <StepNumber borderColor={value.borderColor}>
                 <h1>{index + 1}</h1>
               </StepNumber>
@@ -71,12 +87,19 @@ export default function Hero() {
             </Step>
           ))}
         </ListStep>
-
-        <ButtonStartRate onClick={startRate}>
+        <ButtonStartRate
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={startRate}
+        >
           Começar a avaliar <img src="/images/start.png" alt="" />{" "}
         </ButtonStartRate>
       </DivHero>
-      <IllustrationRating>
+      <IllustrationRating
+        initial={{ opacity: 1, x: -1000 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -200 }}
+      >
         <img src="/images/OnlineReview-rafiki.png" alt="" />
       </IllustrationRating>
     </HeroStyle>

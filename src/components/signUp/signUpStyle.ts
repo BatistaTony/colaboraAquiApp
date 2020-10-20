@@ -7,6 +7,7 @@ import {
   NormalFontSize,
 } from "../layout/layoutStyle";
 import { ButtonLogin } from "../navbar/navbarStyle";
+import { motion } from "framer-motion";
 
 export const OverlaySignUp = styled.div`
   width: 100%;
@@ -43,7 +44,7 @@ export const OverlaySignUp = styled.div`
   }
 `;
 
-export const Modal = styled.div`
+export const Modal = styled(motion.div)`
   width: 60%;
   height: 70vh;
   border-radius: 15px;

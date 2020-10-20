@@ -73,7 +73,11 @@ export default function SignInConsumer() {
   return (
     <OverlaySignIn>
       <IllustrationObjectSignIn />
-      <ModalSignIn>
+      <ModalSignIn
+        initial={{ opacity: 0, y: 200 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ y: 300, opacity: 0 }}
+      >
         <DivForm className="divForm_sign_p">
           <div className="divBtnBackT">
             <ButtonBack classNames="mobileBtn" onChange={backToHome} />

@@ -13,7 +13,11 @@ export default function SucessModal() {
   return (
     <OverlaySignUp>
       <div className="wrp_div_vdg">
-        <ModalSucess>
+        <ModalSucess
+          initial={{ opacity: 0, y: -500 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ y: -500, opacity: 0 }}
+        >
           <ModalIllustration
             className="illustration1"
             img={"/images/signup.png"}

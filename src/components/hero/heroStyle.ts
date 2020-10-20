@@ -6,6 +6,7 @@ import {
   sizesForEachScreens,
 } from "../layout/layoutStyle";
 import { Logo } from "../navbar/navbarStyle";
+import { motion } from "framer-motion";
 
 export const HeroStyle = styled.div`
   width: 100%;
@@ -35,7 +36,7 @@ export const HeroStyle = styled.div`
   }
 `;
 
-export const BackGroundWithIllustration = styled.div`
+export const BackGroundWithIllustration = styled(motion.div)`
   width: 100%;
   height: 110vh;
   position: fixed;
@@ -61,6 +62,7 @@ export const BackGroundWithIllustration = styled.div`
     background-position: left;
     position: absolute;
     left: 0;
+    transition: 0.5s;
 
     bottom: -3%;
 
@@ -79,6 +81,7 @@ export const BackGroundWithIllustration = styled.div`
     position: absolute;
     right: -10%;
     bottom: -5%;
+    transition: 0.5s;
 
     @media (max-width: 850px) {
       height: 100vh;
@@ -195,7 +198,7 @@ export const ListStep = styled.ul`
   ${pullPaddingLeft};
 `;
 
-export const Step = styled.li`
+export const Step = styled(motion.li)`
   width: auto;
   ${flexbox("row", "flex-start", "center")};
   margin-left: 50px;
@@ -288,7 +291,7 @@ export const StepNumber = styled.div`
   }
 `;
 
-export const ButtonStartRate = styled.button`
+export const ButtonStartRate = styled(motion.button)`
   background: ${colorsApp.orange};
   ${getFont("Medium")};
   height: 50px;
@@ -362,12 +365,11 @@ export const ButtonStartRate = styled.button`
   ${sizesForEachScreens([1500, 750], [50, 70], "margin-top", "px")};
 `;
 
-export const IllustrationRating = styled.div`
+export const IllustrationRating = styled(motion.div)`
   position: absolute;
   width: auto;
   right: 0;
   bottom: 5%;
-  transition: 0.5s;
 
   @media (max-width: 850px) {
     display: none;

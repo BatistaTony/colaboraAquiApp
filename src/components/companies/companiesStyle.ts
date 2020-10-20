@@ -7,6 +7,7 @@ import {
   NormalFontSize,
 } from "../layout/layoutStyle";
 import { ButtonSignUp } from "../signUp/signUpStyle";
+import { motion } from "framer-motion";
 
 export const ContentCompanies = styled.div`
   width: 100%;
@@ -669,7 +670,7 @@ export const OverlaySuggestion = styled.div`
   }
 `;
 
-export const ModalSuggestion = styled.div`
+export const ModalSuggestion = styled(motion.div)`
   width: 45%;
   height: auto;
   border-radius: 10px;
