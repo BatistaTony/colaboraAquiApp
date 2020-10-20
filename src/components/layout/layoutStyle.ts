@@ -112,11 +112,7 @@ export const flexbox = (
   justify: string = "center",
   align: string = "center"
 ) => `
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
+  
     display: -webkit-flex;
     display: flex;
     -webkit-flex-direction:${direction};
