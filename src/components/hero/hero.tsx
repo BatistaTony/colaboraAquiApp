@@ -39,9 +39,9 @@ export default function Hero() {
   };
 
   const animateStep = [
-    { y: 20, transition: 0.2 },
-    { y: 20, transition: 0.3 },
-    { y: 20, transition: 0.5 },
+    { y: 20, transition: 0.2, delay: 0.1 },
+    { y: 20, transition: 0.3, delay: 0.3 },
+    { y: 20, transition: 0.5, delay: 0.4 },
   ];
 
   return (
@@ -78,7 +78,7 @@ export default function Hero() {
             <Step
               initial={{ opacity: 1, y: animateStep[index].y }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: animateStep[index].transition }}
+              transition={{ ...animateStep[index] }}
             >
               <StepNumber borderColor={value.borderColor}>
                 <h1>{index + 1}</h1>
@@ -96,9 +96,9 @@ export default function Hero() {
         </ButtonStartRate>
       </DivHero>
       <IllustrationRating
-        initial={{ opacity: 1, x: -1000 }}
+        initial={{ opacity: 1, x: 1000 }}
         animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -200 }}
+        exit={{ opacity: 0, x: 1000 }}
       >
         <img src="/images/OnlineReview-rafiki.png" alt="" />
       </IllustrationRating>

@@ -205,6 +205,7 @@ export const DivUser = styled.div`
 
   @media (min-width: 750px) {
     width: 100%;
+    margin-left: 0;
   }
 
   ${sizesForEachScreens([3000, 2500, 1930], [20, 15, 10], "margin-left", "px")};
@@ -245,6 +246,7 @@ export const MenuUser = styled.ul`
     top: 0;
     width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "100%")};
     box-shadow: 0 0 0px;
+    display: block;
   }
 
   li {
@@ -259,8 +261,8 @@ export const MenuUser = styled.ul`
     transition: 0.5s;
 
     ${sizesForEachScreens(
-      [3200, 2500, 1930, 1500],
-      [18, 16, 13, 12, 11],
+      [3200, 2500, 1930, 1500, 750],
+      [18, 16, 13, 12, 11, 10],
       "font-size",
       "pt"
     )};
@@ -275,8 +277,11 @@ export const MenuUser = styled.ul`
     }
 
     @media (max-width: 750px) {
-      padding: 5px;
+      padding: 0;
       border: none;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      ${flexbox("row", "center", "center")};
     }
 
     &:nth-child(1) {
@@ -305,6 +310,7 @@ export const MenuUser = styled.ul`
 
       @media (max-width: 750px) {
         margin-right: 7px;
+        display: none;
       }
     }
   }
