@@ -18,7 +18,7 @@ export const OverlaySignIn = styled.div`
 
 export const ModalSignIn = styled(Modal)`
   grid-template-columns: 62% 37%;
-  box-shadow: 0 0 0.5px gray;
+  box-shadow: 0 0 0.5px rgba(0, 0, 0, 0.3);
 
   .btnBackSign {
     margin-right: 100px;
@@ -31,22 +31,72 @@ export const ModalSignIn = styled(Modal)`
     )};
   }
 
+  @media (max-width: 750px) {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .divForm_sign_p {
+    @media (max-width: 600px) {
+      height: 100vh;
+      ${flexbox("column", "flex-end", "center")};
+      padding-bottom: 2%;
+      box-sizing: border-box;
+
+      .divBtnBackT {
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    border: 0;
+    box-shadow: 0 0 0px;
+  }
+
+  @media (max-width: 750px) {
+    align-items: flex-end;
+  }
+
   .grid-form-sign {
     grid-template-columns: 100%;
     margin-top: 20px;
     grid-gap: 15px;
     justify-content: center;
+    grid-template-rows: repeat(2, 100px) auto auto;
+
+    ${sizesForEachScreens(
+      [3200, 2500, 1930, 1500, 1370],
+      [
+        "repeat(2, 90px) auto auto",
+        "repeat(2, 70px) auto auto",
+        "repeat(2, 60px) auto auto",
+        "repeat(2, 45px) auto auto",
+        "repeat(2, 40px) auto auto",
+      ],
+      "grid-template-rows",
+      ""
+    )}
 
     .FormGroup {
       grid-column: 1/2;
     }
 
+    .btnLOgin {
+      @media (max-width: 600px) {
+        margin-top: 50px;
+      }
+    }
+
     .textForgetPassword {
       color: ${colorsApp.orange};
       font-size: 27pt;
-      ${flexbox("row", "flex-start", "flex-end")};
+      ${flexbox("row", "flex-start", "center")};
       ${getFont()};
       cursor: default;
+
       width: 100%;
       text-align: left;
       ${sizesForEachScreens(
@@ -77,11 +127,6 @@ export const ModalSignIn = styled(Modal)`
   }
 `;
 
-export const DivForm = styled.div`
-  width: 100%;
-  background-color: red;
-`;
-
 export const IllustrationObjectSignIn = styled.div`
   width: 60%;
   height: 90%;
@@ -94,4 +139,8 @@ export const IllustrationObjectSignIn = styled.div`
   left: -5%;
   transform: rotate(4deg);
   z-index: -1;
+
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;

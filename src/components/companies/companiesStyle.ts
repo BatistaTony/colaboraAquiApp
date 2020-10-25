@@ -7,6 +7,7 @@ import {
   NormalFontSize,
 } from "../layout/layoutStyle";
 import { ButtonSignUp } from "../signUp/signUpStyle";
+import { motion } from "framer-motion";
 
 export const ContentCompanies = styled.div`
   width: 100%;
@@ -52,21 +53,29 @@ export const TextCompanies = styled.p`
   ${getFont()};
   text-align: center;
 
-  span {
+  @media (max-width: 850px) {
+    ${flexbox("column")};
+    span {
+      width: auto;
+    }
+  }
+
+  mark {
     ${getFont("Bold")};
     color: ${colorsApp.roxo};
+    background: transparent;
   }
 
   ${sizesForEachScreens(
-    [3300, 2500, 1930, 1500, 1370, 1000],
-    [50, 60, 65, 50, 55, 60],
+    [3300, 2500, 1930, 1500, 1370, 1000, 850],
+    [50, 60, 65, 50, 55, 60, 100],
     "width",
     "%"
   )};
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500, 1300, 450],
-    [40, 35, 28, 17, 14, 13],
+    [3200, 2500, 2000, 1500, 1300, 900, 750],
+    [40, 35, 28, 17, 14, 13, 12],
     "font-size",
     "pt"
   )};
@@ -116,6 +125,10 @@ export const FilterStyled = styled.div`
       "px"
     )};
 
+    @media (max-width: 950px) {
+      margin-bottom: 15px;
+    }
+
     li {
       font-size: 25pt;
       ${getFont()};
@@ -128,8 +141,8 @@ export const FilterStyled = styled.div`
       transition: 0.5s;
 
       ${sizesForEachScreens(
-        [3200, 3000, 2500, 1930, 1500],
-        [20, 17, 15, 13, 11],
+        [3200, 3000, 2500, 1930, 1500, 850, 500],
+        [20, 17, 15, 13, 11, 10, 9],
         "font-size",
         "pt"
       )};
@@ -149,6 +162,12 @@ export const FilterStyled = styled.div`
       @media (max-width: 1500px) {
         padding-left: 7px;
         padding-right: 7px;
+      }
+
+      @media (max-width: 900px) {
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-left: 10px;
       }
 
       &:hover {
@@ -172,7 +191,16 @@ export const SearchStyled = styled.div`
   box-shadow: 0 0 3px ${colorsApp.orange};
   padding-left: 10px;
 
-  ${sizesForEachScreens([1000, 750, 450, 300], [60, 75, 80, 90], "width", "%")};
+  ${sizesForEachScreens(
+    [1390, 1500, 1000],
+    [20, 15, 10],
+    "padding-left",
+    "px"
+  )};
+
+  @media (max-width: 850px) {
+    width: 80%;
+  }
 
   input {
     font-size: 30pt;
@@ -190,11 +218,36 @@ export const SearchStyled = styled.div`
     }
 
     ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500],
-      [26, 22, 19, 17, 12],
+      [3200, 3000, 2500, 1930, 1500, 850],
+      [26, 22, 19, 17, 12, 11],
       "font-size",
       "pt"
     )};
+  }
+`;
+
+export const DivBtnMobile = styled.div`
+  display: none;
+
+  @media (max-width: 925px) {
+    display: block;
+    width: 100%;
+    height: 30px;
+    position: relative;
+    ${flexbox()};
+    margin-top: 10px;
+
+    .btnMobile_suggest {
+      display: block;
+      position: relative;
+      right: 0;
+      margin: 0;
+      ${flexbox()};
+
+      @media (max-width: 600px) {
+        font-size: 10pt;
+      }
+    }
   }
 `;
 
@@ -216,25 +269,29 @@ export const ButtonSuggest = styled.button`
   ${getFont()};
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500],
-    [26, 22, 19, 17, 12],
+    [3200, 3000, 2500, 1930, 1500, 850],
+    [26, 22, 19, 17, 12, 11],
     "font-size",
     "pt"
   )};
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500],
-    [40, 30, 25],
+    [3200, 2500, 2000, 1500, 900, 850],
+    [40, 30, 25, 20, 15],
     "padding-left",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500],
-    [40, 30, 25],
+    [3200, 2500, 2000, 1500, 900, 850],
+    [40, 30, 25, 20, 15],
     "padding-right",
     "px"
   )};
+
+  @media (max-width: 925px) {
+    display: none;
+  }
 `;
 
 export const CompanyList = styled.div`
@@ -244,12 +301,89 @@ export const CompanyList = styled.div`
   position: absolute;
   bottom: 15%;
 
+  @media (max-width: 935px) {
+    display: none;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    display: none;
+  }
+
   ${sizesForEachScreens([1500, 1380], [250, 200], "height", "px")}
 
   ${sizesForEachScreens([1930, 1500, 1380], [10, 5, 4], "bottom", "%")};
 
+  @media (max-width: 837px) {
+    height: auto;
+    bottom: 0;
+    position: relative;
+  }
+
   @media (max-height: 580px) {
     bottom: 0.3%;
+  }
+`;
+
+export const ListCompanyMobile = styled.div`
+  width: 94%;
+  height: 65vh;
+  display: none;
+  grid-template-columns: 45% 45%;
+  grid-gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: auto;
+  box-sizing: border-box;
+  padding-bottom: 50px;
+  padding-top: 15px;
+
+  @media (max-width: 935px) {
+    display: grid;
+  }
+
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    display: grid;
+    padding-bottom: 100px;
+  }
+
+  @media (max-width: 855px) {
+    grid-template-columns: 90%;
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: 100%;
+  }
+
+  @media (max-height: 1290px) {
+    height: 60vh;
+  }
+
+  @media (max-height: 1134px) {
+    height: 57vh;
+  }
+
+  @media (max-height: 1050px) {
+    height: 55vh;
+  }
+
+  @media (max-height: 990px) {
+    height: 50vh;
+  }
+
+  @media (max-height: 900px) {
+    height: 46vh;
+  }
+
+  @media (max-height: 790px) {
+    height: 40vh;
+  }
+
+  @media (max-height: 697px) {
+    height: 36vh;
+  }
+
+  @media (max-height: 650px) {
+    height: 32vh;
   }
 `;
 
@@ -261,13 +395,24 @@ export const GroupCard = styled.div`
   grid-gap: 60px;
   align-items: center;
 
-  ${sizesForEachScreens([2500, 1500, 1390], [75, 73, 77], "width", "%")};
   ${sizesForEachScreens(
-    [3200, 2500, 1500, 1370],
-    [50, 40, 30, 25],
+    [2500, 1500, 1390, 1040, 935],
+    [75, 73, 77, 80, 90],
+    "width",
+    "%"
+  )};
+  ${sizesForEachScreens(
+    [3200, 2500, 1500, 1370, 1070, 935],
+    [50, 40, 30, 25, 20, 15],
     "grid-gap",
     "px"
   )};
+
+  @media (max-width: 837px) {
+    grid-gap: 0;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+  }
 `;
 
 export const Card = styled.div`
@@ -283,6 +428,10 @@ export const Card = styled.div`
 
   box-sizing: border-box;
 
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    height: 220px;
+  }
+
   ${sizesForEachScreens(
     [2500, 1930, 1500, 1370],
     [60, 50, 30, 20],
@@ -290,17 +439,35 @@ export const Card = styled.div`
     "px"
   )};
 
+  @media (max-width: 837px) {
+    margin-bottom: 10px;
+    height: auto;
+    padding: 15px;
+  }
+
   .header_card {
     display: grid;
     width: 100%;
     grid-template-columns: 60% 40%;
     align-items: center;
 
+    @media (max-width: 980px) {
+      grid-template-columns: 65% 35%;
+    }
+
+    @media (max-width: 850px) {
+      grid-template-columns: 68% 32%;
+    }
+
     .div1_er_ {
       ${flexbox("row", "flex-start", "center")};
 
       .company_info_ {
         margin-left: 16px;
+
+        @media (max-width: 850px) {
+          margin-left: 8px;
+        }
       }
     }
 
@@ -319,23 +486,32 @@ export const CompanyLogo = styled.div`
   ${flexbox()};
   overflow: hidden;
   padding: 10px;
+  background: white;
+  background-image: ${({ img }) => `url(${img})`};
+  background-size: 87% 50%;
+  background-position: center;
+  background-repeat: no-repeat;
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500],
-    [100, 90, 80, 70, 60],
+    [3200, 3000, 2500, 1930, 1500, 1200, 900, 850, 500],
+    [100, 90, 80, 70, 60, 50, 40, 30, 25],
     "width",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500],
-    [100, 90, 80, 70, 60],
+    [3200, 3000, 2500, 1930, 1500, 1200, 900, 850, 500],
+    [100, 90, 80, 70, 60, 50, 40, 30, 25],
     "height",
     "px"
   )};
 
   img {
     width: 80%;
+
+    @media (max-width: 850px) {
+      width: 90%;
+    }
   }
 `;
 
@@ -345,8 +521,8 @@ export const CompanyName = styled.h1`
   color: white;
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1500],
-    [25, 20, 16, 14],
+    [3200, 3000, 2500, 1500, 1200, 1000, 900, 500],
+    [25, 20, 16, 14, 13, 12, 11, 10],
     "font-size",
     "pt"
   )};
@@ -362,6 +538,10 @@ export const CompanyRateNumbers = styled.p`
   }
 
   ${NormalFontSize};
+
+  @media (max-width: 500px) {
+    font-size: 9pt;
+  }
 `;
 
 export const StarsRated = styled.div`
@@ -375,6 +555,10 @@ export const StarsRated = styled.div`
   @media (max-width: 1930px) {
     border-radius: 10px;
   }
+
+  @media (max-width: 1080px) {
+    padding: 5px;
+  }
 `;
 
 export const StarRate = styled.div`
@@ -384,15 +568,15 @@ export const StarRate = styled.div`
   ${flexbox()};
 
   ${sizesForEachScreens(
-    [3200, 2500, 1930, 1500],
-    [40, 30, 20, 18],
+    [3200, 2500, 1930, 1500, 1080, 850, 500],
+    [40, 30, 20, 18, 15, 13, 12],
     "width",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3200, 2500, 1930, 1500],
-    [40, 30, 20, 18],
+    [3200, 2500, 1930, 1500, 1080, 850, 500],
+    [40, 30, 20, 18, 15, 13, 12],
     "height",
     "px"
   )};
@@ -400,7 +584,7 @@ export const StarRate = styled.div`
   svg {
     width: 100%;
     height: 100%;
-    fill: ${({ isRated }) => (isRated ? "orange" : "none")};
+    fill: ${({ isRated }) => (isRated ? `${colorsApp.orange}` : "gray")};
   }
 `;
 
@@ -413,11 +597,15 @@ export const DescriptionCard = styled.p`
   text-align: justify;
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 1370],
-    [25, 22, 18, 14, 12, 11],
+    [3200, 3000, 2500, 1930, 1500, 1370, 850, 500],
+    [25, 22, 18, 14, 12, 11, 10, 9],
     "font-size",
     "pt"
   )};
+
+  @media (max-width: 500px) {
+    text-align: justify;
+  }
 `;
 
 export const ButtonControl = styled.div`
@@ -425,6 +613,14 @@ export const ButtonControl = styled.div`
   ${flexbox("row", "space-between", "center")};
   position: absolute;
   box-sizing: border-box;
+
+  @media (max-width: 1120px) {
+    width: 95%;
+  }
+
+  @media (max-width: 935px) {
+    display: none;
+  }
 
   button {
     width: 80px;
@@ -459,7 +655,7 @@ export const ButtonControl = styled.div`
 export const OverlaySuggestion = styled.div`
   width: 100%;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.8);
   background-size: 100% 100%;
   position: fixed;
   left: 0;
@@ -474,7 +670,7 @@ export const OverlaySuggestion = styled.div`
   }
 `;
 
-export const ModalSuggestion = styled.div`
+export const ModalSuggestion = styled(motion.div)`
   width: 45%;
   height: auto;
   border-radius: 10px;
@@ -482,8 +678,35 @@ export const ModalSuggestion = styled.div`
   background: white;
   box-shadow: 0 0 5px;
   box-sizing: border-box;
-  padding-top: 30px;
   position: relative;
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+  ${sizesForEachScreens(
+    [2300, 1980, 1500, 1200, 950, 850, 800],
+    [55, 60, 40, 65, 70, 80, 100],
+    "width",
+    "%"
+  )}
+
+  ${sizesForEachScreens(
+    [3200, 2500, 1980, 1500, 850],
+    [80, 70, 60, 50, 30, 25],
+    "padding-top",
+    "px"
+  )}
+
+${sizesForEachScreens(
+    [3200, 2500, 1980, 1500, 850],
+    [80, 70, 60, 50, 30, 25],
+    "padding-bottom",
+    "px"
+  )}
+
+  @media  (max-width:800px) {
+    height: 100vh;
+    box-shadow: 0 0 0px;
+  }
 
   form {
     ${flexbox()};
@@ -493,6 +716,10 @@ export const ModalSuggestion = styled.div`
     width: 100%;
     text-align: center;
     margin-bottom: 20px;
+
+    @media (max-width: 800px) {
+      width: 80%;
+    }
   }
 
   .grid-form-suggest {
@@ -502,6 +729,24 @@ export const ModalSuggestion = styled.div`
     .FormGroup {
       grid-column: 1/2;
       width: 100%;
+      margin: 0;
+
+      @media (max-width: 600px) {
+        margin-bottom: 15px;
+      }
+    }
+
+    @media (max-width: 800px) {
+      width: 75%;
+      grid-gap: 15px;
+    }
+
+    @media (max-width: 700px) {
+      width: 85%;
+    }
+
+    @media (max-width: 600px) {
+      grid-gap: 0px;
     }
   }
 `;
@@ -522,6 +767,16 @@ export const TextArea = styled.div`
   margin-bottom: 50px;
   &::placeholder {
     color: ${colorsApp.soDark};
+  }
+
+  @media (max-width: 750px) {
+    margin: 0;
+    margin-top: -10px;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 10px;
+    margin-bottom: 15px;
   }
 
   textarea {
@@ -547,8 +802,8 @@ export const TextArea = styled.div`
 `;
 
 export const ButtonCloseSuggestion = styled.button`
-  width: 25px;
-  height: 25px;
+  width: 50px;
+  height: 50px;
   border-radius: 100%;
   border: none;
   outline: none;
@@ -556,8 +811,20 @@ export const ButtonCloseSuggestion = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-  margin: 20px;
+  margin: 40px;
   ${flexbox()};
+
+  @media (max-width: 1700px) {
+    margin: 30px;
+  }
+
+  @media (max-width: 750px) {
+    margin: 20px;
+  }
+
+  ${sizesForEachScreens([1930, 1500, 1370], [45, 30, 25], "width", "px")};
+
+  ${sizesForEachScreens([1930, 1500, 1370], [45, 30, 25], "height", "px")};
 
   svg {
     width: 80%;

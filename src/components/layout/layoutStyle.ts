@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, keyframes } from "styled-components";
 
 const chooseBackgroundByTitle = (title: string) => {
   switch (title) {
@@ -11,6 +11,24 @@ const chooseBackgroundByTitle = (title: string) => {
     }
   }
 };
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+`;
+
+const fadeIn = keyframes`
+ from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const LayoutStyled = styled.div`
   width: 100%;
@@ -33,6 +51,29 @@ export const LayoutStyled = styled.div`
 
   @media (max-width: 2200px) {
     grid-template-rows: 100px auto;
+  }
+
+  #fader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    pointer-events: none;
+    animation-duration: 350ms;
+    animation-timing-function: ease-in-out;
+    background: white;
+  }
+
+  #fader.fade-out {
+    opacity: 0;
+    animation-name: ${fadeOut};
+  }
+
+  #fader.fade-in {
+    opacity: 1;
+    animation-name: ${fadeIn};
   }
 `;
 
@@ -99,9 +140,9 @@ export const colorsApp = {
 
 export const sizesForEachScreens = (
   screens: Array<number>,
-  valuesForScreen: Array<number>,
+  valuesForScreen: Array<number | string>,
   property: string,
-  unit: string
+  unit?: string
 ) => {
   return screens
     .map(

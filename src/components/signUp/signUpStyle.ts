@@ -7,6 +7,7 @@ import {
   NormalFontSize,
 } from "../layout/layoutStyle";
 import { ButtonLogin } from "../navbar/navbarStyle";
+import { motion } from "framer-motion";
 
 export const OverlaySignUp = styled.div`
   width: 100%;
@@ -43,7 +44,7 @@ export const OverlaySignUp = styled.div`
   }
 `;
 
-export const Modal = styled.div`
+export const Modal = styled(motion.div)`
   width: 60%;
   height: 70vh;
   border-radius: 15px;
@@ -64,9 +65,13 @@ export const Modal = styled.div`
 
   ${sizesForEachScreens([1500, 1370], [500, 450], "height", "px")} 
   
+  @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
+    height: 100vh;
+    position: absolute;
+    bottom: 0;
+    justify-content: flex-end;
+  }
 
-  
-  
   @media (max-width: 900px) {
     ${flexbox()};
     height: auto;
@@ -76,7 +81,7 @@ export const Modal = styled.div`
     .divBtnBackT {
       width: 100%;
       ${flexbox("row", "flex-start", "center")};
-      padding-top: 20px;
+      padding-top: 15px;
       box-sizing: border-box;
       padding-left: 5%;
       position: fixed;
@@ -85,6 +90,11 @@ export const Modal = styled.div`
 
       @media (max-width: 750px) {
         position: relative;
+      }
+
+      @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
+        position: absolute;
+        top: 0;
       }
     }
 
@@ -212,17 +222,21 @@ export const TextForm = styled.p`
 
   ${NormalFontSize()};
 
+  @media (max-width: 1500px) {
+    width: 84%;
+  }
+
   @media (max-width: 1190px) {
     width: 90%;
   }
 
   @media (max-width: 900px) {
-    width: 70%;
+    width: 60%;
   }
 
   @media (max-width: 750px) {
-    font-size: 11pt;
-    width: 80%;
+    font-size: 12pt;
+    width: 87%;
   }
 `;
 
@@ -235,32 +249,30 @@ export const DivGridForm = styled.div`
   grid-gap: 30px;
 
   @media (max-height: 670px) {
+    grid-gap: 10px;
+  }
+
+  @media (max-width: 750px) {
     grid-gap: 15px;
   }
 
-  @media (max-width: 3200px) {
-    grid-template-rows: repeat(3, 90px) auto auto;
-  }
+  ${sizesForEachScreens([1930, 1500], [20, 15], "grid-gap", "px")}
 
-  @media (max-width: 2500px) {
-    grid-template-rows: repeat(3, 70px) auto auto;
-  }
-
-  @media (max-width: 1930px) {
-    grid-template-rows: repeat(3, 60px) auto auto;
-    grid-gap: 11px;
-  }
-
-  @media (max-width: 1500px) {
-    grid-template-rows: repeat(3, 45px) auto auto;
-  }
-
-  @media (max-width: 1370px) {
-    grid-template-rows: repeat(3, 40px) auto auto;
-  }
+  ${sizesForEachScreens(
+    [3200, 2500, 1930, 1500, 1370],
+    [
+      "repeat(3, 90px) auto auto",
+      "repeat(3, 70px) auto auto",
+      "repeat(3, 60px) auto auto",
+      "repeat(3, 45px) auto auto",
+      "repeat(3, 40px) auto auto",
+    ],
+    "grid-template-rows",
+    ""
+  )}
 
   @media (max-width: 900px) {
-    width: 70%;
+    width: 60%;
   }
 
   @media (max-width: 750px) {
@@ -268,7 +280,7 @@ export const DivGridForm = styled.div`
   }
 
   @media (max-width: 650px) {
-    width: 80%;
+    width: 87%;
   }
 `;
 
@@ -295,7 +307,10 @@ export const FormGroup = styled.div`
 
   @media (max-width: 750px) {
     height: 45px;
-    margin-bottom: 13px;
+  }
+
+  @media (max-width: 750px) {
+    margin-bottom: 10px;
   }
 
   button {
@@ -434,7 +449,7 @@ export const QuestionSignUp = styled.p`
   ${NormalFontSize()};
 
   @media (max-width: 750px) {
-    width: 80%;
+    width: 90%;
     margin-bottom: 10px;
     font-size: 11pt;
   }
@@ -562,9 +577,20 @@ export const IllustrationMobile = styled.div`
     height: 70vh;
   }
 
+  @media (max-width: 600px) {
+    height: 60vh;
+  }
+
+  @media (max-height: 568px) {
+    height: 55vh;
+  }
+
   img {
-    width: 17rem;
-    height: 100%;
+    width: 14rem;
+
+    @media (max-height: 575px) {
+      width: 10rem;
+    }
   }
 `;
 
@@ -594,7 +620,7 @@ export const ButtonSucess = styled(ButtonLogin)`
   border-radius: 7px;
 
   @media (max-width: 600px) {
-    position: absolute;
+    position: fixed;
     bottom: 5%;
   }
 

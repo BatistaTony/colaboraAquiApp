@@ -84,7 +84,7 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
     }
   };
 
-  const suggest = () => {
+  const sendSuggestion = () => {
     if (!checkError()) {
       alert("suggested");
     }
@@ -93,7 +93,10 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
   return (
     <OverlaySuggestion>
       <div className="w_d_itr_">
-        <ModalSuggestion>
+        <ModalSuggestion
+          initial={{ opacity: 0, y: -1000 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
           <ButtonCloseSuggestion onClick={toggleSuggestion}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <g data-name="Layer 2">
@@ -150,8 +153,8 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
                 ></textarea>
               </TextArea>
 
-              <ButtonSuggestForm className="FormGroup" onClick={suggest}>
-                Sugerir
+              <ButtonSuggestForm className="FormGroup" onClick={sendSuggestion}>
+                Enviar sugestão
               </ButtonSuggestForm>
             </DivGridForm>
           </DivForm>

@@ -73,8 +73,16 @@ export default function SignInConsumer() {
   return (
     <OverlaySignIn>
       <IllustrationObjectSignIn />
-      <ModalSignIn>
-        <DivForm>
+      <ModalSignIn
+        initial={{ opacity: 0, y: 200 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ y: 300, opacity: 0 }}
+      >
+        <DivForm className="divForm_sign_p">
+          <div className="divBtnBackT">
+            <ButtonBack classNames="mobileBtn" onChange={backToHome} />
+          </div>
+
           <Title>
             Começa agora no <span>Colabora</span>
           </Title>
@@ -102,7 +110,7 @@ export default function SignInConsumer() {
 
             <p className="textForgetPassword">Esqueci a senha </p>
 
-            <ButtonSignUp className="FormGroup" onClick={signInUser}>
+            <ButtonSignUp className="FormGroup btnLOgin" onClick={signInUser}>
               Entrar
             </ButtonSignUp>
 
@@ -112,8 +120,6 @@ export default function SignInConsumer() {
                 <span>Registar-se</span>
               </Link>
             </QuestionSignUp>
-
-            <ButtonBack classNames="mobileBtn" />
           </DivGridForm>
         </DivForm>
         <ModalIllustration
