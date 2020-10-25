@@ -11,33 +11,14 @@ import {
   DivHero,
   BackGroundWithIllustration,
 } from "./heroStyle";
-import { CSSTransition } from "react-transition-group";
 import Route from "next/router";
 import { useSelector } from "react-redux";
 import { IConsumer } from "../../../types";
-import SignUpConsumer from "../signUp/signUp";
 import { StepsHero } from "./hero.data";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
-  const consumerState: IConsumer = useSelector((state) => state.Consumer);
-  const [showSignUp, setShowSignUp] = useState<boolean>(false);
-  const [isLogged, setIsLogged] = useState<boolean>(
-    consumerState.userName.length > 0
-  );
-
-  const toggleSignUp = useCallback((): void => {
-    setShowSignUp(!showSignUp);
-  }, [showSignUp]);
-
-  const startRate = () => {
-    if (isLogged) {
-      Route.push("/companies");
-    } else {
-      toggleSignUp();
-    }
-  };
-
   const animateStep = [
     { y: 20, transition: 0.2, delay: 0.1 },
     { y: 20, transition: 0.3, delay: 0.3 },
@@ -45,7 +26,7 @@ export default function Hero() {
   ];
 
   return (
-    <HeroStyle showSignUp={showSignUp}>
+    <HeroStyle>
       <BackGroundWithIllustration
         initial={{ opacity: 1, y: -1000 }}
         animate={{ opacity: 1, y: 0 }}
@@ -55,15 +36,6 @@ export default function Hero() {
 
         <div className="illustration2_e"></div>
       </BackGroundWithIllustration>
-      <CSSTransition
-        unmountOnExit
-        addEndListener={() => {}}
-        timout={200}
-        in={showSignUp}
-        classNames="my-overlay"
-      >
-        <SignUpConsumer toggleSignUp={toggleSignUp} />
-      </CSSTransition>
 
       <DivHero>
         <LogoHero>
@@ -87,13 +59,12 @@ export default function Hero() {
             </Step>
           ))}
         </ListStep>
-        <ButtonStartRate
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={startRate}
-        >
-          Começar a avaliar <img src="/images/start.png" alt="" />{" "}
-        </ButtonStartRate>
+
+        <Link href="/companies">
+          <ButtonStartRate>
+            Começar a avaliar <img src="/images/start.png" alt="" />
+          </ButtonStartRate>
+        </Link>
       </DivHero>
       <IllustrationRating
         initial={{ opacity: 1, x: 1000 }}

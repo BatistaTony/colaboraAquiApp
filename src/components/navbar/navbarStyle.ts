@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { colorsApp, flexbox, getFont } from "../layout/layoutStyle";
 import { sizesForEachScreens } from "../layout/layoutStyle";
+import { motion } from "framer-motion";
 
 export const MyNavbar = styled.div`
   width: 100%;
@@ -10,6 +11,14 @@ export const MyNavbar = styled.div`
   padding-right: 8%;
   box-sizing: border-box;
   z-index: 14;
+
+  @media (max-width: 3250px) {
+    ${flexbox("row", "space-between", "flex-end")};
+  }
+
+  @media (max-width: 1500px) {
+    ${flexbox("row", "space-between", "center")};
+  }
 
   @media (max-width: 750px) {
     height: 70px;
@@ -48,17 +57,26 @@ export const ItemMenu = styled.li`
   ${getFont("Medium")};
   transition: 0.5s;
   cursor: default;
-  margin-right: 10px;
+  margin-right: 30px;
+
+  @media (max-width: 2500px) {
+    margin-right: 15px;
+  }
+
+  @media (max-width: 1500px) {
+    margin-right: 10px;
+  }
 
   color: ${({ active }) => (active ? colorsApp.orange : "gray")};
 
   &:hover {
     color: ${colorsApp.orange};
+    cursor: pointer;
   }
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500],
-    [23, 22, 19, 17, 12],
+    [3200, 3000, 2500, 1930, 1500, 1300],
+    [23, 22, 19, 17, 13, 12],
     "font-size",
     "pt"
   )};
@@ -98,9 +116,9 @@ export const ButtonLogin = styled.button`
   padding-left: 50px;
   padding-right: 50px;
   background: ${colorsApp.soDark};
-  border-radius: 5px;
+  border-radius: 10px;
   transition: 0.5s;
-  margin-left: 20px;
+  margin-left: 50px;
   color: white;
   border: none;
   outline: none;
@@ -109,6 +127,7 @@ export const ButtonLogin = styled.button`
 
   &:hover {
     background: ${colorsApp.roxo};
+    cursor: pointer;
   }
   @media (max-width: 3200px) {
     font-size: 20pt;
@@ -122,6 +141,7 @@ export const ButtonLogin = styled.button`
     height: 55px;
     padding-left: 30px;
     padding-right: 30px;
+    margin-left: 30px;
   }
 
   @media (max-width: 2000px) {
@@ -129,11 +149,13 @@ export const ButtonLogin = styled.button`
     height: 50px;
     padding-left: 25px;
     padding-right: 25px;
+    margin-left: 20px;
   }
 
   @media (max-width: 1500px) {
     font-size: 12pt;
-    height: 40px;
+    height: 35px;
+    border-radius: 6px;
   }
 
   @media (max-width: 750px) {
@@ -152,6 +174,7 @@ export const UserName = styled.h5`
   color: black;
   cursor: default;
   ${flexbox()};
+  transition: 0.5s;
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500],
@@ -159,6 +182,11 @@ export const UserName = styled.h5`
     "font-size",
     "pt"
   )}
+
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
 
   span {
     width: 20px;
@@ -194,6 +222,10 @@ export const UserName = styled.h5`
   @media (min-width: 750px) {
     width: 100%;
   }
+
+  @media (max-width: 750px) {
+    font-size: 11pt;
+  }
 `;
 
 export const DivUser = styled.div`
@@ -203,18 +235,20 @@ export const DivUser = styled.div`
   position: relative;
   margin-left: 30px;
 
-  @media (min-width: 750px) {
+  ${sizesForEachScreens([3000, 2500, 1930], [20, 15, 10], "margin-left", "px")};
+
+  @media (max-width: 750px) {
     width: 100%;
     margin-left: 0;
   }
-
-  ${sizesForEachScreens([3000, 2500, 1930], [20, 15, 10], "margin-left", "px")};
 `;
 
-export const MenuUser = styled.ul`
+export const MenuUser = styled(motion.ul)`
   width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "300px")};
   height: auto;
-  box-shadow: 0 0 5px black;
+  -webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
   background: white;
   list-style: none;
@@ -238,6 +272,7 @@ export const MenuUser = styled.ul`
 
   @media (max-width: 1500px) {
     top: 40px;
+    border-radius: 7px;
     width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "160px")};
   }
 
@@ -253,7 +288,7 @@ export const MenuUser = styled.ul`
     width: 100%;
     padding: 20px;
     padding-right: 10px;
-    color: ${colorsApp.darkGray};
+    color: gray;
     ${getFont("Medium")};
     font-size: 20pt;
     ${flexbox("row", "flex-start", "center")};
@@ -262,7 +297,7 @@ export const MenuUser = styled.ul`
 
     ${sizesForEachScreens(
       [3200, 2500, 1930, 1500, 750],
-      [18, 16, 13, 12, 11, 10],
+      [18, 16, 13, 11.6, 11],
       "font-size",
       "pt"
     )};
@@ -285,7 +320,7 @@ export const MenuUser = styled.ul`
     }
 
     &:nth-child(1) {
-      border-bottom: 0.5px solid rgb(0, 0, 0, 0.3);
+      border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
 
       @media (max-width: 750px) {
         border: none;
@@ -293,7 +328,8 @@ export const MenuUser = styled.ul`
     }
 
     &:hover {
-      background: rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      opacity: 0.8;
 
       @media (max-width: 750px) {
         background-color: transparent;
@@ -304,6 +340,10 @@ export const MenuUser = styled.ul`
       width: 40px;
       height: 40px;
       margin-right: 15px;
+
+      @media (max-width: 1500px) {
+        margin-right: 7px;
+      }
 
       ${sizesForEachScreens([3200, 2500, 1930], [35, 25, 20], "width", "px")};
       ${sizesForEachScreens([3200, 2500, 1930], [35, 25, 20], "height", "px")};
@@ -355,7 +395,7 @@ export const ButtonMobile = styled.div`
   }
 `;
 
-export const Overlay = styled.div`
+export const Overlay = styled(motion.div)`
   width: 100%;
   height: 100vh;
   padding-top: 170px;

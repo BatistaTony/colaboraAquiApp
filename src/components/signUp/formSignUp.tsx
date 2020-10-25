@@ -133,14 +133,14 @@ export default function FormSignUp() {
 
         <InputPassword errorIsOn={errorIsOn} handleChange={handleChange} />
 
+        <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
+
         <QuestionSignUp>
           Já tens uma conta ?
           <Link href="/signin">
-            <span>entrar agora</span>
+            <span>Entrar agora</span>
           </Link>
         </QuestionSignUp>
-
-        <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
       </DivGridForm>
     </form>
   );

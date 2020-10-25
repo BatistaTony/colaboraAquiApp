@@ -10,51 +10,50 @@ import {
   Title,
   TextForm,
 } from "./signUpStyle";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
-interface IProps {
-  isSinglePage?: boolean;
-  toggleSignUp?: () => void;
-}
+export default function SignUp() {
+  const userState = useSelector((state) => state.Consumer);
 
-export default function SignUpConsumer({ isSinglePage, toggleSignUp }: IProps) {
-  const backToHome = () => {
-    if (isSinglePage) {
-      Route.push("/");
-      toggleSignUp();
-    } else {
-      toggleSignUp();
-    }
-  };
+  useEffect(() => {
+    console.log(userState);
+  }, [userState]);
 
   return (
-    <OverlaySignUp isSinglePage={isSinglePage}>
+    <OverlaySignUp>
       <AnimatePresence>
-       
-          <Modal initial={{ opacity: 0, y: 200 }}
+        <Modal
+          initial={{ opacity: 0, y: 200 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ y: 300, opacity: 0 }}>
-            <ModalIllustration img={"/images/signup.png"}>
-              <ButtonBack onChange={backToHome} />
-            </ModalIllustration>
+          exit={{ y: -200, opacity: 1 }}
+        >
+          <ModalIllustration img={"/images/signup.png"}>
+            <Link href="/">
+              <ButtonBack />
+            </Link>
+          </ModalIllustration>
 
-            <DivForm>
-              <div className="divBtnBackT">
-                <ButtonBack classNames="mobileBtn" onChange={backToHome} />
-              </div>
+          <DivForm>
+            <div className="divBtnBackT">
+              <Link href="/">
+                <ButtonBack classNames="mobileBtn" />
+              </Link>
+            </div>
 
-              <Title>
-                Começa agora no <span>Colabora</span>
-              </Title>
-              <TextForm>
-                Apenas tu tens acesso as tuas informações. nós prezamos pela
-                privacidade e direitos de expressão
-              </TextForm>
+            <Title>
+              Começa agora no <span>Colabora</span>.
+            </Title>
+            <TextForm>
+              Apenas tu tens acesso as tuas informações. nós prezamos pela
+              privacidade e direitos de expressão
+            </TextForm>
 
-              <FormSignUp />
-            </DivForm>
-          </Modal>
+            <FormSignUp />
+          </DivForm>
+        </Modal>
       </AnimatePresence>
     </OverlaySignUp>
   );

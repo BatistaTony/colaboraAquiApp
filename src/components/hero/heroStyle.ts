@@ -15,25 +15,6 @@ export const HeroStyle = styled.div`
   box-sizing: border-box;
   position: relative;
   z-index: ${({ showSignUp }) => (showSignUp ? "99" : "1")};
-
-  .my-overlay-enter {
-    opacity: 0;
-    display: flex;
-  }
-
-  .my-overlay-enter-active {
-    opacity: 1;
-    transition: opacity 200ms;
-  }
-
-  .my-overlay-exit {
-    opacity: 1;
-  }
-
-  .my-overlay-exit-active {
-    opacity: 0;
-    display: none;
-  }
 `;
 
 export const BackGroundWithIllustration = styled(motion.div)`
@@ -97,6 +78,8 @@ export const BackGroundWithIllustration = styled(motion.div)`
 
     @media (max-width: 1617px) and (max-height: 1392px) {
       bottom: -25%;
+      width: 70%;
+      height: 160%;
     }
 
     @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
@@ -122,12 +105,13 @@ const pullPaddingLeft = () => `
 
 export const LogoHero = styled(Logo)`
   margin-top: 50px;
+
   img {
-    width: 90rem;
+    width: 75rem;
 
     ${sizesForEachScreens(
-      [3200, 2700, 1920, 1700, 1500, 1330, 1000, 750, 325],
-      [80, 70, 60, 50, 40, 35, 24, 20, 15, 13],
+      [2700, 1920, 1700, 1500, 1000, 750, 325],
+      [60, 50, 40, 30, 25, 20, 16, 13],
       "width",
       "rem"
     )};
@@ -139,12 +123,8 @@ export const LogoHero = styled(Logo)`
     margin-top: 20px;
   }
 
-  @media (max-width: 600px) {
-    margin-top: 20px;
-  }
-
-  @media (max-width: 400px) {
-    margin-top: 10px;
+  @media (max-width: 750px) and (max-height: 600px) {
+    margin-top: -5px;
   }
 `;
 
@@ -160,7 +140,7 @@ export const DivHero = styled.div`
 `;
 
 export const Text = styled.p`
-  margin-top: 15px;
+  margin-top: 50px;
   width: 50%;
   height: auto;
   text-align: center;
@@ -169,13 +149,24 @@ export const Text = styled.p`
   ${getFont("Medium")};
 
   ${sizesForEachScreens([1000, 750, 450, 300], [60, 75, 80, 90], "width", "%")};
-  ${sizesForEachScreens([1500], [0], "margin-top", "")};
+
+  @media (max-height: 903px) {
+    margin-top: 30px;
+  }
+
+  @media (max-height: 600px) {
+    margin-top: 20px;
+  }
+
+  @media (max-height: 524px) {
+    margin-top: 10px;
+  }
 
   ${pullPaddingLeft};
 
   ${sizesForEachScreens(
     [3200, 2500, 2000, 1500, 1300, 450, 325],
-    [40, 35, 28, 17, 14, 13, 12],
+    [40, 35, 28, 20, 16, 14, 12],
     "font-size",
     "pt"
   )};
@@ -183,12 +174,10 @@ export const Text = styled.p`
 
 export const ListStep = styled.ul`
   ${flexbox()};
-  margin-top: 70px;
+  margin-top: 80px;
 
-  ${sizesForEachScreens([1500, 750], [30, 25], "margin-top", "px")};
-
-  @media (max-width: 600px) {
-    width: 80%;
+  @media (max-height: 903px) {
+    margin-top: 30px;
   }
 
   @media (max-width: 325px) {
@@ -248,43 +237,35 @@ export const StepNumber = styled.div`
     margin-right: 15px;
   }
 
-  @media (max-width: 2700px) {
+  @media (max-width: 2300px) {
     width: 50px;
     height: 50px;
-    border-width: 7px;
-  }
-
-  @media (max-width: 2300px) {
-    width: 40px;
-    height: 40px;
     border-width: 5px;
     margin-right: 10px;
   }
 
   @media (max-width: 1500px) {
+    width: 35px;
+    height: 35px;
+    border-width: 3px;
+  }
+
+  @media (max-width: 1300px) {
     width: 30px;
     height: 30px;
     border-width: 3px;
   }
 
-  @media (max-width: 1000px) {
-    width: 27px;
-    height: 27px;
-  }
-
-  @media (max-width: 750px) {
-    width: 25px;
-    height: 25px;
-    margin-right: 7px;
-  }
-
   h1 {
-    font-size: 30pt;
+    font-size: 23pt;
     ${getFont("ExtraBold")};
+    ${flexbox()};
+    width: 100%;
+    height: 100%;
 
     ${sizesForEachScreens(
-      [3200, 2500, 2000, 1500, 750, 600],
-      [20, 22, 18, 12, 12, 10],
+      [3200, 2500, 1900, 1500, 1300],
+      [20, 15, 16, 12, 10],
       "font-size",
       "pt"
     )};
@@ -296,12 +277,12 @@ export const ButtonStartRate = styled(motion.button)`
   ${getFont("Medium")};
   height: 50px;
   font-size: 30pt;
-  border-radius: 12px;
+  border-radius: 7px;
   color: ${colorsApp.soDark};
   padding: 60px;
-  padding-top: 65px;
-  padding-bottom: 65px;
-  margin-top: 3%;
+  padding-top: 55px;
+  padding-bottom: 55px;
+  margin-top: 7%;
   box-shadow: 0 0 10px ${colorsApp.orange};
   border: none;
   outline: none;
@@ -309,8 +290,8 @@ export const ButtonStartRate = styled(motion.button)`
 
   ${pullPaddingLeft};
 
-  @media (max-width: 325px) {
-    margin-top: -40px;
+  &:hover {
+    cursor: pointer;
   }
 
   ${sizesForEachScreens([3200, 2700, 2200], [55, 45, 35], "height", "px")};
@@ -362,14 +343,24 @@ export const ButtonStartRate = styled(motion.button)`
     "pt"
   )};
 
-  ${sizesForEachScreens([1500, 750], [50, 70], "margin-top", "px")};
+  @media (max-width: 750px) {
+    margin-top: 5%;
+  }
+
+  @media (max-height: 600px) {
+    margin-top: 4%;
+  }
+
+  @media (max-width: 850px) and (max-height: 600px) {
+    margin-top: 10%;
+  }
 `;
 
 export const IllustrationRating = styled(motion.div)`
   position: absolute;
   width: auto;
-  right: 0;
-  bottom: 5%;
+  right: -2%;
+  bottom: 10%;
 
   @media (max-width: 850px) {
     display: none;

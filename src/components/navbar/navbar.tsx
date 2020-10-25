@@ -11,7 +11,6 @@ import {
 import Link from "next/link";
 import { useSelector } from "react-redux";
 
-import { CSSTransition } from "react-transition-group";
 import UserMenu from "./userMenu";
 import { IConsumer } from "../../../types";
 
@@ -72,14 +71,12 @@ export default function Navbar(props: any) {
         <div className="line"></div>
       </ButtonMobile>
 
-      <CSSTransition
-        unmountOnExit
-        addEndListener={() => {}}
-        timout={200}
-        in={openMenu}
-        classNames="my-node"
-      >
-        <Overlay>
+      {openMenu && (
+        <Overlay
+          initial={{ opacity: 0, x: -500 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -500 }}
+        >
           <div className="container">
             <Menu mobile={true}>
               {menu.map((value, index) => (
@@ -108,7 +105,7 @@ export default function Navbar(props: any) {
             </Menu>
           </div>
         </Overlay>
-      </CSSTransition>
+      )}
     </MyNavbar>
   );
 }

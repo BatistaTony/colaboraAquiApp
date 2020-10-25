@@ -42,7 +42,7 @@ export default function CustomSelect({
         className="customSelect"
         onClick={() => setShowList(!showList)}
       >
-        <img className="customSelect" src="/images/icons8-eye.png" alt="" />
+        <img className="customSelect" src="/images/seta.png" alt="" />
       </InputIcon>
 
       <CSSTransition

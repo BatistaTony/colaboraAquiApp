@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { CSSTransition } from "react-transition-group";
 import { DivUser, UserName, MenuUser } from "./navbarStyle";
 import { useSelector } from "react-redux";
 import { IConsumer } from "../../../types";
@@ -34,14 +33,14 @@ export default function UserMenu() {
           </g>
         </svg>
       </UserName>
-      <CSSTransition
-        unmountOnExit
-        addEndListener={() => {}}
-        timout={200}
-        in={menuUser}
-        classNames="my-node"
-      >
-        <MenuUser nameLength={consumerState.userName.length}>
+
+      {menuUser && (
+        <MenuUser
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          nameLength={consumerState.userName.length}
+        >
           <li>
             <img src="/images/profile.png" alt="" /> Meu perfil
           </li>
@@ -49,7 +48,7 @@ export default function UserMenu() {
             <img src="/images/logout.png" alt="" /> Sair
           </li>
         </MenuUser>
-      </CSSTransition>
+      )}
     </DivUser>
   );
 }

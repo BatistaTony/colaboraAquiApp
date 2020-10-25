@@ -7,42 +7,42 @@ import {
   ButtonSucess,
   IllustrationMobile,
 } from "./signUpStyle";
-import Link from "next/link";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 export default function SucessModal() {
+  const [animateData, setAnimation] = useState({ opacity: 1, y: 0 });
+
+  const changeAnimation = () => {
+    setAnimation({ opacity: 1, y: -800 });
+  };
+
   return (
-    <OverlaySignUp>
-      <div className="wrp_div_vdg">
-        <ModalSucess
-          initial={{ opacity: 0, y: -500 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ y: -500, opacity: 0 }}
-        >
-          <ModalIllustration
-            className="illustration1"
-            img={"/images/signup.png"}
-          ></ModalIllustration>
-          <div></div>
-          <IllustrationMobile>
-            <img src="/images/Grupo572.png" alt="" />
-          </IllustrationMobile>
-          <div className="div2">
-            <div className="miniDiv">
-              <TitleSucess>Tu és o consumidor, Tu tens o poder</TitleSucess>
-              <TextSucess>
-                Ajude as empresa e orgãos nacionas a melhorarem os seus serviços
-              </TextSucess>
-              <Link href="/companies">
-                <ButtonSucess>Começar</ButtonSucess>
-              </Link>
+    <AnimatePresence>
+      <OverlaySignUp>
+        <div className="wrp_div_vdg">
+          <ModalSucess
+            initial={{ opacity: 0, y: -500 }}
+            animate={animateData}
+            exit={{ opacity: 0 }}
+          >
+            <IllustrationMobile>
+              <img src="/images/Grupo572.png" alt="" />
+            </IllustrationMobile>
+            <div className="div2">
+              <div className="miniDiv">
+                <TitleSucess>Tu és o consumidor, Tu tens o poder</TitleSucess>
+                <TextSucess>
+                  Ajude as empresas e orgãos nacionas a melhorarem os seus
+                  serviços
+                </TextSucess>
+
+                <ButtonSucess onClick={changeAnimation}>Começar</ButtonSucess>
+              </div>
             </div>
-          </div>
-          <ModalIllustration
-            className="illustration2"
-            img={"/images/bgS.png"}
-          ></ModalIllustration>
-        </ModalSucess>
-      </div>
-    </OverlaySignUp>
+          </ModalSucess>
+        </div>
+      </OverlaySignUp>
+    </AnimatePresence>
   );
 }

@@ -83,9 +83,7 @@ export default function SignInConsumer() {
             <ButtonBack classNames="mobileBtn" onChange={backToHome} />
           </div>
 
-          <Title>
-            Começa agora no <span>Colabora</span>
-          </Title>
+          <Title>Comece a avaliar agora.</Title>
           <TextForm>A voz fo consumidor é a mais importante.</TextForm>
 
           <ErrorMessage>{errorMsg}</ErrorMessage>
@@ -103,7 +101,7 @@ export default function SignInConsumer() {
             </FormGroup>
 
             <InputPassword
-              classNames={"FormGroup"}
+              classNames={"FormGroup formPassword"}
               errorIsOn={errorIsOn}
               handleChange={handleChange}
             />
@@ -115,8 +113,8 @@ export default function SignInConsumer() {
             </ButtonSignUp>
 
             <QuestionSignUp className="FormGroup">
-              Ainda não tem uma conta ?{" "}
-              <Link href="/signup">
+              Ainda não tem uma conta ?
+              <Link href="/companies">
                 <span>Registar-se</span>
               </Link>
             </QuestionSignUp>

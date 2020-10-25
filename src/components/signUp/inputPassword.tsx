@@ -15,7 +15,10 @@ export default function InputPassword({
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
-    <FormGroup className={classNames} isEmpty={errorIsOn === "password"}>
+    <FormGroup
+      className={`inputPassword ${classNames}`}
+      isEmpty={errorIsOn === "password"}
+    >
       <input
         type={showPassword ? "text" : "password"}
         name="password"
@@ -23,8 +26,13 @@ export default function InputPassword({
         onChange={handleChange}
         placeholder="Senha"
       />
-      <InputIcon onClick={() => setShowPassword(!showPassword)}>
-        <img src="/images/icons8-eye.png" alt="" />
+
+      <InputIcon className="iconeSee">
+        <img
+          onClick={() => setShowPassword(!showPassword)}
+          src="/images/icons8-eye.png"
+          alt=""
+        />
       </InputIcon>
     </FormGroup>
   );

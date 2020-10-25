@@ -1,9 +1,7 @@
 import { useState } from "react";
 import CardCompany from "../components/companies/cardCompany";
 import {
-  ButtonControl,
   ButtonSuggest,
-  CompanyList,
   ContentCompanies,
   DivBtnMobile,
   FilterStyled,
@@ -17,8 +15,11 @@ import Layout from "../components/layout/layout";
 import { CSSTransition } from "react-transition-group";
 import PrivateRouter from "./privateRouter";
 import { InputIcon } from "../components/signUp/signUpStyle";
-import { ICompany } from "../../types";
+import { ICompany, IConsumer } from "../../types";
 import ListOfCompanies from "./../components/companies/listCompanies";
+import { useSelector } from "react-redux";
+import SignUp from "../components/signUp/signUp";
+import SucessModal from "../components/signUp/sucessModal";
 
 function Companies() {
   const [filterBy, setFilterBy] = useState<string>("Todas");
@@ -137,6 +138,8 @@ function Companies() {
     },
   ]);
 
+  const userState: IConsumer = useSelector((state) => state.Consumer);
+
   const toggleSuggestion = () => {
     setShowSuggestion(!showSuggestion);
   };
@@ -156,15 +159,9 @@ function Companies() {
   return (
     <Layout title="Empresas">
       <ContentCompanies>
-        <CSSTransition
-          unmountOnExit
-          addEndListener={() => {}}
-          timout={200}
-          in={showSuggestion}
-          classNames="my-node"
-        >
-          <Suggestion toggleSuggestion={toggleSuggestion} />
-        </CSSTransition>
+        {!(userState.userName.length > 0) && <SignUp />}
+        {showSuggestion && <Suggestion toggleSuggestion={toggleSuggestion} />}
+
         <div className="cmp_f_g">
           <TextCompanies>
             <span>
@@ -237,4 +234,4 @@ function Companies() {
   );
 }
 
-export default PrivateRouter(Companies);
+export default Companies;

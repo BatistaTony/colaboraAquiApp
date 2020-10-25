@@ -6,14 +6,12 @@ import {
   sizesForEachScreens,
   NormalFontSize,
 } from "../layout/layoutStyle";
-import { ButtonLogin } from "../navbar/navbarStyle";
 import { motion } from "framer-motion";
 
 export const OverlaySignUp = styled.div`
   width: 100%;
   height: 100vh;
-  background: ${({ isSinglePage }) =>
-    isSinglePage ? " url(/images/Grupo978.svg)" : "rgba(255, 255, 255, 0.5)"};
+  background: rgba(255, 255, 255, 0.9);
   background-size: 100% 100%;
   position: fixed;
   left: 0;
@@ -45,16 +43,19 @@ export const OverlaySignUp = styled.div`
 `;
 
 export const Modal = styled(motion.div)`
-  width: 60%;
-  height: 70vh;
-  border-radius: 15px;
+  width: 55%;
+  height: 65vh;
+  border-radius: 40px;
   display: grid;
   grid-template-columns: 35% 65%;
   position: relative;
-  background: white;
   overflow: hidden;
   z-index: 9999;
   padding: 0;
+  -webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  background: white;
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500],
@@ -63,7 +64,19 @@ export const Modal = styled(motion.div)`
     "px"
   )}
 
-  ${sizesForEachScreens([1500, 1370], [500, 450], "height", "px")} 
+  @media (max-width:1930px) {
+    height: 60vh;
+  }
+
+  ${sizesForEachScreens([1500, 1370], [480, 450], "height", "px")}
+
+  ${sizesForEachScreens(
+    [3200, 2700, 2300, 1930, 1500, 1370],
+    [35, 30, 25, 20, 15, 10],
+    "border-radius",
+    "px"
+  )} 
+
   
   @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
     height: 100vh;
@@ -77,6 +90,9 @@ export const Modal = styled(motion.div)`
     height: auto;
     border-radius: 0;
     width: 100%;
+    -webkit-box-shadow: 0 0 0;
+    -moz-box-shadow: 0 0 0;
+    box-shadow: 0 0 0;
 
     .divBtnBackT {
       width: 100%;
@@ -87,6 +103,10 @@ export const Modal = styled(motion.div)`
       position: fixed;
       top: 0;
       left: 0;
+
+      @media (max-width: 600px) {
+        padding-top: 10px;
+      }
 
       @media (max-width: 750px) {
         position: relative;
@@ -130,51 +150,69 @@ export const ButtonBackStyle = styled.button`
   border: none;
   background: transparent;
   ${getFont("Medium")};
-  font-size: 30pt;
+  font-size: 25pt;
   ${flexbox()};
-  margin-bottom: 50px;
-  margin-left: 40px;
+  margin-bottom: 17%;
+  margin-left: 30px;
 
   ${sizesForEachScreens(
-    [3200, 3000, 1930],
-    [40, 30, 20],
+    [2560, 2150, 1500, 1385],
+    [18, 17, 17.5, 16.5],
     "margin-bottom",
+    "%"
+  )};
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  ${sizesForEachScreens(
+    [3200, 2500, 1930, 1500],
+    [35, 30, 15, 10],
+    "margin-left",
     "px"
   )};
 
-  ${sizesForEachScreens([3200, 2500, 1930], [35, 30, 25], "margin-left", "px")};
-
   img {
-    width: 45px;
-    height: 45px;
-    margin-right: 7px;
+    width: 3.7rem;
+    margin-right: 20px;
 
     ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500],
-      [35, 30, 25, 20],
+      [3150, 2900, 2500, 1930, 1700, 1500],
+      [3.5, 3.2, 3, 2.5, 2, 1.5],
       "width",
-      "px"
+      "rem"
     )};
 
     ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500],
-      [35, 30, 25, 20],
-      "height",
+      [3400, 3200, 2900],
+      [15, 10, 5],
+      "margin-right",
       "px"
     )};
   }
 
-  ${NormalFontSize()};
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 1930, 1500],
+    [25, 23, 20, 17, 10.4],
+    "font-size",
+    "pt"
+  )};
 `;
 
 export const DivForm = styled.div`
   width: 100%;
   height: 100%;
   ${flexbox("column")};
+  box-sizing: border-box;
+  padding-right: 8%;
 
-  @media (max-height: 670px) {
-    padding-top: 10px;
-    padding-bottom: 50px;
+  @media (max-width: 1500px) {
+    padding-top: 25px;
+  }
+
+  @media (max-width: 850px) {
+    padding-right: 0;
   }
 
   .mobileBtn {
@@ -187,8 +225,9 @@ export const DivForm = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 48pt;
+  font-size: 42pt;
   ${getFont()};
+  transition: 0.5s;
   color: ${colorsApp.soDark};
 
   span {
@@ -212,49 +251,61 @@ export const Title = styled.h1`
 `;
 
 export const TextForm = styled.p`
-  width: 78%;
+  width: 100%;
   text-align: center;
   height: auto;
   color: ${colorsApp.soDark};
-  font-size: 30pt;
+  font-size: 27pt;
   ${getFont()};
-  margin-top: 10px;
+  margin-top: 20px;
 
   ${NormalFontSize()};
 
-  @media (max-width: 1500px) {
-    width: 84%;
+  @media (max-width: 1700px) {
+    margin-top: 10px;
   }
 
-  @media (max-width: 1190px) {
-    width: 90%;
+  @media (max-width: 1500px) {
+    margin-top: 7px;
+  }
+
+  @media (max-width: 1350px) {
+    margin-top: 5px;
+    font-size: 11pt;
   }
 
   @media (max-width: 900px) {
-    width: 60%;
+    width: 55%;
   }
 
   @media (max-width: 750px) {
-    font-size: 12pt;
-    width: 87%;
+    font-size: 11pt;
+    width: 60%;
+  }
+
+  @media (max-width: 600px) {
+    width: 90%;
   }
 `;
 
 export const DivGridForm = styled.div`
-  width: 75%;
+  width: 84%;
   height: auto;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: repeat(3, 100px) auto auto;
   grid-gap: 30px;
+  margin-top: 40px;
+
+  @media (max-width: 750px) {
+    grid-gap: 10px;
+  }
 
   @media (max-height: 670px) {
     grid-gap: 10px;
   }
 
-  @media (max-width: 750px) {
-    grid-gap: 15px;
-  }
+  ${sizesForEachScreens([1930, 1500, 1350], [30, 10, 5], "margin-top", "px")}
 
   ${sizesForEachScreens([1930, 1500], [20, 15], "grid-gap", "px")}
 
@@ -277,40 +328,85 @@ export const DivGridForm = styled.div`
 
   @media (max-width: 750px) {
     ${flexbox("column")};
+    height: auto;
   }
 
-  @media (max-width: 650px) {
+  @media (max-width: 600px) {
     width: 87%;
+  }
+
+  .inputPassword {
+    grid-template-columns: 85% 15%;
+
+    @media (max-width: 1000px) {
+      grid-template-columns: 88% 12%;
+    }
+
+    @media (max-width: 750px) {
+      grid-template-columns: 90% 10%;
+    }
   }
 `;
 
 export const ErrorMessage = styled.p`
-  width: 100%;
-  font-size: 30pt;
-  text-align: center;
+  width: 78%;
+  font-size: 25pt;
+  text-align: left;
   ${getFont()};
   color: red;
   margin-top: 10px;
   margin-bottom: 5px;
+  padding-left: 40px;
+  box-sizing: border-box;
 
   ${NormalFontSize()};
+
+  @media (max-width: 1500px) {
+    width: 75%;
+  }
+
+  @media (max-width: 1190px) {
+    width: 90%;
+  }
+
+  @media (max-width: 900px) {
+    width: 60%;
+  }
+
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 1930],
+    [30, 25, 20, 15],
+    "padding-left",
+    "px"
+  )}
 `;
 
 export const FormGroup = styled.div`
   width: 100%;
-  border-radius: 7px;
+  border-radius: 20px;
   display: grid;
-  grid-template-columns: 90% 10%;
+  grid-template-columns: 88% 12%;
   grid-template-rows: 100%;
   background: #f1f0f4;
-  border: ${({ isEmpty }) => (isEmpty ? "2px solid red" : "none")};
+  border: ${({ isEmpty }) =>
+    isEmpty ? "2px solid red" : "2px solid transparent"};
+  transition: 0.5s;
+  box-sizing: border-box;
+
+  ${sizesForEachScreens([3200, 1930, 1500], [15, 10, 7], "border-radius", "px")}
 
   @media (max-width: 750px) {
     height: 45px;
+    grid-template-columns: 90% 10%;
   }
 
   @media (max-width: 750px) {
     margin-bottom: 10px;
+  }
+
+  &:focus-within {
+    background: white;
+    border: 2px solid ${colorsApp.orange};
   }
 
   button {
@@ -328,7 +424,7 @@ export const FormGroup = styled.div`
     border: none;
     outline: none;
     background: transparent;
-    padding-left: 40px;
+    padding-left: 45px;
     box-sizing: border-box;
     text-align: left;
 
@@ -348,36 +444,75 @@ export const FormGroup = styled.div`
 
   &:first-child {
     grid-column: 1/3;
-    background: white;
-    border: ${({ isEmpty }) =>
-      isEmpty ? `2px solid red` : `2px solid ${colorsApp.orange}`};
-    box-sizing: border-box;
+  }
+
+  .iconeSee {
+    @media (max-width: 900px) {
+    }
+    img {
+      width: 75%;
+      height: 45%;
+
+      @media (max-width: 1930px) {
+        width: 50%;
+        height: 27%;
+      }
+
+      @media (max-width: 1500px) {
+        width: 70%;
+        height: 50%;
+      }
+
+      @media (max-width: 1000px) {
+        width: 70%;
+        height: 45%;
+      }
+
+      @media (max-width: 1000px) {
+        width: 50%;
+        height: 45%;
+      }
+
+      @media (max-width: 600px) {
+        width: 45%;
+        height: 50%;
+      }
+
+      @media (max-width: 505px) {
+        width: 55%;
+        height: 45%;
+      }
+    }
   }
 `;
 
 export const InputIcon = styled.div`
   width: 100%;
   height: 100%;
-  ${flexbox()};
+  ${flexbox("row", "flex-start", "center")};
+
+  @media (max-width: 750px) {
+    ${flexbox("row", "center", "center")};
+  }
 
   img {
-    width: 45px;
-    height: 45px;
-    margin-right: 15px;
+    width: 53%;
+    height: 28%;
 
-    ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500],
-      [35, 30, 25, 20],
-      "width",
-      "px"
-    )};
+    @media (max-width: 1930px) {
+      width: 55%;
+      height: 30%;
+    }
 
-    ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500],
-      [35, 30, 25, 20],
-      "height",
-      "px"
-    )};
+    @media (max-width: 900px) {
+      width: 43%;
+      height: 30%;
+    }
+
+    @media (max-width: 750px) {
+      width: 40%;
+      height: 30%;
+    }
   }
 `;
 
@@ -393,9 +528,11 @@ export const SelectList = styled.ul`
   overflow-y: ${({ length }) => (length > 5 ? "auto" : "hidden")};
   top: 0;
   background: white;
-  border-radius: 7px;
+  border-radius: 20px;
   z-index: 10;
   box-shadow: 0 0 20px;
+
+  ${sizesForEachScreens([3200, 1930, 1500], [15, 10, 7], "border-radius", "px")}
 
   @media (max-width: 3200px) {
     height: ${({ length }) => (length > 5 ? "300px" : "auto")};
@@ -440,11 +577,20 @@ export const QuestionSignUp = styled.p`
   font-size: 30pt;
   ${getFont()};
   grid-column: 1/3;
+  margin-top: 5px;
+
+  @media (max-width: 750px) {
+    margin-top: 10px;
+  }
 
   span {
     margin-left: 10px;
     color: ${colorsApp.orange};
     cursor: default;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
   ${NormalFontSize()};
 
@@ -461,20 +607,35 @@ export const ButtonSignUp = styled.button`
   padding-top: 30px;
   padding-bottom: 30px;
   outline: none;
-  border-radius: 10px;
+  border-radius: 15px;
   border: none;
   background: ${colorsApp.orange};
   ${getFont("Medium")};
   font-size: 35pt;
   grid-column: 1/3;
+  margin-top: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 2500px) {
+    border-radius: 10px;
+    margin-top: 10px;
+  }
 
   @media (max-width: 1500px) {
     border-radius: 5px;
+    margin-top: 0;
+  }
+
+  @media (max-width: 750px) {
+    margin-top: 15px;
   }
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930],
-    [27, 25, 20, 15],
+    [3200, 3000, 2500, 1930, 1500],
+    [27, 25, 20, 15, 14],
     "font-size",
     "pt"
   )};
@@ -488,52 +649,21 @@ export const ButtonSignUp = styled.button`
 `;
 
 export const ModalSucess = styled(Modal)`
-  background: ${colorsApp.orange};
-  grid-template-columns: 35% 30% 35%;
+  grid-template-columns: 100%;
+  background: url(/images/sucess.png);
+  background-size: cover;
 
-  ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 1370],
-    [1900, 1700, 1500, 1200, 750, 670],
-    "width",
-    "px"
-  )}
-
-  ${sizesForEachScreens([1500, 1370], [500, 400], "height", "px")} 
-
-  @media  (max-width:900px) {
+  @media (max-width: 900px) {
     height: 100vh;
     width: 100%;
     border-radius: 0;
     z-index: 99999;
-    grid-template-columns: 25% auto auto;
+    background: ${colorsApp.orange};
+
     box-sizing: border-box;
     overflow: hidden;
     align-self: flex-end;
     ${flexbox("column")};
-  }
-
-  .illustration2 {
-    margin-left: 150px;
-
-    @media (max-width: 1500px) {
-      margin-left: 50px;
-    }
-
-    @media (max-width: 900px) {
-      display: none;
-      margin-right: -90px;
-    }
-  }
-
-  .illustration1 {
-    background-position: right;
-
-    @media (max-width: 900px) {
-      display: block;
-      position: relative;
-      width: auto;
-      height: auto;
-    }
   }
 
   .div2 {
@@ -550,15 +680,32 @@ export const ModalSucess = styled(Modal)`
   }
 
   .miniDiv {
-    width: 50%;
+    width: 100%;
+    height: 100%;
     ${flexbox("column")};
+    box-sizing: border-box;
+    padding-left: 4%;
+    transition: 0.5s;
 
     ${sizesForEachScreens(
-      [3000, 2500, 1930, 1370, 1000, 750, 600],
-      [45, 50, 60, 65, 70, 85],
-      "width",
+      [3324, 3000, 2500, 1930, 900],
+      [5, 6, 8, 9, 0],
+      "padding-left",
       "%"
-    )}
+    )};
+
+    @media (max-width: 600px) {
+      width: 80%;
+    }
+
+    @media (max-width: 450px) {
+      width: 85%;
+    }
+
+    @media (max-width: 900px) {
+      margin-top: -2rem;
+      justify-content: flex-start;
+    }
   }
 `;
 
@@ -572,6 +719,7 @@ export const IllustrationMobile = styled.div`
 
   width: 100%;
   height: 60vh;
+  margin-top: 2rem;
 
   @media (max-height: 570px) {
     height: 70vh;
@@ -594,49 +742,129 @@ export const IllustrationMobile = styled.div`
   }
 `;
 
-export const TitleSucess = styled(Title)`
+export const TitleSucess = styled.h1`
   color: ${colorsApp.soDark};
-  ${getFont("Medium")};
+  ${getFont("Bold")};
   text-align: center;
+  font-size: 45pt;
 
   @media (max-width: 900px) {
     margin-top: 0;
   }
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+
+  @media (max-height: 400px) {
+    background: red;
+  }
+
+  ${sizesForEachScreens(
+    [3590, 3427, 3000, 2500, 1930, 1500, 1000, 700, 400],
+    [42, 40, 38, 35, 28, 17, 15, 14, 12.2],
+    "font-size",
+    "pt"
+  )};
 `;
 
-export const TextSucess = styled(TextForm)`
-  color: white;
+export const TextSucess = styled.p`
   ${getFont("Medium")};
-  width: 90%;
+  width: 47%;
+  text-align: center;
+  height: auto;
+  color: white;
+  font-size: 35pt;
+  margin-top: 10px;
 
-  ${sizesForEachScreens([750, 600], [70, 90], "width", "%")}
+  @media (max-width: 1500px) {
+    margin-top: 5px;
+  }
+
+  ${sizesForEachScreens(
+    [3622, 3270, 2500, 1930, 1500, 750, 600],
+    [50, 52, 54, 57, 54, 60, 100],
+    "width",
+    "%"
+  )}
+
+  ${sizesForEachScreens(
+    [3500, 3000, 3270, 1930, 1500, 1300, 1000, 600, 500],
+    [33, 30, 28, 24, 14, 13, 12.5, 12, 11],
+    "font-size",
+    "pt"
+  )};
 `;
 
-export const ButtonSucess = styled(ButtonLogin)`
+export const ButtonSucess = styled.button`
   background: ${colorsApp.soDark};
   color: white;
-  margin-top: 40px;
-  height: 70px;
-  border-radius: 7px;
+  margin-top: 5rem;
+  height: 100px;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding-left: 7rem;
+  padding-right: 7rem;
+  font-size: 33pt;
+
+  @media (max-width: 3000px) {
+    margin-top: 4rem;
+  }
+
+  @media (max-width: 2500px) {
+    border-radius: 15px;
+    margin-top: 3rem;
+  }
+
+  @media (max-width: 1500px) {
+    border-radius: 7px;
+    margin-top: 2rem;
+  }
 
   @media (max-width: 600px) {
     position: fixed;
     bottom: 5%;
+    width: 70%;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
-  ${sizesForEachScreens([750, 600, 550], [50, 70, 85], "width", "%")}
+  @media (max-width: 450px) {
+    width: 85%;
+  }
+
+  @media (max-height: 570px) {
+    bottom: 3%;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
 
   ${sizesForEachScreens(
-    [3000, 2500, 1930, 750],
-    [60, 50, 45, 50],
+    [3400, 2500, 1930, 1700, 1500, 1300],
+    [31, 28, 25, 20, 14, 13],
+    "font-size",
+    "pt"
+  )};
+  ${sizesForEachScreens(
+    [3400, 2500, 1930, 1700, 1500, 600],
+    [85, 75, 65, 55, 42, 45],
     "height",
     "px"
-  )}
+  )};
 
   ${sizesForEachScreens(
-    [3000, 2500, 1930, 1500, 1000, 750],
-    [30, 20, 10, 15, 20, 25],
-    "margin-top",
-    "px"
-  )}
+    [3400, 2500, 1930, 1500],
+    [6, 5, 4, 2.5],
+    "padding-left",
+    "rem"
+  )};
+  ${sizesForEachScreens(
+    [3400, 2500, 1930, 1500],
+    [6, 5, 4, 2.5],
+    "padding-right",
+    "rem"
+  )};
 `;
