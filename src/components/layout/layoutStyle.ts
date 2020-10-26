@@ -1,13 +1,13 @@
-import styled, { createGlobalStyle, keyframes } from "styled-components";
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 const chooseBackgroundByTitle = (title: string) => {
   switch (title) {
-    case "Empresas" || "Avaliar": {
-      return " url(/images/Grupo978.svg)";
+    case 'Empresas' || 'Avaliar': {
+      return ' url(/images/Grupo978.svg)';
     }
 
     default: {
-      return "white";
+      return 'white';
     }
   }
 };
@@ -108,9 +108,9 @@ margin:0;
 `;
 
 export const flexbox = (
-  direction: string = "row",
-  justify: string = "center",
-  align: string = "center"
+  direction: string = 'row',
+  justify: string = 'center',
+  align: string = 'center'
 ) => `
 display:flex;
 flex-direction:${direction};
@@ -119,7 +119,7 @@ align-items: ${align}
 
 `;
 
-export const getFont = (font: string = "Regular") => `
+export const getFont = (font: string = 'Regular') => `
 
 @font-face {
   src: url(/fonts/Poppins/Poppins-${font}.ttf);
@@ -131,11 +131,12 @@ font-family: Poppins-${font};
 `;
 
 export const colorsApp = {
-  orange: "#ffc300",
-  darkGray: "#5081dd",
-  roxo: "#4b55ba",
-  kindaBlue: "#80b5f3",
-  soDark: "#27353B",
+  orange: '#ffc300',
+  darkGray: '#5081dd',
+  roxo: '#4b55ba',
+  kindaBlue: '#80b5f3',
+  soDark: '#27353B',
+  darkGreen: '#58676a',
 };
 
 export const sizesForEachScreens = (
@@ -151,13 +152,13 @@ export const sizesForEachScreens = (
       ${property}:${valuesForScreen[index] + unit};
     }`
     )
-    .join(" ");
+    .join(' ');
 };
 
 export const NormalFontSize = () =>
   sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500],
     [26, 22, 19, 17, 12],
-    "font-size",
-    "pt"
+    'font-size',
+    'pt'
   );
