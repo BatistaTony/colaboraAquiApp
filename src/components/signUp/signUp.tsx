@@ -18,10 +18,6 @@ import { useEffect } from "react";
 export default function SignUp() {
   const userState = useSelector((state) => state.Consumer);
 
-  useEffect(() => {
-    console.log(userState);
-  }, [userState]);
-
   return (
     <OverlaySignUp>
       <AnimatePresence>

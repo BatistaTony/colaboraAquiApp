@@ -54,7 +54,7 @@ export const BackGroundWithIllustration = styled(motion.div)`
 
   .illustration2_e {
     width: 60%;
-    height: 100%;
+    height: 115%;
     background: url(/images/caminho.svg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -64,18 +64,6 @@ export const BackGroundWithIllustration = styled(motion.div)`
     bottom: -5%;
     transition: 0.5s;
 
-    @media (max-width: 850px) {
-      height: 100vh;
-      bottom: -15%;
-      width: 100%;
-      background-position: bottom;
-      background-size: 100% 80%;
-    }
-
-    @media (max-width: 380px) and (max-height: 850px) {
-      bottom: -20%;
-    }
-
     @media (max-width: 1617px) and (max-height: 1392px) {
       bottom: -25%;
       width: 70%;
@@ -84,6 +72,23 @@ export const BackGroundWithIllustration = styled(motion.div)`
 
     @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
       bottom: -24%;
+    }
+
+    @media (max-width: 950px) {
+      bottom: -30%;
+    }
+
+    @media (max-width: 850px) {
+      height: 120%;
+      bottom: -15%;
+      right: -20%;
+      width: 120%;
+      background-position: bottom;
+      background-size: 100% 100%;
+    }
+
+    @media (max-width: 380px) and (max-height: 850px) {
+      bottom: -20%;
     }
   }
 `;
@@ -344,10 +349,10 @@ export const ButtonStartRate = styled(motion.button)`
   )};
 
   @media (max-width: 750px) {
-    margin-top: 5%;
+    margin-top: 10%;
   }
 
-  @media (max-height: 600px) {
+  @media (max-height: 500px) {
     margin-top: 4%;
   }
 

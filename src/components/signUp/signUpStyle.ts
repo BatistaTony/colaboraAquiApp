@@ -75,9 +75,8 @@ export const Modal = styled(motion.div)`
     [35, 30, 25, 20, 15, 10],
     "border-radius",
     "px"
-  )} 
+  )}
 
-  
   @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
     height: 100vh;
     position: absolute;
@@ -108,7 +107,7 @@ export const Modal = styled(motion.div)`
         padding-top: 10px;
       }
 
-      @media (max-width: 750px) {
+      @media (max-width: 600px) and (max-height: 690px) {
         position: relative;
       }
 
@@ -124,6 +123,14 @@ export const Modal = styled(motion.div)`
       left: 0;
       z-index: 999;
     }
+  }
+
+  @media (max-width: 600px) and (min-height: 745px) {
+    height: 100vh;
+  }
+
+  @media (max-width: 600px) and (max-height: 690px) {
+    height: auto;
   }
 `;
 
@@ -222,6 +229,16 @@ export const DivForm = styled.div`
       display: flex;
     }
   }
+
+  @media (max-width: 600px) and (min-height: 745px) {
+    height: 100vh;
+    ${flexbox("column", "flex-end", "center")};
+  }
+
+  @media (max-width: 600px) and (max-height: 690px) {
+    height: auto;
+    ${flexbox("column", "flex-end", "center")};
+  }
 `;
 
 export const Title = styled.h1`
@@ -293,9 +310,9 @@ export const DivGridForm = styled.div`
   height: auto;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: repeat(3, 100px) auto auto;
+  grid-template-rows: repeat(3, 100px) auto auto auto;
   grid-gap: 30px;
-  margin-top: 40px;
+  margin-top: 60px;
 
   @media (max-width: 750px) {
     grid-gap: 10px;
@@ -305,18 +322,18 @@ export const DivGridForm = styled.div`
     grid-gap: 10px;
   }
 
-  ${sizesForEachScreens([1930, 1500, 1350], [30, 10, 5], "margin-top", "px")}
+  ${sizesForEachScreens([2500, 1930, 1500], [50, 30, 20], "margin-top", "px")}
 
   ${sizesForEachScreens([1930, 1500], [20, 15], "grid-gap", "px")}
 
   ${sizesForEachScreens(
     [3200, 2500, 1930, 1500, 1370],
     [
-      "repeat(3, 90px) auto auto",
-      "repeat(3, 70px) auto auto",
-      "repeat(3, 60px) auto auto",
-      "repeat(3, 45px) auto auto",
-      "repeat(3, 40px) auto auto",
+      "repeat(3, 90px) auto auto auto",
+      "repeat(3, 70px) auto auto auto",
+      "repeat(3, 60px) auto auto auto",
+      "repeat(3, 45px) auto auto auto",
+      "repeat(3, 40px) auto auto auto",
     ],
     "grid-template-rows",
     ""
@@ -336,7 +353,7 @@ export const DivGridForm = styled.div`
   }
 
   .inputPassword {
-    grid-template-columns: 85% 15%;
+    grid-template-columns: 87% 13%;
 
     @media (max-width: 1000px) {
       grid-template-columns: 88% 12%;
@@ -349,33 +366,19 @@ export const DivGridForm = styled.div`
 `;
 
 export const ErrorMessage = styled.p`
-  width: 78%;
-  font-size: 25pt;
-  text-align: left;
+  width: 100%;
+  font-size: 20pt;
+  text-align: center;
   ${getFont()};
   color: red;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  padding-left: 40px;
+  margin-bottom: -2px;
   box-sizing: border-box;
-
+  grid-column: 1/3;
   ${NormalFontSize()};
 
-  @media (max-width: 1500px) {
-    width: 75%;
-  }
-
-  @media (max-width: 1190px) {
-    width: 90%;
-  }
-
-  @media (max-width: 900px) {
-    width: 60%;
-  }
-
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930],
-    [30, 25, 20, 15],
+    [3200, 3000, 2500, 1930, 1500],
+    [30, 25, 20, 15, 0],
     "padding-left",
     "px"
   )}
@@ -447,40 +450,28 @@ export const FormGroup = styled.div`
   }
 
   .iconeSee {
-    @media (max-width: 900px) {
-    }
     img {
-      width: 75%;
-      height: 45%;
+      width: 40px;
+      height: 40px;
+
+      @media (max-width: 2500px) {
+        width: 30px;
+        height: 30px;
+      }
 
       @media (max-width: 1930px) {
-        width: 50%;
-        height: 27%;
+        width: 25px;
+        height: 25px;
       }
 
       @media (max-width: 1500px) {
-        width: 70%;
-        height: 50%;
+        width: 16px;
+        height: 16px;
       }
 
-      @media (max-width: 1000px) {
-        width: 70%;
-        height: 45%;
-      }
-
-      @media (max-width: 1000px) {
-        width: 50%;
-        height: 45%;
-      }
-
-      @media (max-width: 600px) {
-        width: 45%;
-        height: 50%;
-      }
-
-      @media (max-width: 505px) {
-        width: 55%;
-        height: 45%;
+      @media (max-width: 750px) {
+        width: 15px;
+        height: 15px;
       }
     }
   }
@@ -496,22 +487,32 @@ export const InputIcon = styled.div`
   }
 
   img {
-    width: 53%;
-    height: 28%;
+    width: 35px;
+    height: 27px;
 
-    @media (max-width: 1930px) {
-      width: 55%;
-      height: 30%;
+    @media (max-width: 2500px) {
+      width: 30px;
+      height: 25px;
     }
 
-    @media (max-width: 900px) {
-      width: 43%;
-      height: 30%;
+    @media (max-width: 2313px) {
+      width: 25px;
+      height: 20px;
+    }
+
+    @media (max-width: 1930px) {
+      width: 20px;
+      height: 16px;
+    }
+
+    @media (max-width: 1500px) {
+      width: 12px;
+      height: 12px;
     }
 
     @media (max-width: 750px) {
-      width: 40%;
-      height: 30%;
+      width: 12px;
+      height: 12px;
     }
   }
 `;
@@ -556,14 +557,19 @@ export const SelectList = styled.ul`
 
   li {
     width: 100%;
-    padding-top: 11px;
-    padding-bottom: 10px;
     cursor: default;
-    padding-left: 15px;
+    padding: 30px;
     box-sizing: border-box;
     ${getFont()};
     font-size: 27pt;
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);
+
+    ${sizesForEachScreens(
+      [3300, 3000, 2700, 2300, 1930, 1500],
+      [25, 22, 18, 15, 13, 11],
+      "padding",
+      "px"
+    )};
 
     ${NormalFontSize()};
   }

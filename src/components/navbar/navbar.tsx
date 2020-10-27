@@ -29,9 +29,7 @@ export default function Navbar(props: any) {
   ];
 
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-  const [isLogged, setIsLogged] = useState<boolean>(
-    consumerState.userName.length > 0
-  );
+  const isLogged = consumerState.userName.length > 0;
 
   return (
     <MyNavbar>

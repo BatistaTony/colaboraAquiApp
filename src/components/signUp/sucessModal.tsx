@@ -9,12 +9,30 @@ import {
 } from "./signUpStyle";
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
+import { IConsumer } from "../../../types";
+import { useDispatch } from "react-redux";
+import { registerConsumer } from "../../store/actions/consumer";
 
-export default function SucessModal() {
+interface IProps {
+  dataUser: IConsumer;
+}
+
+export default function SucessModal({ dataUser }: IProps) {
   const [animateData, setAnimation] = useState({ opacity: 1, y: 0 });
+
+  const dispatch = useDispatch();
 
   const changeAnimation = () => {
     setAnimation({ opacity: 1, y: -800 });
+  };
+
+  const login = () => {
+    if (dataUser) {
+      changeAnimation();
+      setTimeout(() => {
+        dispatch(registerConsumer(dataUser));
+      }, 100);
+    }
   };
 
   return (
@@ -37,7 +55,7 @@ export default function SucessModal() {
                   serviços
                 </TextSucess>
 
-                <ButtonSucess onClick={changeAnimation}>Começar</ButtonSucess>
+                <ButtonSucess onClick={login}>Começar</ButtonSucess>
               </div>
             </div>
           </ModalSucess>

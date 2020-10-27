@@ -17,8 +17,6 @@ import InputPassword from "./inputPassword";
 import { translateProperty } from "../utils";
 import Link from "next/link";
 import { counties, provinces } from "./signUp.data";
-import { useDispatch, useSelector } from "react-redux";
-import { registerConsumer } from "../../store/actions/consumer";
 
 const initialState: IConsumer = {
   userName: "",
@@ -33,8 +31,6 @@ export default function FormSignUp() {
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
-  const consumerState: IConsumer = useSelector((state) => state.Consumer);
-  const dispatch = useDispatch();
 
   const [ageRanges, setAgeRange] = useState<string[]>([
     "15 a 16 anos",
@@ -81,7 +77,6 @@ export default function FormSignUp() {
 
   const signUpUser = (): void => {
     if (!checkError()) {
-      dispatch(registerConsumer(consumerData));
       setShowModalSucess(!showModalSucess);
     }
   };
@@ -95,10 +90,9 @@ export default function FormSignUp() {
         in={showModalSucess}
         classNames="my-node"
       >
-        <SucessModal />
+        <SucessModal dataUser={consumerData} />
       </CSSTransition>
 
-      <ErrorMessage>{errorMsg}</ErrorMessage>
       <DivGridForm>
         <FormGroup isEmpty={errorIsOn === "userName"}>
           <input
@@ -132,6 +126,8 @@ export default function FormSignUp() {
         />
 
         <InputPassword errorIsOn={errorIsOn} handleChange={handleChange} />
+
+        <ErrorMessage>{errorMsg}</ErrorMessage>
 
         <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
 

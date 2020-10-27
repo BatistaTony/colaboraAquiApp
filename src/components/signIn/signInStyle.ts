@@ -71,22 +71,26 @@ export const ModalSignIn = styled(Modal)`
       width: 73%;
 
       justify-content: center;
-      grid-template-rows: repeat(2, 100px) auto auto;
+      grid-template-rows: repeat(2, 100px) auto auto auto;
 
       ${sizesForEachScreens(
         [3200, 2500, 1930, 1500, 1370],
         [
-          "repeat(2, 90px) auto auto",
-          "repeat(2, 70px) auto auto",
-          "repeat(2, 60px) auto auto",
-          "repeat(2, 45px) auto auto",
-          "repeat(2, 40px) auto auto",
+          "repeat(2, 90px) auto auto auto",
+          "repeat(2, 70px) auto auto auto",
+          "repeat(2, 60px) auto auto auto",
+          "repeat(2, 45px) auto auto auto",
+          "repeat(2, 40px) auto auto auto",
         ],
         "grid-template-rows",
         ""
       )}
 
-      @media (max-width:900px) {
+      .error_style {
+        grid-column: 1/1;
+      }
+
+      @media (max-width: 900px) {
         width: 45%;
       }
 
@@ -112,37 +116,32 @@ export const ModalSignIn = styled(Modal)`
       }
 
       .formPassword {
-        grid-template-columns: 90% 10%;
+        grid-template-columns: 93% 7%;
       }
 
       .iconeSee {
         img {
-          width: 55%;
-          height: 50%;
+          width: 40px;
+          height: 40px;
 
           @media (max-width: 2500px) {
-            width: 55%;
-            height: 55%;
+            width: 30px;
+            height: 30px;
+          }
+
+          @media (max-width: 1930px) {
+            width: 25px;
+            height: 25px;
           }
 
           @media (max-width: 1500px) {
-            width: 55%;
-            height: 50%;
+            width: 16px;
+            height: 16px;
           }
 
-          @media (max-width: 590px) {
-            width: 50%;
-            height: 50%;
-          }
-
-          @media (max-width: 525px) {
-            width: 55%;
-            height: 50%;
-          }
-
-          @media (max-width: 410px) {
-            width: 53%;
-            height: 50%;
+          @media (max-width: 750px) {
+            width: 15px;
+            height: 15px;
           }
         }
       }
@@ -199,17 +198,45 @@ export const IllustrationObjectSignIn = styled.div`
   background-position: -20% -20%;
   background-repeat: no-repeat;
   position: absolute;
-  top: -10px;
+  top: -3rem;
   left: -5%;
   transform: rotate(4deg);
   z-index: -1;
+
+  @media (max-height: 1910px) {
+    top: -8rem;
+  }
+
+  @media (max-width: 1500px) {
+    width: 80%;
+    height: 70%;
+    background-size: 120% 90%;
+    margin-top: 5%;
+    height: 90%;
+    left: -30%;
+  }
+
+  @media (max-width: 1370px) {
+    background-size: 120% 90%;
+
+    left: -35%;
+  }
+
+  @media (max-width: 1783px) and (max-height: 1280px) {
+    top: -7rem;
+  }
+
+  @media only screen and (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-height: 1366px) {
+    background-position: -20% -20%;
+    background-size: 100% 90%;
+    margin-top: -8rem;
+  }
 
   @media (max-width: 1050px) {
     width: 70%;
     height: 90%;
     background-size: 70% 70%;
     background-position: -20% -20%;
-    top: 0;
     left: -5%;
   }
 

@@ -7,6 +7,7 @@ interface ISelectProps {
   values: Array<string>;
   defaultValueSelect: string;
   isEmpty: boolean;
+  classNames?: string;
 }
 
 export default function CustomSelect({
@@ -14,6 +15,7 @@ export default function CustomSelect({
   values,
   defaultValueSelect,
   isEmpty,
+  classNames,
   ...props
 }: ISelectProps) {
   const [showList, setShowList] = useState<boolean>(false);
@@ -34,7 +36,11 @@ export default function CustomSelect({
   });
 
   return (
-    <FormSelect isEmpty={isEmpty} {...props}>
+    <FormSelect
+      isEmpty={isEmpty}
+      {...props}
+      className={`customSelect ${classNames} `}
+    >
       <button onClick={() => setShowList(!showList)} className="customSelect">
         <span className="customSelect">{defaultValueSelect} </span>
       </button>

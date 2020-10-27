@@ -108,7 +108,7 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
           <ButtonCloseSuggestion onClick={closeSuggestion}>
             <IconClose />
           </ButtonCloseSuggestion>
-          <DivForm>
+          <DivForm className="div_form_sugs_cmp_et">
             <Title>Não encontrou o que procurava ?</Title>
             <TextForm className="text_simple">
               Sugira uma empresa e nós iremos adicionar dentro em breve
@@ -137,6 +137,7 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
                   handleChooseSelect("companyStatus", value)
                 }
                 values={status}
+                classNames="select_suggest_cmp"
                 isEmpty={errorIsOn === "status"}
               />
 

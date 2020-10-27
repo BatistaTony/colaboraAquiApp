@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { IConsumer } from "../../../types";
 import { useDispatch } from "react-redux";
 import { signOutConsumer } from "./.././../store/actions/consumer";
+import { useEffect } from "react";
 
 export default function UserMenu() {
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
@@ -14,12 +15,31 @@ export default function UserMenu() {
     dispatch(signOutConsumer());
   };
 
+  useEffect(() => {
+    document.addEventListener("click", HideOpenedDiv, true);
+
+    const regex = RegExp("menu_user_name", "gi");
+
+    function HideOpenedDiv(event) {
+      if (!event.target.className.match(regex)) {
+        setMEnuUser(false);
+      }
+    }
+  });
+
   return (
     <DivUser>
-      <UserName onClick={() => setMEnuUser(!menuUser)}>
-        <span></span>
+      <UserName
+        className="menu_user_name"
+        onClick={() => setMEnuUser(!menuUser)}
+      >
+        <span className="menu_user_name"></span>
         {consumerState.userName}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg
+          className="menu_user_name"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+        >
           <g data-name="Layer 2">
             <g data-name="arrow-downward">
               <rect
@@ -39,12 +59,13 @@ export default function UserMenu() {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
+          className="menu_user_name"
           nameLength={consumerState.userName.length}
         >
-          <li>
+          <li className="menu_user_name">
             <img src="/images/profile.png" alt="" /> Meu perfil
           </li>
-          <li onClick={signOut}>
+          <li className="menu_user_name" onClick={signOut}>
             <img src="/images/logout.png" alt="" /> Sair
           </li>
         </MenuUser>

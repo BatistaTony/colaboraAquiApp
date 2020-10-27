@@ -708,6 +708,10 @@ ${sizesForEachScreens(
     box-shadow: 0 0 0px;
   }
 
+  .div_form_sugs_cmp_et {
+    padding-right: 0;
+  }
+
   form {
     ${flexbox()};
   }
@@ -734,6 +738,10 @@ ${sizesForEachScreens(
       @media (max-width: 600px) {
         margin-bottom: 15px;
       }
+    }
+
+    .select_suggest_cmp {
+      grid-template-columns: 93% 7%;
     }
 
     @media (max-width: 800px) {
@@ -779,6 +787,8 @@ export const TextArea = styled.div`
     margin-bottom: 15px;
   }
 
+  ${sizesForEachScreens([3200, 1930, 1500], [15, 10, 7], "border-radius", "px")}
+
   textarea {
     width: 100%;
     height: 100%;
@@ -789,12 +799,16 @@ export const TextArea = styled.div`
     font-size: 30pt;
     outline: none;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 45px;
+
+    &::placeholder {
+      color: ${colorsApp.soDark};
+    }
 
     ${sizesForEachScreens(
       [3200, 3000, 2500, 1930],
       [30, 25, 20, 15],
-      "padding-left",
+      "padding",
       "px"
     )}
     ${NormalFontSize()};

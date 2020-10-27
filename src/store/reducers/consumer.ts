@@ -4,9 +4,9 @@ import { CONSUMER_SIGNUP, CONSUMER_SIGNOUT } from "../actions/consumer";
 const initialState: IConsumer = {
   ageRange: "",
   county: "",
-  password: "3534",
-  province: "Luanda",
-  userName: "Batista Tony",
+  password: "",
+  province: "",
+  userName: "",
 };
 
 interface IAction {

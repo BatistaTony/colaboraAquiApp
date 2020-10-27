@@ -86,8 +86,6 @@ export default function SignInConsumer() {
           <Title>Comece a avaliar agora.</Title>
           <TextForm>A voz fo consumidor é a mais importante.</TextForm>
 
-          <ErrorMessage>{errorMsg}</ErrorMessage>
-
           <DivGridForm className="grid-form-sign">
             <FormGroup className="FormGroup" isEmpty={errorIsOn === "userName"}>
               <input
@@ -107,6 +105,8 @@ export default function SignInConsumer() {
             />
 
             <p className="textForgetPassword">Esqueci a senha </p>
+
+            <ErrorMessage className="error_style">{errorMsg}</ErrorMessage>
 
             <ButtonSignUp className="FormGroup btnLOgin" onClick={signInUser}>
               Entrar
