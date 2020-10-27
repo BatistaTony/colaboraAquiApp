@@ -139,6 +139,7 @@ export const colorsApp = {
   roxo: "#4b55ba",
   kindaBlue: "#80b5f3",
   soDark: "#27353B",
+  darkGreen: "#58676a",
 };
 
 export const sizesForEachScreens = (

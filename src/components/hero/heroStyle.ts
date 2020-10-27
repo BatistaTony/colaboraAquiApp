@@ -189,6 +189,10 @@ export const ListStep = styled.ul`
     flex-direction: column;
   }
 
+  @media (max-width: 325px) {
+    flex-direction: column;
+  }
+
   ${pullPaddingLeft};
 `;
 

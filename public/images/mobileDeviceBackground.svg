@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="663" height="1175" viewBox="0 0 663 1175">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #4b55ba;
+        opacity: 0.04;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Retângulo_818" data-name="Retângulo 818" class="cls-1" width="663" height="1175" transform="translate(-14130 620)"/>
+    </clipPath>
+  </defs>
+  <g id="Grupo_de_máscara_3" data-name="Grupo de máscara 3" class="cls-2" transform="translate(14130 -620)">
+    <path id="Caminho_496" data-name="Caminho 496" class="cls-3" d="M-24.68,0S453.079,318.015,1155.783,0c-.711,2.722,321.269,519.852,0,1003.07S216.981,837.076-35.841,452.507-24.68,0-24.68,0Z" transform="translate(-14344.03 588)"/>
+  </g>
+</svg>

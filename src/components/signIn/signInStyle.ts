@@ -17,8 +17,13 @@ export const OverlaySignIn = styled.div`
 `;
 
 export const ModalSignIn = styled(Modal)`
+<<<<<<< HEAD
   grid-template-columns: 69% 35%;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+=======
+  grid-template-columns: 62% 37%;
+  box-shadow: 0 0 0.5px rgba(0, 0, 0, 0.3);
+>>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
 
   .btnBackSign {
     align-self: center;
@@ -40,10 +45,54 @@ export const ModalSignIn = styled(Modal)`
   }
 
   .divForm_sign_p {
+<<<<<<< HEAD
     .divBtnBackT {
       position: absolute;
       top: 0;
     }
+=======
+    @media (max-width: 600px) {
+      height: 100vh;
+      ${flexbox("column", "flex-end", "center")};
+      padding-bottom: 2%;
+      box-sizing: border-box;
+
+      .divBtnBackT {
+        position: absolute;
+        top: 0;
+      }
+    }
+  }
+
+  @media (max-width: 900px) {
+    border: 0;
+    box-shadow: 0 0 0px;
+  }
+
+  @media (max-width: 750px) {
+    align-items: flex-end;
+  }
+
+  .grid-form-sign {
+    grid-template-columns: 100%;
+    margin-top: 20px;
+    grid-gap: 15px;
+    justify-content: center;
+    grid-template-rows: repeat(2, 100px) auto auto;
+
+    ${sizesForEachScreens(
+      [3200, 2500, 1930, 1500, 1370],
+      [
+        "repeat(2, 90px) auto auto",
+        "repeat(2, 70px) auto auto",
+        "repeat(2, 60px) auto auto",
+        "repeat(2, 45px) auto auto",
+        "repeat(2, 40px) auto auto",
+      ],
+      "grid-template-rows",
+      ""
+    )}
+>>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
 
     @media (max-width: 900px) {
       height: 100vh;
@@ -66,6 +115,7 @@ export const ModalSignIn = styled(Modal)`
       box-shadow: 0 0 0px;
     }
 
+<<<<<<< HEAD
     .grid-form-sign {
       grid-template-columns: 100%;
       width: 73%;
@@ -73,6 +123,23 @@ export const ModalSignIn = styled(Modal)`
       justify-content: center;
       grid-template-rows: repeat(2, 100px) auto auto auto;
 
+=======
+    .btnLOgin {
+      @media (max-width: 600px) {
+        margin-top: 50px;
+      }
+    }
+
+    .textForgetPassword {
+      color: ${colorsApp.orange};
+      font-size: 27pt;
+      ${flexbox("row", "flex-start", "center")};
+      ${getFont()};
+      cursor: default;
+
+      width: 100%;
+      text-align: left;
+>>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
       ${sizesForEachScreens(
         [3200, 2500, 1930, 1500, 1370],
         [
@@ -203,6 +270,7 @@ export const IllustrationObjectSignIn = styled.div`
   transform: rotate(4deg);
   z-index: -1;
 
+<<<<<<< HEAD
   @media (max-height: 1910px) {
     top: -8rem;
   }
@@ -240,6 +308,8 @@ export const IllustrationObjectSignIn = styled.div`
     left: -5%;
   }
 
+=======
+>>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
   @media (max-width: 900px) {
     display: none;
   }

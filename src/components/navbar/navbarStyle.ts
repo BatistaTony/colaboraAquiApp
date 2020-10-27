@@ -272,7 +272,10 @@ export const MenuUser = styled(motion.ul)`
 
   @media (max-width: 1500px) {
     top: 40px;
+<<<<<<< HEAD
     border-radius: 7px;
+=======
+>>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
     width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "160px")};
   }
 
@@ -328,8 +331,12 @@ export const MenuUser = styled(motion.ul)`
     }
 
     &:hover {
+<<<<<<< HEAD
       cursor: pointer;
       opacity: 0.8;
+=======
+      background: rgba(0, 0, 0, 0.1);
+>>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
 
       @media (max-width: 750px) {
         background-color: transparent;
