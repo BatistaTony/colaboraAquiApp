@@ -83,13 +83,7 @@ export default function SignInConsumer() {
             <ButtonBack classNames="mobileBtn" onChange={backToHome} />
           </div>
 
-<<<<<<< HEAD
           <Title>Comece a avaliar agora.</Title>
-=======
-          <Title>
-            Começa agora no <span>Colabora</span>
-          </Title>
->>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
           <TextForm>A voz fo consumidor é a mais importante.</TextForm>
 
           <DivGridForm className="grid-form-sign">
@@ -112,11 +106,8 @@ export default function SignInConsumer() {
 
             <p className="textForgetPassword">Esqueci a senha </p>
 
-<<<<<<< HEAD
             <ErrorMessage className="error_style">{errorMsg}</ErrorMessage>
 
-=======
->>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
             <ButtonSignUp className="FormGroup btnLOgin" onClick={signInUser}>
               Entrar
             </ButtonSignUp>
