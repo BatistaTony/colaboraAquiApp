@@ -276,12 +276,23 @@ export const MenuUser = styled(motion.ul)`
     width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "160px")};
   }
 
+  @media (max-width: 1245px) {
+    right: 100%;
+  }
+
+  @media (max-width: 1232px) {
+    left: -39%;
+  }
+
   @media (max-width: 750px) {
     position: relative;
     top: 0;
     width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "100%")};
     box-shadow: 0 0 0px;
     display: block;
+    right: 0;
+    left: 0;
+    margin-right: 0;
   }
 
   li {

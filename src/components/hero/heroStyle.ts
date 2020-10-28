@@ -88,7 +88,7 @@ export const BackGroundWithIllustration = styled(motion.div)`
     }
 
     @media (max-width: 380px) and (max-height: 850px) {
-      bottom: -20%;
+      bottom: -30%;
     }
   }
 `;
@@ -321,6 +321,12 @@ export const ButtonStartRate = styled(motion.button)`
     "padding-bottom",
     "px"
   )};
+
+  @media (max-width: 750px) {
+    padding-bottom: 15px;
+    flex: 1;
+    padding-top: 15px;
+  }
 
   img {
     width: 60px;

@@ -20,9 +20,11 @@ export default function UserMenu() {
 
     const regex = RegExp("menu_user_name", "gi");
 
-    function HideOpenedDiv(event) {
-      if (!event.target.className.match(regex)) {
-        setMEnuUser(false);
+    function HideOpenedDiv(event: any) {
+      if (event.target.className) {
+        if (!event.target.className.match(regex)) {
+          setMEnuUser(false);
+        }
       }
     }
   });

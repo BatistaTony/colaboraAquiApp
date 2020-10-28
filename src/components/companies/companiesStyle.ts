@@ -130,13 +130,13 @@ export const FilterStyled = styled.div`
     }
 
     li {
-      font-size: 25pt;
+      font-size: 23pt;
       ${getFont()};
       margin-left: 20px;
       padding: 15px;
-      padding-left: 20px;
-      padding-right: 20px;
-      border-radius: 5px;
+      padding-left: 30px;
+      padding-right: 30px;
+      border-radius: 15px;
       cursor: default;
       transition: 0.5s;
 
@@ -147,13 +147,26 @@ export const FilterStyled = styled.div`
         "pt"
       )};
 
-      @media (max-width: 2500px) {
+      @media (max-width: 3200px) {
+        padding: 13px;
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+
+      @media (max-width: 2700px) {
+        padding: 11px;
+        padding-left: 20px;
+        padding-right: 20px;
+        border-radius: 10px;
+      }
+
+      @media (max-width: 2200px) {
         padding: 10px;
         padding-left: 15px;
         padding-right: 15px;
       }
 
-      @media (max-width: 19300px) {
+      @media (max-width: 1930px) {
         padding: 5px;
         padding-left: 10px;
         padding-right: 10px;
@@ -162,6 +175,7 @@ export const FilterStyled = styled.div`
       @media (max-width: 1500px) {
         padding-left: 7px;
         padding-right: 7px;
+        border-radius: 7px;
       }
 
       @media (max-width: 900px) {
@@ -185,14 +199,35 @@ export const SearchStyled = styled.div`
   width: 38%;
   display: grid;
   height: 100%;
-  border-radius: 5px;
-  grid-template-columns: 7% 93%;
+  border-radius: 15px;
+  grid-template-columns: 10% 90%;
   background: white;
-  box-shadow: 0 0 3px ${colorsApp.orange};
+  box-shadow: 0 0 10px ${colorsApp.orange};
   overflow: hidden;
+
+  @media (max-width: 3000px) {
+    grid-template-columns: 9% 91%;
+  }
+
+  @media (max-width: 3000px) {
+    border-radius: 10px;
+    box-shadow: 0 0 7px ${colorsApp.orange};
+  }
+
+  @media (max-width: 2500px) {
+    border-radius: 5px;
+    box-shadow: 0 0 5px ${colorsApp.orange};
+  }
+
+  @media (max-width: 1500px) {
+    border-radius: 5px;
+    box-shadow: 0 0 5px ${colorsApp.orange};
+  }
 
   @media (max-width: 850px) {
     width: 80%;
+    grid-template-columns: 12% 88%;
+    border-radius: 5px;
   }
 
   .iconeSearch {
@@ -255,7 +290,7 @@ export const DivBtnMobile = styled.div`
   @media (max-width: 925px) {
     display: block;
     width: 100%;
-    height: 30px;
+    height: 33px;
     position: relative;
     ${flexbox()};
     margin-top: 10px;
@@ -266,6 +301,8 @@ export const DivBtnMobile = styled.div`
       right: 0;
       margin: 0;
       ${flexbox()};
+
+      font-size: 11pt;
 
       @media (max-width: 600px) {
         font-size: 10pt;
@@ -282,7 +319,7 @@ export const ButtonSuggest = styled.button`
   font-size: 25pt;
   height: 100%;
   position: absolute;
-  border-radius: 5px;
+  border-radius: 18px;
   border: none;
   outline: none;
   padding-left: 50px;
@@ -290,6 +327,13 @@ export const ButtonSuggest = styled.button`
   right: 4%;
 
   ${getFont()};
+
+  ${sizesForEachScreens(
+    [3500, 2500, 1500],
+    [15, 10, 7],
+    "border-radius",
+    "px"
+  )};
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500, 850],
