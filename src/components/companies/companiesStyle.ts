@@ -186,20 +186,43 @@ export const SearchStyled = styled.div`
   display: grid;
   height: 100%;
   border-radius: 5px;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 7% 93%;
   background: white;
   box-shadow: 0 0 3px ${colorsApp.orange};
-  padding-left: 10px;
-
-  ${sizesForEachScreens(
-    [1390, 1500, 1000],
-    [20, 15, 10],
-    "padding-left",
-    "px"
-  )};
+  overflow: hidden;
 
   @media (max-width: 850px) {
     width: 80%;
+  }
+
+  .iconeSearch {
+    ${flexbox()};
+
+    svg {
+      width: 35px;
+      height: 35px;
+      fill: ${colorsApp.soDark};
+
+      @media (max-width: 2500px) {
+        width: 30px;
+        height: 30px;
+      }
+
+      @media (max-width: 1930px) {
+        width: 25px;
+        height: 25px;
+      }
+
+      @media (max-width: 1500px) {
+        width: 17px;
+        height: 17px;
+      }
+
+      @media (max-width: 750px) {
+        width: 15px;
+        height: 15px;
+      }
+    }
   }
 
   input {
@@ -488,7 +511,7 @@ export const CompanyLogo = styled.div`
   padding: 10px;
   background: white;
   background-image: ${({ img }) => `url(${img})`};
-  background-size: 87% 50%;
+  background-size: 88% 50%;
   background-position: center;
   background-repeat: no-repeat;
 

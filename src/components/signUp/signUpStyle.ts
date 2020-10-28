@@ -450,7 +450,8 @@ export const FormGroup = styled.div`
   }
 
   .iconeSee {
-    img {
+    img,
+    svg {
       width: 40px;
       height: 40px;
 
@@ -486,7 +487,8 @@ export const InputIcon = styled.div`
     ${flexbox("row", "center", "center")};
   }
 
-  img {
+  img,
+  svg {
     width: 35px;
     height: 27px;
 

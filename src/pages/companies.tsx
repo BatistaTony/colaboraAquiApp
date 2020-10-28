@@ -19,7 +19,7 @@ import { ICompany, IConsumer } from "../../types";
 import ListOfCompanies from "./../components/companies/listCompanies";
 import { useSelector } from "react-redux";
 import SignUp from "../components/signUp/signUp";
-import SucessModal from "../components/signUp/sucessModal";
+import SearchIcon from "./../components/companies/searchIcone";
 
 function Companies() {
   const [filterBy, setFilterBy] = useState<string>("Todas");
@@ -177,8 +177,8 @@ function Companies() {
           <FilterStyled>
             <div className="filter_1_">
               <SearchStyled>
-                <InputIcon>
-                  <img src="/images/search.svg" alt="" />
+                <InputIcon className="iconeSearch">
+                  <SearchIcon />
                 </InputIcon>
                 <input
                   type="text"
