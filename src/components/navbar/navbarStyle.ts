@@ -286,7 +286,7 @@ export const MenuUser = styled(motion.ul)`
   }
 
   @media (max-width: 1232px) {
-    left: -39%;
+    left: 2%;
   }
 
   @media (max-width: 750px) {

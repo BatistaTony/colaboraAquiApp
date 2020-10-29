@@ -380,27 +380,28 @@ export const CompanyList = styled.div`
 `;
 
 export const ListCompanyMobile = styled.div`
-  width: 94%;
+  width: 100%;
   height: 65vh;
   display: none;
-
+  grid-template-columns: 45% 45%;
+  grid-gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
   overflow: auto;
   box-sizing: border-box;
-  padding-bottom: 50px;
+  padding-bottom: 70px;
   padding-top: 15px;
-  background: red;
+  scroll-behavior: smooth;
 
   @media (max-width: 950px) {
     display: grid;
-    grid-template-columns: 45% 45%;
-    align-items: flex-start;
-    grid-column-gap: 10%;
-    grid-gap: 20px;
   }
 
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
     display: grid;
     padding-bottom: 100px;
+    grid-template-columns: 43% 43%;
+    height: 68vh;
   }
 
   @media (max-width: 855px) {
@@ -408,85 +409,75 @@ export const ListCompanyMobile = styled.div`
   }
 
   @media (max-width: 750px) {
-    grid-template-columns: 100%;
+    grid-template-columns: 95%;
   }
 
   @media (max-height: 1290px) {
-    height: 60vh;
+    height: 65vh;
   }
 
   @media (max-height: 1134px) {
-    height: 57vh;
-  }
-
-  @media (max-height: 1050px) {
-    height: 55vh;
+    height: 60vh;
   }
 
   @media (max-height: 990px) {
-    height: 50vh;
+    height: 57vh;
   }
 
   @media (max-height: 900px) {
-    height: 46vh;
+    height: 52vh;
   }
 
   @media (max-height: 790px) {
-    height: 40vh;
+    height: 48vh;
   }
 
   @media (max-height: 697px) {
-    height: 36vh;
+    height: 40vh;
   }
 
   @media (max-height: 650px) {
-    height: 32vh;
+    height: 35vh;
+  }
+
+  @media (max-height: 480px) {
+    height: 28vh;
   }
 `;
 
 export const GroupCard = styled.div`
-  width: 72%;
+  width: 75%;
   height: auto;
   display: grid;
-  grid-template-columns: 47% 47%;
+  grid-template-columns: 48.8% 48.8%;
   justify-content: space-between;
   align-items: center;
   align-self: center;
   justify-self: center;
 
-  @media (max-width: 2464px) {
-    grid-template-columns: 46% 46%;
-  }
-
-  @media (max-width: 1500px) {
-    grid-template-columns: 45% 45%;
-  }
-
-  @media (max-width: 1200px) {
-    grid-template-columns: 46% 46%;
-  }
-
-  ${sizesForEachScreens(
-    [3383, 1500, 1200, 1000, 950],
-    [75, 70, 72, 74, 90],
-    "width",
-    "%"
-  )};
+  ${sizesForEachScreens([1300, 1000], [78, 80], "width", "%")};
 `;
 
 export const Card = styled.div`
   width: 100%;
-  height: 560px;
+  height: 590px;
   border-radius: 30px;
   background-color: ${colorsApp.roxo};
   ${flexbox("column", "center", "center")};
   padding: 30px;
+  box-sizing: border-box;
 
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
     height: 220px;
+    padding: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
-  ${sizesForEachScreens([3248, 3199], [530, 500], "height", "px")};
+  /* ${sizesForEachScreens([3510], [580], "height", "px")}; */
 
   @media (max-width: 2924px) {
     height: auto;
@@ -506,19 +497,29 @@ export const Card = styled.div`
   }
 
   @media (max-width: 1500px) {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     border-radius: 15px;
+  }
+
+  @media (max-width: 1180px) {
+    padding-top: 22px;
+    padding-bottom: 22px;
   }
 
   @media (max-width: 1000px) {
     padding: 18px;
+    height: auto;
   }
 
-  @media (max-width: 837px) {
-    margin-bottom: 10px;
+  @media (max-width: 950px) {
+    padding: 0;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
     height: auto;
-    padding: 15px;
   }
 
   .header_card {
@@ -554,11 +555,11 @@ export const Card = styled.div`
         }
 
         @media (max-width: 1500px) {
-          margin-left: 10px;
+          margin-left: 15px;
         }
 
         @media (max-width: 850px) {
-          margin-left: 8px;
+          margin-left: 10px;
         }
       }
     }
@@ -585,15 +586,15 @@ export const CompanyLogo = styled.div`
   background-repeat: no-repeat;
 
   ${sizesForEachScreens(
-    [3200, 2900, 2500, 1930, 1500, 1200, 900, 850],
-    [150, 140, 100, 90, 60, 50, 45, 30],
+    [3200, 2900, 2500, 1930, 1500, 1200, 600],
+    [150, 140, 100, 90, 60, 50, 40],
     "width",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3200, 2900, 2500, 1930, 1500, 1200, 900, 850],
-    [150, 140, 100, 90, 60, 50, 45, 30],
+    [3200, 2900, 2500, 1930, 1500, 1200, 600],
+    [150, 140, 100, 90, 60, 50, 40],
     "height",
     "px"
   )};
@@ -613,8 +614,8 @@ export const CompanyName = styled.h1`
   color: white;
 
   ${sizesForEachScreens(
-    [3500, 2500, 2000, 1700, 1600, 1500],
-    [30, 25, 20, 18, 15, 13.5],
+    [3500, 2500, 2000, 1700, 1600, 1500, 950],
+    [30, 25, 20, 18, 15, 13.5, 12],
     "font-size",
     "pt"
   )};
@@ -659,6 +660,10 @@ export const StarsRated = styled.div`
 
   @media (max-width: 1080px) {
     padding: 5px;
+  }
+
+  @media (max-width: 950px) {
+    border-radius: 5px;
   }
 `;
 
@@ -712,8 +717,8 @@ export const DescriptionCard = styled.p`
   }
 
   ${sizesForEachScreens(
-    [3200, 2700, 2302, 2040, 1772, 1650, 1580, 1200],
-    [25, 22, 19, 17, 15, 12.5, 11, 10],
+    [3200, 2700, 2302, 2040, 1772, 1650, 1580, 1200, 950],
+    [25, 22, 19, 17, 15, 12.5, 11, 10, 9.5],
     "font-size",
     "pt"
   )};
@@ -748,14 +753,14 @@ export const ButtonControl = styled.div`
 
     ${sizesForEachScreens(
       [3000, 2700, 2400, 1930, 1500, 1370],
-      [70, 65, 60, 55, 50, 45, 40, 35, 30],
+      [70, 65, 60, 55, 50, 45, 38, 35, 30],
       "width",
       "px"
     )};
 
     ${sizesForEachScreens(
       [3000, 2700, 2400, 1930, 1500, 1370],
-      [70, 65, 60, 55, 50, 45, 40, 35, 30],
+      [70, 65, 60, 55, 50, 45, 38, 35, 30],
       "height",
       "px"
     )};
