@@ -4,10 +4,8 @@ import {
   DivGridForm,
   ErrorMessage,
   FormGroup,
-  FormSelect,
-  InputIcon,
   QuestionSignUp,
-  SelectList,
+  FormGroupGrand,
 } from "./signUpStyle";
 import { CSSTransition } from "react-transition-group";
 import { IConsumer } from "../../../types";
@@ -17,6 +15,7 @@ import InputPassword from "./inputPassword";
 import { translateProperty } from "../utils";
 import Link from "next/link";
 import { counties, provinces } from "./signUp.data";
+import IconTextBox from "./iconNameTextbox";
 
 const initialState: IConsumer = {
   userName: "",
@@ -61,12 +60,12 @@ export default function FormSignUp() {
   };
 
   const checkError = (): boolean => {
-    const arrayConsumerData = Object.entries(consumerData).sort();
+    const arrayConsumerData = Object.entries(consumerData);
 
     const emptyProperties = arrayConsumerData.filter((value) => {
       if (value[1] === "") {
         setWhereIsError(value[0]);
-        setErrorMsg(`${translateProperty(value[0])} é obrigatório`);
+        setErrorMsg("Preenche este campo");
       }
 
       return value[1] === "";
@@ -94,18 +93,27 @@ export default function FormSignUp() {
       </CSSTransition>
 
       <DivGridForm>
-        <FormGroup isEmpty={errorIsOn === "userName"}>
-          <input
-            type="text"
-            name="userName"
-            id="userName"
-            onChange={handleChange}
-            placeholder="Nome do utilizador"
-          />
-        </FormGroup>
+        <FormGroupGrand>
+          <FormGroup isEmpty={errorIsOn === "userName"}>
+            <input
+              type="text"
+              name="userName"
+              id="userName"
+              onChange={handleChange}
+              placeholder="Nome do utilizador"
+            />
+            <div className="iconTextBox">
+              <IconTextBox />
+            </div>
+          </FormGroup>
+          {errorIsOn === "userName" && (
+            <ErrorMessage className="error_name_">{errorMsg}</ErrorMessage>
+          )}
+        </FormGroupGrand>
 
         <CustomSelect
           defaultValueSelect={consumerData.province || "Província"}
+          errorMsg={errorMsg}
           handleChange={(value) => handleChooseSelect("province", value)}
           values={provinces}
           isEmpty={errorIsOn === "province"}
@@ -113,6 +121,7 @@ export default function FormSignUp() {
 
         <CustomSelect
           defaultValueSelect={consumerData.county || "Municipio"}
+          errorMsg={errorMsg}
           handleChange={(value) => handleChooseSelect("county", value)}
           values={counties}
           isEmpty={errorIsOn === "county"}
@@ -120,17 +129,19 @@ export default function FormSignUp() {
 
         <CustomSelect
           defaultValueSelect={consumerData.ageRange || "Faixa etaria"}
+          errorMsg={errorMsg}
           handleChange={(value) => handleChooseSelect("ageRange", value)}
           values={ageRanges}
           isEmpty={errorIsOn === "ageRange"}
         />
 
-        <InputPassword errorIsOn={errorIsOn} handleChange={handleChange} />
-
-        <ErrorMessage>{errorMsg}</ErrorMessage>
+        <InputPassword
+          errorMsg={errorMsg}
+          errorIsOn={errorIsOn}
+          handleChange={handleChange}
+        />
 
         <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
-
         <QuestionSignUp>
           Já tens uma conta ?
           <Link href="/signin">

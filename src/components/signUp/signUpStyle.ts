@@ -310,7 +310,7 @@ export const DivGridForm = styled.div`
   height: auto;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: repeat(3, 100px) auto auto auto;
+  grid-template-rows: repeat(6, auto);
   grid-gap: 30px;
   margin-top: 60px;
 
@@ -326,18 +326,8 @@ export const DivGridForm = styled.div`
 
   ${sizesForEachScreens([1930, 1500], [20, 15], "grid-gap", "px")}
 
-  ${sizesForEachScreens(
-    [3200, 2500, 1930, 1500, 1370],
-    [
-      "repeat(3, 90px) auto auto auto",
-      "repeat(3, 70px) auto auto auto",
-      "repeat(3, 60px) auto auto auto",
-      "repeat(3, 45px) auto auto auto",
-      "repeat(3, 40px) auto auto auto",
-    ],
-    "grid-template-rows",
-    ""
-  )}
+  
+
 
   @media (max-width: 900px) {
     width: 60%;
@@ -350,6 +340,10 @@ export const DivGridForm = styled.div`
 
   @media (max-width: 600px) {
     width: 87%;
+  }
+
+  .error_name_ {
+    grid-column: 1/3;
   }
 
   .inputPassword {
@@ -367,28 +361,39 @@ export const DivGridForm = styled.div`
 
 export const ErrorMessage = styled.p`
   width: 100%;
-  font-size: 20pt;
-  text-align: center;
+  font-size: 30pt;
+  text-align: left;
   ${getFont()};
+  height: 100%;
   color: red;
-  margin-bottom: -2px;
   box-sizing: border-box;
-  grid-column: 1/3;
-  ${NormalFontSize()};
+  margin-top: 7px;
+
+  ${sizesForEachScreens([2500], [5], "margin-top", "px")}
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500],
-    [30, 25, 20, 15, 0],
-    "padding-left",
-    "px"
-  )}
+    [26, 22, 19, 17, 11],
+    "font-size",
+    "pt"
+  )};
+`;
+
+export const FormGroupGrand = styled.div`
+  height: auto;
+  width: 100%;
+
+  &:first-child {
+    grid-column: 1/3;
+  }
 `;
 
 export const FormGroup = styled.div`
   width: 100%;
   border-radius: 20px;
+  height: 100px;
   display: grid;
-  grid-template-columns: 88% 12%;
+  grid-template-columns: 87% 13%;
   grid-template-rows: 100%;
   background: #f1f0f4;
   border: ${({ isEmpty }) =>
@@ -397,6 +402,15 @@ export const FormGroup = styled.div`
   box-sizing: border-box;
 
   ${sizesForEachScreens([3200, 1930, 1500], [15, 10, 7], "border-radius", "px")}
+
+  ${sizesForEachScreens(
+    [3200, 2500, 1930, 1500, 1370],
+    ["90", "70", "60", "45", "40"],
+    "height",
+    "px"
+  )}
+
+
 
   @media (max-width: 750px) {
     height: 45px;
@@ -447,9 +461,30 @@ export const FormGroup = styled.div`
 
   &:first-child {
     grid-column: 1/3;
+
+    @media (max-width: 1500px) {
+      grid-template-columns: 90% 10%;
+    }
+    .iconTextBox {
+      width: 100%;
+      height: 100%;
+      ${flexbox()};
+
+      img {
+        width: 76%;
+        height: 76%;
+      }
+    }
   }
 
   .iconeSee {
+    width: 100%;
+    background: green;
+
+    @media (max-width: 1500px) {
+      margin-right: 15px;
+    }
+
     img,
     svg {
       width: 40px;
