@@ -393,7 +393,6 @@ export const ListCompanyMobile = styled.div`
     display: grid;
     grid-template-columns: 45% 45%;
     grid-gap: 20px;
-    align-items: space-between;
   }
 
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
