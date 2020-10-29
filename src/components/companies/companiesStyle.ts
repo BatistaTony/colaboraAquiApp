@@ -388,10 +388,13 @@ export const ListCompanyMobile = styled.div`
   box-sizing: border-box;
   padding-bottom: 50px;
   padding-top: 15px;
+  background: red;
 
   @media (max-width: 950px) {
     display: grid;
     grid-template-columns: 45% 45%;
+    align-items: flex-start;
+    grid-column-gap: 10%;
     grid-gap: 20px;
   }
 
@@ -464,8 +467,8 @@ export const GroupCard = styled.div`
   }
 
   ${sizesForEachScreens(
-    [3383, 1500, 1200, 1000],
-    [75, 70, 72, 74],
+    [3383, 1500, 1200, 1000, 950],
+    [75, 70, 72, 74, 90],
     "width",
     "%"
   )};
