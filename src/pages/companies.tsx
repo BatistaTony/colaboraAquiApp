@@ -46,6 +46,106 @@ function Companies() {
         "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
       companyStatus: "Privada",
     },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "Movicel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "Unitel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "Movicel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "Unitel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "Movicel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "Unitel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "Movicel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "Unitel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "Movicel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "Unitel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
   ]);
 
   const userState: IConsumer = useSelector((state) => state.Consumer);

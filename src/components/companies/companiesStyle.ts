@@ -368,7 +368,7 @@ export const CompanyList = styled.div`
   position: absolute;
   bottom: 8%;
 
-  @media (max-width: 935px) {
+  @media (max-width: 950px) {
     display: none;
   }
 
@@ -377,33 +377,23 @@ export const CompanyList = styled.div`
   }
 
   ${sizesForEachScreens([1930, 1500, 1380], [10, 5, 4], "bottom", "%")};
-
-  @media (max-width: 837px) {
-    height: auto;
-    bottom: 0;
-    position: relative;
-  }
-
-  @media (max-height: 580px) {
-    bottom: 0.3%;
-  }
 `;
 
 export const ListCompanyMobile = styled.div`
   width: 94%;
   height: 65vh;
   display: none;
-  grid-template-columns: 45% 45%;
-  grid-gap: 20px;
-  align-items: flex-start;
-  justify-content: center;
+
   overflow: auto;
   box-sizing: border-box;
   padding-bottom: 50px;
   padding-top: 15px;
 
-  @media (max-width: 935px) {
+  @media (max-width: 950px) {
     display: grid;
+    grid-template-columns: 45% 45%;
+    grid-gap: 20px;
+    align-items: space-between;
   }
 
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
@@ -466,18 +456,20 @@ export const GroupCard = styled.div`
     grid-template-columns: 46% 46%;
   }
 
+  @media (max-width: 1500px) {
+    grid-template-columns: 45% 45%;
+  }
+
+  @media (max-width: 1200px) {
+    grid-template-columns: 46% 46%;
+  }
+
   ${sizesForEachScreens(
-    [3383, 2500, 1500, 1390, 1040, 935],
-    [75, 78, 73, 77, 80, 90],
+    [3383, 1500, 1200, 1000],
+    [75, 70, 72, 74],
     "width",
     "%"
   )};
-
-  @media (max-width: 837px) {
-    grid-gap: 0;
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-  }
 `;
 
 export const Card = styled.div`
@@ -500,9 +492,25 @@ export const Card = styled.div`
     padding-bottom: 60px;
   }
 
+  @media (max-width: 1930px) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  @media (max-width: 1700px) {
+    padding: 15px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
   @media (max-width: 1500px) {
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 15px;
+  }
+
+  @media (max-width: 1000px) {
+    padding: 18px;
   }
 
   @media (max-width: 837px) {
@@ -521,6 +529,10 @@ export const Card = styled.div`
       width: 94%;
     }
 
+    @media (max-width: 1500px) {
+      width: 95%;
+    }
+
     @media (max-width: 980px) {
       grid-template-columns: 65% 35%;
     }
@@ -537,6 +549,10 @@ export const Card = styled.div`
 
         @media (max-width: 1930px) {
           margin-left: 20px;
+        }
+
+        @media (max-width: 1500px) {
+          margin-left: 10px;
         }
 
         @media (max-width: 850px) {
@@ -567,15 +583,15 @@ export const CompanyLogo = styled.div`
   background-repeat: no-repeat;
 
   ${sizesForEachScreens(
-    [3200, 2900, 2500, 1930, 1500, 1200, 900, 850, 500],
-    [150, 140, 100, 90, 80, 70, 60, 50, 30],
+    [3200, 2900, 2500, 1930, 1500, 1200, 900, 850],
+    [150, 140, 100, 90, 60, 50, 45, 30],
     "width",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3200, 2900, 2500, 1930, 1500, 1200, 900, 850, 500],
-    [150, 140, 100, 90, 80, 70, 60, 50, 30],
+    [3200, 2900, 2500, 1930, 1500, 1200, 900, 850],
+    [150, 140, 100, 90, 60, 50, 45, 30],
     "height",
     "px"
   )};
@@ -590,13 +606,13 @@ export const CompanyLogo = styled.div`
 `;
 
 export const CompanyName = styled.h1`
-  font-size: 30pt;
+  font-size: 35pt;
   ${getFont("Bold")};
   color: white;
 
   ${sizesForEachScreens(
-    [3500, 2500, 1900, 1500, 1200, 1000, 900, 500],
-    [27, 25, 20, 18, 15, 13, 11, 10],
+    [3500, 2500, 2000, 1700, 1600, 1500],
+    [30, 25, 20, 18, 15, 13.5],
     "font-size",
     "pt"
   )};
@@ -611,11 +627,12 @@ export const CompanyRateNumbers = styled.p`
     ${getFont("Bold")};
   }
 
-  ${NormalFontSize};
-
-  @media (max-width: 500px) {
-    font-size: 9pt;
-  }
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 1930, 1700, 1500, 1300, 750],
+    [25, 22, 19, 17, 13, 11.5, 11, 9],
+    "font-size",
+    "pt"
+  )};
 `;
 
 export const StarsRated = styled.div`
@@ -650,8 +667,8 @@ export const StarRate = styled.div`
   ${flexbox()};
 
   ${sizesForEachScreens(
-    [3200, 2500, 1930, 1500, 1080, 850, 500],
-    [40, 30, 20, 18, 15, 13, 12],
+    [3200, 2500, 1930, 1500, 1200, 1080, 850, 500],
+    [40, 30, 20, 18, 15, 14, 13, 12],
     "width",
     "px"
   )};
@@ -687,9 +704,14 @@ export const DescriptionCard = styled.p`
     margin-top: 20px;
   }
 
+  @media (max-width: 1500px) {
+    width: 95%;
+    margin-top: 10px;
+  }
+
   ${sizesForEachScreens(
-    [3200, 2700, 2200, 1900, 1500, 1370, 850, 500],
-    [25, 22, 18, 15, 13, 12, 10, 9],
+    [3200, 2700, 2302, 2040, 1772, 1650, 1580, 1200],
+    [25, 22, 19, 17, 15, 12.5, 11, 10],
     "font-size",
     "pt"
   )};
@@ -709,7 +731,7 @@ export const ButtonControl = styled.div`
     width: 95%;
   }
 
-  @media (max-width: 935px) {
+  @media (max-width: 950px) {
     display: none;
   }
 
