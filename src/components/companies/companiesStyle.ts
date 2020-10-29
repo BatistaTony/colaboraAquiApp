@@ -363,10 +363,10 @@ export const ButtonSuggest = styled.button`
 
 export const CompanyList = styled.div`
   width: 100%;
-  height: 270px;
+  height: auto;
   ${flexbox("row", "center", "center")};
   position: absolute;
-  bottom: 15%;
+  bottom: 8%;
 
   @media (max-width: 935px) {
     display: none;
@@ -375,8 +375,6 @@ export const CompanyList = styled.div`
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
     display: none;
   }
-
-  ${sizesForEachScreens([1500, 1380], [250, 200], "height", "px")}
 
   ${sizesForEachScreens([1930, 1500, 1380], [10, 5, 4], "bottom", "%")};
 
@@ -455,24 +453,24 @@ export const ListCompanyMobile = styled.div`
 `;
 
 export const GroupCard = styled.div`
-  width: 70%;
+  width: 72%;
   height: auto;
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-gap: 60px;
+  grid-template-columns: 47% 47%;
+  justify-content: space-between;
   align-items: center;
+  align-self: center;
+  justify-self: center;
+
+  @media (max-width: 2464px) {
+    grid-template-columns: 46% 46%;
+  }
 
   ${sizesForEachScreens(
-    [2500, 1500, 1390, 1040, 935],
-    [75, 73, 77, 80, 90],
+    [3383, 2500, 1500, 1390, 1040, 935],
+    [75, 78, 73, 77, 80, 90],
     "width",
     "%"
-  )};
-  ${sizesForEachScreens(
-    [3200, 2500, 1500, 1370, 1070, 935],
-    [50, 40, 30, 25, 20, 15],
-    "grid-gap",
-    "px"
   )};
 
   @media (max-width: 837px) {
@@ -484,27 +482,28 @@ export const GroupCard = styled.div`
 
 export const Card = styled.div`
   width: 100%;
-  height: 100%;
-  border-radius: 10px;
+  height: 560px;
+  border-radius: 30px;
   background-color: ${colorsApp.roxo};
-  ${flexbox("column")};
-  padding-top: 70px;
-  padding-bottom: 70px;
-  padding-left: 50px;
-  padding-right: 50px;
-
-  box-sizing: border-box;
+  ${flexbox("column", "center", "center")};
+  padding: 30px;
 
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
     height: 220px;
   }
 
-  ${sizesForEachScreens(
-    [2500, 1930, 1500, 1370],
-    [60, 50, 30, 20],
-    "padding",
-    "px"
-  )};
+  ${sizesForEachScreens([3248, 3199], [530, 500], "height", "px")};
+
+  @media (max-width: 2924px) {
+    height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  @media (max-width: 1500px) {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
 
   @media (max-width: 837px) {
     margin-bottom: 10px;
@@ -514,9 +513,13 @@ export const Card = styled.div`
 
   .header_card {
     display: grid;
-    width: 100%;
+    width: 90%;
     grid-template-columns: 60% 40%;
     align-items: center;
+
+    @media (max-width: 2924px) {
+      width: 94%;
+    }
 
     @media (max-width: 980px) {
       grid-template-columns: 65% 35%;
@@ -530,7 +533,11 @@ export const Card = styled.div`
       ${flexbox("row", "flex-start", "center")};
 
       .company_info_ {
-        margin-left: 16px;
+        margin-left: 30px;
+
+        @media (max-width: 1930px) {
+          margin-left: 20px;
+        }
 
         @media (max-width: 850px) {
           margin-left: 8px;
@@ -546,8 +553,8 @@ export const Card = styled.div`
 `;
 
 export const CompanyLogo = styled.div`
-  width: 130px;
-  height: 130px;
+  width: 160px;
+  height: 160px;
   border-radius: 100%;
   background: white;
   ${flexbox()};
@@ -555,20 +562,20 @@ export const CompanyLogo = styled.div`
   padding: 10px;
   background: white;
   background-image: ${({ img }) => `url(${img})`};
-  background-size: 88% 50%;
+  background-size: 80% 40%;
   background-position: center;
   background-repeat: no-repeat;
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 1200, 900, 850, 500],
-    [100, 90, 80, 70, 60, 50, 40, 30, 25],
+    [3200, 2900, 2500, 1930, 1500, 1200, 900, 850, 500],
+    [150, 140, 100, 90, 80, 70, 60, 50, 30],
     "width",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 1200, 900, 850, 500],
-    [100, 90, 80, 70, 60, 50, 40, 30, 25],
+    [3200, 2900, 2500, 1930, 1500, 1200, 900, 850, 500],
+    [150, 140, 100, 90, 80, 70, 60, 50, 30],
     "height",
     "px"
   )};
@@ -588,8 +595,8 @@ export const CompanyName = styled.h1`
   color: white;
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1500, 1200, 1000, 900, 500],
-    [25, 20, 16, 14, 13, 12, 11, 10],
+    [3500, 2500, 1900, 1500, 1200, 1000, 900, 500],
+    [27, 25, 20, 18, 15, 13, 11, 10],
     "font-size",
     "pt"
   )};
@@ -612,15 +619,23 @@ export const CompanyRateNumbers = styled.p`
 `;
 
 export const StarsRated = styled.div`
-  border-radius: 20px;
+  border-radius: 25px;
   background: rgba(0, 0, 0, 0.3);
   position: relative;
   width: auto;
-  padding: 10px;
   ${flexbox()};
+  padding: 17px;
+  padding-left: 19px;
+  padding-right: 19px;
 
   @media (max-width: 1930px) {
     border-radius: 10px;
+    padding: 13px;
+  }
+
+  @media (max-width: 1500px) {
+    border-radius: 10px;
+    padding: 7px;
   }
 
   @media (max-width: 1080px) {
@@ -629,8 +644,8 @@ export const StarsRated = styled.div`
 `;
 
 export const StarRate = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   margin-left: 5px;
   ${flexbox()};
 
@@ -659,13 +674,22 @@ export const DescriptionCard = styled.p`
   font-size: 28pt;
   ${getFont()};
   color: white;
-  width: 100%;
-  margin-top: 15px;
+  width: 90%;
+  margin-top: 50px;
   text-align: justify;
 
+  @media (max-width: 2924px) {
+    width: 94%;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 2000px) {
+    margin-top: 20px;
+  }
+
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 1370, 850, 500],
-    [25, 22, 18, 14, 12, 11, 10, 9],
+    [3200, 2700, 2200, 1900, 1500, 1370, 850, 500],
+    [25, 22, 18, 15, 13, 12, 10, 9],
     "font-size",
     "pt"
   )};

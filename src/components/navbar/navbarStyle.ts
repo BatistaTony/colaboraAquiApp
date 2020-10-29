@@ -8,13 +8,9 @@ export const MyNavbar = styled.div`
   height: 100%;
   ${flexbox("row", "space-between", "center")};
   padding-left: 6%;
-  padding-right: 8%;
+  padding-right: 6%;
   box-sizing: border-box;
   z-index: 14;
-
-  @media (max-width: 3250px) {
-    ${flexbox("row", "space-between", "flex-end")};
-  }
 
   @media (max-width: 1500px) {
     ${flexbox("row", "space-between", "center")};
@@ -75,8 +71,8 @@ export const ItemMenu = styled.li`
   }
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 1300],
-    [23, 22, 19, 17, 13, 12],
+    [3200, 3000, 2500, 1930, 1500],
+    [23, 22, 19, 17, 12],
     "font-size",
     "pt"
   )};
@@ -168,10 +164,10 @@ export const ButtonLogin = styled.button`
   }
 `;
 
-export const UserName = styled.h5`
+export const UserName = styled.p`
   font-size: 25pt;
-  ${getFont()};
-  color: black;
+  ${getFont("Medium")};
+  color: ${colorsApp.soDark};
   cursor: default;
   ${flexbox()};
   transition: 0.5s;
@@ -189,34 +185,43 @@ export const UserName = styled.h5`
   }
 
   span {
-    width: 20px;
-    height: 20px;
+    width: 12px;
+    height: 12px;
     background: ${colorsApp.orange};
     border-radius: 100%;
-    margin-right: 10px;
+    margin-right: 20px;
 
-    ${sizesForEachScreens([3200, 3000, 2500], [17, 12, 7], "width", "px")}
-    ${sizesForEachScreens([3200, 3000, 2500], [17, 12, 7], "height", "px")}
+    @media (max-width: 1500px) {
+      margin-right: 10px;
+    }
+
+    ${sizesForEachScreens([2000, 1500], [10, 5], "width", "px")};
+    ${sizesForEachScreens([2000, 1500], [10, 5], "height", "px")};
   }
 
   svg {
-    fill: ${colorsApp.orange};
-    width: 70px;
-    height: 70px;
-    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 2px;
 
     ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500],
-      [60, 50, 40, 30, 25],
+      [3500, 2999, 2600, 1930, 1500],
+      [28, 25, 21, 16, 12],
       "width",
       "px"
-    )}
+    )};
+
     ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500],
-      [60, 50, 40, 30, 25],
+      [3500, 2999, 2600, 1930, 1500],
+      [28, 25, 21, 16, 12],
       "height",
       "px"
-    )}
+    )};
+
+    @media (max-width: 1500px) {
+      margin-left: 10px;
+    }
   }
 
   @media (min-width: 750px) {
