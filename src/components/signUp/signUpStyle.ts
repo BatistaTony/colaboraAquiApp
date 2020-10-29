@@ -393,7 +393,7 @@ export const FormGroup = styled.div`
   border-radius: 20px;
   height: 100px;
   display: grid;
-  grid-template-columns: 87% 13%;
+  grid-template-columns: 88% 12%;
   grid-template-rows: 100%;
   background: #f1f0f4;
   border: ${({ isEmpty }) =>
@@ -403,14 +403,20 @@ export const FormGroup = styled.div`
 
   ${sizesForEachScreens([3200, 1930, 1500], [15, 10, 7], "border-radius", "px")}
 
+  @media (max-width:1500px) {
+    padding-right: 5px;
+  }
+
+  @media (max-width: 900px) {
+    padding-right: 0;
+  }
+
   ${sizesForEachScreens(
     [3200, 2500, 1930, 1500, 1370],
     ["90", "70", "60", "45", "40"],
     "height",
     "px"
   )}
-
-
 
   @media (max-width: 750px) {
     height: 45px;
@@ -459,12 +465,22 @@ export const FormGroup = styled.div`
     )}
   }
 
-  &:first-child {
-    grid-column: 1/3;
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  &:first-child {
     @media (max-width: 1500px) {
       grid-template-columns: 90% 10%;
     }
+
     .iconTextBox {
       width: 100%;
       height: 100%;
@@ -479,11 +495,6 @@ export const FormGroup = styled.div`
 
   .iconeSee {
     width: 100%;
-    background: green;
-
-    @media (max-width: 1500px) {
-      margin-right: 15px;
-    }
 
     img,
     svg {
@@ -564,42 +575,63 @@ export const SelectList = styled.ul`
   height: ${({ length }) => (length > 5 ? "380px" : "auto")};
   position: absolute;
   overflow-y: ${({ length }) => (length > 5 ? "auto" : "hidden")};
-  top: 0;
+  top: 109px;
   background: white;
   border-radius: 20px;
   z-index: 10;
-  box-shadow: 0 0 20px;
 
-  ${sizesForEachScreens([3200, 1930, 1500], [15, 10, 7], "border-radius", "px")}
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  ${sizesForEachScreens(
+    [3200, 1930, 1500],
+    [15, 10, 7],
+    "border-radius",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [3200, 2500, 1930, 1500, 1370],
+    ["99", "89", "79", "54", "49"],
+    "top",
+    "px"
+  )}
 
   @media (max-width: 3200px) {
     height: ${({ length }) => (length > 5 ? "300px" : "auto")};
-    box-shadow: 0 0 15px;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 2500px) {
     height: ${({ length }) => (length > 5 ? "270px" : "auto")};
-    box-shadow: 0 0 10px;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 1930px) {
     height: ${({ length }) => (length > 5 ? "250px" : "auto")};
-    box-shadow: 0 0 7px;
+    -webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 1500px) {
     height: ${({ length }) => (length > 5 ? "185px" : "auto")};
-    box-shadow: 0 0 5px;
   }
 
   li {
     width: 100%;
     cursor: default;
-    padding: 30px;
     box-sizing: border-box;
     ${getFont()};
     font-size: 27pt;
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+    padding-left: 45px;
 
     ${sizesForEachScreens(
       [3300, 3000, 2700, 2300, 1930, 1500],
@@ -608,7 +640,18 @@ export const SelectList = styled.ul`
       "px"
     )};
 
+    ${sizesForEachScreens(
+      [3200, 3000, 2500, 1930],
+      [30, 25, 20, 15],
+      "padding-left",
+      "px"
+    )}
+
     ${NormalFontSize()};
+
+    &:hover {
+      background: ${colorsApp.orange};
+    }
   }
 `;
 

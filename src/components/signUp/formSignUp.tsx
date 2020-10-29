@@ -60,9 +60,9 @@ export default function FormSignUp() {
   };
 
   const checkError = (): boolean => {
-    const arrayConsumerData = Object.entries(consumerData);
+    const arrayConsumerData = Object.entries(consumerData).reverse();
 
-    const emptyProperties = arrayConsumerData.filter((value) => {
+    const emptyProperties = arrayConsumerData.filter((value, index) => {
       if (value[1] === "") {
         setWhereIsError(value[0]);
         setErrorMsg("Preenche este campo");
@@ -127,13 +127,22 @@ export default function FormSignUp() {
           isEmpty={errorIsOn === "county"}
         />
 
-        <CustomSelect
-          defaultValueSelect={consumerData.ageRange || "Faixa etaria"}
-          errorMsg={errorMsg}
-          handleChange={(value) => handleChooseSelect("ageRange", value)}
-          values={ageRanges}
-          isEmpty={errorIsOn === "ageRange"}
-        />
+        <FormGroupGrand>
+          <FormGroup isEmpty={errorIsOn === "userName"}>
+            <input
+              type="number"
+              name="userName"
+              id="userName"
+              onChange={handleChange}
+              placeholder="Ano de nascimento"
+              max="2000"
+              min="1700"
+            />
+          </FormGroup>
+          {errorIsOn === "userName" && (
+            <ErrorMessage className="error_name_">{errorMsg}</ErrorMessage>
+          )}
+        </FormGroupGrand>
 
         <InputPassword
           errorMsg={errorMsg}

@@ -71,24 +71,7 @@ export const ModalSignIn = styled(Modal)`
       width: 73%;
 
       justify-content: center;
-      grid-template-rows: repeat(2, 100px) auto auto auto;
-
-      ${sizesForEachScreens(
-        [3200, 2500, 1930, 1500, 1370],
-        [
-          "repeat(2, 90px) auto auto auto",
-          "repeat(2, 70px) auto auto auto",
-          "repeat(2, 60px) auto auto auto",
-          "repeat(2, 45px) auto auto auto",
-          "repeat(2, 40px) auto auto auto",
-        ],
-        "grid-template-rows",
-        ""
-      )}
-
-      .error_style {
-        grid-column: 1/1;
-      }
+      grid-template-rows: repeat(6, auto) auto auto auto;
 
       @media (max-width: 900px) {
         width: 45%;
@@ -110,9 +93,21 @@ export const ModalSignIn = styled(Modal)`
         width: 85%;
       }
 
+      .frm_gr_gr {
+        grid-column: 1/2;
+      }
+
       .FormGroup {
         grid-column: 1/2;
         grid-template-columns: 100%;
+        height: 100px;
+
+        ${sizesForEachScreens(
+          [3200, 2500, 1930, 1500, 1370],
+          [" 90", "70", "60", "45", "40"],
+          "height",
+          "px"
+        )}
       }
 
       .formPassword {
@@ -167,6 +162,17 @@ export const ModalSignIn = styled(Modal)`
           "font-size",
           "pt"
         )}
+      }
+
+      .textFor_fhd_rn {
+        margin-top: 50px;
+
+        ${sizesForEachScreens(
+          [3300, 3000, 2500, 1500],
+          [40, 30, 20, 10],
+          "margin-top",
+          "px"
+        )};
       }
     }
 
