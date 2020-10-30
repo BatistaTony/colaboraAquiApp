@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import {
   ButtonSignUp,
   DivGridForm,
@@ -12,7 +12,6 @@ import { IConsumer } from "../../../types";
 import CustomSelect from "./select";
 import SucessModal from "./sucessModal";
 import InputPassword from "./inputPassword";
-import { translateProperty } from "../utils";
 import Link from "next/link";
 import { counties, provinces } from "./signUp.data";
 import IconTextBox from "./iconNameTextbox";
@@ -21,7 +20,7 @@ const initialState: IConsumer = {
   userName: "",
   province: "",
   county: "",
-  ageRange: "",
+  dataNascimento: "",
   password: "",
 };
 
