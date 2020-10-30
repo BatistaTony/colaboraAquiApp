@@ -90,6 +90,14 @@ export const BackGroundWithIllustration = styled(motion.div)`
     @media (max-width: 380px) and (max-height: 850px) {
       bottom: -30%;
     }
+
+    @media (max-height: 1024px) {
+      bottom: -35%;
+    }
+
+    @media (max-height: 820px) {
+      bottom: -35%;
+    }
   }
 `;
 
