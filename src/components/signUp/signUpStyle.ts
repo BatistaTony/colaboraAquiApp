@@ -261,8 +261,8 @@ export const Title = styled.h1`
   )};
 
   @media (max-width: 750px) {
-    font-size: 13pt;
-    width: 80%;
+    font-size: 15pt;
+    width: 90%;
     text-align: center;
   }
 `;
@@ -296,8 +296,9 @@ export const TextForm = styled.p`
   }
 
   @media (max-width: 750px) {
-    font-size: 11pt;
+    font-size: 11.5pt;
     width: 60%;
+    text-align: center;
   }
 
   @media (max-width: 600px) {
@@ -353,9 +354,9 @@ export const DivGridForm = styled.div`
       grid-template-columns: 88% 12%;
     }
 
-    @media (max-width: 750px) {
+    /* @media (max-width: 750px) {
       grid-template-columns: 90% 10%;
-    }
+    } */
   }
 `;
 
@@ -377,6 +378,11 @@ export const ErrorMessage = styled.p`
     "font-size",
     "pt"
   )};
+
+  @media (max-width: 750px) {
+    margin-top: 3px;
+    margin-bottom: 10px;
+  }
 `;
 
 export const FormGroupGrand = styled.div`
@@ -416,8 +422,8 @@ export const FormGroup = styled.div`
   }
 
   ${sizesForEachScreens(
-    [3200, 2500, 1930, 1500, 1370],
-    ["90", "70", "60", "45", "40"],
+    [3200, 2500, 1930, 1500],
+    ["90", "70", "60", "45"],
     "height",
     "px"
   )}
@@ -523,8 +529,8 @@ export const FormGroup = styled.div`
       }
 
       @media (max-width: 750px) {
-        width: 15px;
-        height: 15px;
+        width: 18px;
+        height: 18px;
       }
     }
   }
@@ -631,18 +637,6 @@ export const SelectList = styled.ul`
     border-radius: 10px;
     display: none;
   }
-
-  /* Track
-  ::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
-
-  /* Handle */
-  /* ::-webkit-scrollbar-thumb {
-    background: ${colorsApp.soDark};
-    border-radius: 10px;
-  } */
 
   li {
     width: 100%;
@@ -752,11 +746,16 @@ export const ButtonSignUp = styled.button`
     "font-size",
     "pt"
   )};
-  ${sizesForEachScreens([1930, 1500], [20, 10], "padding-top", "px")};
-  ${sizesForEachScreens([1930, 1500], [20, 10], "padding-bottom", "px")};
+
+  ${sizesForEachScreens([1930, 1500, 750], [20, 10, 14], "padding-top", "px")};
+  ${sizesForEachScreens(
+    [1930, 1500, 750],
+    [20, 10, 14],
+    "padding-bottom",
+    "px"
+  )};
 
   @media (max-width: 750px) {
-    height: 50px;
     font-size: 12.5pt;
   }
 `;

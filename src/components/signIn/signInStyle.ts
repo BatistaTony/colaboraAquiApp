@@ -103,8 +103,8 @@ export const ModalSignIn = styled(Modal)`
         height: 100px;
 
         ${sizesForEachScreens(
-          [3200, 2500, 1930, 1500, 1370],
-          [" 90", "70", "60", "45", "40"],
+          [3200, 2500, 1930, 1500],
+          [" 90", "70", "60", "45"],
           "height",
           "px"
         )}
@@ -142,6 +142,12 @@ export const ModalSignIn = styled(Modal)`
       }
 
       .btnLOgin {
+        @media (max-width: 750px) {
+          height: auto;
+          padding-top: 14px;
+          padding-bottom: 14px;
+        }
+
         @media (max-width: 600px) {
           margin-top: 50px;
         }
