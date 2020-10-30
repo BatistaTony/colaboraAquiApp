@@ -2,7 +2,7 @@ import { IConsumer } from "../../../types";
 import { CONSUMER_SIGNUP, CONSUMER_SIGNOUT } from "../actions/consumer";
 
 const initialState: IConsumer = {
-  ageRange: "",
+  dataNascimento: "",
   county: "",
   password: "",
   province: "",
