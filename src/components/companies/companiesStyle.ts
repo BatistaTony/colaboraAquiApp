@@ -854,10 +854,22 @@ ${sizesForEachScreens(
       grid-column: 1/2;
       width: 100%;
       margin: 0;
+    }
+
+    .frm_gr_name_fgj_ {
+      grid-column: 1/2;
 
       @media (max-width: 600px) {
         margin-bottom: 15px;
       }
+    }
+
+    .form_gr_camp_txt {
+      grid-column: 1/2;
+      width: 100%;
+
+      grid-row: 3/5;
+      margin-bottom: 50px;
     }
 
     .select_suggest_cmp {
@@ -884,7 +896,6 @@ export const ButtonSuggestForm = styled(ButtonSignUp)``;
 export const TextArea = styled.div`
   height: 100%;
   width: 100%;
-  grid-row: 3/5;
   ${getFont()};
   color: ${colorsApp.soDark};
   box-sizing: border-box;
@@ -892,7 +903,6 @@ export const TextArea = styled.div`
   background: #f1f0f4;
   border-radius: 7px;
   border: ${({ isEmpty }) => (isEmpty ? "2px solid red" : "none")};
-  margin-bottom: 50px;
   &::placeholder {
     color: ${colorsApp.soDark};
   }
@@ -941,7 +951,7 @@ export const ButtonCloseSuggestion = styled.button`
   border-radius: 100%;
   border: none;
   outline: none;
-  background: ${colorsApp.soDark};
+  background: gray;
   position: absolute;
   top: 0;
   right: 0;

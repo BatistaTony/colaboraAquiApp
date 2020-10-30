@@ -354,9 +354,6 @@ export const DivGridForm = styled.div`
       grid-template-columns: 88% 12%;
     }
 
-    /* @media (max-width: 750px) {
-      grid-template-columns: 90% 10%;
-    } */
   }
 `;
 
