@@ -2,12 +2,11 @@ import { ButtonBackStyle } from "./signUpStyle";
 
 interface IProps {
   classNames?: string;
-  onChange?: () => void;
 }
 
-export default function ButtonBack({ classNames, onChange, ...props }: IProps) {
+export default function ButtonBack({ classNames, ...props }: IProps) {
   return (
-    <ButtonBackStyle className={classNames} onClick={onChange} {...props}>
+    <ButtonBackStyle className={classNames} {...props}>
       <img src="/images/back.png" alt="" /> Voltar ao inicio
     </ButtonBackStyle>
   );
