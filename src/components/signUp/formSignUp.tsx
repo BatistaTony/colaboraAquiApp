@@ -30,15 +30,30 @@ export default function FormSignUp() {
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
+  const [userNameAccept, setUserNameAccept] = useState<boolean | null>(null);
 
-  const [ageRanges, setAgeRange] = useState<string[]>([
-    "15 a 16 anos",
-    "17 a 25 anos",
-    "30 a 40 anos",
-  ]);
-
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
+  };
+
+  const checkUserName = (event: any) => {
+    const nomes = ["tony", "batistatony", "JoaoTOny", "rayThon"];
+
+    const result = nomes.filter((state) => state === event.target.value);
+
+    if (result.length) {
+      setWhereIsError("userName");
+      setUserNameAccept(false);
+      setErrorMsg("Este nome já existe, por favor tente outro");
+    } else {
+      setUserNameAccept(true);
+    }
+
+    if (event.target.value === "") {
+      setUserNameAccept(null);
+      setWhereIsError("");
+      setErrorMsg("");
+    }
   };
 
   const handleChange = (event: any) => {
@@ -94,17 +109,24 @@ export default function FormSignUp() {
 
       <DivGridForm>
         <FormGroupGrand>
-          <FormGroup isEmpty={errorIsOn === "userName"}>
+          <FormGroup
+            isEmpty={errorIsOn === "userName"}
+            nameAccept={userNameAccept}
+            className={userNameAccept === false && "textbox_name"}
+          >
             <input
               type="text"
               name="userName"
               id="userName"
+              onKeyUp={checkUserName}
               onChange={handleChange}
               placeholder="Nome do utilizador"
             />
-            <div className="iconTextBox">
-              <IconTextBox />
-            </div>
+            {userNameAccept != null && (
+              <div className="iconTextBox">
+                <IconTextBox userAccept={userNameAccept} />
+              </div>
+            )}
           </FormGroup>
           {errorIsOn === "userName" && (
             <ErrorMessage className="error_name_">{errorMsg}</ErrorMessage>
@@ -128,18 +150,18 @@ export default function FormSignUp() {
         />
 
         <FormGroupGrand>
-          <FormGroup isEmpty={errorIsOn === "userName"}>
+          <FormGroup isEmpty={errorIsOn === "dataNascimento"}>
             <input
               type="number"
-              name="userName"
-              id="userName"
+              name="dataNascimento"
+              id="dataNascimento"
               onChange={handleChange}
               placeholder="Ano de nascimento"
               max="2000"
               min="1700"
             />
           </FormGroup>
-          {errorIsOn === "userName" && (
+          {errorIsOn === "dataNascimento" && (
             <ErrorMessage className="error_name_">{errorMsg}</ErrorMessage>
           )}
         </FormGroupGrand>

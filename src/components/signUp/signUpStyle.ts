@@ -386,6 +386,10 @@ export const FormGroupGrand = styled.div`
   &:first-child {
     grid-column: 1/3;
   }
+
+  .textbox_name {
+    border: 2px solid red !important;
+  }
 `;
 
 export const FormGroup = styled.div`
@@ -477,6 +481,8 @@ export const FormGroup = styled.div`
   }
 
   &:first-child {
+    border: ${({ nameAccept }) => (nameAccept ? "2px solid #59d93a" : " ")};
+
     @media (max-width: 1500px) {
       grid-template-columns: 90% 10%;
     }
@@ -575,7 +581,7 @@ export const SelectList = styled.ul`
   height: ${({ length }) => (length > 5 ? "380px" : "auto")};
   position: absolute;
   overflow-y: ${({ length }) => (length > 5 ? "auto" : "hidden")};
-  top: 109px;
+  top: 108px;
   background: white;
   border-radius: 20px;
   z-index: 10;
@@ -593,7 +599,7 @@ export const SelectList = styled.ul`
 
   ${sizesForEachScreens(
     [3200, 2500, 1930, 1500, 1370],
-    ["99", "89", "79", "54", "49"],
+    ["98", "88", "78", "53", "48"],
     "top",
     "px"
   )}
@@ -614,14 +620,29 @@ export const SelectList = styled.ul`
 
   @media (max-width: 1930px) {
     height: ${({ length }) => (length > 5 ? "250px" : "auto")};
-    -webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 1500px) {
     height: ${({ length }) => (length > 5 ? "185px" : "auto")};
   }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+    display: none;
+  }
+
+  /* Track
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  /* ::-webkit-scrollbar-thumb {
+    background: ${colorsApp.soDark};
+    border-radius: 10px;
+  } */
 
   li {
     width: 100%;
@@ -629,13 +650,14 @@ export const SelectList = styled.ul`
     box-sizing: border-box;
     ${getFont()};
     font-size: 27pt;
+    padding: 30px;
     border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
     transition: 0.5s;
     padding-left: 45px;
 
     ${sizesForEachScreens(
       [3300, 3000, 2700, 2300, 1930, 1500],
-      [25, 22, 18, 15, 13, 11],
+      [25, 22, 18, 15, 13, 10],
       "padding",
       "px"
     )};
@@ -647,7 +669,12 @@ export const SelectList = styled.ul`
       "px"
     )}
 
-    ${NormalFontSize()};
+    ${sizesForEachScreens(
+      [3200, 3000, 2500, 1930, 1500],
+      [26, 22, 19, 17, 11],
+      "font-size",
+      "pt"
+    )};
 
     &:hover {
       background: ${colorsApp.orange};
