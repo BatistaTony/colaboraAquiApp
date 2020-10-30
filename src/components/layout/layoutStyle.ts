@@ -134,11 +134,18 @@ font-family: Poppins-${font};
 `;
 
 export const colorsApp = {
-  orange: "#ffc300",
+  orange: "#fcbe0a",
   darkGray: "#5081dd",
   roxo: "#4b55ba",
   kindaBlue: "#80b5f3",
   soDark: "#27353B",
+  error: "#f54444",
+  yelloSecundary: "#ffdf80",
+  yelloOpaco: "#fbf6e3",
+  textSecundary: "gray",
+  textPrimary: "#293133",
+  sucess: "#4bcf12",
+  cardColor: "#4d5272",
 };
 
 export const sizesForEachScreens = (

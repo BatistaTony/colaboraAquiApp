@@ -152,7 +152,7 @@ export const ModalIllustration = styled.div`
 `;
 
 export const ButtonBackStyle = styled.button`
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   outline: none;
   border: none;
   background: transparent;
@@ -245,7 +245,7 @@ export const Title = styled.h1`
   font-size: 42pt;
   ${getFont()};
   transition: 0.5s;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
 
   span {
     ${getFont("Medium")};
@@ -271,7 +271,7 @@ export const TextForm = styled.p`
   width: 100%;
   text-align: center;
   height: auto;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   font-size: 27pt;
   ${getFont()};
   margin-top: 20px;
@@ -353,7 +353,6 @@ export const DivGridForm = styled.div`
     @media (max-width: 1000px) {
       grid-template-columns: 88% 12%;
     }
-
   }
 `;
 
@@ -363,7 +362,7 @@ export const ErrorMessage = styled.p`
   text-align: left;
   ${getFont()};
   height: 100%;
-  color: red;
+  color: ${colorsApp.error};
   box-sizing: border-box;
   margin-top: 7px;
 
@@ -391,7 +390,7 @@ export const FormGroupGrand = styled.div`
   }
 
   .textbox_name {
-    border: 2px solid red !important;
+    border: 2px solid ${colorsApp.error} !important;
   }
 `;
 
@@ -404,7 +403,7 @@ export const FormGroup = styled.div`
   grid-template-rows: 100%;
   background: #f1f0f4;
   border: ${({ isEmpty }) =>
-    isEmpty ? "2px solid red" : "2px solid transparent"};
+    isEmpty ? `2px solid ${colorsApp.error}` : "2px solid transparent"};
   transition: 0.5s;
   box-sizing: border-box;
 
@@ -450,7 +449,7 @@ export const FormGroup = styled.div`
     font-size: 30pt;
     height: 100%;
     ${getFont()};
-    color: ${colorsApp.soDark};
+    color: ${colorsApp.textPrimary};
     border: none;
     outline: none;
     background: transparent;
@@ -459,7 +458,7 @@ export const FormGroup = styled.div`
     text-align: left;
 
     &::placeholder {
-      color: ${colorsApp.soDark};
+      color: ${colorsApp.textPrimary};
     }
 
     ${NormalFontSize()};
@@ -484,7 +483,8 @@ export const FormGroup = styled.div`
   }
 
   &:first-child {
-    border: ${({ nameAccept }) => (nameAccept ? "2px solid #59d93a" : " ")};
+    border: ${({ nameAccept }) =>
+      nameAccept ? `2px solid ${colorsApp.sucess}` : " "};
 
     @media (max-width: 1500px) {
       grid-template-columns: 90% 10%;
@@ -677,9 +677,9 @@ export const QuestionSignUp = styled.p`
   width: 100%;
   height: 100%;
   text-align: center;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   font-size: 30pt;
-  ${getFont()};
+  ${getFont("Medium")};
   grid-column: 1/3;
   margin-top: 5px;
 
@@ -707,7 +707,7 @@ export const QuestionSignUp = styled.p`
 
 export const ButtonSignUp = styled.button`
   width: 100%;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   padding-top: 30px;
   padding-bottom: 30px;
   outline: none;
@@ -767,7 +767,7 @@ export const ModalSucess = styled(Modal)`
     width: 100%;
     border-radius: 0;
     z-index: 99999;
-    background: ${colorsApp.orange};
+    background: ${colorsApp.yelloSecundary};
 
     box-sizing: border-box;
     overflow: hidden;
@@ -843,7 +843,7 @@ export const IllustrationMobile = styled.div`
   }
 
   img {
-    width: 14rem;
+    width: 20rem;
 
     @media (max-height: 575px) {
       width: 10rem;
@@ -852,13 +852,17 @@ export const IllustrationMobile = styled.div`
 `;
 
 export const TitleSucess = styled.h1`
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   ${getFont("Bold")};
   text-align: center;
   font-size: 45pt;
 
   @media (max-width: 900px) {
-    margin-top: 0;
+    margin-top: 60px;
+  }
+
+  @media (max-width: 750px) {
+    margin-top: 50px;
   }
 
   @media (max-width: 600px) {
@@ -906,7 +910,7 @@ export const TextSucess = styled.p`
 `;
 
 export const ButtonSucess = styled.button`
-  background: ${colorsApp.soDark};
+  background: ${colorsApp.textPrimary};
   color: white;
   margin-top: 5rem;
   height: 100px;
@@ -916,6 +920,7 @@ export const ButtonSucess = styled.button`
   padding-left: 7rem;
   padding-right: 7rem;
   font-size: 33pt;
+  ${getFont("Medium")};
 
   @media (max-width: 3000px) {
     margin-top: 4rem;
@@ -935,8 +940,9 @@ export const ButtonSucess = styled.button`
     position: fixed;
     bottom: 5%;
     width: 70%;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    height: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
   @media (max-width: 450px) {
@@ -958,11 +964,15 @@ export const ButtonSucess = styled.button`
     "pt"
   )};
   ${sizesForEachScreens(
-    [3400, 2500, 1930, 1700, 1500, 600],
-    [85, 75, 65, 55, 42, 45],
+    [3400, 2500, 1930, 1700, 1500],
+    [85, 75, 65, 55, 42],
     "height",
     "px"
   )};
+
+  @media (max-width: 600px) {
+    height: auto;
+  }
 
   ${sizesForEachScreens(
     [3400, 2500, 1930, 1500],

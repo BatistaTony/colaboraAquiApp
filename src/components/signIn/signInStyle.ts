@@ -157,7 +157,7 @@ export const ModalSignIn = styled(Modal)`
         color: ${colorsApp.orange};
         font-size: 27pt;
         ${flexbox("row", "flex-start", "center")};
-        ${getFont()};
+        ${getFont("Medium")};
         cursor: default;
 
         width: 100%;

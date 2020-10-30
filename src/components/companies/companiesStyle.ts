@@ -52,6 +52,7 @@ export const TextCompanies = styled.p`
   font-size: 45pt;
   ${getFont()};
   text-align: center;
+  color: ${colorsApp.textPrimary};
 
   @media (max-width: 850px) {
     ${flexbox("column")};
@@ -139,6 +140,7 @@ export const FilterStyled = styled.div`
       border-radius: 15px;
       cursor: default;
       transition: 0.5s;
+      color: ${colorsApp.textSecundary};
 
       ${sizesForEachScreens(
         [3200, 3000, 2500, 1930, 1500, 850, 500],
@@ -185,12 +187,12 @@ export const FilterStyled = styled.div`
       }
 
       &:hover {
-        background: ${colorsApp.orange};
+        background: ${colorsApp.yelloOpaco};
       }
     }
 
     .activeItem {
-      background: ${colorsApp.orange};
+      background: ${colorsApp.yelloOpaco};
     }
   }
 `;
@@ -230,13 +232,19 @@ export const SearchStyled = styled.div`
     border-radius: 5px;
   }
 
+  &::focus-within {
+    svg {
+      fill: ${colorsApp.textPrimary};
+    }
+  }
+
   .iconeSearch {
     ${flexbox()};
 
     svg {
       width: 35px;
       height: 35px;
-      fill: ${colorsApp.soDark};
+      fill: ${colorsApp.textSecundary};
 
       @media (max-width: 2500px) {
         width: 30px;
@@ -264,7 +272,7 @@ export const SearchStyled = styled.div`
     font-size: 30pt;
     height: 100%;
     ${getFont()};
-    color: ${colorsApp.soDark};
+    color: ${colorsApp.textPrimary};
     border: none;
     outline: none;
     background: transparent;
@@ -272,7 +280,7 @@ export const SearchStyled = styled.div`
     text-align: left;
 
     &::placeholder {
-      color: ${colorsApp.soDark};
+      color: ${colorsApp.textSecundary};
     }
 
     ${sizesForEachScreens(
@@ -462,7 +470,7 @@ export const Card = styled.div`
   width: 100%;
   height: 590px;
   border-radius: 30px;
-  background-color: ${colorsApp.roxo};
+  background-color: ${colorsApp.cardColor};
   ${flexbox("column", "center", "center")};
   padding: 30px;
   box-sizing: border-box;
@@ -745,7 +753,7 @@ export const ButtonControl = styled.div`
   button {
     width: 80px;
     height: 80px;
-    border: 2px solid gray;
+    border: 2px solid ${colorsApp.textSecundary};
     outline: none;
     ${flexbox()};
     border-radius: 100%;
@@ -897,14 +905,14 @@ export const TextArea = styled.div`
   height: 100%;
   width: 100%;
   ${getFont()};
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   box-sizing: border-box;
   text-align: left;
   background: #f1f0f4;
   border-radius: 7px;
   border: ${({ isEmpty }) => (isEmpty ? "2px solid red" : "none")};
   &::placeholder {
-    color: ${colorsApp.soDark};
+    color: ${colorsApp.textPrimary};
   }
 
   @media (max-width: 750px) {

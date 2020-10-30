@@ -63,7 +63,8 @@ export const ItemMenu = styled.li`
     margin-right: 10px;
   }
 
-  color: ${({ active }) => (active ? colorsApp.orange : "gray")};
+  color: ${({ active }) =>
+    active ? colorsApp.orange : colorsApp.textSecundary};
 
   &:hover {
     color: ${colorsApp.orange};
@@ -111,7 +112,7 @@ export const ButtonLogin = styled.button`
   height: 70px;
   padding-left: 50px;
   padding-right: 50px;
-  background: ${colorsApp.soDark};
+  background: ${colorsApp.textPrimary};
   border-radius: 10px;
   transition: 0.5s;
   margin-left: 50px;
@@ -167,7 +168,7 @@ export const ButtonLogin = styled.button`
 export const UserName = styled.p`
   font-size: 25pt;
   ${getFont("Medium")};
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   cursor: default;
   ${flexbox()};
   transition: 0.5s;
@@ -304,7 +305,7 @@ export const MenuUser = styled(motion.ul)`
     width: 100%;
     padding: 20px;
     padding-right: 10px;
-    color: gray;
+    color: ${colorsApp.textSecundary};
     ${getFont("Medium")};
     font-size: 20pt;
     ${flexbox("row", "flex-start", "center")};

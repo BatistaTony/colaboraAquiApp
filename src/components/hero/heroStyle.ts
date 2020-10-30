@@ -149,7 +149,7 @@ export const Text = styled.p`
   width: 50%;
   height: auto;
   text-align: center;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   font-size: 45pt;
   ${getFont("Medium")};
 
@@ -213,6 +213,7 @@ export const Step = styled(motion.li)`
   span {
     font-size: 38pt;
     ${getFont("SemiBold")};
+    color: ${colorsApp.textPrimary};
 
     ${sizesForEachScreens(
       [2500, 2000, 1500, 1000, 750, 450],
@@ -228,7 +229,7 @@ export const StepNumber = styled.div`
   height: 70px;
   border-radius: 100%;
   color: white;
-  background: ${colorsApp.soDark};
+  background: ${colorsApp.textPrimary};
   border: ${({ borderColor }) =>
     borderColor ? `8px solid ${borderColor}` : "8px solid gray"};
   ${flexbox()};
@@ -283,7 +284,7 @@ export const ButtonStartRate = styled(motion.button)`
   height: 50px;
   font-size: 30pt;
   border-radius: 7px;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   padding: 60px;
   padding-top: 55px;
   padding-bottom: 55px;

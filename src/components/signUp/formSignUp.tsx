@@ -1,4 +1,4 @@
-import {  useState } from "react";
+import { useState } from "react";
 import {
   ButtonSignUp,
   DivGridForm,
@@ -96,15 +96,7 @@ export default function FormSignUp() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <CSSTransition
-        unmountOnExit
-        addEndListener={() => {}}
-        timout={200}
-        in={showModalSucess}
-        classNames="my-node"
-      >
-        <SucessModal dataUser={consumerData} />
-      </CSSTransition>
+      {true && <SucessModal dataUser={consumerData} />}
 
       <DivGridForm>
         <FormGroupGrand>
