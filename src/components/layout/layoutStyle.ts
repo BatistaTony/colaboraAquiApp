@@ -60,8 +60,6 @@ export const LayoutStyled = styled.div`
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
     overflow: ${({ title }) => (title === "Empresas" ? "auto" : "hidden")};
   }
-
-  
 `;
 
 export const GlobalStyle = createGlobalStyle`
@@ -128,7 +126,7 @@ export const colorsApp = {
   soDark: "#27353B",
   error: "#f54444",
   yelloSecundary: "#ffdf80",
-  yelloOpaco: "#fbf6e3",
+  yelloOpaco: "#fff2b8",
   textSecundary: "gray",
   textPrimary: "#293133",
   sucess: "#4bcf12",
