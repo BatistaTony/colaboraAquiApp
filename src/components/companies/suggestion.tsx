@@ -111,7 +111,9 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
             <IconClose />
           </ButtonCloseSuggestion>
           <DivForm className="div_form_sugs_cmp_et">
-            <Title>Não encontrou o que procurava ?</Title>
+            <Title className="title_sug_mb">
+              Não encontrou o que procurava ?
+            </Title>
             <TextForm className="text_simple">
               Sugira uma empresa e nós iremos adicionar dentro em breve
             </TextForm>
@@ -148,7 +150,10 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
               />
 
               <FormGroupGrand className="form_gr_camp_txt">
-                <TextArea isEmpty={errorIsOn === "suggestionToCompany"}>
+                <TextArea
+                  className="form_df_gty_sdfgt_gf"
+                  isEmpty={errorIsOn === "suggestionToCompany"}
+                >
                   <textarea
                     placeholder="Breve descrição"
                     name="suggestionToCompany"

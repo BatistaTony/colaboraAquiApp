@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { ICompany } from "../../../types";
 import CardCompany from "./cardCompany";
 import { CompanyList, ButtonControl, GroupCard } from "./companiesStyle";
-import { CSSTransition } from "react-transition-group";
 
 interface IProps {
   companies: Array<ICompany>;
@@ -64,7 +63,7 @@ export default function LisOfCompanies({ companies, search }: IProps) {
         </button>
       </ButtonControl>
 
-      <GroupCard>
+      <GroupCard key={cardNumber}>
         {twoCompanies.map(
           (value: ICompany, index: number) =>
             value && <CardCompany key={index} data={value} />

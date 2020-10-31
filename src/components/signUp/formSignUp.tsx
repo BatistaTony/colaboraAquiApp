@@ -20,7 +20,7 @@ const initialState: IConsumer = {
   userName: "",
   province: "",
   county: "",
-  dataNascimento: "",
+  dataNascimento: 0,
   password: "",
 };
 
@@ -35,10 +35,9 @@ export default function FormSignUp() {
     event.preventDefault();
   };
 
-  const checkUserName = (event: any) => {
+  const checkUserName = (name: string) => {
     const nomes = ["tony", "batistatony", "JoaoTOny", "rayThon"];
-
-    const result = nomes.filter((state) => state === event.target.value);
+    const result = nomes.filter((state) => state === name);
 
     if (result.length) {
       setWhereIsError("userName");
@@ -46,9 +45,10 @@ export default function FormSignUp() {
       setErrorMsg("Este nome já existe, por favor tente outro");
     } else {
       setUserNameAccept(true);
+      setErrorMsg("");
     }
 
-    if (event.target.value === "") {
+    if (name === "") {
       setUserNameAccept(null);
       setWhereIsError("");
       setErrorMsg("");
@@ -60,8 +60,23 @@ export default function FormSignUp() {
       ...consumerData,
       [event.target.name]: event.target.value,
     });
-    setWhereIsError(null);
-    setErrorMsg(null);
+
+    if (userNameAccept) {
+      setWhereIsError(null);
+      setErrorMsg(null);
+    }
+  };
+
+  const checkDataNascimento = (): Boolean => {
+    const dataN = Number(consumerData.dataNascimento);
+
+    if (dataN < 2018 && dataN > 1800) {
+      return true;
+    } else {
+      setWhereIsError("dataNascimento");
+      setErrorMsg("Apenas maior ou igual a 18 anos");
+      return false;
+    }
   };
 
   const handleChooseSelect = (property: string, value: string) => {
@@ -69,15 +84,18 @@ export default function FormSignUp() {
       ...consumerData,
       [property]: value,
     });
-    setWhereIsError(null);
-    setErrorMsg(null);
+
+    if (userNameAccept) {
+      setWhereIsError(null);
+      setErrorMsg(null);
+    }
   };
 
   const checkError = (): boolean => {
     const arrayConsumerData = Object.entries(consumerData).reverse();
 
     const emptyProperties = arrayConsumerData.filter((value, index) => {
-      if (value[1] === "") {
+      if (value[1] === "" || value[1] === 0) {
         setWhereIsError(value[0]);
         setErrorMsg("Preenche este campo");
       }
@@ -85,12 +103,22 @@ export default function FormSignUp() {
       return value[1] === "";
     });
 
-    return emptyProperties.length > 0;
+    return emptyProperties.length <= 0;
   };
 
   const signUpUser = (): void => {
-    if (!checkError()) {
-      setShowModalSucess(!showModalSucess);
+    if (consumerData.userName) {
+      if (userNameAccept) {
+        if (checkError()) {
+          if (checkDataNascimento()) {
+            setShowModalSucess(!showModalSucess);
+          }
+        }
+      }
+    } else if (checkError()) {
+      if (checkDataNascimento()) {
+        setShowModalSucess(!showModalSucess);
+      }
     }
   };
 
@@ -109,13 +137,13 @@ export default function FormSignUp() {
               type="text"
               name="userName"
               id="userName"
-              onKeyUp={checkUserName}
+              onKeyUp={(event) => checkUserName(event.target.value)}
               onChange={handleChange}
               placeholder="Nome do utilizador"
             />
             {userNameAccept != null && (
               <div className="iconTextBox">
-                <IconTextBox userAccept={userNameAccept} />
+                <IconTextBox titleImg={errorMsg} userAccept={userNameAccept} />
               </div>
             )}
           </FormGroup>
@@ -148,8 +176,6 @@ export default function FormSignUp() {
               id="dataNascimento"
               onChange={handleChange}
               placeholder="Ano de nascimento"
-              max="2000"
-              min="1700"
             />
           </FormGroup>
           {errorIsOn === "dataNascimento" && (

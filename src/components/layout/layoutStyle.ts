@@ -53,28 +53,15 @@ export const LayoutStyled = styled.div`
     grid-template-rows: 100px auto;
   }
 
-  #fader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999999;
-    pointer-events: none;
-    animation-duration: 350ms;
-    animation-timing-function: ease-in-out;
-    background: white;
+  @media (max-width: 950px) {
+    overflow: ${({ title }) => (title === "Empresas" ? "auto" : "hidden")};
   }
 
-  #fader.fade-out {
-    opacity: 0;
-    animation-name: ${fadeOut};
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    overflow: ${({ title }) => (title === "Empresas" ? "auto" : "hidden")};
   }
 
-  #fader.fade-in {
-    opacity: 1;
-    animation-name: ${fadeIn};
-  }
+  
 `;
 
 export const GlobalStyle = createGlobalStyle`

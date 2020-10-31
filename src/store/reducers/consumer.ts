@@ -2,11 +2,11 @@ import { IConsumer } from "../../../types";
 import { CONSUMER_SIGNUP, CONSUMER_SIGNOUT } from "../actions/consumer";
 
 const initialState: IConsumer = {
-  dataNascimento: "",
+  dataNascimento: 0,
   county: "",
   password: "",
   province: "",
-  userName: "",
+  userName: "Anderson Keneedy",
 };
 
 interface IAction {

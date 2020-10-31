@@ -49,7 +49,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "Movicel",
+      companyName: "ENSA",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
@@ -59,7 +59,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "Unitel",
+      companyName: "MINSA",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
@@ -69,7 +69,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "Movicel",
+      companyName: "TELECON",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
@@ -79,7 +79,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "Unitel",
+      companyName: "ZAP",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
@@ -89,7 +89,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "Movicel",
+      companyName: "DSTV",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
@@ -99,7 +99,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "Unitel",
+      companyName: "TVCABO",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
@@ -109,7 +109,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "Movicel",
+      companyName: "MoviZAPFIBRAcel",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
@@ -119,7 +119,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "Unitel",
+      companyName: "TOYOTA",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
@@ -129,7 +129,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "Movicel",
+      companyName: "KUBINGA",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
@@ -139,7 +139,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "Unitel",
+      companyName: "TUPUCA",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
@@ -170,6 +170,7 @@ function Companies() {
     <Layout title="Empresas">
       <ContentCompanies>
         {!(userState.userName.length > 0) && <SignUp />}
+
         {showSuggestion && <Suggestion toggleSuggestion={toggleSuggestion} />}
 
         <div className="cmp_f_g">

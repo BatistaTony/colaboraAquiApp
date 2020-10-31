@@ -9,11 +9,13 @@ export const MyNavbar = styled.div`
   ${flexbox("row", "space-between", "center")};
   padding-left: 6%;
   padding-right: 6%;
+  padding-top: 3%;
   box-sizing: border-box;
   z-index: 14;
 
   @media (max-width: 1500px) {
     ${flexbox("row", "space-between", "center")};
+    padding-top: 2%;
   }
 
   @media (max-width: 750px) {
@@ -100,8 +102,8 @@ export const Logo = styled.div`
     width: 40rem;
 
     ${sizesForEachScreens(
-      [3200, 2500, 2000, 1500, 1370, 750],
-      [34, 27, 24, 20, 17, 14],
+      [3200, 2500, 2000, 1500, 1370, 750, 308],
+      [34, 27, 24, 20, 17, 14, 11.5],
       "width",
       "rem"
     )};
@@ -247,6 +249,20 @@ export const DivUser = styled.div`
     width: 100%;
     margin-left: 0;
   }
+
+  .menu_desk_T {
+    @media (max-width: 750px) {
+      display: none;
+    }
+  }
+
+  .menu_mobile_ {
+    display: none;
+
+    @media (max-width: 750px) {
+      display: block;
+    }
+  }
 `;
 
 export const MenuUser = styled(motion.ul)`
@@ -260,7 +276,7 @@ export const MenuUser = styled(motion.ul)`
   list-style: none;
   overflow: hidden;
   position: absolute;
-  left: 0;
+  left: ${({ nameLength }) => (nameLength <= 8 ? "-5rem" : 0)};
   top: 70px;
   z-index: 9;
 
@@ -280,14 +296,16 @@ export const MenuUser = styled(motion.ul)`
     top: 40px;
     border-radius: 7px;
     width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "160px")};
+    left: ${({ nameLength }) => (nameLength <= 8 ? "-3rem" : 0)};
   }
 
   @media (max-width: 1245px) {
-    right: 100%;
+    //right: 100%;
+    left: ${({ nameLength }) => (nameLength <= 8 ? "-3rem" : 0)};
   }
 
   @media (max-width: 1232px) {
-    left: 2%;
+    left: ${({ nameLength }) => (nameLength <= 8 ? "-5rem" : 0)};
   }
 
   @media (max-width: 750px) {
@@ -295,7 +313,6 @@ export const MenuUser = styled(motion.ul)`
     top: 0;
     width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "100%")};
     box-shadow: 0 0 0px;
-    display: block;
     right: 0;
     left: 0;
     margin-right: 0;
@@ -387,6 +404,10 @@ export const ButtonMobile = styled.div`
   padding-top: 3px;
   z-index: 3;
   padding-right: ${({ openMenu }) => (openMenu ? "1px" : 0)};
+
+  @media (max-width: 308px) {
+    margin-right: 10px;
+  }
 
   .line {
     width: 15px;

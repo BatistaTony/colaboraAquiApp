@@ -2,7 +2,7 @@ export interface IConsumer {
   userName: string;
   province: string;
   county: string;
-  dataNascimento: string;
+  dataNascimento: number;
   password: string;
 }
 
