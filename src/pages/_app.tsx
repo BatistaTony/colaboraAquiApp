@@ -2,7 +2,6 @@ import { Provider } from "react-redux";
 import store from "../store/index";
 import App from "next/app";
 import { GlobalStyle } from "../components/layout/layoutStyle";
-import "aos/dist/aos.css";
 
 export default class MyApp extends App {
   render() {
