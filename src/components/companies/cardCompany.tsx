@@ -9,6 +9,8 @@ import {
 import StarsRatedCompany from "./starsRated";
 import AOS from "aos";
 import { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface IProps {
   data: ICompany;
@@ -24,31 +26,43 @@ export default function CardCompany({ data }: IProps) {
     companyStars,
   } = data;
 
-  useEffect(() => {
-    AOS.init();
-  }, [data.companyName]);
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: "-100px 0px",
+  });
+
+  const animationStyle = { opacity: 1, scale: 1, y: 0 };
 
   return (
-    <Card data-aos="fade-up">
-      <div className="header_card">
-        <div className="div1_er_">
-          <CompanyLogo img={companyLogo}></CompanyLogo>
+    <AnimatePresence>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, scale: 0.3, y: -100 }}
+        animate={inView ? animationStyle : {}}
+        exit={{ opacity: 0, scale: 0.3, y: -100 }}
+      >
+        <Card>
+          <div className="header_card">
+            <div className="div1_er_">
+              <CompanyLogo img={companyLogo}></CompanyLogo>
 
-          <div className="company_info_">
-            <CompanyName>
-              #{companyPositionRanking}. {companyName}
-            </CompanyName>
-            <CompanyRateNumbers>
-              <span>{companyRatesNumber}</span> avaliações
-            </CompanyRateNumbers>
+              <div className="company_info_">
+                <CompanyName>
+                  #{companyPositionRanking}. {companyName}
+                </CompanyName>
+                <CompanyRateNumbers>
+                  <span>{companyRatesNumber}</span> avaliações
+                </CompanyRateNumbers>
+              </div>
+            </div>
+            <div className="start_div_cmpy">
+              <StarsRatedCompany stars={companyStars} />
+            </div>
           </div>
-        </div>
-        <div className="start_div_cmpy">
-          <StarsRatedCompany stars={companyStars} />
-        </div>
-      </div>
 
-      <DescriptionCard>{companyDescription}</DescriptionCard>
-    </Card>
+          <DescriptionCard>{companyDescription}</DescriptionCard>
+        </Card>
+      </motion.div>
+    </AnimatePresence>
   );
 }

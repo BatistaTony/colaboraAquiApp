@@ -28,7 +28,7 @@ function Companies() {
   const [companies, setCompanies] = useState<Array<ICompany>>([
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 150,
+      companyRatesNumber: 8,
       companyName: "Movicel",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
@@ -58,7 +58,7 @@ function Companies() {
     },
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 150,
+      companyRatesNumber: 500,
       companyName: "MINSA",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
@@ -78,10 +78,10 @@ function Companies() {
     },
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 150,
+      companyRatesNumber: 10,
       companyName: "ZAP",
       companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
+      companyStars: 3,
       companyDescription:
         "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
       companyStatus: "Privada",
@@ -101,7 +101,7 @@ function Companies() {
       companyRatesNumber: 150,
       companyName: "TVCABO",
       companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
+      companyStars: 5,
       companyDescription:
         "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
       companyStatus: "Privada",
@@ -121,7 +121,7 @@ function Companies() {
       companyRatesNumber: 150,
       companyName: "TOYOTA",
       companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
+      companyStars: 4,
       companyDescription:
         "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
       companyStatus: "Privada",

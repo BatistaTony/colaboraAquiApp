@@ -333,7 +333,8 @@ export const ButtonStartRate = styled(motion.button)`
 
   @media (max-width: 750px) {
     padding-bottom: 15px;
-    flex: 1;
+    display: -webkit-flex;
+    flex: 1 0 auto;
     padding-top: 15px;
   }
 
