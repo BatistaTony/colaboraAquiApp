@@ -150,6 +150,10 @@ export const DivHero = styled.div`
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
     margin-top: 20%;
   }
+
+  @media (max-width: 325px) and (max-height: 550px) {
+    padding-bottom: 50px;
+  }
 `;
 
 export const Text = styled.p`
@@ -198,6 +202,18 @@ export const ListStep = styled.ul`
   }
 
   ${pullPaddingLeft};
+
+  @media (max-width: 500px) and (max-height: 830px) {
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 500px) and (max-height: 560px) {
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 500px) and (max-height: 500px) {
+    margin-bottom: 0rem;
+  }
 `;
 
 export const Step = styled(motion.li)`
@@ -332,10 +348,10 @@ export const ButtonStartRate = styled(motion.button)`
   )};
 
   @media (max-width: 750px) {
-    padding-bottom: 15px;
-    display: -webkit-flex;
-    flex: 1 0 auto;
-    padding-top: 15px;
+    height: auto;
+    padding-bottom: 18px;
+    flex: 0;
+    padding-top: 18px;
   }
 
   img {

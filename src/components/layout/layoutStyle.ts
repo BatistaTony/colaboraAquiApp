@@ -57,6 +57,10 @@ export const LayoutStyled = styled.div`
     overflow: ${({ title }) => (title === "Empresas" ? "auto" : "hidden")};
   }
 
+  @media (max-width: 325px) and (max-height: 550px) {
+    overflow: ${({ title }) => (title === "ColaboraAqui" ? "auto" : "hidden")};
+  }
+
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
     overflow: ${({ title }) => (title === "Empresas" ? "auto" : "hidden")};
   }
@@ -67,8 +71,6 @@ export const GlobalStyle = createGlobalStyle`
 padding:0;
 margin:0;
 }
-
-
 
 
 .my-node-enter {
