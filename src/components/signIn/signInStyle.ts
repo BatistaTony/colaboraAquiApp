@@ -17,13 +17,8 @@ export const OverlaySignIn = styled.div`
 `;
 
 export const ModalSignIn = styled(Modal)`
-<<<<<<< HEAD
-  grid-template-columns: 69% 35%;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
-=======
   grid-template-columns: 62% 37%;
   box-shadow: 0 0 0.5px rgba(0, 0, 0, 0.3);
->>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
 
   .btnBackSign {
     align-self: center;
@@ -45,12 +40,6 @@ export const ModalSignIn = styled(Modal)`
   }
 
   .divForm_sign_p {
-<<<<<<< HEAD
-    .divBtnBackT {
-      position: absolute;
-      top: 0;
-    }
-=======
     @media (max-width: 600px) {
       height: 100vh;
       ${flexbox("column", "flex-end", "center")};
@@ -92,7 +81,6 @@ export const ModalSignIn = styled(Modal)`
       "grid-template-rows",
       ""
     )}
->>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
 
     @media (max-width: 900px) {
       height: 100vh;
@@ -115,15 +103,11 @@ export const ModalSignIn = styled(Modal)`
       box-shadow: 0 0 0px;
     }
 
-<<<<<<< HEAD
     .grid-form-sign {
       grid-template-columns: 100%;
       width: 73%;
 
       justify-content: center;
-      grid-template-rows: repeat(2, 100px) auto auto auto;
-
-=======
     .btnLOgin {
       @media (max-width: 600px) {
         margin-top: 50px;
@@ -139,7 +123,6 @@ export const ModalSignIn = styled(Modal)`
 
       width: 100%;
       text-align: left;
->>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
       ${sizesForEachScreens(
         [3200, 2500, 1930, 1500, 1370],
         [
@@ -156,6 +139,7 @@ export const ModalSignIn = styled(Modal)`
       .error_style {
         grid-column: 1/1;
       }
+      grid-template-rows: repeat(6, auto) auto auto auto;
 
       @media (max-width: 900px) {
         width: 45%;
@@ -177,9 +161,21 @@ export const ModalSignIn = styled(Modal)`
         width: 85%;
       }
 
+      .frm_gr_gr {
+        grid-column: 1/2;
+      }
+
       .FormGroup {
         grid-column: 1/2;
         grid-template-columns: 100%;
+        height: 100px;
+
+        ${sizesForEachScreens(
+          [3200, 2500, 1930, 1500],
+          [" 90", "70", "60", "45"],
+          "height",
+          "px"
+        )}
       }
 
       .formPassword {
@@ -214,6 +210,12 @@ export const ModalSignIn = styled(Modal)`
       }
 
       .btnLOgin {
+        @media (max-width: 750px) {
+          height: auto;
+          padding-top: 14px;
+          padding-bottom: 14px;
+        }
+
         @media (max-width: 600px) {
           margin-top: 50px;
         }
@@ -223,7 +225,7 @@ export const ModalSignIn = styled(Modal)`
         color: ${colorsApp.orange};
         font-size: 27pt;
         ${flexbox("row", "flex-start", "center")};
-        ${getFont()};
+        ${getFont("Medium")};
         cursor: default;
 
         width: 100%;
@@ -234,6 +236,17 @@ export const ModalSignIn = styled(Modal)`
           "font-size",
           "pt"
         )}
+      }
+
+      .textFor_fhd_rn {
+        margin-top: 50px;
+
+        ${sizesForEachScreens(
+          [3300, 3000, 2500, 1500],
+          [40, 30, 20, 10],
+          "margin-top",
+          "px"
+        )};
       }
     }
 
@@ -270,46 +283,6 @@ export const IllustrationObjectSignIn = styled.div`
   transform: rotate(4deg);
   z-index: -1;
 
-<<<<<<< HEAD
-  @media (max-height: 1910px) {
-    top: -8rem;
-  }
-
-  @media (max-width: 1500px) {
-    width: 80%;
-    height: 70%;
-    background-size: 120% 90%;
-    margin-top: 5%;
-    height: 90%;
-    left: -30%;
-  }
-
-  @media (max-width: 1370px) {
-    background-size: 120% 90%;
-
-    left: -35%;
-  }
-
-  @media (max-width: 1783px) and (max-height: 1280px) {
-    top: -7rem;
-  }
-
-  @media only screen and (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-height: 1366px) {
-    background-position: -20% -20%;
-    background-size: 100% 90%;
-    margin-top: -8rem;
-  }
-
-  @media (max-width: 1050px) {
-    width: 70%;
-    height: 90%;
-    background-size: 70% 70%;
-    background-position: -20% -20%;
-    left: -5%;
-  }
-
-=======
->>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
   @media (max-width: 900px) {
     display: none;
   }

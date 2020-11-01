@@ -1,30 +1,26 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   ButtonSignUp,
   DivGridForm,
   ErrorMessage,
   FormGroup,
-  FormSelect,
-  InputIcon,
   QuestionSignUp,
-  SelectList,
+  FormGroupGrand,
 } from "./signUpStyle";
 import { CSSTransition } from "react-transition-group";
 import { IConsumer } from "../../../types";
 import CustomSelect from "./select";
 import SucessModal from "./sucessModal";
 import InputPassword from "./inputPassword";
-import { translateProperty } from "../utils";
 import Link from "next/link";
 import { counties, provinces } from "./signUp.data";
-import { useDispatch, useSelector } from "react-redux";
-import { registerConsumer } from "../../store/actions/consumer";
+import IconTextBox from "./iconNameTextbox";
 
 const initialState: IConsumer = {
   userName: "",
   province: "",
   county: "",
-  ageRange: "",
+  dataNascimento: 0,
   password: "",
 };
 
@@ -33,17 +29,30 @@ export default function FormSignUp() {
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
-  const consumerState: IConsumer = useSelector((state) => state.Consumer);
-  const dispatch = useDispatch();
+  const [userNameAccept, setUserNameAccept] = useState<boolean | null>(null);
 
-  const [ageRanges, setAgeRange] = useState<string[]>([
-    "15 a 16 anos",
-    "17 a 25 anos",
-    "30 a 40 anos",
-  ]);
-
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
+  };
+
+  const checkUserName = (name: string) => {
+    const nomes = ["tony", "batistatony", "JoaoTOny", "rayThon"];
+    const result = nomes.filter((state) => state === name);
+
+    if (result.length) {
+      setWhereIsError("userName");
+      setUserNameAccept(false);
+      setErrorMsg("Este nome já existe, por favor tente outro");
+    } else {
+      setUserNameAccept(true);
+      setErrorMsg("");
+    }
+
+    if (name === "") {
+      setUserNameAccept(null);
+      setWhereIsError("");
+      setErrorMsg("");
+    }
   };
 
   const handleChange = (event: any) => {
@@ -51,8 +60,23 @@ export default function FormSignUp() {
       ...consumerData,
       [event.target.name]: event.target.value,
     });
-    setWhereIsError(null);
-    setErrorMsg(null);
+
+    if (userNameAccept) {
+      setWhereIsError(null);
+      setErrorMsg(null);
+    }
+  };
+
+  const checkDataNascimento = (): Boolean => {
+    const dataN = Number(consumerData.dataNascimento);
+
+    if (dataN < 2018 && dataN > 1800) {
+      return true;
+    } else {
+      setWhereIsError("dataNascimento");
+      setErrorMsg("Apenas maior ou igual a 18 anos");
+      return false;
+    }
   };
 
   const handleChooseSelect = (property: string, value: string) => {
@@ -60,57 +84,77 @@ export default function FormSignUp() {
       ...consumerData,
       [property]: value,
     });
-    setWhereIsError(null);
-    setErrorMsg(null);
+
+    if (userNameAccept) {
+      setWhereIsError(null);
+      setErrorMsg(null);
+    }
   };
 
   const checkError = (): boolean => {
-    const arrayConsumerData = Object.entries(consumerData).sort();
+    const arrayConsumerData = Object.entries(consumerData).reverse();
 
-    const emptyProperties = arrayConsumerData.filter((value) => {
-      if (value[1] === "") {
+    const emptyProperties = arrayConsumerData.filter((value, index) => {
+      if (value[1] === "" || value[1] === 0) {
         setWhereIsError(value[0]);
-        setErrorMsg(`${translateProperty(value[0])} é obrigatório`);
+        setErrorMsg("Preenche este campo");
       }
 
       return value[1] === "";
     });
 
-    return emptyProperties.length > 0;
+    return emptyProperties.length <= 0;
   };
 
   const signUpUser = (): void => {
-    if (!checkError()) {
-      dispatch(registerConsumer(consumerData));
-      setShowModalSucess(!showModalSucess);
+    if (consumerData.userName) {
+      if (userNameAccept) {
+        if (checkError()) {
+          if (checkDataNascimento()) {
+            setShowModalSucess(!showModalSucess);
+          }
+        }
+      }
+    } else if (checkError()) {
+      if (checkDataNascimento()) {
+        setShowModalSucess(!showModalSucess);
+      }
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <CSSTransition
-        unmountOnExit
-        addEndListener={() => {}}
-        timout={200}
-        in={showModalSucess}
-        classNames="my-node"
-      >
-        <SucessModal dataUser={consumerData} />
-      </CSSTransition>
+      {showModalSucess && <SucessModal dataUser={consumerData} />}
 
       <DivGridForm>
-        <FormGroup isEmpty={errorIsOn === "userName"}>
-          <input
-            type="text"
-            name="userName"
-            id="userName"
-            onChange={handleChange}
-            placeholder="Nome do utilizador"
-          />
-        </FormGroup>
+        <FormGroupGrand>
+          <FormGroup
+            isEmpty={errorIsOn === "userName"}
+            nameAccept={userNameAccept}
+            className={userNameAccept === false && "textbox_name"}
+          >
+            <input
+              type="text"
+              name="userName"
+              id="userName"
+              onKeyUp={(event: any) => checkUserName(event.target.value)}
+              onChange={handleChange}
+              placeholder="Nome do utilizador"
+            />
+            {userNameAccept != null && (
+              <div className="iconTextBox">
+                <IconTextBox titleImg={errorMsg} userAccept={userNameAccept} />
+              </div>
+            )}
+          </FormGroup>
+          {errorIsOn === "userName" && (
+            <ErrorMessage className="error_name_">{errorMsg}</ErrorMessage>
+          )}
+        </FormGroupGrand>
 
         <CustomSelect
           defaultValueSelect={consumerData.province || "Província"}
+          errorMsg={errorMsg}
           handleChange={(value) => handleChooseSelect("province", value)}
           values={provinces}
           isEmpty={errorIsOn === "province"}
@@ -118,24 +162,34 @@ export default function FormSignUp() {
 
         <CustomSelect
           defaultValueSelect={consumerData.county || "Municipio"}
+          errorMsg={errorMsg}
           handleChange={(value) => handleChooseSelect("county", value)}
           values={counties}
           isEmpty={errorIsOn === "county"}
         />
 
-        <CustomSelect
-          defaultValueSelect={consumerData.ageRange || "Faixa etaria"}
-          handleChange={(value) => handleChooseSelect("ageRange", value)}
-          values={ageRanges}
-          isEmpty={errorIsOn === "ageRange"}
+        <FormGroupGrand>
+          <FormGroup isEmpty={errorIsOn === "dataNascimento"}>
+            <input
+              type="number"
+              name="dataNascimento"
+              id="dataNascimento"
+              onChange={handleChange}
+              placeholder="Ano de nascimento"
+            />
+          </FormGroup>
+          {errorIsOn === "dataNascimento" && (
+            <ErrorMessage className="error_name_">{errorMsg}</ErrorMessage>
+          )}
+        </FormGroupGrand>
+
+        <InputPassword
+          errorMsg={errorMsg}
+          errorIsOn={errorIsOn}
+          handleChange={handleChange}
         />
 
-        <InputPassword errorIsOn={errorIsOn} handleChange={handleChange} />
-
-        <ErrorMessage>{errorMsg}</ErrorMessage>
-
         <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
-
         <QuestionSignUp>
           Já tens uma conta ?
           <Link href="/signin">

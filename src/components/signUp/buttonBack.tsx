@@ -8,7 +8,7 @@ interface IProps {
 export default function ButtonBack({ classNames, onChange, ...props }: IProps) {
   return (
     <ButtonBackStyle className={classNames} onClick={onChange} {...props}>
-      <img src="/images/icons8-left.png" alt="" /> Voltar ao inicio
+      <img src="/images/back.png" alt="" /> Voltar ao inicio
     </ButtonBackStyle>
   );
 }

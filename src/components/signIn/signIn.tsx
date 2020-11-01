@@ -11,6 +11,7 @@ import {
   QuestionSignUp,
   ButtonSignUp,
   ErrorMessage,
+  FormGroupGrand,
 } from "../signUp/signUpStyle";
 import { translateProperty } from "../utils";
 import {
@@ -51,7 +52,7 @@ export default function SignInConsumer() {
     const emptyProperties = arrayConsumerData.filter((value) => {
       if (value[1] === "") {
         setWhereIsError(value[0]);
-        setErrorMsg(`${translateProperty(value[0])} é obrigatório`);
+        setErrorMsg(`Preenche este campo `);
       }
 
       return value[1] === "";
@@ -87,26 +88,39 @@ export default function SignInConsumer() {
           <TextForm>A voz fo consumidor é a mais importante.</TextForm>
 
           <DivGridForm className="grid-form-sign">
-            <FormGroup className="FormGroup" isEmpty={errorIsOn === "userName"}>
-              <input
-                type="text"
-                name="userName"
-                id="userName"
-                onChange={handleChange}
-                value={consumerData.userName}
-                placeholder="Nome do utilizador"
-              />
-            </FormGroup>
+            <FormGroupGrand className="frm_gr_gr">
+              <FormGroup
+                className="FormGroup"
+                isEmpty={errorIsOn === "userName"}
+              >
+                <input
+                  type="text"
+                  name="userName"
+                  id="userName"
+                  onChange={handleChange}
+                  value={consumerData.userName}
+                  placeholder="Nome do utilizador"
+                />
+              </FormGroup>
+              {errorIsOn === "userName" && (
+                <ErrorMessage className="error_name_">{errorMsg}</ErrorMessage>
+              )}
+            </FormGroupGrand>
 
             <InputPassword
               classNames={"FormGroup formPassword"}
               errorIsOn={errorIsOn}
+              errorMsg={errorMsg}
               handleChange={handleChange}
             />
 
-            <p className="textForgetPassword">Esqueci a senha </p>
-
-            <ErrorMessage className="error_style">{errorMsg}</ErrorMessage>
+            <p
+              className={`textForgetPassword ${
+                errorIsOn === "password" && "textFor_fhd_rn"
+              } `}
+            >
+              Esqueci a senha{" "}
+            </p>
 
             <ButtonSignUp className="FormGroup btnLOgin" onClick={signInUser}>
               Entrar

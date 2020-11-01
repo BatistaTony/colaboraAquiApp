@@ -19,7 +19,7 @@ import { ICompany, IConsumer } from "../../types";
 import ListOfCompanies from "./../components/companies/listCompanies";
 import { useSelector } from "react-redux";
 import SignUp from "../components/signUp/signUp";
-import SucessModal from "../components/signUp/sucessModal";
+import SearchIcon from "./../components/companies/searchIcone";
 
 function Companies() {
   const [filterBy, setFilterBy] = useState<string>("Todas");
@@ -28,112 +28,122 @@ function Companies() {
   const [companies, setCompanies] = useState<Array<ICompany>>([
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 150,
+      companyRatesNumber: 8,
       companyName: "Movicel",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
       companyStatus: "Privada",
     },
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 450,
+      companyRatesNumber: 150,
       companyName: "Unitel",
-      companyLogo: "/images/unite.png",
-      companyStars: 4,
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
       companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
       companyStatus: "Privada",
     },
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 450,
-      companyName: "AngolaTelecom",
-      companyLogo: "/images/unite.png",
-      companyStars: 4,
+      companyRatesNumber: 150,
+      companyName: "ENSA",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
       companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
       companyStatus: "Privada",
     },
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 450,
-      companyName: "ENDE",
-      companyLogo: "/images/unite.png",
-      companyStars: 4,
-      companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
-      companyStatus: "Publica",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 450,
-      companyName: "KEro",
-      companyLogo: "/images/unite.png",
-      companyStars: 4,
-      companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
-      companyStatus: "Publica",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 450,
-      companyName: "Zap",
-      companyLogo: "/images/unite.png",
-      companyStars: 4,
-      companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 450,
-      companyName: "tvCAbo",
-      companyLogo: "/images/unite.png",
-      companyStars: 4,
-      companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 450,
-      companyName: "AngolaTelecom",
-      companyLogo: "/images/unite.png",
-      companyStars: 4,
-      companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 450,
+      companyRatesNumber: 500,
       companyName: "MINSA",
-      companyLogo: "/images/unite.png",
-      companyStars: 4,
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
       companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
-      companyStatus: "Publica",
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
     },
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 450,
-      companyName: "MAxi",
-      companyLogo: "/images/unite.png",
-      companyStars: 4,
+      companyRatesNumber: 150,
+      companyName: "TELECON",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
       companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
-      companyStatus: "Publica",
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
     },
     {
       companyPositionRanking: 1,
-      companyRatesNumber: 450,
-      companyName: "Canadando",
-      companyLogo: "/images/unite.png",
+      companyRatesNumber: 10,
+      companyName: "ZAP",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 3,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "DSTV",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "TVCABO",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 5,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "MoviZAPFIBRAcel",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "TOYOTA",
+      companyLogo: "/images/Movicel-2.png",
       companyStars: 4,
       companyDescription:
-        "Distinctio cupiditate nesciunt, adipisci libero reiciendis a officia vitae atque sunt, qui magnam dolorum, vel voluptatum soluta veniam ex culpa debitis dolor.",
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "KUBINGA",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
+      companyStatus: "Privada",
+    },
+    {
+      companyPositionRanking: 1,
+      companyRatesNumber: 150,
+      companyName: "TUPUCA",
+      companyLogo: "/images/Movicel-2.png",
+      companyStars: 2,
+      companyDescription:
+        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
       companyStatus: "Privada",
     },
   ]);
@@ -160,6 +170,7 @@ function Companies() {
     <Layout title="Empresas">
       <ContentCompanies>
         {!(userState.userName.length > 0) && <SignUp />}
+
         {showSuggestion && <Suggestion toggleSuggestion={toggleSuggestion} />}
 
         <div className="cmp_f_g">
@@ -177,8 +188,8 @@ function Companies() {
           <FilterStyled>
             <div className="filter_1_">
               <SearchStyled>
-                <InputIcon>
-                  <img src="/images/search.svg" alt="" />
+                <InputIcon className="iconeSearch">
+                  <SearchIcon />
                 </InputIcon>
                 <input
                   type="text"

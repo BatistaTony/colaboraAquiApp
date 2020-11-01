@@ -53,27 +53,16 @@ export const LayoutStyled = styled.div`
     grid-template-rows: 100px auto;
   }
 
-  #fader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999999;
-    pointer-events: none;
-    animation-duration: 350ms;
-    animation-timing-function: ease-in-out;
-    background: white;
+  @media (max-width: 950px) {
+    overflow: ${({ title }) => (title === "Empresas" ? "auto" : "hidden")};
   }
 
-  #fader.fade-out {
-    opacity: 0;
-    animation-name: ${fadeOut};
+  @media (max-width: 325px) and (max-height: 550px) {
+    overflow: ${({ title }) => (title === "ColaboraAqui" ? "auto" : "hidden")};
   }
 
-  #fader.fade-in {
-    opacity: 1;
-    animation-name: ${fadeIn};
+  @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
+    overflow: ${({ title }) => (title === "Empresas" ? "auto" : "hidden")};
   }
 `;
 
@@ -82,8 +71,6 @@ export const GlobalStyle = createGlobalStyle`
 padding:0;
 margin:0;
 }
-
-
 
 
 .my-node-enter {
@@ -134,12 +121,18 @@ font-family: Poppins-${font};
 `;
 
 export const colorsApp = {
-  orange: "#ffc300",
+  orange: "#fcbe0a",
   darkGray: "#5081dd",
   roxo: "#4b55ba",
   kindaBlue: "#80b5f3",
   soDark: "#27353B",
-  darkGreen: "#58676a",
+  error: "#f54444",
+  yelloSecundary: "#ffdf80",
+  yelloOpaco: "#fff2b8",
+  textSecundary: "gray",
+  textPrimary: "#293133",
+  sucess: "#4bcf12",
+  cardColor: "#4d5272",
 };
 
 export const sizesForEachScreens = (

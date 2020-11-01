@@ -8,16 +8,14 @@ export const MyNavbar = styled.div`
   height: 100%;
   ${flexbox("row", "space-between", "center")};
   padding-left: 6%;
-  padding-right: 8%;
+  padding-right: 6%;
+  padding-top: 3%;
   box-sizing: border-box;
   z-index: 14;
 
-  @media (max-width: 3250px) {
-    ${flexbox("row", "space-between", "flex-end")};
-  }
-
   @media (max-width: 1500px) {
     ${flexbox("row", "space-between", "center")};
+    padding-top: 2%;
   }
 
   @media (max-width: 750px) {
@@ -67,7 +65,8 @@ export const ItemMenu = styled.li`
     margin-right: 10px;
   }
 
-  color: ${({ active }) => (active ? colorsApp.orange : "gray")};
+  color: ${({ active }) =>
+    active ? colorsApp.orange : colorsApp.textSecundary};
 
   &:hover {
     color: ${colorsApp.orange};
@@ -75,8 +74,8 @@ export const ItemMenu = styled.li`
   }
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 1300],
-    [23, 22, 19, 17, 13, 12],
+    [3200, 3000, 2500, 1930, 1500],
+    [23, 22, 19, 17, 12],
     "font-size",
     "pt"
   )};
@@ -103,8 +102,8 @@ export const Logo = styled.div`
     width: 40rem;
 
     ${sizesForEachScreens(
-      [3200, 2500, 2000, 1500, 1370, 750],
-      [34, 27, 24, 20, 17, 14],
+      [3200, 2500, 2000, 1500, 1370, 750, 308],
+      [34, 27, 24, 20, 17, 14, 11.5],
       "width",
       "rem"
     )};
@@ -115,7 +114,7 @@ export const ButtonLogin = styled.button`
   height: 70px;
   padding-left: 50px;
   padding-right: 50px;
-  background: ${colorsApp.soDark};
+  background: ${colorsApp.textPrimary};
   border-radius: 10px;
   transition: 0.5s;
   margin-left: 50px;
@@ -168,10 +167,10 @@ export const ButtonLogin = styled.button`
   }
 `;
 
-export const UserName = styled.h5`
+export const UserName = styled.p`
   font-size: 25pt;
-  ${getFont()};
-  color: black;
+  ${getFont("Medium")};
+  color: ${colorsApp.textPrimary};
   cursor: default;
   ${flexbox()};
   transition: 0.5s;
@@ -189,34 +188,43 @@ export const UserName = styled.h5`
   }
 
   span {
-    width: 20px;
-    height: 20px;
+    width: 12px;
+    height: 12px;
     background: ${colorsApp.orange};
     border-radius: 100%;
-    margin-right: 10px;
+    margin-right: 20px;
 
-    ${sizesForEachScreens([3200, 3000, 2500], [17, 12, 7], "width", "px")}
-    ${sizesForEachScreens([3200, 3000, 2500], [17, 12, 7], "height", "px")}
+    @media (max-width: 1500px) {
+      margin-right: 10px;
+    }
+
+    ${sizesForEachScreens([2000, 1500], [10, 5], "width", "px")};
+    ${sizesForEachScreens([2000, 1500], [10, 5], "height", "px")};
   }
 
   svg {
-    fill: ${colorsApp.orange};
-    width: 70px;
-    height: 70px;
-    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 2px;
 
     ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500],
-      [60, 50, 40, 30, 25],
+      [3500, 2999, 2600, 1930, 1500],
+      [28, 25, 21, 16, 12],
       "width",
       "px"
-    )}
+    )};
+
     ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500],
-      [60, 50, 40, 30, 25],
+      [3500, 2999, 2600, 1930, 1500],
+      [28, 25, 21, 16, 12],
       "height",
       "px"
-    )}
+    )};
+
+    @media (max-width: 1500px) {
+      margin-left: 10px;
+    }
   }
 
   @media (min-width: 750px) {
@@ -241,6 +249,20 @@ export const DivUser = styled.div`
     width: 100%;
     margin-left: 0;
   }
+
+  .menu_desk_T {
+    @media (max-width: 750px) {
+      display: none;
+    }
+  }
+
+  .menu_mobile_ {
+    display: none;
+
+    @media (max-width: 750px) {
+      display: block;
+    }
+  }
 `;
 
 export const MenuUser = styled(motion.ul)`
@@ -254,7 +276,7 @@ export const MenuUser = styled(motion.ul)`
   list-style: none;
   overflow: hidden;
   position: absolute;
-  left: 0;
+  left: ${({ nameLength }) => (nameLength <= 8 ? "-5rem" : 0)};
   top: 70px;
   z-index: 9;
 
@@ -277,6 +299,16 @@ export const MenuUser = styled(motion.ul)`
 =======
 >>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
     width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "160px")};
+    left: ${({ nameLength }) => (nameLength <= 8 ? "-3rem" : 0)};
+  }
+
+  @media (max-width: 1245px) {
+    //right: 100%;
+    left: ${({ nameLength }) => (nameLength <= 8 ? "-3rem" : 0)};
+  }
+
+  @media (max-width: 1232px) {
+    left: ${({ nameLength }) => (nameLength <= 8 ? "-5rem" : 0)};
   }
 
   @media (max-width: 750px) {
@@ -284,14 +316,16 @@ export const MenuUser = styled(motion.ul)`
     top: 0;
     width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "100%")};
     box-shadow: 0 0 0px;
-    display: block;
+    right: 0;
+    left: 0;
+    margin-right: 0;
   }
 
   li {
     width: 100%;
     padding: 20px;
     padding-right: 10px;
-    color: gray;
+    color: ${colorsApp.textSecundary};
     ${getFont("Medium")};
     font-size: 20pt;
     ${flexbox("row", "flex-start", "center")};
@@ -377,6 +411,10 @@ export const ButtonMobile = styled.div`
   padding-top: 3px;
   z-index: 3;
   padding-right: ${({ openMenu }) => (openMenu ? "1px" : 0)};
+
+  @media (max-width: 308px) {
+    margin-right: 10px;
+  }
 
   .line {
     width: 15px;

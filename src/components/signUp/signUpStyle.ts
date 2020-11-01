@@ -152,7 +152,7 @@ export const ModalIllustration = styled.div`
 `;
 
 export const ButtonBackStyle = styled.button`
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   outline: none;
   border: none;
   background: transparent;
@@ -245,7 +245,7 @@ export const Title = styled.h1`
   font-size: 42pt;
   ${getFont()};
   transition: 0.5s;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
 
   span {
     ${getFont("Medium")};
@@ -261,8 +261,8 @@ export const Title = styled.h1`
   )};
 
   @media (max-width: 750px) {
-    font-size: 13pt;
-    width: 80%;
+    font-size: 15pt;
+    width: 90%;
     text-align: center;
   }
 `;
@@ -271,7 +271,7 @@ export const TextForm = styled.p`
   width: 100%;
   text-align: center;
   height: auto;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   font-size: 27pt;
   ${getFont()};
   margin-top: 20px;
@@ -296,8 +296,9 @@ export const TextForm = styled.p`
   }
 
   @media (max-width: 750px) {
-    font-size: 11pt;
+    font-size: 11.5pt;
     width: 60%;
+    text-align: center;
   }
 
   @media (max-width: 600px) {
@@ -310,7 +311,7 @@ export const DivGridForm = styled.div`
   height: auto;
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: repeat(3, 100px) auto auto auto;
+  grid-template-rows: repeat(6, auto);
   grid-gap: 30px;
   margin-top: 60px;
 
@@ -326,18 +327,8 @@ export const DivGridForm = styled.div`
 
   ${sizesForEachScreens([1930, 1500], [20, 15], "grid-gap", "px")}
 
-  ${sizesForEachScreens(
-    [3200, 2500, 1930, 1500, 1370],
-    [
-      "repeat(3, 90px) auto auto auto",
-      "repeat(3, 70px) auto auto auto",
-      "repeat(3, 60px) auto auto auto",
-      "repeat(3, 45px) auto auto auto",
-      "repeat(3, 40px) auto auto auto",
-    ],
-    "grid-template-rows",
-    ""
-  )}
+  
+
 
   @media (max-width: 900px) {
     width: 60%;
@@ -352,51 +343,86 @@ export const DivGridForm = styled.div`
     width: 87%;
   }
 
+  .error_name_ {
+    grid-column: 1/3;
+  }
+
   .inputPassword {
     grid-template-columns: 87% 13%;
 
     @media (max-width: 1000px) {
       grid-template-columns: 88% 12%;
     }
-
-    @media (max-width: 750px) {
-      grid-template-columns: 90% 10%;
-    }
   }
 `;
 
 export const ErrorMessage = styled.p`
   width: 100%;
-  font-size: 20pt;
-  text-align: center;
+  font-size: 30pt;
+  text-align: left;
   ${getFont()};
-  color: red;
-  margin-bottom: -2px;
+  height: 100%;
+  color: ${colorsApp.error};
   box-sizing: border-box;
-  grid-column: 1/3;
-  ${NormalFontSize()};
+  margin-top: 7px;
+
+  ${sizesForEachScreens([2500], [5], "margin-top", "px")}
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500],
-    [30, 25, 20, 15, 0],
-    "padding-left",
-    "px"
-  )}
+    [26, 22, 19, 17, 11],
+    "font-size",
+    "pt"
+  )};
+
+  @media (max-width: 750px) {
+    margin-top: 3px;
+    margin-bottom: 10px;
+  }
+`;
+
+export const FormGroupGrand = styled.div`
+  height: auto;
+  width: 100%;
+
+  &:first-child {
+    grid-column: 1/3;
+  }
+
+  .textbox_name {
+    border: 2px solid ${colorsApp.error} !important;
+  }
 `;
 
 export const FormGroup = styled.div`
   width: 100%;
   border-radius: 20px;
+  height: 100px;
   display: grid;
   grid-template-columns: 88% 12%;
   grid-template-rows: 100%;
   background: #f1f0f4;
   border: ${({ isEmpty }) =>
-    isEmpty ? "2px solid red" : "2px solid transparent"};
+    isEmpty ? `2px solid ${colorsApp.error}` : "2px solid transparent"};
   transition: 0.5s;
   box-sizing: border-box;
 
   ${sizesForEachScreens([3200, 1930, 1500], [15, 10, 7], "border-radius", "px")}
+
+  @media (max-width:1500px) {
+    padding-right: 5px;
+  }
+
+  @media (max-width: 900px) {
+    padding-right: 0;
+  }
+
+  ${sizesForEachScreens(
+    [3200, 2500, 1930, 1500],
+    ["90", "70", "60", "45"],
+    "height",
+    "px"
+  )}
 
   @media (max-width: 750px) {
     height: 45px;
@@ -423,7 +449,7 @@ export const FormGroup = styled.div`
     font-size: 30pt;
     height: 100%;
     ${getFont()};
-    color: ${colorsApp.soDark};
+    color: ${colorsApp.textPrimary};
     border: none;
     outline: none;
     background: transparent;
@@ -432,7 +458,7 @@ export const FormGroup = styled.div`
     text-align: left;
 
     &::placeholder {
-      color: ${colorsApp.soDark};
+      color: ${colorsApp.textPrimary};
     }
 
     ${NormalFontSize()};
@@ -445,12 +471,42 @@ export const FormGroup = styled.div`
     )}
   }
 
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
   &:first-child {
-    grid-column: 1/3;
+    border: ${({ nameAccept }) =>
+      nameAccept ? `2px solid ${colorsApp.sucess}` : " "};
+
+    @media (max-width: 1500px) {
+      grid-template-columns: 90% 10%;
+    }
+
+    .iconTextBox {
+      width: 100%;
+      height: 100%;
+      ${flexbox()};
+
+      img {
+        width: 76%;
+        height: 76%;
+      }
+    }
   }
 
   .iconeSee {
-    img {
+    width: 100%;
+
+    img,
+    svg {
       width: 40px;
       height: 40px;
 
@@ -470,8 +526,8 @@ export const FormGroup = styled.div`
       }
 
       @media (max-width: 750px) {
-        width: 15px;
-        height: 15px;
+        width: 18px;
+        height: 18px;
       }
     }
   }
@@ -486,7 +542,8 @@ export const InputIcon = styled.div`
     ${flexbox("row", "center", "center")};
   }
 
-  img {
+  img,
+  svg {
     width: 35px;
     height: 27px;
 
@@ -527,51 +584,92 @@ export const SelectList = styled.ul`
   height: ${({ length }) => (length > 5 ? "380px" : "auto")};
   position: absolute;
   overflow-y: ${({ length }) => (length > 5 ? "auto" : "hidden")};
-  top: 0;
+  top: 108px;
   background: white;
   border-radius: 20px;
   z-index: 10;
-  box-shadow: 0 0 20px;
 
-  ${sizesForEachScreens([3200, 1930, 1500], [15, 10, 7], "border-radius", "px")}
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  ${sizesForEachScreens(
+    [3200, 1930, 1500],
+    [15, 10, 7],
+    "border-radius",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [3200, 2500, 1930, 1500, 1370],
+    ["98", "88", "78", "53", "48"],
+    "top",
+    "px"
+  )}
 
   @media (max-width: 3200px) {
     height: ${({ length }) => (length > 5 ? "300px" : "auto")};
-    box-shadow: 0 0 15px;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 2500px) {
     height: ${({ length }) => (length > 5 ? "270px" : "auto")};
-    box-shadow: 0 0 10px;
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 1930px) {
     height: ${({ length }) => (length > 5 ? "250px" : "auto")};
-    box-shadow: 0 0 7px;
   }
 
   @media (max-width: 1500px) {
     height: ${({ length }) => (length > 5 ? "185px" : "auto")};
-    box-shadow: 0 0 5px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+    display: none;
   }
 
   li {
     width: 100%;
     cursor: default;
-    padding: 30px;
     box-sizing: border-box;
     ${getFont()};
     font-size: 27pt;
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+    padding-left: 45px;
 
     ${sizesForEachScreens(
       [3300, 3000, 2700, 2300, 1930, 1500],
-      [25, 22, 18, 15, 13, 11],
+      [25, 22, 18, 15, 13, 10],
       "padding",
       "px"
     )};
 
-    ${NormalFontSize()};
+    ${sizesForEachScreens(
+      [3200, 3000, 2500, 1930],
+      [30, 25, 20, 15],
+      "padding-left",
+      "px"
+    )}
+
+    ${sizesForEachScreens(
+      [3200, 3000, 2500, 1930, 1500],
+      [26, 22, 19, 17, 11],
+      "font-size",
+      "pt"
+    )};
+
+    &:hover {
+      background: ${colorsApp.orange};
+    }
   }
 `;
 
@@ -579,9 +677,9 @@ export const QuestionSignUp = styled.p`
   width: 100%;
   height: 100%;
   text-align: center;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   font-size: 30pt;
-  ${getFont()};
+  ${getFont("Medium")};
   grid-column: 1/3;
   margin-top: 5px;
 
@@ -609,7 +707,7 @@ export const QuestionSignUp = styled.p`
 
 export const ButtonSignUp = styled.button`
   width: 100%;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   padding-top: 30px;
   padding-bottom: 30px;
   outline: none;
@@ -645,11 +743,16 @@ export const ButtonSignUp = styled.button`
     "font-size",
     "pt"
   )};
-  ${sizesForEachScreens([1930, 1500], [20, 10], "padding-top", "px")};
-  ${sizesForEachScreens([1930, 1500], [20, 10], "padding-bottom", "px")};
+
+  ${sizesForEachScreens([1930, 1500, 750], [20, 10, 14], "padding-top", "px")};
+  ${sizesForEachScreens(
+    [1930, 1500, 750],
+    [20, 10, 14],
+    "padding-bottom",
+    "px"
+  )};
 
   @media (max-width: 750px) {
-    height: 50px;
     font-size: 12.5pt;
   }
 `;
@@ -664,7 +767,7 @@ export const ModalSucess = styled(Modal)`
     width: 100%;
     border-radius: 0;
     z-index: 99999;
-    background: ${colorsApp.orange};
+    background: ${colorsApp.yelloSecundary};
 
     box-sizing: border-box;
     overflow: hidden;
@@ -740,7 +843,7 @@ export const IllustrationMobile = styled.div`
   }
 
   img {
-    width: 14rem;
+    width: 20rem;
 
     @media (max-height: 575px) {
       width: 10rem;
@@ -749,13 +852,17 @@ export const IllustrationMobile = styled.div`
 `;
 
 export const TitleSucess = styled.h1`
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   ${getFont("Bold")};
   text-align: center;
   font-size: 45pt;
 
   @media (max-width: 900px) {
-    margin-top: 0;
+    margin-top: 60px;
+  }
+
+  @media (max-width: 750px) {
+    margin-top: 50px;
   }
 
   @media (max-width: 600px) {
@@ -803,7 +910,7 @@ export const TextSucess = styled.p`
 `;
 
 export const ButtonSucess = styled.button`
-  background: ${colorsApp.soDark};
+  background: ${colorsApp.textPrimary};
   color: white;
   margin-top: 5rem;
   height: 100px;
@@ -813,6 +920,7 @@ export const ButtonSucess = styled.button`
   padding-left: 7rem;
   padding-right: 7rem;
   font-size: 33pt;
+  ${getFont("Medium")};
 
   @media (max-width: 3000px) {
     margin-top: 4rem;
@@ -832,8 +940,9 @@ export const ButtonSucess = styled.button`
     position: fixed;
     bottom: 5%;
     width: 70%;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    height: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
   @media (max-width: 450px) {
@@ -855,11 +964,15 @@ export const ButtonSucess = styled.button`
     "pt"
   )};
   ${sizesForEachScreens(
-    [3400, 2500, 1930, 1700, 1500, 600],
-    [85, 75, 65, 55, 42, 45],
+    [3400, 2500, 1930, 1700, 1500],
+    [85, 75, 65, 55, 42],
     "height",
     "px"
   )};
+
+  @media (max-width: 600px) {
+    height: auto;
+  }
 
   ${sizesForEachScreens(
     [3400, 2500, 1930, 1500],

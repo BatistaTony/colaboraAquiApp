@@ -5,6 +5,7 @@ import {
   ErrorMessage,
   Title,
   DivGridForm,
+  FormGroupGrand,
 } from "../../components/signUp/signUpStyle";
 
 import { useState } from "react";
@@ -94,6 +95,7 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
   const sendSuggestion = () => {
     if (!checkError()) {
       alert("suggested");
+      toggleSuggestion();
     }
   };
 
@@ -109,29 +111,35 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
             <IconClose />
           </ButtonCloseSuggestion>
           <DivForm className="div_form_sugs_cmp_et">
-            <Title>Não encontrou o que procurava ?</Title>
+            <Title className="title_sug_mb">
+              Não encontrou o que procurava ?
+            </Title>
             <TextForm className="text_simple">
               Sugira uma empresa e nós iremos adicionar dentro em breve
             </TextForm>
 
-            <ErrorMessage>{errorMsg}</ErrorMessage>
-
             <DivGridForm className="grid-form-suggest">
-              <FormGroup
-                className="FormGroup"
-                isEmpty={errorIsOn === "companyName"}
-              >
-                <input
-                  type="text"
-                  name="companyName"
-                  id="companyName"
-                  onChange={handleChange}
-                  value={suggestionData.companyName}
-                  placeholder="Nome da empresa"
-                />
-              </FormGroup>
+              <FormGroupGrand className="frm_gr_name_fgj_">
+                <FormGroup
+                  className="FormGroup"
+                  isEmpty={errorIsOn === "companyName"}
+                >
+                  <input
+                    type="text"
+                    name="companyName"
+                    id="companyName"
+                    onChange={handleChange}
+                    value={suggestionData.companyName}
+                    placeholder="Nome da empresa"
+                  />
+                </FormGroup>
+                {errorIsOn === "companyName" && (
+                  <ErrorMessage>{errorMsg}</ErrorMessage>
+                )}
+              </FormGroupGrand>
 
               <CustomSelect
+                errorMsg={errorMsg}
                 defaultValueSelect={suggestionData.companyStatus || "Estatuto"}
                 handleChange={(value) =>
                   handleChooseSelect("companyStatus", value)
@@ -141,14 +149,22 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
                 isEmpty={errorIsOn === "status"}
               />
 
-              <TextArea isEmpty={errorIsOn === "suggestionToCompany"}>
-                <textarea
-                  placeholder="Breve descrição"
-                  name="suggestionToCompany"
-                  id="suggestionToCompany"
-                  onChange={handleChange}
-                ></textarea>
-              </TextArea>
+              <FormGroupGrand className="form_gr_camp_txt">
+                <TextArea
+                  className="form_df_gty_sdfgt_gf"
+                  isEmpty={errorIsOn === "suggestionToCompany"}
+                >
+                  <textarea
+                    placeholder="Breve descrição"
+                    name="suggestionToCompany"
+                    id="suggestionToCompany"
+                    onChange={handleChange}
+                  ></textarea>
+                </TextArea>
+                {errorIsOn === "suggestionToCompany" && (
+                  <ErrorMessage>{errorMsg}</ErrorMessage>
+                )}
+              </FormGroupGrand>
 
               <ButtonSuggestForm className="FormGroup" onClick={sendSuggestion}>
                 Enviar sugestão

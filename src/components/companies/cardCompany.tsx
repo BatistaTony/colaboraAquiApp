@@ -7,8 +7,9 @@ import {
   DescriptionCard,
 } from "./companiesStyle";
 import StarsRatedCompany from "./starsRated";
-import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import Link from "next/link";
 
 interface IProps {
   data: ICompany;
@@ -24,38 +25,45 @@ export default function CardCompany({ data }: IProps) {
     companyStars,
   } = data;
 
-  const variants = {
-    visible: { opacity: 1, y: 0 },
-    hidden: { opacity: 0, y: -200 },
-  };
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: "-100px 0px",
+  });
 
-  useEffect(() => {
-    console.log("Change");
-  }, [data]);
+  const animationStyle = { opacity: 1, scale: 1, y: 0 };
 
   return (
-    <motion.div initial="hidden" animate="visible" variants={variants}>
-      <Card>
-        <div className="header_card">
-          <div className="div1_er_">
-            <CompanyLogo img={companyLogo}></CompanyLogo>
+    <AnimatePresence>
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, scale: 0.3, y: -100 }}
+        animate={inView ? animationStyle : {}}
+        exit={{ opacity: 0, scale: 0.3, y: -100 }}
+      >
+        <Card>
+          <div className="header_card">
+            <div className="div1_er_">
+              <CompanyLogo img={companyLogo}></CompanyLogo>
 
-            <div className="company_info_">
-              <CompanyName>
-                #{companyPositionRanking}. {companyName}
-              </CompanyName>
-              <CompanyRateNumbers>
-                <span>{companyRatesNumber}</span> avaliações
-              </CompanyRateNumbers>
+              <div className="company_info_">
+                <Link href={`/rate?id=someid`}>
+                  <CompanyName>
+                    #{companyPositionRanking}. {companyName}
+                  </CompanyName>
+                </Link>
+                <CompanyRateNumbers>
+                  <span>{companyRatesNumber}</span> avaliações
+                </CompanyRateNumbers>
+              </div>
+            </div>
+            <div className="start_div_cmpy">
+              <StarsRatedCompany stars={companyStars} />
             </div>
           </div>
-          <div className="start_div_cmpy">
-            <StarsRatedCompany stars={companyStars} />
-          </div>
-        </div>
 
-        <DescriptionCard>{companyDescription}</DescriptionCard>
-      </Card>
-    </motion.div>
+          <DescriptionCard>{companyDescription}</DescriptionCard>
+        </Card>
+      </motion.div>
+    </AnimatePresence>
   );
 }

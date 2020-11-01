@@ -45,7 +45,7 @@ export default function SucessModal({ dataUser }: IProps) {
             exit={{ opacity: 0 }}
           >
             <IllustrationMobile>
-              <img src="/images/Grupo572.png" alt="" />
+              <img src="/images/illustration-mobile.svg" alt="" />
             </IllustrationMobile>
             <div className="div2">
               <div className="miniDiv">

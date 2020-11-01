@@ -88,7 +88,15 @@ export const BackGroundWithIllustration = styled(motion.div)`
     }
 
     @media (max-width: 380px) and (max-height: 850px) {
-      bottom: -20%;
+      bottom: -30%;
+    }
+
+    @media (max-height: 1024px) {
+      bottom: -35%;
+    }
+
+    @media (max-height: 820px) {
+      bottom: -35%;
     }
   }
 `;
@@ -142,6 +150,10 @@ export const DivHero = styled.div`
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
     margin-top: 20%;
   }
+
+  @media (max-width: 325px) and (max-height: 550px) {
+    padding-bottom: 50px;
+  }
 `;
 
 export const Text = styled.p`
@@ -149,7 +161,7 @@ export const Text = styled.p`
   width: 50%;
   height: auto;
   text-align: center;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   font-size: 45pt;
   ${getFont("Medium")};
 
@@ -194,6 +206,18 @@ export const ListStep = styled.ul`
   }
 
   ${pullPaddingLeft};
+
+  @media (max-width: 500px) and (max-height: 830px) {
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 500px) and (max-height: 560px) {
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 500px) and (max-height: 500px) {
+    margin-bottom: 0rem;
+  }
 `;
 
 export const Step = styled(motion.li)`
@@ -217,6 +241,7 @@ export const Step = styled(motion.li)`
   span {
     font-size: 38pt;
     ${getFont("SemiBold")};
+    color: ${colorsApp.textPrimary};
 
     ${sizesForEachScreens(
       [2500, 2000, 1500, 1000, 750, 450],
@@ -232,7 +257,7 @@ export const StepNumber = styled.div`
   height: 70px;
   border-radius: 100%;
   color: white;
-  background: ${colorsApp.soDark};
+  background: ${colorsApp.textPrimary};
   border: ${({ borderColor }) =>
     borderColor ? `8px solid ${borderColor}` : "8px solid gray"};
   ${flexbox()};
@@ -287,7 +312,7 @@ export const ButtonStartRate = styled(motion.button)`
   height: 50px;
   font-size: 30pt;
   border-radius: 7px;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   padding: 60px;
   padding-top: 55px;
   padding-bottom: 55px;
@@ -325,6 +350,13 @@ export const ButtonStartRate = styled(motion.button)`
     "padding-bottom",
     "px"
   )};
+
+  @media (max-width: 750px) {
+    height: auto;
+    padding-bottom: 15px;
+    flex: 0;
+    padding-top: 15px;
+  }
 
   img {
     width: 60px;
