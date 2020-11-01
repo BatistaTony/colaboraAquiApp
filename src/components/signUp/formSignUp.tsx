@@ -137,7 +137,7 @@ export default function FormSignUp() {
               type="text"
               name="userName"
               id="userName"
-              onKeyUp={(event:any) => checkUserName(event.target.value)}
+              onKeyUp={(event: any) => checkUserName(event.target.value)}
               onChange={handleChange}
               placeholder="Nome do utilizador"
             />

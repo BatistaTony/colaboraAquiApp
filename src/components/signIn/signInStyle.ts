@@ -17,8 +17,8 @@ export const OverlaySignIn = styled.div`
 `;
 
 export const ModalSignIn = styled(Modal)`
-  grid-template-columns: 69% 35%;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  grid-template-columns: 62% 37%;
+  box-shadow: 0 0 0.5px rgba(0, 0, 0, 0.3);
 
   .btnBackSign {
     align-self: center;
@@ -40,10 +40,47 @@ export const ModalSignIn = styled(Modal)`
   }
 
   .divForm_sign_p {
-    .divBtnBackT {
-      position: absolute;
-      top: 0;
+    @media (max-width: 600px) {
+      height: 100vh;
+      ${flexbox("column", "flex-end", "center")};
+      padding-bottom: 2%;
+      box-sizing: border-box;
+
+      .divBtnBackT {
+        position: absolute;
+        top: 0;
+      }
     }
+  }
+
+  @media (max-width: 900px) {
+    border: 0;
+    box-shadow: 0 0 0px;
+  }
+
+  @media (max-width: 750px) {
+    align-items: flex-end;
+  }
+
+  .grid-form-sign {
+    grid-template-columns: 100%;
+    margin-top: 20px;
+    grid-gap: 15px;
+    justify-content: center;
+    grid-template-rows: repeat(2, 100px) auto auto;
+
+    ${sizesForEachScreens(
+      [3200, 2500, 1930, 1500, 1370],
+      [
+        "repeat(2, 90px) auto auto",
+        "repeat(2, 70px) auto auto",
+        "repeat(2, 60px) auto auto",
+        "repeat(2, 45px) auto auto",
+        "repeat(2, 40px) auto auto",
+      ],
+      "grid-template-rows",
+      ""
+    )}
 
     @media (max-width: 900px) {
       height: 100vh;
@@ -71,6 +108,37 @@ export const ModalSignIn = styled(Modal)`
       width: 73%;
 
       justify-content: center;
+    .btnLOgin {
+      @media (max-width: 600px) {
+        margin-top: 50px;
+      }
+    }
+
+    .textForgetPassword {
+      color: ${colorsApp.orange};
+      font-size: 27pt;
+      ${flexbox("row", "flex-start", "center")};
+      ${getFont()};
+      cursor: default;
+
+      width: 100%;
+      text-align: left;
+      ${sizesForEachScreens(
+        [3200, 2500, 1930, 1500, 1370],
+        [
+          "repeat(2, 90px) auto auto auto",
+          "repeat(2, 70px) auto auto auto",
+          "repeat(2, 60px) auto auto auto",
+          "repeat(2, 45px) auto auto auto",
+          "repeat(2, 40px) auto auto auto",
+        ],
+        "grid-template-rows",
+        ""
+      )}
+
+      .error_style {
+        grid-column: 1/1;
+      }
       grid-template-rows: repeat(6, auto) auto auto auto;
 
       @media (max-width: 900px) {
@@ -214,43 +282,6 @@ export const IllustrationObjectSignIn = styled.div`
   left: -5%;
   transform: rotate(4deg);
   z-index: -1;
-
-  @media (max-height: 1910px) {
-    top: -8rem;
-  }
-
-  @media (max-width: 1500px) {
-    width: 80%;
-    height: 70%;
-    background-size: 120% 90%;
-    margin-top: 5%;
-    height: 90%;
-    left: -30%;
-  }
-
-  @media (max-width: 1370px) {
-    background-size: 120% 90%;
-
-    left: -35%;
-  }
-
-  @media (max-width: 1783px) and (max-height: 1280px) {
-    top: -7rem;
-  }
-
-  @media only screen and (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-height: 1366px) {
-    background-position: -20% -20%;
-    background-size: 100% 90%;
-    margin-top: -8rem;
-  }
-
-  @media (max-width: 1050px) {
-    width: 70%;
-    height: 90%;
-    background-size: 70% 70%;
-    background-position: -20% -20%;
-    left: -5%;
-  }
 
   @media (max-width: 900px) {
     display: none;

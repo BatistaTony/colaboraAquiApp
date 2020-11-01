@@ -9,6 +9,7 @@ import {
 import StarsRatedCompany from "./starsRated";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Link from "next/link";
 
 interface IProps {
   data: ICompany;
@@ -45,9 +46,11 @@ export default function CardCompany({ data }: IProps) {
               <CompanyLogo img={companyLogo}></CompanyLogo>
 
               <div className="company_info_">
-                <CompanyName>
-                  #{companyPositionRanking}. {companyName}
-                </CompanyName>
+                <Link href={`/rate?id=someid`}>
+                  <CompanyName>
+                    #{companyPositionRanking}. {companyName}
+                  </CompanyName>
+                </Link>
                 <CompanyRateNumbers>
                   <span>{companyRatesNumber}</span> avaliações
                 </CompanyRateNumbers>

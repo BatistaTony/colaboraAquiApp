@@ -201,6 +201,10 @@ export const ListStep = styled.ul`
     flex-direction: column;
   }
 
+  @media (max-width: 325px) {
+    flex-direction: column;
+  }
+
   ${pullPaddingLeft};
 
   @media (max-width: 500px) and (max-height: 830px) {
@@ -349,9 +353,9 @@ export const ButtonStartRate = styled(motion.button)`
 
   @media (max-width: 750px) {
     height: auto;
-    padding-bottom: 18px;
+    padding-bottom: 15px;
     flex: 0;
-    padding-top: 18px;
+    padding-top: 15px;
   }
 
   img {
