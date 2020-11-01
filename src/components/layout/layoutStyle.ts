@@ -133,6 +133,7 @@ export const colorsApp = {
   textPrimary: "#293133",
   sucess: "#4bcf12",
   cardColor: "#4d5272",
+  darkGreen: "#58676a",
 };
 
 export const sizesForEachScreens = (
