@@ -108,114 +108,7 @@ export const ModalSignIn = styled(Modal)`
       width: 73%;
 
       justify-content: center;
-    .btnLOgin {
-      @media (max-width: 600px) {
-        margin-top: 50px;
-      }
-    }
-
-    .textForgetPassword {
-      color: ${colorsApp.orange};
-      font-size: 27pt;
-      ${flexbox("row", "flex-start", "center")};
-      ${getFont()};
-      cursor: default;
-
-      width: 100%;
-      text-align: left;
-      ${sizesForEachScreens(
-        [3200, 2500, 1930, 1500, 1370],
-        [
-          "repeat(2, 90px) auto auto auto",
-          "repeat(2, 70px) auto auto auto",
-          "repeat(2, 60px) auto auto auto",
-          "repeat(2, 45px) auto auto auto",
-          "repeat(2, 40px) auto auto auto",
-        ],
-        "grid-template-rows",
-        ""
-      )}
-
-      .error_style {
-        grid-column: 1/1;
-      }
-      grid-template-rows: repeat(6, auto) auto auto auto;
-
-      @media (max-width: 900px) {
-        width: 45%;
-      }
-
-      @media (max-width: 800px) {
-        width: 48%;
-      }
-
-      @media (max-width: 720px) {
-        width: 55%;
-      }
-
-      @media (max-width: 600px) {
-        width: 60%;
-      }
-
-      @media (max-width: 590px) {
-        width: 85%;
-      }
-
-      .frm_gr_gr {
-        grid-column: 1/2;
-      }
-
-      .FormGroup {
-        grid-column: 1/2;
-        grid-template-columns: 100%;
-        height: 100px;
-
-        ${sizesForEachScreens(
-          [3200, 2500, 1930, 1500],
-          [" 90", "70", "60", "45"],
-          "height",
-          "px"
-        )}
-      }
-
-      .formPassword {
-        grid-template-columns: 93% 7%;
-      }
-
-      .iconeSee {
-        img {
-          width: 40px;
-          height: 40px;
-
-          @media (max-width: 2500px) {
-            width: 30px;
-            height: 30px;
-          }
-
-          @media (max-width: 1930px) {
-            width: 25px;
-            height: 25px;
-          }
-
-          @media (max-width: 1500px) {
-            width: 16px;
-            height: 16px;
-          }
-
-          @media (max-width: 750px) {
-            width: 15px;
-            height: 15px;
-          }
-        }
-      }
-
       .btnLOgin {
-        @media (max-width: 750px) {
-          height: auto;
-          padding-top: 14px;
-          padding-bottom: 14px;
-        }
-
         @media (max-width: 600px) {
           margin-top: 50px;
         }
@@ -225,46 +118,154 @@ export const ModalSignIn = styled(Modal)`
         color: ${colorsApp.orange};
         font-size: 27pt;
         ${flexbox("row", "flex-start", "center")};
-        ${getFont("Medium")};
+        ${getFont()};
         cursor: default;
 
         width: 100%;
         text-align: left;
         ${sizesForEachScreens(
-          [3200, 3000, 2500, 1930, 1500],
-          [26, 22, 19, 17, 12],
-          "font-size",
-          "pt"
+          [3200, 2500, 1930, 1500, 1370],
+          [
+            "repeat(2, 90px) auto auto auto",
+            "repeat(2, 70px) auto auto auto",
+            "repeat(2, 60px) auto auto auto",
+            "repeat(2, 45px) auto auto auto",
+            "repeat(2, 40px) auto auto auto",
+          ],
+          "grid-template-rows",
+          ""
         )}
+
+        .error_style {
+          grid-column: 1/1;
+        }
+        grid-template-rows: repeat(6, auto) auto auto auto;
+
+        @media (max-width: 900px) {
+          width: 45%;
+        }
+
+        @media (max-width: 800px) {
+          width: 48%;
+        }
+
+        @media (max-width: 720px) {
+          width: 55%;
+        }
+
+        @media (max-width: 600px) {
+          width: 60%;
+        }
+
+        @media (max-width: 590px) {
+          width: 85%;
+        }
+
+        .frm_gr_gr {
+          grid-column: 1/2;
+        }
+
+        .FormGroup {
+          grid-column: 1/2;
+          grid-template-columns: 100%;
+          height: 100px;
+
+          ${sizesForEachScreens(
+            [3200, 2500, 1930, 1500],
+            [" 90", "70", "60", "45"],
+            "height",
+            "px"
+          )}
+        }
+
+        .formPassword {
+          grid-template-columns: 93% 7%;
+        }
+
+        .iconeSee {
+          img {
+            width: 40px;
+            height: 40px;
+
+            @media (max-width: 2500px) {
+              width: 30px;
+              height: 30px;
+            }
+
+            @media (max-width: 1930px) {
+              width: 25px;
+              height: 25px;
+            }
+
+            @media (max-width: 1500px) {
+              width: 16px;
+              height: 16px;
+            }
+
+            @media (max-width: 750px) {
+              width: 15px;
+              height: 15px;
+            }
+          }
+        }
+
+        .btnLOgin {
+          @media (max-width: 750px) {
+            height: auto;
+            padding-top: 14px;
+            padding-bottom: 14px;
+          }
+
+          @media (max-width: 600px) {
+            margin-top: 50px;
+          }
+        }
+
+        .textForgetPassword {
+          color: ${colorsApp.orange};
+          font-size: 27pt;
+          ${flexbox("row", "flex-start", "center")};
+          ${getFont("Medium")};
+          cursor: default;
+
+          width: 100%;
+          text-align: left;
+          ${sizesForEachScreens(
+            [3200, 3000, 2500, 1930, 1500],
+            [26, 22, 19, 17, 12],
+            "font-size",
+            "pt"
+          )}
+        }
+
+        .textFor_fhd_rn {
+          margin-top: 50px;
+
+          ${sizesForEachScreens(
+            [3300, 3000, 2500, 1500],
+            [40, 30, 20, 10],
+            "margin-top",
+            "px"
+          )};
+        }
       }
 
-      .textFor_fhd_rn {
-        margin-top: 50px;
+      .illustration1_ {
+        ${flexbox("column", "flex-end", "flex-end")};
+        background-size: 95% 100%;
+        background-position: right;
+        margin-left: 50px;
 
         ${sizesForEachScreens(
-          [3300, 3000, 2500, 1500],
-          [40, 30, 20, 10],
-          "margin-top",
+          [2500, 1930, 1500],
+          [25, 20, 15],
+          "margin-left",
           "px"
         )};
-      }
-    }
 
-    .illustration1_ {
-      ${flexbox("column", "flex-end", "flex-end")};
-      background-size: 95% 100%;
-      background-position: right;
-      margin-left: 50px;
-
-      ${sizesForEachScreens(
-        [2500, 1930, 1500],
-        [25, 20, 15],
-        "margin-left",
-        "px"
-      )};
-
-      @media (max-width: 900px) {
-        display: none;
+        @media (max-width: 900px) {
+          display: none;
+        }
       }
     }
   }
