@@ -349,9 +349,9 @@ export const ButtonStartRate = styled(motion.button)`
 
   @media (max-width: 750px) {
     height: auto;
-    padding-bottom: 18px;
+    padding-bottom: 15px;
     flex: 0;
-    padding-top: 18px;
+    padding-top: 15px;
   }
 
   img {
