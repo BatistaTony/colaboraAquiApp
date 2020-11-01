@@ -1,21 +1,21 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
   colorsApp,
   flexbox,
   getFont,
   sizesForEachScreens,
   NormalFontSize,
-} from "../layout/layoutStyle";
-import { ButtonSignUp } from "../signUp/signUpStyle";
-import { motion } from "framer-motion";
+} from '../layout/layoutStyle';
+import { ButtonSignUp } from '../signUp/signUpStyle';
+import { motion } from 'framer-motion';
 
 export const ContentCompanies = styled.div`
   width: 100%;
   height: auto;
-  ${flexbox("column", "space-between", "center")};
+  ${flexbox('column', 'space-between', 'center')};
   padding-top: 2%;
 
-  ${sizesForEachScreens([1930, 1500], [4, 2.5], "padding-top", "%")};
+  ${sizesForEachScreens([1930, 1500], [4, 2.5], 'padding-top', '%')};
 
   @media (max-height: 600px) {
     padding-top: 1%;
@@ -23,7 +23,7 @@ export const ContentCompanies = styled.div`
 
   .cmp_f_g {
     width: 100%;
-    ${flexbox("column")};
+    ${flexbox('column')};
   }
 
   .my-node-enter {
@@ -54,14 +54,14 @@ export const TextCompanies = styled.p`
   text-align: center;
 
   @media (max-width: 850px) {
-    ${flexbox("column")};
+    ${flexbox('column')};
     span {
       width: auto;
     }
   }
 
   mark {
-    ${getFont("Bold")};
+    ${getFont('Bold')};
     color: ${colorsApp.roxo};
     background: transparent;
   }
@@ -69,15 +69,15 @@ export const TextCompanies = styled.p`
   ${sizesForEachScreens(
     [3300, 2500, 1930, 1500, 1370, 1000, 850],
     [50, 60, 65, 50, 55, 60, 100],
-    "width",
-    "%"
+    'width',
+    '%'
   )};
 
   ${sizesForEachScreens(
     [3200, 2500, 2000, 1500, 1300, 900, 750],
     [40, 35, 28, 17, 14, 13, 12],
-    "font-size",
-    "pt"
+    'font-size',
+    'pt'
   )};
 `;
 
@@ -85,18 +85,18 @@ export const FilterStyled = styled.div`
   width: 100%;
   height: auto;
   position: relative;
-  ${flexbox("column")};
+  ${flexbox('column')};
   margin-top: 60px;
 
   ${sizesForEachScreens(
     [3200, 2500, 2000, 1500],
     [50, 40, 30, 25],
-    "margin-top",
-    "px"
+    'margin-top',
+    'px'
   )};
 
   .filter_1_ {
-    ${flexbox("row")};
+    ${flexbox('row')};
     width: 100%;
     height: 100px;
     position: relative;
@@ -105,15 +105,15 @@ export const FilterStyled = styled.div`
     ${sizesForEachScreens(
       [3200, 2500, 1930, 1500, 1370],
       [90, 70, 60, 45, 40],
-      "height",
-      "px"
+      'height',
+      'px'
     )}
   }
 
   .filter_status {
     width: 100%;
     height: auto;
-    ${flexbox("row")};
+    ${flexbox('row')};
     list-style: none;
     margin-top: 60px;
     margin-bottom: 8%;
@@ -121,8 +121,8 @@ export const FilterStyled = styled.div`
     ${sizesForEachScreens(
       [3200, 2500, 2000, 1500],
       [50, 40, 30, 25],
-      "margin-top",
-      "px"
+      'margin-top',
+      'px'
     )};
 
     @media (max-width: 950px) {
@@ -143,8 +143,8 @@ export const FilterStyled = styled.div`
       ${sizesForEachScreens(
         [3200, 3000, 2500, 1930, 1500, 850, 500],
         [20, 17, 15, 13, 11, 10, 9],
-        "font-size",
-        "pt"
+        'font-size',
+        'pt'
       )};
 
       @media (max-width: 2500px) {
@@ -194,8 +194,8 @@ export const SearchStyled = styled.div`
   ${sizesForEachScreens(
     [1390, 1500, 1000],
     [20, 15, 10],
-    "padding-left",
-    "px"
+    'padding-left',
+    'px'
   )};
 
   @media (max-width: 850px) {
@@ -220,8 +220,8 @@ export const SearchStyled = styled.div`
     ${sizesForEachScreens(
       [3200, 3000, 2500, 1930, 1500, 850],
       [26, 22, 19, 17, 12, 11],
-      "font-size",
-      "pt"
+      'font-size',
+      'pt'
     )};
   }
 `;
@@ -271,22 +271,22 @@ export const ButtonSuggest = styled.button`
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500, 850],
     [26, 22, 19, 17, 12, 11],
-    "font-size",
-    "pt"
+    'font-size',
+    'pt'
   )};
 
   ${sizesForEachScreens(
     [3200, 2500, 2000, 1500, 900, 850],
     [40, 30, 25, 20, 15],
-    "padding-left",
-    "px"
+    'padding-left',
+    'px'
   )};
 
   ${sizesForEachScreens(
     [3200, 2500, 2000, 1500, 900, 850],
     [40, 30, 25, 20, 15],
-    "padding-right",
-    "px"
+    'padding-right',
+    'px'
   )};
 
   @media (max-width: 925px) {
@@ -297,7 +297,7 @@ export const ButtonSuggest = styled.button`
 export const CompanyList = styled.div`
   width: 100%;
   height: 270px;
-  ${flexbox("row", "center", "center")};
+  ${flexbox('row', 'center', 'center')};
   position: absolute;
   bottom: 15%;
 
@@ -309,9 +309,9 @@ export const CompanyList = styled.div`
     display: none;
   }
 
-  ${sizesForEachScreens([1500, 1380], [250, 200], "height", "px")}
+  ${sizesForEachScreens([1500, 1380], [250, 200], 'height', 'px')}
 
-  ${sizesForEachScreens([1930, 1500, 1380], [10, 5, 4], "bottom", "%")};
+  ${sizesForEachScreens([1930, 1500, 1380], [10, 5, 4], 'bottom', '%')};
 
   @media (max-width: 837px) {
     height: auto;
@@ -398,14 +398,14 @@ export const GroupCard = styled.div`
   ${sizesForEachScreens(
     [2500, 1500, 1390, 1040, 935],
     [75, 73, 77, 80, 90],
-    "width",
-    "%"
+    'width',
+    '%'
   )};
   ${sizesForEachScreens(
     [3200, 2500, 1500, 1370, 1070, 935],
     [50, 40, 30, 25, 20, 15],
-    "grid-gap",
-    "px"
+    'grid-gap',
+    'px'
   )};
 
   @media (max-width: 837px) {
@@ -420,7 +420,7 @@ export const Card = styled.div`
   height: 100%;
   border-radius: 10px;
   background-color: ${colorsApp.roxo};
-  ${flexbox("column")};
+  ${flexbox('column')};
   padding-top: 70px;
   padding-bottom: 70px;
   padding-left: 50px;
@@ -435,8 +435,8 @@ export const Card = styled.div`
   ${sizesForEachScreens(
     [2500, 1930, 1500, 1370],
     [60, 50, 30, 20],
-    "padding",
-    "px"
+    'padding',
+    'px'
   )};
 
   @media (max-width: 837px) {
@@ -460,7 +460,7 @@ export const Card = styled.div`
     }
 
     .div1_er_ {
-      ${flexbox("row", "flex-start", "center")};
+      ${flexbox('row', 'flex-start', 'center')};
 
       .company_info_ {
         margin-left: 16px;
@@ -473,7 +473,7 @@ export const Card = styled.div`
 
     .start_div_cmpy {
       width: 100%;
-      ${flexbox("row", "flex-end", "center")};
+      ${flexbox('row', 'flex-end', 'center')};
     }
   }
 `;
@@ -495,15 +495,15 @@ export const CompanyLogo = styled.div`
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500, 1200, 900, 850, 500],
     [100, 90, 80, 70, 60, 50, 40, 30, 25],
-    "width",
-    "px"
+    'width',
+    'px'
   )};
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500, 1200, 900, 850, 500],
     [100, 90, 80, 70, 60, 50, 40, 30, 25],
-    "height",
-    "px"
+    'height',
+    'px'
   )};
 
   img {
@@ -517,14 +517,14 @@ export const CompanyLogo = styled.div`
 
 export const CompanyName = styled.h1`
   font-size: 30pt;
-  ${getFont("Bold")};
+  ${getFont('Bold')};
   color: white;
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1500, 1200, 1000, 900, 500],
     [25, 20, 16, 14, 13, 12, 11, 10],
-    "font-size",
-    "pt"
+    'font-size',
+    'pt'
   )};
 `;
 
@@ -534,7 +534,7 @@ export const CompanyRateNumbers = styled.p`
   color: white;
 
   span {
-    ${getFont("Bold")};
+    ${getFont('Bold')};
   }
 
   ${NormalFontSize};
@@ -547,6 +547,8 @@ export const CompanyRateNumbers = styled.p`
 export const StarsRated = styled.div`
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.3);
+  background: ${({ background }) =>
+    background === 'black' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(252, 190, 10, 0.1)'};
   position: relative;
   width: auto;
   padding: 10px;
@@ -570,21 +572,21 @@ export const StarRate = styled.div`
   ${sizesForEachScreens(
     [3200, 2500, 1930, 1500, 1080, 850, 500],
     [40, 30, 20, 18, 15, 13, 12],
-    "width",
-    "px"
+    'width',
+    'px'
   )};
 
   ${sizesForEachScreens(
     [3200, 2500, 1930, 1500, 1080, 850, 500],
     [40, 30, 20, 18, 15, 13, 12],
-    "height",
-    "px"
+    'height',
+    'px'
   )};
 
   svg {
     width: 100%;
     height: 100%;
-    fill: ${({ isRated }) => (isRated ? `${colorsApp.orange}` : "gray")};
+    fill: ${({ isRated }) => (isRated ? `${colorsApp.orange}` : 'gray')};
   }
 `;
 
@@ -599,8 +601,8 @@ export const DescriptionCard = styled.p`
   ${sizesForEachScreens(
     [3200, 3000, 2500, 1930, 1500, 1370, 850, 500],
     [25, 22, 18, 14, 12, 11, 10, 9],
-    "font-size",
-    "pt"
+    'font-size',
+    'pt'
   )};
 
   @media (max-width: 500px) {
@@ -610,7 +612,7 @@ export const DescriptionCard = styled.p`
 
 export const ButtonControl = styled.div`
   width: 90%;
-  ${flexbox("row", "space-between", "center")};
+  ${flexbox('row', 'space-between', 'center')};
   position: absolute;
   box-sizing: border-box;
 
@@ -634,15 +636,15 @@ export const ButtonControl = styled.div`
     ${sizesForEachScreens(
       [3000, 2700, 2400, 1930, 1500, 1370],
       [70, 65, 60, 55, 50, 45, 40, 35, 30],
-      "width",
-      "px"
+      'width',
+      'px'
     )};
 
     ${sizesForEachScreens(
       [3000, 2700, 2400, 1930, 1500, 1370],
       [70, 65, 60, 55, 50, 45, 40, 35, 30],
-      "height",
-      "px"
+      'height',
+      'px'
     )};
 
     img {
@@ -685,22 +687,22 @@ export const ModalSuggestion = styled(motion.div)`
   ${sizesForEachScreens(
     [2300, 1980, 1500, 1200, 950, 850, 800],
     [55, 60, 40, 65, 70, 80, 100],
-    "width",
-    "%"
+    'width',
+    '%'
   )}
 
   ${sizesForEachScreens(
     [3200, 2500, 1980, 1500, 850],
     [80, 70, 60, 50, 30, 25],
-    "padding-top",
-    "px"
+    'padding-top',
+    'px'
   )}
 
 ${sizesForEachScreens(
     [3200, 2500, 1980, 1500, 850],
     [80, 70, 60, 50, 30, 25],
-    "padding-bottom",
-    "px"
+    'padding-bottom',
+    'px'
   )}
 
   @media  (max-width:800px) {
@@ -763,7 +765,7 @@ export const TextArea = styled.div`
   text-align: left;
   background: #f1f0f4;
   border-radius: 7px;
-  border: ${({ isEmpty }) => (isEmpty ? "2px solid red" : "none")};
+  border: ${({ isEmpty }) => (isEmpty ? '2px solid red' : 'none')};
   margin-bottom: 50px;
   &::placeholder {
     color: ${colorsApp.soDark};
@@ -794,8 +796,8 @@ export const TextArea = styled.div`
     ${sizesForEachScreens(
       [3200, 3000, 2500, 1930],
       [30, 25, 20, 15],
-      "padding-left",
-      "px"
+      'padding-left',
+      'px'
     )}
     ${NormalFontSize()};
   }
@@ -822,9 +824,9 @@ export const ButtonCloseSuggestion = styled.button`
     margin: 20px;
   }
 
-  ${sizesForEachScreens([1930, 1500, 1370], [45, 30, 25], "width", "px")};
+  ${sizesForEachScreens([1930, 1500, 1370], [45, 30, 25], 'width', 'px')};
 
-  ${sizesForEachScreens([1930, 1500, 1370], [45, 30, 25], "height", "px")};
+  ${sizesForEachScreens([1930, 1500, 1370], [45, 30, 25], 'height', 'px')};
 
   svg {
     width: 80%;

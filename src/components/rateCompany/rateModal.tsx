@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 import {
   RateCompanyContainer,
@@ -17,17 +18,20 @@ export function GoBack(item: boolean) {
   return item != null ? item : false;
 }
 
-const RateModal = ({ showTheModal, isActive }) => {
-  const [textareaVal, setTexareaval] = React.useState('');
-
-  var number: number;
+const RateModal = ({ showTheModal, companyId, visible }: any) => {
+  const [val, setVal] = React.useState<Number>(0);
+  const textareaValue = useRef<any>();
 
   function HendleRate() {
     let data = {
-      value: number,
-      Feedback: textareaVal,
+      value: val,
+      Feedback: textareaValue.current.value,
+      companyId: companyId,
     };
+
     console.log(data);
+    setVal(0);
+    textareaValue.current.value = '';
   }
 
   const arr = [
@@ -38,23 +42,29 @@ const RateModal = ({ showTheModal, isActive }) => {
     { id: 5, title: 'Muito Bom' },
   ];
 
-  function RatingValue(id: number) {
-    return id === number ? true : false;
+  function ratingValue(id: number) {
+    return id === val ? true : false;
   }
+
+  const variants = {
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: -200 },
+  };
 
   function RatingEmojis() {
     return (
-      <RetingEmojiContainer isActive={isActive}>
+      <RetingEmojiContainer>
         {arr.map((item) => (
           <RetingSingleEmoji
+            key={item.id}
             img={item.id}
-            active={RatingValue(item.id)}
+            active={ratingValue(item.id)}
             onClick={() => {
-              number = item.id;
+              setVal(item.id);
             }}
-            isActive={isActive}
           >
             <div></div>
+
             <p>{item.title}</p>
           </RetingSingleEmoji>
         ))}
@@ -63,23 +73,22 @@ const RateModal = ({ showTheModal, isActive }) => {
   }
 
   return (
-    <RateCompanyContainer>
+    <RateCompanyContainer visible={visible}>
       <ButtonBack img={'/images/left.png'} onClick={() => showTheModal()} />
 
       <RateCompanyTex>
         Como classificas a tua experiência com este{' '}
         <Bold>serviço/empresa ?</Bold>
       </RateCompanyTex>
+
       <RatingEmojis />
 
       <RateCompanyTextarea
+        ref={textareaValue}
         type="submit"
-        autofocus={false}
+        autoFocus={false}
         placeholder="Como tu achas que eles podem melhorar ? (deixe a sua opinião)"
-        onChange={(event: any) => {
-          setTexareaval(event.target.value);
-        }}
-        value={textareaVal}
+        //value={textareaValue}
       />
       <SendRateButton onClick={() => HendleRate()}>
         Enviar Avaliação

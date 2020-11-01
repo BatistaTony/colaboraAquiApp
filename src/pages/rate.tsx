@@ -6,7 +6,7 @@ import RateCompany from '../components/rateCompany/rateCompany';
 function Rate() {
   return (
     <Layout title={'Avaliar'}>
-      <RateCompany />
+      <RateCompany id={1} />
     </Layout>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { motion } from 'framer-motion';
 
 import {
   Container,
@@ -19,22 +20,26 @@ import {
   OpinionsCard,
   CardNameDiv,
   StarsDiv,
-  Modal,
+  Modal1,
 } from './rateCompanyStyle';
 
 import ModalContext from './rateCompanyContext';
 
-import Stars from '../stars/stars';
+import Data from '../../constants/Data';
 
 import RateModal from './rateModal';
 
-const RateCompany = () => {
+import Stars from '../companies/starsRated';
+
+const RateCompany = ({ id }: any) => {
   const [showModal, setShowModal] = React.useState({ visible: false });
-  const arr = [0, 1, 2, 3, 4];
+  const arr = [0, 1, 2, 3, 4, 5, 6, 7];
   const text =
     'Péssima experiência com apoio ao   cliente e eles não são nada sérios, sem falar que a rede cai por tudo e por nada';
 
   const a = 4;
+
+  const data = Data.find((item) => item.id === id);
 
   const showTheModal = () => {
     if (showModal.visible === false) {
@@ -42,21 +47,26 @@ const RateCompany = () => {
     } else setShowModal({ visible: false });
   };
 
+  const variants = {
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: -200 },
+  };
+
   return (
     <ModalContext.Provider value={showModal}>
       <Container>
         <Header>
           <HeaderInforCompany>
-            <CompanyLogo img={'/images/unitel.png'} />
+            <CompanyLogo img={data.logo} />
             <div>
-              <NameOfComapny> 1# UNITEL </NameOfComapny>
-              <Avaliations> 120 Avaliações </Avaliations>
+              <NameOfComapny>
+                {data.ranking}# {data.name}{' '}
+              </NameOfComapny>
+              <Avaliations>{data.avaliations.all} Avaliações </Avaliations>
             </div>
           </HeaderInforCompany>
           <HeaderAvaliation>
-            <StarsDiv>
-              <Stars val={a} width={100} height={100} />
-            </StarsDiv>
+            <Stars stars={data.stars} background="orange" />
 
             <RateButton
               onClick={() => {
@@ -69,15 +79,15 @@ const RateCompany = () => {
           </HeaderAvaliation>
 
           <HeaderInforCompanyMoblite>
-            <CompanyLogo img={'/images/unitel.png'} />
+            <CompanyLogo img={data.logo} />
             <Row>
               <div>
-                <NameOfComapny> 1# UNITEL </NameOfComapny>
-                <Avaliations> 120 Avaliações </Avaliations>
+                <NameOfComapny>
+                  {data.ranking}# {data.name}{' '}
+                </NameOfComapny>
+                <Avaliations>{data.avaliations.all} Avaliações </Avaliations>
               </div>
-              <StarsDiv>
-                <Stars val={a} width={100} height={100} />
-              </StarsDiv>
+              <Stars stars={a} background="orange" />
             </Row>
           </HeaderInforCompanyMoblite>
           <HeaderAvaliationMobile>
@@ -91,34 +101,52 @@ const RateCompany = () => {
             </RateButton>
           </HeaderAvaliationMobile>
         </Header>
-        <Text>
-          Empresa de telecomunicações, focada em telefonia móvel e um monte de
-          coisas qualquer, empresa de telecomunicações, focada em telefonia
-          móvel.
-        </Text>
-        <OpinionsContainer>
-          {arr.map((item) => (
-            <OpinionsCard kay={item}>
-              <CardNameDiv>AK</CardNameDiv>
-              <input placeholder={text} />
-
-              <p>{text}</p>
-            </OpinionsCard>
-          ))}
-        </OpinionsContainer>{' '}
-        <CSSTransition
-          in={showModal.visible}
-          classNames="fade"
-          timeout={300}
-          unmountOnExit
+        <Text>{data.discription}</Text>
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={variants}
+          style={{ width: '100%' }}
         >
-          <Modal isActive={showModal.visible}>
-            <RateModal
-              isActive={showModal.visible}
-              showTheModal={showTheModal}
-            ></RateModal>
-          </Modal>
-        </CSSTransition>
+          <OpinionsContainer>
+            {arr.map((item) => (
+              <OpinionsCard key={item}>
+                <CardNameDiv>AK</CardNameDiv>
+                <input placeholder={text} />
+
+                <p>{text}</p>
+              </OpinionsCard>
+            ))}
+          </OpinionsContainer>
+        </motion.div>
+
+        <div
+          style={
+            showModal.visible
+              ? {
+                  position: 'fixed',
+                  zIndex: 2000,
+                  top: 0,
+                  right: 0,
+                  bottom: 0,
+                  left: 0,
+                  visibility: 'visible',
+                  opacity: 1,
+                  transition: 'opacity 0.3s linear',
+                }
+              : {
+                  visibility: 'hidden',
+                  opacity: 0,
+                  transition: 'visibility 0.3s, opacity 0.3s linear',
+                }
+          }
+        >
+          <RateModal
+            showTheModal={showTheModal}
+            companyId={data.id}
+            visible={showModal.visible}
+          />
+        </div>
       </Container>
     </ModalContext.Provider>
   );

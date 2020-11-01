@@ -6,6 +6,8 @@ import {
   sizesForEachScreens,
 } from '../layout/layoutStyle';
 
+import { motion } from 'framer-motion';
+
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -14,7 +16,7 @@ export const Container = styled.div`
 
   background: #fff;
   ${flexbox('column', 'flex-start', 'center')};
-  overflow: scroll !important;
+  overflow: auto !important;
 
   box-sizing: border-box;
 `;
@@ -42,8 +44,6 @@ export const Header = styled.div`
   max-width: 1800px;
   position: relative;
 
-  // background: #ff4 !important;
-
   ${flexbox('row', 'space-between', 'center')};
 
   margin-top: 100px;
@@ -51,15 +51,15 @@ export const Header = styled.div`
   @media (max-width: 750px) {
     margin-top: 20px;
     padding-top: 10px;
+    width: 90% !important;
+    ${flexbox('column', 'justify-content', 'center')};
   }
   @media (max-width: 1000px) {
-    width: 100% !important;
-    ${flexbox('column', 'justify-content', 'center')};
-    //background: #f4f !important;
-    min-height: 300px;
+    width: 80%;
+    min-height: 240px;
   }
   @media (max-width: 1230px) {
-    width: 90%;
+    width: 70%;
   }
   @media (min-width: 1230px) {
     margin-bottom: 50px;
@@ -70,9 +70,7 @@ export const HeaderInforCompany = styled.div`
   height: auto;
   ${flexbox('row', 'space-between', 'center')};
 
-  //background: #ff4 !important;
-
-  @media (max-width: 1000px) {
+  @media (max-width: 750px) {
     display: none;
   }
   @media (min-width: 1000px) {
@@ -84,15 +82,15 @@ export const HeaderInforCompany = styled.div`
 export const HeaderAvaliation = styled.div`
   ${flexbox('row', 'justify-content', 'center')};
 
-  @media (max-width: 1000px) {
+  @media (max-width: 750px) {
     display: none;
   }
 `;
 
 export const HeaderInforCompanyMoblite = styled.div`
   display: none;
-
-  @media (max-width: 1000px) {
+  background: #fff;
+  @media (max-width: 750px) {
     width: 100% !important;
 
     ${flexbox('column', 'center', 'center')};
@@ -101,13 +99,13 @@ export const HeaderInforCompanyMoblite = styled.div`
 export const HeaderAvaliationMobile = styled.div`
   display: none;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 750px) {
     width: 100% !important;
     ${flexbox('column', 'space-between', 'center')};
   }
 `;
 export const Row = styled.div`
-  width: 90%;
+  width: 100%;
 
   ${flexbox('row', 'space-between', 'center')};
 `;
@@ -132,14 +130,14 @@ export const CompanyLogo = styled.div`
   }
 
   ${sizesForEachScreens(
-    [6500, 2000, 1500, 750],
-    [300, 180, 160, 110],
+    [6500, 3000, 2000, 1500, 1000, 750],
+    [300, 180, 160, 120, 100, 80],
     'width',
     'px'
   )};
   ${sizesForEachScreens(
-    [6500, 2000, 1500, 750],
-    [300, 180, 160, 110],
+    [6500, 3000, 2000, 1500, 1000, 750],
+    [300, 180, 160, 120, 100, 80],
     'height',
     'px'
   )};
@@ -193,13 +191,13 @@ export const Text = styled.p`
     margin-top: 20px !important;
     margin-bottom: 20px;
   }
-  @media (min-width: 1230px) {
+  @media (min-width: 750px) {
     width: 70%;
   }
 
   ${sizesForEachScreens(
-    [6000, 3200, 2500, 1500, 1000, 700, 450],
-    [40, 34, 30, 26, 24, 20, 14],
+    [3200, 2500, 2000, 1500, 1300, 450],
+    [40, 35, 28, 17, 14, 13],
     'font-size',
     'pt'
   )};
@@ -233,14 +231,25 @@ export const RateButton = styled.button`
     position: absolute;
     right: 10px;
 
-    ${sizesForEachScreens([6500, 2000, 1500], [40, 26, 22], 'width', 'px')};
-    ${sizesForEachScreens([6500, 2000, 1500], [40, 26, 22], 'height', 'px')};
+    ${sizesForEachScreens(
+      [6500, 3000, 2000, 1500, 1000],
+      [40, 26, 22, 18, 16],
+      'width',
+      'px'
+    )};
+    ${sizesForEachScreens(
+      [6500, 3000, 2000, 1500, 1000],
+      [40, 26, 22, 18, 16],
+      'height',
+      'px'
+    )};
   }
 
   @media (max-width: 750px) {
     height: 45px;
     font-size: 16px !important;
-    width: 90% !important;
+    width: 100% !important;
+    margin-left: 0 !important;
 
     img {
       width: 20px;
@@ -249,19 +258,24 @@ export const RateButton = styled.button`
   }
   @media (max-width: 1000px) {
     width: 90%;
-    margin-left: 0;
+    margin-left: 10px;
   }
 
   ${sizesForEachScreens(
-    [6500, 2000, 1500, 750],
-    [320, 240, 208, 110],
+    [6500, 3000, 2000, 1500, 1000, 750],
+    [320, 240, 208, 180, 110, 90],
     'width',
     'px'
   )};
-  ${sizesForEachScreens([6500, 2000, 1500], [80, 60, 55], 'height', 'px')};
   ${sizesForEachScreens(
-    [6500, 2000, 1500, 750],
-    [40, 22, 18, 16],
+    [6500, 3000, 2000, 1500, 1000, 750],
+    [80, 60, 55, 50, 40, 50],
+    'height',
+    'px'
+  )};
+  ${sizesForEachScreens(
+    [6500, 3000, 2000, 1500, 750],
+    [40, 22, 18, 16, 16],
     'font-size',
     'px'
   )};
@@ -270,19 +284,20 @@ export const RateButton = styled.button`
 export const OpinionsContainer = styled.div`
   width: 70%;
   max-width: 1800px;
-  height: auto;
+  height: auto !important;
 
   background: rgba(248, 248, 252, 0.5);
   padding: 40px 40px 140px 40px;
   box-sizing: border-box;
 
-  @media (max-width: 750px) {
-    padding: 40px 20px;
-    padding-bottom: 140px;
-  }
+  margin: 0 auto;
 
-  @media (max-width: 1230px) {
+  @media (max-width: 750px) {
+    padding: 40px 40px 140px 40px;
     width: 90%;
+  }
+  p {
+    text-align: justify;
   }
 `;
 
@@ -324,7 +339,6 @@ export const OpinionsCard = styled.button`
   :active {
     overflow: scroll;
 
-    //padding: 20px 10px;
     background: #fff9e6;
     input {
       display: none;
@@ -413,19 +427,28 @@ export const CardNameDiv = styled.div`
 export const RateCompanyContainer = styled.div`
   width: 100%;
   height: 100%;
-  position: relative;
-  overflow-y: scroll;
+  min-height: 720px;
+  overflow-y: auto !important;
   overflow-x: hidden;
 
-  display: flex;
+  background: #fff;
+
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
-  padding-top: 100px;
+  margin: 0 auto;
+
+  box-sizing: border-box;
 
   @media (max-width: 400px) {
     justify-content: center;
-    padding-top: 10px;
+    background: #fff;
+  }
+  @media (max-width: 750px) {
+    justify-content: center;
+    min-height: auto;
   }
   @media (min-width: 2500px) {
     justify-content: center;
@@ -488,8 +511,8 @@ export const RateCompanyTex = styled.p`
   }
 
   ${sizesForEachScreens(
-    [3200, 2500, 1500, 1000, 700, 450],
-    [40, 34, 26, 24, 20, 14],
+    [6600, 3200, 2500, 1500, 1000, 700, 450],
+    [40, 30, 30, 26, 24, 20, 14],
     'font-size',
     'pt'
   )};
@@ -516,7 +539,6 @@ export const RateCompanyTextarea = styled.textarea`
   }
 
   box-sizing: border-box;
-
   @media (max-width: 750px) {
     font-size: 16px !important;
   }
@@ -528,8 +550,9 @@ export const RateCompanyTextarea = styled.textarea`
     width: 70% !important;
     font-size: 20px;
   }
+
   ${sizesForEachScreens([6500, 1500], [1800, 1200], 'width', 'px')};
-  ${sizesForEachScreens([6500, 2000, 1500], [400, 200, 170], 'height', 'px')};
+  ${sizesForEachScreens([6500, 2000, 1500], [300, 180, 150], 'height', 'px')};
   ${sizesForEachScreens(
     [6500, 2000, 1500, 750],
     [40, 22, 18, 16],
@@ -583,39 +606,54 @@ export const RetingEmojiContainer = styled.div`
   height: 178px;
 
   ${flexbox('row', 'space-between', 'center')};
-
+  margin: 0 auto;
   margin-bottom: 40px;
 
   @media (max-width: 350px) {
     height: 148px;
     margin-bottom: 20px;
   }
-  @media (max-width: 1100px) {
-    width: 90%;
-    font-size: 20px;
+  @media (max-width: 750px) {
+    font-size: 14px !important;
+    height: 90px !important;
+    ${flexbox('row', 'space-between', 'space-between')};
   }
+  @media (max-width: 1100px) {
+    width: 70% !important;
+  }
+  @media (max-width: 2500px) {
+    width: 70% !important;
+  }
+
+  ${sizesForEachScreens([6500, 1500], [1700, 1100], 'width', 'px')};
 `;
 
 export const RetingSingleEmoji = styled.button`
-  height: 156px;
-  width: 140px;
+  height: 136px;
+  width: 100%;
 
   border: none;
   outline: none;
-  background: transparent;
+  background: #fff;
 
   transition: background-image 0.8s, font-weight 0.8s, transform 0.8s;
 
-  font-size: 24px;
   color: #58676a;
+
+  ${sizesForEachScreens(
+    [6500, 3300, 2000, 1500, 1000, 750, 400],
+    [40, 30, 20, 16, 14, 10, 10],
+    'font-size',
+    'pt'
+  )};
 
   ${({ active }) => (active ? `${getFont('bold')}` : `${getFont()}`)}
 
-  ${flexbox('column', 'space-between', 'center')};
+  ${flexbox('column', 'center', 'center')};
 
   div {
-    height: 100px;
-    width: 100px;
+    height: 80px;
+    width: 80px;
     background-image: ${({ img, active }) =>
       `  url(/images/emoji${img}-${active}.png)`};
     background-position-x: center;
@@ -623,6 +661,25 @@ export const RetingSingleEmoji = styled.button`
     background-size: 100%;
 
     transition: background-image 0.8s, transform 0.8s;
+
+    ${sizesForEachScreens(
+      [6500, 3300, 2000, 1500, 1000, 750, 400],
+      [100, 80, 70, 60, 50, 40, 35],
+      'width',
+      'px'
+    )};
+    ${sizesForEachScreens(
+      [6500, 3300, 2000, 1500, 1000, 750, 400],
+      [100, 80, 70, 60, 50, 40, 35],
+      'height',
+      'px'
+    )};
+    ${sizesForEachScreens(
+      [6500, 3300, 2000, 1500, 1000, 750, 400],
+      [30, 25, 20, 20, 20, 15, 10],
+      'margin-bottom',
+      'px'
+    )};
   }
 
   p {
@@ -640,36 +697,27 @@ export const RetingSingleEmoji = styled.button`
   }
   @media (max-width: 400px) {
     height: 50px !important;
+    width: 90%;
 
     ${flexbox('column', 'center', 'center')};
-    div {
-      height: 35px !important;
-      width: 35px !important;
-
-      background-size: 35px;
-    }
-    p {
-      font-size: 10px !important;
-    }
+  }
+  @media (max-width: 600px) {
+    font-size: 10px !important;
   }
   @media (max-width: 750px) {
     height: 100px !important;
-
-    font-size: 16px !important;
-    div {
-      height: 60px !important;
-      width: 60px !important;
-    }
   }
 
   @media (max-width: 1100px) {
     height: 140px;
-
-    font-size: 20px;
-    div {
-      height: 80px;
-      width: 80px;
-    }
+  }
+  @media (min-width: 1100px) {
+    height: 240px;
+    margin: 40px 0;
+  }
+  @media (min-width: 3000px) {
+    margin-top: 100px !important;
+    margin-bottom: 100px !important;
   }
 `;
 
@@ -702,40 +750,21 @@ export const Background = styled.div`
   }
 `;
 
-export const Modal = styled.div`
+export const Modal1 = styled(motion.div)`
   position: fixed;
-  z-index: 20;
-
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
 
-  //overflow-y: scroll;
+  z-index: 2000;
+
+  display: ${({ show }) => (show ? 'flex' : 'none')};
+
+  overflow-y: auto;
 
   background: #fff;
 
-  display: ${({ isActive }) => (isActive ? 'flex' : 'none')};
-
-  background: #fff;
-
-  transition: opacity 0.8s;
-
-  &.fade-enter {
-    opacity: 0;
-  }
-
-  &.fade-enter-active {
-    opacity: 1;
-    transition: 'opacity 300ms';
-  }
-
-  &.fade-exit {
-    opacity: 1;
-  }
-
-  &.fade-exit-active {
-    opacity: 0;
-    transition: 'opacity 300ms';
-  }
+  flex-direction: column;
+  justify-content: flex-start;
 `;
