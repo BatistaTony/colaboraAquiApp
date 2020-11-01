@@ -77,20 +77,37 @@ export const List = styled.div`
   position: relative;
 
   margin-top: 100px;
+  padding-top: 40px;
   ${flexbox('column', 'flex-start', 'center')};
 
   @media (max-width: 450px) {
     margin-top: 20px;
   }
+  background: rgba(75, 85, 186, 0.01);
+
+  :after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-top: 80px solid #fff;
+    border-left: 50vw solid transparent;
+    border-right: 50vw solid transparent;
+    border-radius: 0 0 100% 100%;
+  }
 `;
 
 export const CardRankingContainer = styled.div`
-  width: 80%;
+  width: 74%;
   min-height: 130px;
   max-height: 200px;
   min-width: 300px;
   max-width: 1100px;
   position: relative;
+
+  align-self: center;
 
   background: #fff;
   z-index: 1;
@@ -98,8 +115,8 @@ export const CardRankingContainer = styled.div`
   ${flexbox('column', 'space-between', 'center')};
   padding: 10px 20px;
 
-  margin: 15px 0;
-  border-radius: 16px;
+  margin: 15px auto;
+  border-radius: 30px;
   box-sizing: border-box;
   box-shadow: 0px 4px 24px rgba(75, 85, 186, 0.05);
   @media (max-width: 450px) {
@@ -111,17 +128,18 @@ export const CardRankingContainer = styled.div`
   }
   @media (min-width: 750px) {
     height: 200px;
-    margin: 30px 0;
+    margin: 30px auto;
     min-height: 200px;
   }
   @media (min-width: 1000px) {
     ${flexbox('row', 'space-between', 'center')};
-    margin: 40px 0;
+    margin: 40px auto;
     height: 130px !important;
     min-height: 130px;
   }
   @media (min-width: 1230px) {
-    width: 90%;
+    width: 70% !important;
+    background: #fff;
   }
   @media (min-width: 1800px) {
     max-width: 1500px;
@@ -169,7 +187,7 @@ export const FloatCircle = styled.div`
     height: 60px;
     top: -30px;
     left: -30px;
-    border: 6px solid #4b55ba;
+    border-size: 6px;
 
     font-size: 28px;
   }
@@ -185,11 +203,18 @@ export const Content = styled.div`
   @media (min-width: 1000px) {
     width: 400px;
   }
+  @media (min-width: 1800px) {
+    width: 50% !important;
+  }
 `;
 export const DivRow = styled.div`
   width: auto;
   height: auto;
   ${flexbox('row', 'flex-start', 'center')};
+
+  @media (min-width: 1800px) {
+    margin-right: 10px;
+  }
 `;
 
 export const Row = styled.div`
@@ -203,21 +228,27 @@ export const Row = styled.div`
 `;
 
 export const CompanyLogoDiv = styled.div`
-  width: 66px;
-  height: 66px;
+  width: 90px;
+  height: 90px;
   background-color: #fff;
   background-image: ${({ img }) => ` url(${img})`};
   background-size: 50px;
   background-position-y: center;
-  background-position-x: 10px;
+  background-position-x: center;
   background-repeat: no-repeat;
   border-radius: 100%;
   border: 3px solid rgba(75, 85, 186, 0.06);
   margin-right: 10px;
 
+  @media (max-width: 480px) {
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 10px;
+  }
+
   @media (min-width: 1800px) {
-    width: 120px;
-    height: 120px;
+    width: 120px !important;
+    height: 120px !important;
     background-size: 100px;
     border: 6px solid rgba(75, 85, 186, 0.06);
     margin-right: 20px;
@@ -269,10 +300,16 @@ export const AvaliationsDiv = styled.div`
   height: auto;
 
   margin-top: 10px;
+  margin-left: 10px;
   ${flexbox('column', 'flex-start', 'flex-start')};
   border-top: solid 1px rgba(112, 112, 112, 0.12);
 
+  background: #fff;
+  @media (max-width: 1000px) {
+    margin-left: 0;
+  }
   @media (min-width: 1000px) {
+    width: 100%;
     border: none;
     width: auto;
     margin-top: 0;
@@ -292,16 +329,19 @@ export const Title = styled.p`
   }
 `;
 export const CardRow = styled.div`
-  width: 100%;
+  width: auto;
   height: auto;
+
+  background: #fff;
   ${flexbox('row', 'space-between', 'center')};
 
+  /*
   @media (min-width: 750px) {
     width: 350px;
   }
   @media (min-width: 1800px) {
     width: 600px;
-  }
+  }*/
 `;
 export const Avaliation = styled.div`
   width: auto;
@@ -318,6 +358,7 @@ export const Avaliation = styled.div`
   padding: 5px;
 
   border-radius: 6px;
+  margin-right: 5px;
   p {
     font-size: 12px;
     ${getFont('Medium')};
@@ -339,6 +380,7 @@ export const Avaliation = styled.div`
   }
   @media (min-width: 1800px) {
     width: auto;
+    margin-right: 10px;
     p {
       font-size: 22px;
     }

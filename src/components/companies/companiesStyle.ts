@@ -547,6 +547,8 @@ export const CompanyRateNumbers = styled.p`
 export const StarsRated = styled.div`
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.3);
+  background: ${({ background }) =>
+    background === "black" ? "rgba(0, 0, 0, 0.3)" : "rgba(252, 190, 10, 0.1)"};
   position: relative;
   width: auto;
   padding: 10px;

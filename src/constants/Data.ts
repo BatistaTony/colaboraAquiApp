@@ -3,6 +3,7 @@ const data = [
     id: 0,
     name: 'UNITEL',
     ranking: 1,
+    stars: 5,
     avaliations: {
       all: 302000000,
       positive: 201000000,
@@ -17,6 +18,7 @@ const data = [
     id: 1,
     name: 'MOVICEL',
     ranking: 2,
+    stars: 4,
     avaliations: {
       all: 120,
       positive: 5,
@@ -31,6 +33,7 @@ const data = [
     id: 2,
     name: 'INADEC',
     ranking: 3,
+    stars: 4,
     avaliations: {
       all: 120,
       positive: 555,
@@ -45,6 +48,7 @@ const data = [
     id: 3,
     name: 'Movicel',
     ranking: 4,
+    stars: 3,
     avaliations: {
       all: 120,
       positive: 555,
@@ -59,6 +63,7 @@ const data = [
     id: 4,
     name: 'Movicel',
     ranking: 5,
+    stars: 2,
     avaliations: {
       all: 120,
       positive: 555,
