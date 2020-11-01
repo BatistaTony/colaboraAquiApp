@@ -57,7 +57,7 @@ export default function CardCompany({ data }: IProps) {
               </div>
             </div>
             <div className="start_div_cmpy">
-              <StarsRatedCompany stars={companyStars} />
+              <StarsRatedCompany background={""} stars={companyStars} />
             </div>
           </div>
 
