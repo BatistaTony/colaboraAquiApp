@@ -29,6 +29,7 @@ const RateModal = ({ showTheModal, companyId, visible }: any) => {
       companyId: companyId,
     };
 
+    alert('Obrigado por avaliar a Empresa');
     console.log(data);
     setVal(0);
     textareaValue.current.value = '';

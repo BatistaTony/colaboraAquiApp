@@ -132,6 +132,7 @@ const RateCompany = ({ id }: any) => {
                   left: 0,
                   visibility: 'visible',
                   opacity: 1,
+                  overflow: 'auto',
                   transition: 'opacity 0.3s linear',
                 }
               : {
