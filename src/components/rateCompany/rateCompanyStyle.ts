@@ -318,11 +318,35 @@ export const OpinionsCard = styled.button`
   box-sizing: border-box;
   outline: none;
   margin-top: 10px;
-  p {
-    opacity: 0;
+
+  input {
     width: 100%;
-    background: transparent;
+    font-size: 21px;
+    color: #656777;
+    ${getFont()};
+    pointer-events: none;
+    text-overflow: ellipsis !important;
+    border: none;
+
+    opacity: 0;
     display: none;
+
+    background: transparent;
+
+    ${sizesForEachScreens(
+      [6500, 2000, 1500, 750, 320],
+      [30, 25, 23, 21, 18],
+      'font-size',
+      'px'
+    )};
+  }
+
+  p {
+    //opacity: 0;
+    width: auto;
+    // margin-left: 50px;
+    background: transparent;
+    //display: none;
     font-size: 8px;
     color: #656777;
     ${getFont()};
@@ -334,44 +358,33 @@ export const OpinionsCard = styled.button`
       'px'
     )};
   }
-  :focus,
-  :active {
-    ${flexbox('column', 'flex-start', 'flex-start')}
-    overflow: scroll;
 
-    background: #fff9e6;
-    input {
-      display: none;
-    }
-    align-items: flex-start;
-    p {
-      opacity: 1;
-      display: block;
-    }
-
-    height: 150px;
-    @media (max-width: 750px) {
-      height: 200px;
-    }
-  }
+  ${({ open }) =>
+    open &&
+    `overflow: scroll; 
+    background: #fff9e6;  
+    height: 180px !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important; 
+    align-items: flex-start; !important`}
 
   input {
-    width: 100%;
-    font-size: 21px;
-    color: #656777;
-    ${getFont()};
-    pointer-events: none;
-    text-overflow: ellipsis !important;
-    border: none;
+    ${({ open }) =>
+      !open
+        ? 'opacity: 1; display: block;'
+        : 'opacity: 0 !important; display: none'}
+  }
 
-    background: transparent;
+  p {
+    ${({ open }) =>
+      open
+        ? 'opacity: 1; display: block; height: 120px'
+        : 'opacity: 0; display: none'}
+  }
 
-    ${sizesForEachScreens(
-      [6500, 2000, 1500, 750, 320],
-      [30, 25, 23, 21, 18],
-      'font-size',
-      'px'
-    )};
+  @media (max-width: 750px) {
+    height: 200px;
   }
 
   ${sizesForEachScreens(
