@@ -51,6 +51,7 @@ export default function Hero() {
               initial={{ opacity: 1, y: animateStep[index].y }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ...animateStep[index] }}
+              key={index}
             >
               <StepNumber borderColor={value.borderColor}>
                 <h1>{index + 1}</h1>
