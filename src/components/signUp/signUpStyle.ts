@@ -581,9 +581,9 @@ export const FormSelect = styled(FormGroup)`
 export const SelectList = styled.ul`
   list-style: none;
   width: 100%;
-  height: ${({ length }) => (length > 5 ? "380px" : "auto")};
+  height: ${({ length }) => (length > 4 ? "380px" : "auto")};
   position: absolute;
-  overflow-y: ${({ length }) => (length > 5 ? "auto" : "hidden")};
+  overflow-y: ${({ length }) => (length > 4 ? "auto" : "hidden")};
   top: 108px;
   background: white;
   border-radius: 20px;
@@ -627,12 +627,6 @@ export const SelectList = styled.ul`
 
   @media (max-width: 1500px) {
     height: ${({ length }) => (length > 5 ? "185px" : "auto")};
-  }
-
-  ::-webkit-scrollbar {
-    width: 5px;
-    border-radius: 10px;
-    display: none;
   }
 
   li {

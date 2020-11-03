@@ -15,6 +15,8 @@ interface ISelectProps {
   isEmpty: boolean;
   classNames?: string;
   errorMsg: string;
+  disabled?: boolean;
+  onClick?: any;
 }
 
 export default function CustomSelect({
@@ -24,6 +26,7 @@ export default function CustomSelect({
   isEmpty,
   classNames,
   errorMsg,
+  disabled,
   ...props
 }: ISelectProps) {
   const [showList, setShowList] = useState<boolean>(false);
@@ -50,7 +53,11 @@ export default function CustomSelect({
         {...props}
         className={`customSelect ${classNames} `}
       >
-        <button onClick={() => setShowList(!showList)} className="customSelect">
+        <button
+          disabled={disabled}
+          onClick={() => setShowList(!showList)}
+          className="customSelect"
+        >
           <span className="customSelect">{defaultValueSelect} </span>
         </button>
         <InputIcon

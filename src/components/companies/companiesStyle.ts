@@ -61,7 +61,7 @@ export const TextCompanies = styled.p`
   )};
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500, 1300, 900, 750, 308],
+    [3200, 2500, 2000, 1500, 1300, 900, 690, 308],
     [40, 35, 28, 17, 14, 13, 12, 11],
     "font-size",
     "pt"
@@ -597,6 +597,10 @@ export const CompanyName = styled.h1`
   font-size: 35pt;
   ${getFont("Bold")};
   color: white;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   ${sizesForEachScreens(
     [3500, 2500, 2000, 1700, 1600, 1500, 950, 316],

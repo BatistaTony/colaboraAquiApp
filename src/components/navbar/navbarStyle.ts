@@ -266,7 +266,7 @@ export const DivUser = styled.div`
 `;
 
 export const MenuUser = styled(motion.ul)`
-  width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "300px")};
+  width: 300px;
   height: auto;
   -webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
@@ -289,16 +289,12 @@ export const MenuUser = styled(motion.ul)`
   }
 
   @media (max-width: 1930px) {
-    width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "250px")};
+    width: 250px;
   }
 
   @media (max-width: 1500px) {
     top: 40px;
-<<<<<<< HEAD
-    border-radius: 7px;
-=======
->>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
-    width: ${({ nameLength }) => (nameLength > 25 ? "100%" : "160px")};
+    width: 160px;
     left: ${({ nameLength }) => (nameLength <= 8 ? "-3rem" : 0)};
   }
 
@@ -365,12 +361,8 @@ export const MenuUser = styled(motion.ul)`
     }
 
     &:hover {
-<<<<<<< HEAD
       cursor: pointer;
       opacity: 0.8;
-=======
-      background: rgba(0, 0, 0, 0.1);
->>>>>>> 2b084c611c7f3c7d7cf80ecc260a2373ad9547a2
 
       @media (max-width: 750px) {
         background-color: transparent;

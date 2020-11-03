@@ -33,11 +33,12 @@ import Stars from '../companies/starsRated';
 
 const RateCompany = ({ id }: any) => {
   const [showModal, setShowModal] = React.useState({ visible: false });
+  const [openMore, setOpenMore] = React.useState<any>();
+  const [aa, setaa] = React.useState(false);
   const arr = [0, 1, 2, 3, 4, 5, 6, 7];
-  const text =
-    'Péssima experiência com apoio ao   cliente e eles não são nada sérios, sem falar que a rede cai por tudo e por nada';
 
-  const a = 4;
+  const text =
+    'Péssima experiência com apoio ao cliente e eles não são nada sérios, sem falar que a rede cai por tudo e por nada';
 
   const data = Data.find((item) => item.id === id);
 
@@ -87,7 +88,7 @@ const RateCompany = ({ id }: any) => {
                 </NameOfComapny>
                 <Avaliations>{data.avaliations.all} Avaliações </Avaliations>
               </div>
-              <Stars stars={a} background="orange" />
+              <Stars stars={data.stars} background="orange" />
             </Row>
           </HeaderInforCompanyMoblite>
           <HeaderAvaliationMobile>
@@ -110,10 +111,16 @@ const RateCompany = ({ id }: any) => {
         >
           <OpinionsContainer>
             {arr.map((item) => (
-              <OpinionsCard key={item}>
+              <OpinionsCard
+                key={item}
+                onClick={() => {
+                  setOpenMore(item);
+                  setaa(!aa);
+                }}
+                open={item === openMore ? aa : false}
+              >
                 <CardNameDiv>AK</CardNameDiv>
                 <input placeholder={text} />
-
                 <p>{text}</p>
               </OpinionsCard>
             ))}
@@ -132,6 +139,7 @@ const RateCompany = ({ id }: any) => {
                   left: 0,
                   visibility: 'visible',
                   opacity: 1,
+                  overflow: 'auto',
                   transition: 'opacity 0.3s linear',
                 }
               : {

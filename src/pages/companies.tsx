@@ -109,7 +109,7 @@ function Companies() {
     {
       companyPositionRanking: 1,
       companyRatesNumber: 150,
-      companyName: "MoviZAPFIBRAcel",
+      companyName: "ZAp Fibra",
       companyLogo: "/images/Movicel-2.png",
       companyStars: 2,
       companyDescription:

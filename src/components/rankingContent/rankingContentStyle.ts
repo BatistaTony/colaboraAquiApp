@@ -76,7 +76,7 @@ export const List = styled.div`
 
   position: relative;
 
-  margin-top: 100px;
+  margin-top: 50px;
   padding-top: 40px;
   ${flexbox('column', 'flex-start', 'center')};
 
@@ -103,7 +103,7 @@ export const CardRankingContainer = styled.div`
   width: 74%;
   min-height: 130px;
   max-height: 200px;
-  min-width: 300px;
+  min-width: 270px;
   max-width: 1100px;
   position: relative;
 
@@ -178,9 +178,9 @@ export const FloatCircle = styled.div`
     height: 30px;
     top: -15px;
     left: -5px;
-    border: 2px solid #4b55ba;
+    border-size: 2px;
 
-    font-size: 16px;
+    font-size: 14px;
   }
   @media (min-width: 1800px) {
     width: 60px;
@@ -334,14 +334,6 @@ export const CardRow = styled.div`
 
   background: #fff;
   ${flexbox('row', 'space-between', 'center')};
-
-  /*
-  @media (min-width: 750px) {
-    width: 350px;
-  }
-  @media (min-width: 1800px) {
-    width: 600px;
-  }*/
 `;
 export const Avaliation = styled.div`
   width: auto;
