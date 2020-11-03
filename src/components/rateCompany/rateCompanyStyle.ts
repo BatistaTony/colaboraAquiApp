@@ -52,7 +52,7 @@ export const Header = styled.div`
     margin-top: 20px;
     padding-top: 10px;
     width: 90% !important;
-    ${flexbox('column', 'justify-content', 'center')};
+    ${flexbox('column', 'space-around', 'center')};
   }
   @media (max-width: 1000px) {
     width: 80%;
@@ -293,7 +293,7 @@ export const OpinionsContainer = styled.div`
   margin: 0 auto;
 
   @media (max-width: 750px) {
-    padding: 40px 40px 140px 40px;
+    padding: 40px 20px 140px 20px;
     width: 90%;
   }
   p {
@@ -307,11 +307,11 @@ export const OpinionsCard = styled.button`
   min-height: 60px;
 
   position: relative;
-  transition: height 1s, background-color 1s, transform 1s;
+  transition: height 0.5s, background-color 0.5s, transform 0.5s;
 
   background: #fff;
   ${flexbox('row', 'flex-start', 'flex-start')};
-  padding: 20px 10px;
+  padding: 20px 16px;
 
   border: 0;
   border-radius: 16px;
@@ -319,11 +319,31 @@ export const OpinionsCard = styled.button`
   outline: none;
   margin-top: 10px;
 
-  p {
-    opacity: 0;
+  input {
     width: 100%;
-    background: transparent;
+    font-size: 21px;
+    color: #656777;
+    ${getFont()};
+    pointer-events: none;
+    text-overflow: ellipsis !important;
+    border: none;
+
+    opacity: 0;
     display: none;
+
+    background: transparent;
+
+    ${sizesForEachScreens(
+      [6500, 2000, 1500, 750, 320],
+      [30, 25, 23, 21, 18],
+      'font-size',
+      'px'
+    )};
+  }
+
+  p {
+    width: auto;
+    background: transparent;
     font-size: 8px;
     color: #656777;
     ${getFont()};
@@ -335,43 +355,33 @@ export const OpinionsCard = styled.button`
       'px'
     )};
   }
-  :focus,
-  :active {
-    overflow: scroll;
 
-    background: #fff9e6;
-    input {
-      display: none;
-    }
-    align-items: flex-start;
-    p {
-      opacity: 1;
-      display: block;
-    }
-
-    height: 150px;
-    @media (max-width: 750px) {
-      height: 200px;
-    }
-  }
+  ${({ open }) =>
+    open &&
+    `overflow: scroll; 
+    background: #fff9e6;  
+    height: 180px !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important; 
+    align-items: flex-start; !important`}
 
   input {
-    width: 100%;
-    font-size: 21px;
-    color: #656777;
-    ${getFont()};
-    pointer-events: none;
-    text-overflow: ellipsis !important;
-    border: none;
+    ${({ open }) =>
+      !open
+        ? 'opacity: 1; display: block;'
+        : 'opacity: 0 !important; display: none'}
+  }
 
-    background: transparent;
+  p {
+    ${({ open }) =>
+      open
+        ? 'opacity: 1; display: block; height: 120px'
+        : 'opacity: 0; display: none'}
+  }
 
-    ${sizesForEachScreens(
-      [6500, 2000, 1500, 750, 320],
-      [30, 25, 23, 21, 18],
-      'font-size',
-      'px'
-    )};
+  @media (max-width: 750px) {
+    height: 200px;
   }
 
   ${sizesForEachScreens(
@@ -427,10 +437,11 @@ export const CardNameDiv = styled.div`
 export const RateCompanyContainer = styled.div`
   width: 100%;
   height: 100%;
-  min-height: 720px;
+  min-height: 700px;
   overflow-y: auto !important;
   overflow-x: hidden;
-
+  position: absolute;
+  z-index: 1;
   background: #fff;
 
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
@@ -444,7 +455,6 @@ export const RateCompanyContainer = styled.div`
 
   @media (max-width: 400px) {
     justify-content: center;
-    background: #fff;
   }
   @media (max-width: 750px) {
     justify-content: center;
@@ -497,10 +507,12 @@ export const RateCompanyTex = styled.p`
 
   margin-top: 60px;
   margin-bottom: 40px;
-
+  @media (max-width: 480px) {
+    width: 90% !important;
+  }
   @media (max-width: 750px) {
     margin-top: 20px;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     font-size: 18px !important;
   }
   @media (max-width: 1000px) {
@@ -519,8 +531,9 @@ export const RateCompanyTex = styled.p`
 `;
 
 export const RateCompanyTextarea = styled.textarea`
-  width: 1000px;
+  width: 70%;
   height: 170px;
+  max-width: 1800px;
 
   padding: 20px 30px;
 
@@ -541,12 +554,14 @@ export const RateCompanyTextarea = styled.textarea`
   box-sizing: border-box;
   @media (max-width: 750px) {
     font-size: 16px !important;
+    width: 90% !important;
+    padding: 10px 20px;
   }
-  @media (max-width: 1100px) {
-    width: 90%;
+  @media (min-width: 750px) {
+    width: 70% !important;
     font-size: 20px;
   }
-  @media (max-width: 2500px) {
+  @media (min-width: 1100px) {
     width: 70% !important;
     font-size: 20px;
   }
@@ -586,7 +601,7 @@ export const SendRateButton = styled.button`
     margin-top: 10px;
   }
   @media (max-width: 750px) {
-    width: 90%;
+    width: 90% !important;
     height: 45px;
     font-size: 16px !important;
   }
@@ -602,26 +617,28 @@ export const SendRateButton = styled.button`
 `;
 
 export const RetingEmojiContainer = styled.div`
-  width: 952px;
+  width: 70%;
+  max-width: 1800px;
   height: 178px;
 
   ${flexbox('row', 'space-between', 'center')};
   margin: 0 auto;
   margin-bottom: 40px;
-
   @media (max-width: 350px) {
     height: 148px;
     margin-bottom: 20px;
   }
+
+  @media (max-width: 480px) {
+    width: 90% !important;
+  }
   @media (max-width: 750px) {
     font-size: 14px !important;
+    width: 90% !important;
     height: 90px !important;
     ${flexbox('row', 'space-between', 'space-between')};
   }
-  @media (max-width: 1100px) {
-    width: 70% !important;
-  }
-  @media (max-width: 2500px) {
+  @media (min-width: 750px) {
     width: 70% !important;
   }
 
@@ -727,7 +744,7 @@ export const Background = styled.div`
   left: 10%;
   bottom: 0;
   position: absolute;
-  z-index: -2;
+  z-index: -1;
 
   background: transparent;
 

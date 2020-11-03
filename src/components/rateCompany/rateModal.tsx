@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
 
 import {
   RateCompanyContainer,
@@ -29,9 +28,21 @@ const RateModal = ({ showTheModal, companyId, visible }: any) => {
       companyId: companyId,
     };
 
-    console.log(data);
-    setVal(0);
-    textareaValue.current.value = '';
+    if (data.value === 0 || data.value === null) {
+      alert('Precisa de escolher uma opção para seguir com a avaliação!');
+    } else if (
+      data.value != 0 &&
+      (data.Feedback === '' || data.Feedback === null)
+    ) {
+      alert('Tem certe que nao quer deixar uma opinao?');
+      alert('Obrigado por avaliar a Empresa');
+      setVal(0);
+      textareaValue.current.value = '';
+    } else {
+      alert('Obrigado por avaliar a Empresa');
+      setVal(0);
+      textareaValue.current.value = '';
+    }
   }
 
   const arr = [
@@ -45,11 +56,6 @@ const RateModal = ({ showTheModal, companyId, visible }: any) => {
   function ratingValue(id: number) {
     return id === val ? true : false;
   }
-
-  const variants = {
-    visible: { opacity: 1, y: 0 },
-    hidden: { opacity: 0, y: -200 },
-  };
 
   function RatingEmojis() {
     return (
@@ -77,8 +83,8 @@ const RateModal = ({ showTheModal, companyId, visible }: any) => {
       <ButtonBack img={'/images/left.png'} onClick={() => showTheModal()} />
 
       <RateCompanyTex>
-        Como classificas a tua experiência com este{' '}
-        <Bold>serviço/empresa ?</Bold>
+        Como classificas a tua experiência com este
+        <Bold> serviço/empresa ?</Bold>
       </RateCompanyTex>
 
       <RatingEmojis />
@@ -88,7 +94,6 @@ const RateModal = ({ showTheModal, companyId, visible }: any) => {
         type="submit"
         autoFocus={false}
         placeholder="Como tu achas que eles podem melhorar ? (deixe a sua opinião)"
-        //value={textareaValue}
       />
       <SendRateButton onClick={() => HendleRate()}>
         Enviar Avaliação
