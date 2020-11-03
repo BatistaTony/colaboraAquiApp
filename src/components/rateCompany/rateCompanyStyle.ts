@@ -307,7 +307,7 @@ export const OpinionsCard = styled.button`
   min-height: 60px;
 
   position: relative;
-  transition: height 1s, background-color 1s, transform 1s;
+  transition: height 0.5s, background-color 0.5s, transform 0.5s;
 
   background: #fff;
   ${flexbox('row', 'flex-start', 'flex-start')};
@@ -342,11 +342,8 @@ export const OpinionsCard = styled.button`
   }
 
   p {
-    //opacity: 0;
     width: auto;
-    // margin-left: 50px;
     background: transparent;
-    //display: none;
     font-size: 8px;
     color: #656777;
     ${getFont()};

@@ -38,7 +38,7 @@ const RateCompany = ({ id }: any) => {
   const arr = [0, 1, 2, 3, 4, 5, 6, 7];
 
   const text =
-    'Péssima experiência com apoio ao  addddddddddddnsdkfjnkdjn fkdjnfkdjnfkdjfndkj fnkdjfndjfnkdjnfkdjnfkdjfdnf cliente e eles não são nada sérios, sem falar que a rede cai por tudo e por nada';
+    'Péssima experiência com apoio ao cliente e eles não são nada sérios, sem falar que a rede cai por tudo e por nada';
 
   const data = Data.find((item) => item.id === id);
 
