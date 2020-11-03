@@ -33,6 +33,7 @@ export default function InputPassword({
           id="password"
           onChange={handleChange}
           placeholder="Senha"
+          maxLength={8}
         />
 
         <InputIcon className="iconeSee">

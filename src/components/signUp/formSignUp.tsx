@@ -182,6 +182,7 @@ export default function FormSignUp() {
               onKeyUp={(event: any) => checkUserName(event.target.value)}
               onChange={handleChange}
               placeholder="Nome do utilizador"
+              maxLength={15}
             />
             {userNameAccept != null && (
               <div className="iconTextBox">
