@@ -16,6 +16,7 @@ interface ISelectProps {
   classNames?: string;
   errorMsg: string;
   disabled?: boolean;
+  onClick?: any;
 }
 
 export default function CustomSelect({
