@@ -133,6 +133,11 @@ export const ModalSignIn = styled(Modal)`
         cursor: default;
         width: 100%;
         text-align: left;
+
+        &:hover {
+          cursor: pointer;
+        }
+
         ${sizesForEachScreens(
           [3200, 3000, 2500, 1930, 1500],
           [26, 22, 19, 17, 12],

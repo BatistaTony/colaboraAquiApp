@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ButtonSignUp,
   DivGridForm,
@@ -13,8 +13,8 @@ import CustomSelect from "./select";
 import SucessModal from "./sucessModal";
 import InputPassword from "./inputPassword";
 import Link from "next/link";
-import { counties, provinces } from "./signUp.data";
 import IconTextBox from "./iconNameTextbox";
+import provinces from "./../../constants/provinces.json";
 
 const initialState: IConsumer = {
   userName: "",
@@ -30,6 +30,8 @@ export default function FormSignUp() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
   const [userNameAccept, setUserNameAccept] = useState<boolean | null>(null);
+  const [provincesAngola, setProvinces] = useState<Array<string | null>>([]);
+  const [counties, setCounties] = useState<Array<string | null>>([]);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -80,10 +82,23 @@ export default function FormSignUp() {
   };
 
   const handleChooseSelect = (property: string, value: string) => {
-    setConsumerData({
-      ...consumerData,
-      [property]: value,
-    });
+    if (property === "province") {
+      setConsumerData({
+        ...consumerData,
+        [property]: value,
+        county: "",
+      });
+
+      if (errorMsg === "Seleciona uma provincia") {
+        setWhereIsError(null);
+        setErrorMsg(null);
+      }
+    } else {
+      setConsumerData({
+        ...consumerData,
+        [property]: value,
+      });
+    }
 
     if (userNameAccept) {
       setWhereIsError(null);
@@ -122,6 +137,33 @@ export default function FormSignUp() {
     }
   };
 
+  const setProvincesToSelect = () => {
+    const result = provinces.map((value) => value.state);
+    setProvinces(result);
+  };
+
+  const setCountiesToSelect = () => {
+    const result = provinces.filter(
+      (value) => value.state === consumerData.province
+    );
+    setCounties(result[0].counties);
+  };
+
+  const checkIfGotCounties = () => {
+    if (consumerData.province === "") {
+      setWhereIsError("province");
+      setErrorMsg("Seleciona uma provincia");
+    }
+  };
+
+  useEffect(() => {
+    setProvincesToSelect();
+
+    if (consumerData.province) {
+      setCountiesToSelect();
+    }
+  }, [consumerData.province]);
+
   return (
     <form onSubmit={handleSubmit}>
       {showModalSucess && <SucessModal dataUser={consumerData} />}
@@ -140,6 +182,7 @@ export default function FormSignUp() {
               onKeyUp={(event: any) => checkUserName(event.target.value)}
               onChange={handleChange}
               placeholder="Nome do utilizador"
+              maxLength={15}
             />
             {userNameAccept != null && (
               <div className="iconTextBox">
@@ -155,17 +198,21 @@ export default function FormSignUp() {
         <CustomSelect
           defaultValueSelect={consumerData.province || "Província"}
           errorMsg={errorMsg}
-          handleChange={(value) => handleChooseSelect("province", value)}
-          values={provinces}
+          handleChange={(value: string) =>
+            handleChooseSelect("province", value)
+          }
+          values={provincesAngola}
           isEmpty={errorIsOn === "province"}
         />
 
         <CustomSelect
           defaultValueSelect={consumerData.county || "Municipio"}
           errorMsg={errorMsg}
-          handleChange={(value) => handleChooseSelect("county", value)}
+          handleChange={(value: string) => handleChooseSelect("county", value)}
           values={counties}
+          disabled={consumerData.province === ""}
           isEmpty={errorIsOn === "county"}
+          onClick={checkIfGotCounties}
         />
 
         <FormGroupGrand>

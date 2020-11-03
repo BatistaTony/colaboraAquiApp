@@ -1,0 +1,48 @@
+[
+  {
+    "state": "Luanda",
+    "counties": [
+      "Belas",
+      "Cacuaco",
+      "Cazenga",
+      "Icolo e Bengo",
+      "Luanda",
+      "Quiçama",
+      "Kilamba Kiaxi",
+      "Talatona",
+      "Viana"
+    ]
+  },
+  {
+    "state": "Uige",
+    "counties": ["Quimbele", "Maq. Do Zombo", "Negage", "Uige"]
+  },
+  { "state": "Malanje", "counties": ["Malanje"] },
+  { "state": "Cabinda", "counties": ["Cabinda"] },
+  { "state": "Moxico", "counties": ["Cazombo", "Lucasse", "Chiume"] },
+  { "state": "Kwanza Norte", "counties": ["Lucala"] },
+  { "state": "Kwanza Sul", "counties": ["Quibala", "Gabela", "Sumbe"] },
+  { "state": "Lunda Norte", "counties": ["Cuango", "Luremo"] },
+  { "state": "Lunda Sul", "counties": ["Saurimo", "Luau", "Luena"] },
+  { "state": "Benguela", "counties": ["Lobito", "Benguela", "Cubal"] },
+  { "state": "Huambo", "counties": ["Huambo", "Wama", "Cuima"] },
+  { "state": "Zaire", "counties": ["M'Banza Congo", "Soyo"] },
+  { "state": "Huila", "counties": ["Lubango", "Chiange"] },
+  { "state": "Namibe", "counties": ["Namibe", "Tombua"] },
+  {
+    "state": "Bengo",
+    "counties": [
+      "Dande",
+      "Dembos",
+      "Bula Atumba",
+      "Nambuangongo",
+      "Pango Aluquêm"
+    ]
+  },
+  { "state": "Bié", "counties": ["Kuito", "Munhango"] },
+  { "state": "Cunene", "counties": ["Cahama", "Ondjiva"] },
+  {
+    "state": "Kwando Kubango",
+    "counties": ["Mavinga", "Caiundo", "Luiana", "Cuito Cuanavale"]
+  }
+]

@@ -629,12 +629,6 @@ export const SelectList = styled.ul`
     height: ${({ length }) => (length > 5 ? "185px" : "auto")};
   }
 
-  ::-webkit-scrollbar {
-    width: 5px;
-    border-radius: 10px;
-    display: none;
-  }
-
   li {
     width: 100%;
     cursor: default;
