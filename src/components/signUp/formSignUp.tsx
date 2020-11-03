@@ -30,8 +30,8 @@ export default function FormSignUp() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
   const [userNameAccept, setUserNameAccept] = useState<boolean | null>(null);
-  const [provincesAngola, setProvinces] = useState<Array<string | null>>([]);
-  const [counties, setCounties] = useState<Array<string | null>>([]);
+  const provincesAngola = provinces.map((value) => value.state);
+  const [counties, setCounties] = useState<Array<string> | null>([]);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -39,6 +39,7 @@ export default function FormSignUp() {
 
   const checkUserName = (name: string) => {
     const nomes = ["tony", "batistatony", "JoaoTOny", "rayThon"];
+
     const result = nomes.filter((state) => state === name);
 
     if (result.length) {
@@ -89,6 +90,8 @@ export default function FormSignUp() {
         county: "",
       });
 
+      setCountiesToSelect(value);
+
       if (errorMsg === "Seleciona uma provincia") {
         setWhereIsError(null);
         setErrorMsg(null);
@@ -137,15 +140,8 @@ export default function FormSignUp() {
     }
   };
 
-  const setProvincesToSelect = () => {
-    const result = provinces.map((value) => value.state);
-    setProvinces(result);
-  };
-
-  const setCountiesToSelect = () => {
-    const result = provinces.filter(
-      (value) => value.state === consumerData.province
-    );
+  const setCountiesToSelect = (province: string) => {
+    const result = provinces.filter((value) => value.state === province);
     setCounties(result[0].counties);
   };
 
@@ -155,14 +151,6 @@ export default function FormSignUp() {
       setErrorMsg("Seleciona uma provincia");
     }
   };
-
-  useEffect(() => {
-    setProvincesToSelect();
-
-    if (consumerData.province) {
-      setCountiesToSelect();
-    }
-  }, [consumerData.province]);
 
   return (
     <form onSubmit={handleSubmit}>
