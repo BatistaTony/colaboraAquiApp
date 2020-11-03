@@ -358,6 +358,14 @@ export const ButtonStartRate = styled(motion.button)`
     padding-top: 15px;
   }
 
+  @media (max-height: 555px) and (max-width: 1200px) {
+    margin-top: 5%;
+  }
+
+  @media (max-height: 520px) and (max-width: 1200px) {
+    margin-top: 3%;
+  }
+
   img {
     width: 60px;
     height: 60px;
@@ -412,8 +420,8 @@ export const IllustrationRating = styled(motion.div)`
     margin-left: 20px;
 
     ${sizesForEachScreens(
-      [3200, 2700, 2200, 1920, 1650, 1370],
-      [60, 50, 40, , 32, 25, 22],
+      [3200, 2700, 2200, 1920, 1650, 1370, 1100],
+      [60, 50, 40, , 32, 25, 22, 19],
       "width",
       "rem"
     )};
