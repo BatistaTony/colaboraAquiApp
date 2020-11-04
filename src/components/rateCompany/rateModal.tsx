@@ -1,109 +1,83 @@
-import React, { useRef } from 'react';
+import { useState } from "react";
 
 import {
-  RateCompanyContainer,
   ButtonBack,
-  RateCompanyTex,
-  Bold,
+  RateCompanyText,
   RateCompanyTextarea,
   SendRateButton,
-  RetingEmojiContainer,
-  RetingSingleEmoji,
-  Background,
-} from './rateCompanyStyle';
+  ModalRate,
+  DivBtnModalRate,
+  DivCheckBox,
+} from "./rateCompanyStyle";
+import RatingEmojis from "./rateEmojes";
 
-export function GoBack(item: boolean) {
-  console.log(item);
-  return item != null ? item : false;
+interface IRateCompany {
+  feeling: string;
+  consumerExperience: string;
 }
 
-const RateModal = ({ showTheModal, companyId, visible }: any) => {
-  const [val, setVal] = React.useState<Number>(0);
-  const textareaValue = useRef<any>();
+const initialSatte: IRateCompany = {
+  feeling: "",
+  consumerExperience: "",
+};
 
-  function HendleRate() {
-    let data = {
-      value: val,
-      Feedback: textareaValue.current.value,
-      companyId: companyId,
-    };
+const RateModal = () => {
+  const [rateData, setRateData] = useState<IRateCompany>(initialSatte);
+  const [isGiveSuggestion, setIsGiveSuggestion] = useState<boolean>(false);
 
-    if (data.value === 0 || data.value === null) {
-      alert('Precisa de escolher uma opção para seguir com a avaliação!');
-    } else if (
-      data.value != 0 &&
-      (data.Feedback === '' || data.Feedback === null)
-    ) {
-      alert('Tem certe que nao quer deixar uma opinao?');
-      alert('Obrigado por avaliar a Empresa');
-      setVal(0);
-      textareaValue.current.value = '';
-    } else {
-      alert('Obrigado por avaliar a Empresa');
-      setVal(0);
-      textareaValue.current.value = '';
-    }
-  }
+  const handleChange = (event: any) => {
+    setRateData({
+      ...rateData,
+      [event.target.name]: event.target.value,
+    });
+  };
 
-  const arr = [
-    { id: 1, title: 'Horrivel' },
-    { id: 2, title: 'Pessimo' },
-    { id: 3, title: 'Normal' },
-    { id: 4, title: 'Bom' },
-    { id: 5, title: 'Muito Bom' },
-  ];
-
-  function ratingValue(id: number) {
-    return id === val ? true : false;
-  }
-
-  function RatingEmojis() {
-    return (
-      <RetingEmojiContainer>
-        {arr.map((item) => (
-          <RetingSingleEmoji
-            key={item.id}
-            img={item.id}
-            active={ratingValue(item.id)}
-            onClick={() => {
-              setVal(item.id);
-            }}
-          >
-            <div></div>
-
-            <p>{item.title}</p>
-          </RetingSingleEmoji>
-        ))}
-      </RetingEmojiContainer>
-    );
-  }
+  const sendSuggestion = () => {};
 
   return (
-    <RateCompanyContainer visible={visible}>
-      <ButtonBack img={'/images/left.png'} onClick={() => showTheModal()} />
+    <ModalRate>
+      <ButtonBack>
+        <img src="/images/back.png" alt="" />
+        <p>Cancelar sugestão</p>
+      </ButtonBack>
 
-      <RateCompanyTex>
+      <RateCompanyText>
         Como classificas a tua experiência com este
-        <Bold> serviço/empresa ?</Bold>
-      </RateCompanyTex>
+        <span> serviço/empresa ?</span>
+      </RateCompanyText>
 
       <RatingEmojis />
 
-      <RateCompanyTextarea
-        ref={textareaValue}
-        type="submit"
-        autoFocus={false}
-        placeholder="Como tu achas que eles podem melhorar ? (deixe a sua opinião)"
-      />
-      <SendRateButton onClick={() => HendleRate()}>
-        Enviar Avaliação
-      </SendRateButton>
-      <Background>
-        <img src={'/images/Elipse 1.svg'} />
-        <img src={'/images/Elipse 36.svg'} />
-        <img src={'/images/Polígono 2.svg'} />
-      </Background>
-    </RateCompanyContainer>
+      <RateCompanyTextarea>
+        <textarea
+          name="consumerExperience"
+          placeholder="Descreva sua experiencia"
+          onChange={handleChange}
+        ></textarea>
+      </RateCompanyTextarea>
+
+      <DivCheckBox checked={isGiveSuggestion}>
+        <label className="divCheckMark">
+          <input
+            type="checkbox"
+            id="isGiveSuggestion"
+            onClick={() => setIsGiveSuggestion(!isGiveSuggestion)}
+            checked={isGiveSuggestion}
+          />
+          <span className="checkmark"></span>
+        </label>
+
+        <p onClick={() => setIsGiveSuggestion(!isGiveSuggestion)}>
+          Deixar sugestão de melhoria
+        </p>
+      </DivCheckBox>
+
+      <DivBtnModalRate>
+        <SendRateButton>
+          {isGiveSuggestion ? "Continuar" : "Enviar Avaliação"}
+        </SendRateButton>
+      </DivBtnModalRate>
+    </ModalRate>
   );
 };
 
