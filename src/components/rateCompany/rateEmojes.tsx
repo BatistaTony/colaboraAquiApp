@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Emoje from "./emoji";
-import { RatingEmojiContainer, RatingSingleEmoji } from "./rateCompanyStyle";
+import { RatingEmojiContainer, RatingSingleEmoji } from "./modalStyle";
 
 interface IProps {
   handleFeeling: any;
@@ -8,7 +8,6 @@ interface IProps {
 
 export default function RatingEmojis({ handleFeeling }: IProps) {
   const [feeling, setFeeling] = useState<string | null>(null);
-  const [paint, setPaint] = useState<string | null>(false);
 
   const feelings = [
     { id: 1, title: "Horrivel" },

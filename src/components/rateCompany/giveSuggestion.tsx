@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GiveSuggestionContianer, RateCompanyText } from "./rateCompanyStyle";
+import { GiveSuggestionContianer, RateCompanyText } from "./modalStyle";
 import TextareaRate from "./textareaRate";
 
 interface IProps {

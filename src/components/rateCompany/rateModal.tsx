@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useState, Fragment } from "react";
 import CheckBoxRate from "./checboxRate";
 import GiveSuggestion from "./giveSuggestion";
@@ -13,7 +12,7 @@ import {
   DivBtnModalRate,
   DivCheckBox,
   ContainerStepOne,
-} from "./rateCompanyStyle";
+} from "./modalStyle";
 import RatingEmojis from "./rateEmojes";
 import TextareaRate from "./textareaRate";
 

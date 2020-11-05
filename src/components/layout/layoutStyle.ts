@@ -12,24 +12,6 @@ const chooseBackgroundByTitle = (title: string) => {
   }
 };
 
-const fadeOut = keyframes`
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-`;
-
-const fadeIn = keyframes`
- from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
-
 export const LayoutStyled = styled.div`
   width: 100%;
   height: 100vh;
@@ -38,7 +20,7 @@ export const LayoutStyled = styled.div`
   grid-template-rows: 15% 85%;
   background: ${({ title }) => chooseBackgroundByTitle(title)};
   background-size: 100% 100%;
-  overflow: hidden;
+  overflow: ${({ title }) => (title === "Avaliar" ? "auto" : "hidden")};
   position: absolute;
 
   @media (max-width: 3200px) {

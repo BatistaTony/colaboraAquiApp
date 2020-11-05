@@ -1,5 +1,5 @@
 import { Bom, Horrible, MuitoBom, Normal, Pessima } from "./emojefaces";
-import { EmojeStyle } from "./rateCompanyStyle";
+import { EmojeStyle } from "./modalStyle";
 
 interface IEmoje {
   face: number;

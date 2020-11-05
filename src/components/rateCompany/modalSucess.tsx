@@ -4,7 +4,7 @@ import {
   ButtonFinishRate,
   IllustrationModalSucessRate,
   ModalRateSucesStyle,
-} from "./rateCompanyStyle";
+} from "./modalStyle";
 import { AnimatePresence } from "framer-motion";
 
 interface IProps {

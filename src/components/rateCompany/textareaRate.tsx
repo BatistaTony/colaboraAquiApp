@@ -1,4 +1,4 @@
-import { RateCompanyTextarea } from "./rateCompanyStyle";
+import { RateCompanyTextarea } from "./modalStyle";
 
 interface IProps {
   handleChange: any;
