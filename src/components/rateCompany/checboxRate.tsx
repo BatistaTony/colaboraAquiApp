@@ -1,8 +1,13 @@
 interface IProps {
   isGiveSuggestion: boolean;
+  onClick?: any;
 }
 
-export default function CheckBoxRate({ isGiveSuggestion, ...props }: IProps) {
+export default function CheckBoxRate({
+  isGiveSuggestion,
+  onClick,
+  ...props
+}: IProps) {
   return (
     <label className="divCheckMark" {...props}>
       <input type="checkbox" id="isGiveSuggestion" checked={isGiveSuggestion} />
