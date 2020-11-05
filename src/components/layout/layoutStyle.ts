@@ -129,7 +129,7 @@ export const colorsApp = {
   error: "#f54444",
   yelloSecundary: "#ffdf80",
   yelloOpaco: "#fff2b8",
-  textSecundary: "gray",
+  textSecundary: "#8d8d8d",
   textPrimary: "#293133",
   sucess: "#4bcf12",
   cardColor: "#4d5272",

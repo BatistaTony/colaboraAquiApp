@@ -9,7 +9,7 @@ export const Horrible = () => {
     >
       <defs>
         <radialGradient
-          id="radial-gradient"
+          id="radial-gradient-20"
           cx="0.5"
           cy="0.5"
           r="0.62"
@@ -28,7 +28,7 @@ export const Horrible = () => {
           cy="37.5"
           r="37.5"
           transform="translate(-2364 -1241)"
-          fill="url(#radial-gradient)"
+          fill="url(#radial-gradient-20)"
         />
         <path
           id="Caminho_594"
@@ -96,15 +96,15 @@ export const Pessima = () => {
     >
       <defs>
         <radialGradient
-          id="radial-gradient"
+          id="radial-gradient-30"
           cx="0.5"
           cy="0.5"
           r="0.62"
           gradientTransform="matrix(0.999, -0.038, 0.035, 0.929, -0.017, 0.054)"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#f2e7e4" />
-          <stop offset="1" stop-color="#c6b5b2" />
+          <stop className="stop1" offset="0" stop-color="#f2e7e4" />
+          <stop className="stop2" offset="1" stop-color="#c6b5b2" />
         </radialGradient>
       </defs>
       <g id="emoji2-false" transform="translate(2189 1241)">
@@ -115,7 +115,7 @@ export const Pessima = () => {
           cy="37.5"
           r="37.5"
           transform="translate(-2189 -1241)"
-          fill="url(#radial-gradient)"
+          fill="url(#radial-gradient-30)"
         />
         <path
           id="Caminho_605"
@@ -163,15 +163,15 @@ export const Normal = () => {
     >
       <defs>
         <radialGradient
-          id="radial-gradient"
+          id="radial-gradient-40"
           cx="0.5"
           cy="0.5"
           r="0.62"
           gradientTransform="matrix(0.999, -0.038, 0.035, 0.929, -0.017, 0.054)"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#f2e7e4" />
-          <stop offset="1" stop-color="#c6b5b2" />
+          <stop className="stop1" offset="0" stop-color="#f2e7e4" />
+          <stop className="stop2" offset="1" stop-color="#c6b5b2" />
         </radialGradient>
       </defs>
       <g id="emoji3-false" transform="translate(2014 1241)">
@@ -182,7 +182,7 @@ export const Normal = () => {
           cy="37.5"
           r="37.5"
           transform="translate(-2014 -1241)"
-          fill="url(#radial-gradient)"
+          fill="url(#radial-gradient-40)"
         />
         <circle
           id="Elipse_105"
@@ -228,15 +228,15 @@ export const Bom = () => {
     >
       <defs>
         <radialGradient
-          id="radial-gradient"
+          id="radial-gradient-50"
           cx="0.5"
           cy="0.5"
           r="0.62"
           gradientTransform="matrix(0.999, -0.038, 0.035, 0.929, -0.017, 0.054)"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#f2e7e4" />
-          <stop offset="1" stop-color="#c6b5b2" />
+          <stop className="stop1" offset="0" stop-color="#f2e7e4" />
+          <stop className="stop2" offset="1" stop-color="#c6b5b2" />
         </radialGradient>
         <radialGradient
           id="radial-gradient-2"
@@ -257,7 +257,7 @@ export const Bom = () => {
           cy="37.5"
           r="37.5"
           transform="translate(-1839 -1241)"
-          fill="url(#radial-gradient)"
+          fill="url(#radial-gradient-50)"
         />
         <circle
           id="Elipse_110"
@@ -325,15 +325,15 @@ export const MuitoBom = () => {
     >
       <defs>
         <radialGradient
-          id="radial-gradient"
+          id="radial-gradient-60"
           cx="0.5"
           cy="0.5"
           r="0.62"
           gradientTransform="matrix(0.999, -0.038, 0.035, 0.929, -0.017, 0.054)"
           gradientUnits="objectBoundingBox"
         >
-          <stop offset="0" stop-color="#f2e7e4" />
-          <stop offset="1" stop-color="#c6b5b2" />
+          <stop className="stop1" offset="0" stop-color="#f2e7e4" />
+          <stop className="stop2" offset="1" stop-color="#c6b5b2" />
         </radialGradient>
         <radialGradient
           id="radial-gradient-2"
@@ -354,7 +354,7 @@ export const MuitoBom = () => {
           cy="37.5"
           r="37.5"
           transform="translate(-1664 -1241)"
-          fill="url(#radial-gradient)"
+          fill="url(#radial-gradient-60)"
         />
         <circle
           id="Elipse_116"

@@ -2,8 +2,13 @@ import { useState } from "react";
 import Emoje from "./emoji";
 import { RatingEmojiContainer, RatingSingleEmoji } from "./rateCompanyStyle";
 
-export default function RatingEmojis() {
-  const [feeling, setFeeling] = useState<Number | null>(null);
+interface IProps {
+  handleFeeling: any;
+}
+
+export default function RatingEmojis({ handleFeeling }: IProps) {
+  const [feeling, setFeeling] = useState<string | null>(null);
+  const [paint, setPaint] = useState<string | null>(false);
 
   const feelings = [
     { id: 1, title: "Horrivel" },
@@ -13,15 +18,20 @@ export default function RatingEmojis() {
     { id: 5, title: "Muito Bom" },
   ];
 
+  const addFeeling = (face: string) => {
+    handleFeeling(face);
+    setFeeling(face);
+  };
+
   return (
     <RatingEmojiContainer>
       {feelings.map((value, index) => (
-        <RatingSingleEmoji key={index}>
-          <Emoje
-            onClick={() => setFeeling(value.id)}
-            face={value.id}
-            clicked={value.id === feeling}
-          />
+        <RatingSingleEmoji
+          onClick={() => addFeeling(value.title)}
+          clicked={value.title === feeling}
+          key={index}
+        >
+          <Emoje clicked={value.title === feeling} face={value.id} />
           <p>{value.title}</p>
         </RatingSingleEmoji>
       ))}
