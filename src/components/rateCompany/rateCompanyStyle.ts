@@ -7,8 +7,6 @@ import {
   NormalFontSize,
 } from "../layout/layoutStyle";
 
-import { motion } from "framer-motion";
-
 export const Container = styled.div`
   width: 100%;
   height: auto;
@@ -19,37 +17,83 @@ export const Container = styled.div`
   box-sizing: border-box;
 `;
 
-export const StarsDiv = styled.div`
-  width: 150px;
-  height: 35px;
-  align-self: center;
-  margin-left: 20px;
+const withContainer = () => `
 
-  @media (min-width: 1230px) {
-    width: 200px;
-    height: 45px;
-  }
+width:65%;
+
+${sizesForEachScreens([1500, 1170, 800], [75, 80, 90], "width", "%")};
+
 `;
 
 export const Header = styled.div`
-  width: 70%;
+  ${withContainer()};
   height: auto;
   position: relative;
-  margin-top: 100px;
+  margin-top: 70px;
   ${flexbox("row", "space-between", "center")};
+
+  @media (max-width: 1500px) {
+    margin-top: 70px;
+  }
+
+  @media (max-width: 750px) {
+    margin-top: 30px;
+  }
+
+  @media (max-width: 650px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const HeaderInforCompany = styled.div`
   height: auto;
   ${flexbox("row", "space-between", "center")};
-`;
-export const HeaderAvaliation = styled.div`
-  ${flexbox("row", "justify-content", "center")};
+
+  @media (max-width: 650px) {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .containerFor_Dgsgdf_Gdfd_df {
+    ${flexbox("row", "space-between", "center")};
+
+    @media (max-width: 650px) {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+
+  .companyInfo {
+    margin-left: 30px;
+
+    @media (max-width: 1500px) {
+      margin-left: 30px;
+    }
+
+    @media (max-width: 700px) {
+      margin-left: 15px;
+    }
+
+    @media (max-width: 650px) {
+      margin-left: 0;
+    }
+  }
+
+  .starsContainer {
+    margin-left: 50px;
+    ${sizesForEachScreens(
+      [1500, 880, 800, 750, 650],
+      [50, 40, 30, 20, 0],
+      "margin-left",
+      "px"
+    )};
+  }
 `;
 
 export const CompanyLogo = styled.div`
-  width: 160px;
-  height: 160px;
+  width: 300px;
+  height: 300px;
   background-color: white;
   background-image: ${({ img }) => ` url(${img})`};
   background-size: 70%;
@@ -57,22 +101,18 @@ export const CompanyLogo = styled.div`
   background-position-x: center;
   background-repeat: no-repeat;
   border-radius: 100%;
-  margin-right: 10px;
   border: 1px solid rgba(41, 49, 51, 0.1);
 
-  @media (max-width: 1000px) {
-    font-size: 24px;
-  }
-
   ${sizesForEachScreens(
-    [6500, 3000, 2000, 1500, 1000, 750],
-    [300, 180, 160, 120, 100, 80],
+    [3200, 2700, 2300, 1930, 1500, 1000, 750],
+    [250, 200, 180, 150, 120, 100, 80],
     "width",
     "px"
   )};
+
   ${sizesForEachScreens(
-    [6500, 3000, 2000, 1500, 1000, 750],
-    [300, 180, 160, 120, 100, 80],
+    [3200, 2700, 2300, 1930, 1500, 1000, 750],
+    [250, 200, 180, 150, 120, 100, 80],
     "height",
     "px"
   )};
@@ -80,23 +120,21 @@ export const CompanyLogo = styled.div`
 
 export const NameOfComapny = styled.p`
   color: ${colorsApp.soDark};
-  font-size: 40px;
+  font-size: 45pt;
   ${getFont("Bold")};
-
-  margin: 0 10px;
+  margin-bottom: 5px;
 
   ${sizesForEachScreens(
-    [6500, 2000, 1500, 750],
-    [50, 40, 30, 20],
+    [3200, 2700, 2300, 1930, 1500, 1000, 750, 650],
+    [40, 37, 33, 28, 23, 20, 17, 15],
     "font-size",
-    "px"
+    "pt"
   )};
 `;
 
 export const Avaliations = styled.p`
   color: ${colorsApp.textSecundary};
-  font-size: 26pt;
-  margin: 0 10px;
+  font-size: 35pt;
   ${getFont()};
 
   span {
@@ -104,97 +142,117 @@ export const Avaliations = styled.p`
   }
 
   ${sizesForEachScreens(
-    [6500, 2000, 1500, 750],
-    [35, 25, 15, 14],
+    [3200, 2700, 2300, 1930, 1500, 1000, 750, 650],
+    [30, 27, 23, 20, 15, 13, 12, 11.5],
     "font-size",
-    "px"
+    "pt"
   )};
 `;
 
+export const HeaderAvaliation = styled.div`
+  ${flexbox("row", "justify-content", "center")};
+
+  @media (max-width: 650px) {
+    width: 90%;
+    margin-top: 20px;
+  }
+`;
+
 export const RateButton = styled.button`
-  width: 208px;
-  height: 55px;
   position: relative;
   background: ${colorsApp.roxo};
   border-radius: 8px;
   border: 0;
-  margin-left: 50px;
   outline: none;
   cursor: pinter;
   text-align: center;
   color: #fff;
-  font-size: 26px;
+  font-size: 30pt;
+  ${getFont("Medium")};
+  ${flexbox()};
+  height: 100px;
+  width: 350px;
 
-  img {
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    right: 10px;
-
-    ${sizesForEachScreens(
-      [6500, 3000, 2000, 1500, 1000],
-      [40, 26, 22, 18, 16],
-      "width",
-      "px"
-    )};
-    ${sizesForEachScreens(
-      [6500, 3000, 2000, 1500, 1000],
-      [40, 26, 22, 18, 16],
-      "height",
-      "px"
-    )};
-  }
-
-  @media (max-width: 750px) {
+  @media (max-width: 1500px) {
     height: 45px;
-    font-size: 16px !important;
-    width: 100% !important;
-    margin-left: 0 !important;
-
-    img {
-      width: 20px;
-      height: 20px;
-    }
-  }
-  @media (max-width: 1000px) {
-    width: 90%;
-    margin-left: 10px;
+    border-radius: 8px;
+    font-size: 14pt;
+    width: auto;
+    padding-right: 25px;
+    padding-left: 25px;
   }
 
   ${sizesForEachScreens(
-    [6500, 3000, 2000, 1500, 1000, 750],
-    [320, 240, 208, 180, 110, 90],
+    [3000, 2700, 2500, 2000, 1700, 1100],
+    [90, 70, 60, 55, 50, 40],
+    "height",
+    "px"
+  )}
+
+  ${sizesForEachScreens(
+    [3000, 2700, 2500, 2000, 1700, 1100],
+    [300, 280, 250, 200, 180, 175],
     "width",
     "px"
   )};
-  ${sizesForEachScreens(
-    [6500, 3000, 2000, 1500, 1000, 750],
-    [80, 60, 55, 50, 40, 50],
-    "height",
-    "px"
-  )};
-  ${sizesForEachScreens(
-    [6500, 3000, 2000, 1500, 750],
-    [40, 22, 18, 16, 16],
-    "font-size",
-    "px"
-  )};
-`;
-
-export const Text = styled.p`
-  width: 70%;
-  height: auto;
-  text-align: left;
-  color: ${colorsApp.darkGreen};
-  font-size: 45pt;
-  ${getFont()};
-  margin-bottom: 40px;
-  background: red;
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500, 1300, 450],
-    [40, 35, 28, 17, 14, 13],
+    [3200, 2700, 2200, 1700, 1500, 1100, 750],
+    [27, 24, 20, 18, 15, 13, 12],
     "font-size",
     "pt"
   )};
+
+  img {
+    width: 50px;
+    height: 50px;
+    margin-left: 30px;
+
+    ${sizesForEachScreens(
+      [3200, 2700, 2200, 1700, 1500, 1000, 750],
+      [50, 40, 35, 30, 25, 23, 20, 18],
+      "height",
+      "px"
+    )};
+
+    ${sizesForEachScreens(
+      [3200, 2700, 2200, 1700, 1500, 1000, 750],
+      [50, 40, 35, 30, 25, 23, 20, 18],
+      "width",
+      "px"
+    )};
+  }
+
+  @media (max-width: 650px) {
+    width: 100%;
+    height: 45px;
+    font-size: 13pt;
+    ${flexbox()};
+
+    img {
+      position: absolute;
+      right: 10px;
+    }
+  }
+`;
+
+export const Text = styled.p`
+  ${withContainer()};
+  height: auto;
+  text-align: justify;
+  color: ${colorsApp.darkGreen};
+  font-size: 40pt;
+  ${getFont()};
+  margin-top: 40px;
+
+  ${sizesForEachScreens(
+    [3200, 2500, 2000, 1500, 1300, 900, 690, 308],
+    [37, 34, 28, 17, 14, 13, 12, 11],
+    "font-size",
+    "pt"
+  )};
+
+  @media (max-width: 650px) {
+    margin-top: 30px;
+  }
 `;

@@ -27,17 +27,20 @@ export default function HeaderCompany({ data }) {
       <HeaderInforCompany>
         <CompanyLogo img={data.logo} />
 
-        <div>
-          <NameOfComapny>
-            {data.ranking}# {data.name}
-          </NameOfComapny>
-          <Avaliations>
-            {" "}
-            <span>{data.avaliations.all}</span> Avaliações{" "}
-          </Avaliations>
-        </div>
+        <div className="containerFor_Dgsgdf_Gdfd_df">
+          <div className="companyInfo">
+            <NameOfComapny>
+              {data.ranking}# {data.name}
+            </NameOfComapny>
+            <Avaliations>
+              <span>{data.avaliations.all}</span> Avaliações{" "}
+            </Avaliations>
+          </div>
 
-        <Stars stars={data.stars} background="orange" />
+          <div className="starsContainer">
+            <Stars stars={data.stars} background="orange" />
+          </div>
+        </div>
       </HeaderInforCompany>
 
       <HeaderAvaliation>

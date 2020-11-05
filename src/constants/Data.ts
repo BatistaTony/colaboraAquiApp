@@ -1,7 +1,7 @@
 const data = [
   {
     id: 0,
-    name: 'UNITEL',
+    name: "UNITEL",
     ranking: 1,
     stars: 5,
     avaliations: {
@@ -10,28 +10,28 @@ const data = [
       normal: 100000000,
       negative: 1000000,
     },
-    logo: '/images/unitel.png',
+    logo: "/images/unitel.png",
     discription:
-      'Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel.',
+      "Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel.",
   },
   {
     id: 1,
-    name: 'MOVICEL',
+    name: "MOVICEL",
     ranking: 2,
     stars: 4,
     avaliations: {
-      all: 120,
+      all: 3500,
       positive: 5,
       normal: 6,
       negative: 9,
     },
-    logo: '/images/Movicel-2.png',
+    logo: "/images/Movicel-2.png",
     discription:
-      'Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel.',
+      "Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel, Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel.",
   },
   {
     id: 2,
-    name: 'INADEC',
+    name: "INADEC",
     ranking: 3,
     stars: 4,
     avaliations: {
@@ -40,13 +40,13 @@ const data = [
       normal: 666,
       negative: 999,
     },
-    logo: '/images/Movicel-2.png',
+    logo: "/images/Movicel-2.png",
     discription:
-      'Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel.',
+      "Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel.",
   },
   {
     id: 3,
-    name: 'Movicel',
+    name: "Movicel",
     ranking: 4,
     stars: 3,
     avaliations: {
@@ -55,13 +55,13 @@ const data = [
       normal: 666,
       negative: 999,
     },
-    logo: '/images/Movicel-2.png',
+    logo: "/images/Movicel-2.png",
     discription:
-      'Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel.',
+      "Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel.",
   },
   {
     id: 4,
-    name: 'Movicel',
+    name: "Movicel",
     ranking: 5,
     stars: 2,
     avaliations: {
@@ -70,9 +70,9 @@ const data = [
       normal: 666,
       negative: 999,
     },
-    logo: '/images/Movicel-2.png',
+    logo: "/images/Movicel-2.png",
     discription:
-      'Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel.',
+      "Empresa de telecomunicações, mais focada em telefonia móvel e um montde outras coisas qualquer, empresa de telecomunicações, focada em telefonia móvel.",
   },
 ];
 
