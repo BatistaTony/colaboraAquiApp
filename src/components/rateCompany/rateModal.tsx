@@ -57,21 +57,29 @@ const RateModal = ({ toggleModal }: IProps) => {
     setAnimation({ opacity: 1, x: 500 });
   };
 
+  const checkDisabledButton = (): Boolean => {
+    if (rateData.feeling === "" || rateData.consumerExperience === "") {
+      return true;
+    } else if (stepRate === 2 && rateData.consumerSuggestion === "") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const userWillGiveSuggestion = () => {
     setIsGiveSuggestion(!isGiveSuggestion);
   };
 
   const sendSuggestion = () => {
-    if (stepRate === 1 && rateData.consumerExperience && rateData.feeling) {
-      setShowModalSucess(!showModalSucess);
-    } else if (stepRate === 2 && rateData.consumerSuggestion) {
+    if (!checkDisabledButton()) {
       setShowModalSucess(!showModalSucess);
     }
   };
 
   const nextStep = (step: number) => {
     if (stepRate === 1) {
-      if (rateData.consumerExperience) {
+      if (!checkDisabledButton()) {
         setSetpRate(step);
       }
     } else {
@@ -112,11 +120,15 @@ const RateModal = ({ toggleModal }: IProps) => {
             <span> serviço/empresa ?</span>
           </RateCompanyText>
 
-          <RatingEmojis handleFeeling={handleFeeling} />
+          <RatingEmojis
+            feeling={rateData.feeling}
+            handleFeeling={handleFeeling}
+          />
 
           {rateData.feeling !== "" && (
             <Fragment>
               <TextareaRate
+                value={rateData.consumerExperience}
                 name="consumerExperience"
                 placeholder="Descreva a experiencia "
                 handleChange={handleChange}
@@ -140,7 +152,10 @@ const RateModal = ({ toggleModal }: IProps) => {
           )}
         </ContainerStepOne>
       ) : (
-        <GiveSuggestion handleSuggestionValue={handleChange} />
+        <GiveSuggestion
+          value={rateData.consumerExperience}
+          handleSuggestionValue={handleChange}
+        />
       )}
 
       {rateData.feeling !== "" && (
@@ -151,9 +166,7 @@ const RateModal = ({ toggleModal }: IProps) => {
                 ? () => nextStep(2)
                 : sendSuggestion
             }
-            isDisabled={
-              rateData.consumerExperience === "" || rateData.feeling === ""
-            }
+            isDisabled={checkDisabledButton()}
           >
             {isGiveSuggestion && stepRate === 1
               ? "Continuar"

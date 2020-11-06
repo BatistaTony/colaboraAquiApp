@@ -4,10 +4,14 @@ import { RatingEmojiContainer, RatingSingleEmoji } from "./modalStyle";
 
 interface IProps {
   handleFeeling: any;
+  feeling: string;
 }
 
-export default function RatingEmojis({ handleFeeling }: IProps) {
-  const [feeling, setFeeling] = useState<string | null>(null);
+export default function RatingEmojis({
+  handleFeeling,
+  feeling: feelingProp,
+}: IProps) {
+  const [feeling, setFeeling] = useState<string | null>(feelingProp || null);
 
   const feelings = [
     { id: 1, title: "Horrivel" },
