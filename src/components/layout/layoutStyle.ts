@@ -23,10 +23,6 @@ export const LayoutStyled = styled.div`
   overflow: ${({ title }) => (title === "Avaliar" ? "auto" : "hidden")};
   position: absolute;
 
-  @media (max-width: 3200px) {
-    grid-template-rows: 10% 90%;
-  }
-
   @media (max-width: 2700px) {
     grid-template-rows: 10% 90%;
   }

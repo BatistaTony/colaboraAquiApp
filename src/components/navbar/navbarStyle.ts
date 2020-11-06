@@ -115,7 +115,7 @@ export const ButtonLogin = styled.button`
   padding-left: 50px;
   padding-right: 50px;
   background: ${colorsApp.textPrimary};
-  border-radius: 10px;
+  border-radius: 15px;
   transition: 0.5s;
   margin-left: 50px;
   color: white;
@@ -123,6 +123,13 @@ export const ButtonLogin = styled.button`
   outline: none;
   ${getFont("Medium")};
   font-size: 25pt;
+
+  ${sizesForEachScreens(
+    [3000, 2500, 1700],
+    [13, 12.5, 10],
+    "border-radius",
+    "px"
+  )};
 
   &:hover {
     background: ${colorsApp.roxo};
