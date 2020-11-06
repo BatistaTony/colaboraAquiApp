@@ -1,12 +1,12 @@
-import Layout from './../components/layout/layout';
-import PrivateRouter from './privateRouter';
+import Layout from "./../components/layout/layout";
+import PrivateRouter from "./privateRouter";
 
-import RateCompany from '../components/rateCompany/rateCompany';
+import RateCompany from "../components/rateCompany/rateCompany";
 
 function Rate() {
   return (
-    <Layout title={'Avaliar'}>
-      <RateCompany id={1} />
+    <Layout title={"Avaliar"}>
+      <RateCompany />
     </Layout>
   );
 }
