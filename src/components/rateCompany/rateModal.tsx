@@ -1,109 +1,154 @@
-import React, { useRef } from 'react';
+import { useState, Fragment } from "react";
+import CheckBoxRate from "./checboxRate";
+import GiveSuggestion from "./giveSuggestion";
+import ModalRateSucess from "./modalSucess";
 
 import {
-  RateCompanyContainer,
   ButtonBack,
-  RateCompanyTex,
-  Bold,
+  RateCompanyText,
   RateCompanyTextarea,
   SendRateButton,
-  RetingEmojiContainer,
-  RetingSingleEmoji,
-  Background,
-} from './rateCompanyStyle';
+  ModalRate,
+  DivBtnModalRate,
+  DivCheckBox,
+  ContainerStepOne,
+} from "./modalStyle";
+import RatingEmojis from "./rateEmojes";
+import TextareaRate from "./textareaRate";
 
-export function GoBack(item: boolean) {
-  console.log(item);
-  return item != null ? item : false;
+interface IRateCompany {
+  feeling: string;
+  consumerExperience: string;
+  consumerSuggestion?: string;
 }
 
-const RateModal = ({ showTheModal, companyId, visible }: any) => {
-  const [val, setVal] = React.useState<Number>(0);
-  const textareaValue = useRef<any>();
+const initialSatte: IRateCompany = {
+  feeling: "",
+  consumerExperience: "",
+  consumerSuggestion: "",
+};
 
-  function HendleRate() {
-    let data = {
-      value: val,
-      Feedback: textareaValue.current.value,
-      companyId: companyId,
-    };
+interface IProps {
+  toggleModal: any;
+}
 
-    if (data.value === 0 || data.value === null) {
-      alert('Precisa de escolher uma opção para seguir com a avaliação!');
-    } else if (
-      data.value != 0 &&
-      (data.Feedback === '' || data.Feedback === null)
-    ) {
-      alert('Tem certe que nao quer deixar uma opinao?');
-      alert('Obrigado por avaliar a Empresa');
-      setVal(0);
-      textareaValue.current.value = '';
-    } else {
-      alert('Obrigado por avaliar a Empresa');
-      setVal(0);
-      textareaValue.current.value = '';
+const RateModal = ({ toggleModal }: IProps) => {
+  const [rateData, setRateData] = useState<IRateCompany>(initialSatte);
+  const [isGiveSuggestion, setIsGiveSuggestion] = useState<boolean>(false);
+  const [stepRate, setSetpRate] = useState<Number>(1);
+  const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
+  const [animateData, setAnimation] = useState({ opacity: 1, x: 0 });
+
+  const handleChange = (event: any) => {
+    setRateData({
+      ...rateData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleFeeling = (face: string) => {
+    setRateData({
+      ...rateData,
+      feeling: face,
+    });
+  };
+
+  const changeAnimation = () => {
+    setAnimation({ opacity: 1, x: 500 });
+  };
+
+  const userWillGiveSuggestion = () => {
+    setIsGiveSuggestion(!isGiveSuggestion);
+  };
+
+  const sendSuggestion = () => {
+    if (stepRate === 1 && rateData.consumerExperience && rateData.feeling) {
+      setShowModalSucess(!showModalSucess);
+    } else if (stepRate === 2 && rateData.consumerSuggestion) {
+      setShowModalSucess(!showModalSucess);
     }
-  }
+  };
 
-  const arr = [
-    { id: 1, title: 'Horrivel' },
-    { id: 2, title: 'Pessimo' },
-    { id: 3, title: 'Normal' },
-    { id: 4, title: 'Bom' },
-    { id: 5, title: 'Muito Bom' },
-  ];
+  const nextStep = (step: number) => {
+    if (stepRate === 1) {
+      if (rateData.consumerExperience) {
+        setSetpRate(step);
+      }
+    } else {
+      setSetpRate(step);
+    }
+  };
 
-  function ratingValue(id: number) {
-    return id === val ? true : false;
-  }
+  const closeModal = () => {
+    changeAnimation();
 
-  function RatingEmojis() {
-    return (
-      <RetingEmojiContainer>
-        {arr.map((item) => (
-          <RetingSingleEmoji
-            key={item.id}
-            img={item.id}
-            active={ratingValue(item.id)}
-            onClick={() => {
-              setVal(item.id);
-            }}
-          >
-            <div></div>
-
-            <p>{item.title}</p>
-          </RetingSingleEmoji>
-        ))}
-      </RetingEmojiContainer>
-    );
-  }
+    setTimeout(() => {
+      toggleModal();
+    }, 200);
+  };
 
   return (
-    <RateCompanyContainer visible={visible}>
-      <ButtonBack img={'/images/left.png'} onClick={() => showTheModal()} />
+    <ModalRate
+      initial={{ opacity: 0, x: 500 }}
+      animate={animateData}
+      exit={{ opacity: 0, x: 500 }}
+    >
+      <ButtonBack onClick={stepRate === 1 ? closeModal : () => nextStep(1)}>
+        <img src="/images/back.png" alt="" />
+        <p>{stepRate === 1 ? "Cancelar sugestão" : "Voltar"}</p>
+      </ButtonBack>
 
-      <RateCompanyTex>
-        Como classificas a tua experiência com este
-        <Bold> serviço/empresa ?</Bold>
-      </RateCompanyTex>
+      {showModalSucess && <ModalRateSucess toggleModal={toggleModal} />}
 
-      <RatingEmojis />
+      {stepRate === 1 ? (
+        <ContainerStepOne
+          initial={{ opacity: 0, x: -500 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -500 }}
+        >
+          <RateCompanyText>
+            Como classificas a tua experiência com este
+            <span> serviço/empresa ?</span>
+          </RateCompanyText>
 
-      <RateCompanyTextarea
-        ref={textareaValue}
-        type="submit"
-        autoFocus={false}
-        placeholder="Como tu achas que eles podem melhorar ? (deixe a sua opinião)"
-      />
-      <SendRateButton onClick={() => HendleRate()}>
-        Enviar Avaliação
-      </SendRateButton>
-      <Background>
-        <img src={'/images/Elipse 1.svg'} />
-        <img src={'/images/Elipse 36.svg'} />
-        <img src={'/images/Polígono 2.svg'} />
-      </Background>
-    </RateCompanyContainer>
+          <RatingEmojis handleFeeling={handleFeeling} />
+
+          <TextareaRate
+            name="consumerExperience"
+            placeholder="Descreva a experiencia "
+            handleChange={handleChange}
+          />
+
+          <DivCheckBox checked={isGiveSuggestion}>
+            <CheckBoxRate
+              onClick={userWillGiveSuggestion}
+              isGiveSuggestion={isGiveSuggestion}
+            />
+
+            <p onClick={userWillGiveSuggestion}>Deixar sugestão de melhoria</p>
+          </DivCheckBox>
+        </ContainerStepOne>
+      ) : (
+        <GiveSuggestion handleSuggestionValue={handleChange} />
+      )}
+
+      <DivBtnModalRate>
+        <SendRateButton
+          onClick={
+            isGiveSuggestion && stepRate === 1
+              ? () => nextStep(2)
+              : sendSuggestion
+          }
+          isDisabled={
+            rateData.consumerExperience === "" || rateData.feeling === ""
+          }
+        >
+          {isGiveSuggestion && stepRate === 1
+            ? "Continuar"
+            : "Enviar Avaliação"}
+        </SendRateButton>
+      </DivBtnModalRate>
+    </ModalRate>
   );
 };
 
