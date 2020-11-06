@@ -92,6 +92,7 @@ const RateModal = ({ toggleModal }: IProps) => {
       initial={{ opacity: 0, x: 500 }}
       animate={animateData}
       exit={{ opacity: 0, x: 500 }}
+      keepCenter={rateData.feeling === ""}
     >
       <ButtonBack onClick={stepRate === 1 ? closeModal : () => nextStep(1)}>
         <img src="/images/back.png" alt="" />
@@ -113,41 +114,53 @@ const RateModal = ({ toggleModal }: IProps) => {
 
           <RatingEmojis handleFeeling={handleFeeling} />
 
-          <TextareaRate
-            name="consumerExperience"
-            placeholder="Descreva a experiencia "
-            handleChange={handleChange}
-          />
+          {rateData.feeling !== "" && (
+            <Fragment>
+              <TextareaRate
+                name="consumerExperience"
+                placeholder="Descreva a experiencia "
+                handleChange={handleChange}
+              />
 
-          <DivCheckBox checked={isGiveSuggestion}>
-            <CheckBoxRate
-              onClick={userWillGiveSuggestion}
-              isGiveSuggestion={isGiveSuggestion}
-            />
+              <DivCheckBox
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                checked={isGiveSuggestion}
+              >
+                <CheckBoxRate
+                  onClick={userWillGiveSuggestion}
+                  isGiveSuggestion={isGiveSuggestion}
+                />
 
-            <p onClick={userWillGiveSuggestion}>Deixar sugestão de melhoria</p>
-          </DivCheckBox>
+                <p onClick={userWillGiveSuggestion}>
+                  Deixar sugestão de melhoria
+                </p>
+              </DivCheckBox>
+            </Fragment>
+          )}
         </ContainerStepOne>
       ) : (
         <GiveSuggestion handleSuggestionValue={handleChange} />
       )}
 
-      <DivBtnModalRate>
-        <SendRateButton
-          onClick={
-            isGiveSuggestion && stepRate === 1
-              ? () => nextStep(2)
-              : sendSuggestion
-          }
-          isDisabled={
-            rateData.consumerExperience === "" || rateData.feeling === ""
-          }
-        >
-          {isGiveSuggestion && stepRate === 1
-            ? "Continuar"
-            : "Enviar Avaliação"}
-        </SendRateButton>
-      </DivBtnModalRate>
+      {rateData.feeling !== "" && (
+        <DivBtnModalRate initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+          <SendRateButton
+            onClick={
+              isGiveSuggestion && stepRate === 1
+                ? () => nextStep(2)
+                : sendSuggestion
+            }
+            isDisabled={
+              rateData.consumerExperience === "" || rateData.feeling === ""
+            }
+          >
+            {isGiveSuggestion && stepRate === 1
+              ? "Continuar"
+              : "Enviar Avaliação"}
+          </SendRateButton>
+        </DivBtnModalRate>
+      )}
     </ModalRate>
   );
 };

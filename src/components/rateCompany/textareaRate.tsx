@@ -12,7 +12,7 @@ export default function TextareaRate({
   name,
 }: IProps) {
   return (
-    <RateCompanyTextarea>
+    <RateCompanyTextarea initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <textarea
         name={name}
         placeholder={placeholder}
