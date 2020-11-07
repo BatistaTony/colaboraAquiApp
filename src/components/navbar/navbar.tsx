@@ -31,6 +31,16 @@ export default function Navbar(props: any) {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const isLogged = consumerState.userName.length > 0;
 
+  const checkActiveForRate = (title: string) => {
+    if (title === "Avaliar") {
+      return true;
+    } else if (title !== "ColaboraAqui" && title !== "Ranking") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
     <MyNavbar>
       <Logo>
@@ -49,8 +59,10 @@ export default function Navbar(props: any) {
         ))}
 
         {isLogged && (
-          <Link href="/rate">
-            <ItemMenu active={props.title === "Avaliar"}>Avaliar</ItemMenu>
+          <Link href="/companies">
+            <ItemMenu active={checkActiveForRate(props.title)}>
+              Avaliar
+            </ItemMenu>
           </Link>
         )}
 
@@ -74,6 +86,7 @@ export default function Navbar(props: any) {
           initial={{ opacity: 0, x: -500 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -500 }}
+          openMenu={openMenu}
         >
           <div className="container">
             <Menu mobile={true}>
@@ -86,8 +99,8 @@ export default function Navbar(props: any) {
               ))}
 
               {isLogged && (
-                <Link href="/rate">
-                  <ItemMenu active={props.title === "Avaliar"}>
+                <Link href="/companies">
+                  <ItemMenu active={checkActiveForRate(props.title)}>
                     Avaliar
                   </ItemMenu>
                 </Link>

@@ -20,7 +20,8 @@ export const ModalRate = styled(motion.div)`
   z-index: 9999;
 
   @media (max-width: 550px) and (max-height: 850px) {
-    justify-content: flex-end;
+    justify-content: ${({ keepCenter }) =>
+      keepCenter ? "center" : "flex-end"};
     padding-bottom: 10%;
   }
 `;
@@ -233,7 +234,7 @@ export const EmojeStyle = styled.div`
   )};
 `;
 
-export const RateCompanyTextarea = styled.div`
+export const RateCompanyTextarea = styled(motion.div)`
   ${widthContainer};
   height: 250px;
   border: none;
@@ -304,7 +305,7 @@ export const RateCompanyTextarea = styled.div`
   }
 `;
 
-export const DivCheckBox = styled.div`
+export const DivCheckBox = styled(motion.div)`
   ${widthContainer};
   position: relative;
   margin-top: 2rem;
@@ -457,7 +458,7 @@ export const DivCheckBox = styled.div`
   }
 `;
 
-export const DivBtnModalRate = styled.div`
+export const DivBtnModalRate = styled(motion.div)`
   ${widthContainer};
   ${flexbox("row", "flex-end", "flex-end")};
   margin-top: 20px;

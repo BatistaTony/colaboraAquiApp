@@ -59,7 +59,6 @@ export default function UserMenu() {
         <MenuUser
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
           className="menu_user_name menu_desk_T"
           nameLength={consumerState.userName.length}
         >

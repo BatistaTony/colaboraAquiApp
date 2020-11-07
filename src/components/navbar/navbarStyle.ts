@@ -115,7 +115,7 @@ export const ButtonLogin = styled.button`
   padding-left: 50px;
   padding-right: 50px;
   background: ${colorsApp.textPrimary};
-  border-radius: 10px;
+  border-radius: 15px;
   transition: 0.5s;
   margin-left: 50px;
   color: white;
@@ -123,6 +123,13 @@ export const ButtonLogin = styled.button`
   outline: none;
   ${getFont("Medium")};
   font-size: 25pt;
+
+  ${sizesForEachScreens(
+    [3000, 2500, 1700],
+    [13, 12.5, 10],
+    "border-radius",
+    "px"
+  )};
 
   &:hover {
     background: ${colorsApp.roxo};
@@ -403,6 +410,8 @@ export const ButtonMobile = styled.div`
   padding-top: 3px;
   z-index: 3;
   padding-right: ${({ openMenu }) => (openMenu ? "1px" : 0)};
+  position: ${({ openMenu }) => (openMenu ? "fixed" : " ")};
+  right: ${({ openMenu }) => (openMenu ? "3%" : " ")};
 
   @media (max-width: 308px) {
     margin-right: 10px;
@@ -435,9 +444,9 @@ export const ButtonMobile = styled.div`
 export const Overlay = styled(motion.div)`
   width: 100%;
   height: 100vh;
-  padding-top: 170px;
+  padding-top: ${({ openMenu }) => (openMenu ? "170px" : "200px")};
   background: white;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   z-index: 2;

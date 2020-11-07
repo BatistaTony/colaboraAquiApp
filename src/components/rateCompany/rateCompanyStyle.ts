@@ -13,32 +13,30 @@ export const Container = styled.div`
   position: relative;
   background: #fff;
   ${flexbox("column", "flex-start", "center")};
-  overflow: auto;
   box-sizing: border-box;
 `;
 
-const withContainer = () => `
+const widthContainer = () => `
 
 width:65%;
 
-${sizesForEachScreens([1500, 1170, 800], [75, 80, 90], "width", "%")};
+${sizesForEachScreens([1500, 1170, 900], [75, 80, 90], "width", "%")};
 
 `;
 
 export const Header = styled.div`
-  ${withContainer()};
+  ${widthContainer()};
   height: auto;
   position: relative;
-  margin-top: 70px;
+  margin-top: 150px;
   ${flexbox("row", "space-between", "center")};
 
-  @media (max-width: 1500px) {
-    margin-top: 70px;
-  }
-
-  @media (max-width: 750px) {
-    margin-top: 30px;
-  }
+  ${sizesForEachScreens(
+    [3200, 2900, 2500, 1500, 750],
+    [130, 115, 90, 70, 30],
+    "margin-top",
+    "px"
+  )};
 
   @media (max-width: 650px) {
     flex-direction: column;
@@ -105,14 +103,14 @@ export const CompanyLogo = styled.div`
 
   ${sizesForEachScreens(
     [3200, 2700, 2300, 1930, 1500, 1000, 750],
-    [250, 200, 180, 150, 120, 100, 80],
+    [250, 200, 180, 150, 120, 110, 100],
     "width",
     "px"
   )};
 
   ${sizesForEachScreens(
     [3200, 2700, 2300, 1930, 1500, 1000, 750],
-    [250, 200, 180, 150, 120, 100, 80],
+    [250, 200, 180, 150, 120, 110, 100],
     "height",
     "px"
   )};
@@ -125,8 +123,8 @@ export const NameOfComapny = styled.p`
   margin-bottom: 5px;
 
   ${sizesForEachScreens(
-    [3200, 2700, 2300, 1930, 1500, 1000, 750, 650],
-    [40, 37, 33, 28, 23, 20, 17, 15],
+    [3200, 2700, 2300, 1930, 1500, 1000, 750, 650, 600],
+    [40, 37, 33, 28, 23, 20, 17, 15, 13.5],
     "font-size",
     "pt"
   )};
@@ -161,7 +159,7 @@ export const HeaderAvaliation = styled.div`
 export const RateButton = styled.button`
   position: relative;
   background: ${colorsApp.roxo};
-  border-radius: 8px;
+  border-radius: 15px;
   border: 0;
   outline: none;
   cursor: pinter;
@@ -172,6 +170,29 @@ export const RateButton = styled.button`
   ${flexbox()};
   height: 100px;
   width: 350px;
+
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 3200px) {
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 2500px) {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  ${sizesForEachScreens(
+    [3000, 2500, 1700],
+    [13, 12.5, 10],
+    "border-radius",
+    "px"
+  )};
 
   @media (max-width: 1500px) {
     height: 45px;
@@ -184,14 +205,14 @@ export const RateButton = styled.button`
 
   ${sizesForEachScreens(
     [3000, 2700, 2500, 2000, 1700, 1100],
-    [90, 70, 60, 55, 50, 40],
+    [90, 75, 65, 55, 50, 40],
     "height",
     "px"
   )}
 
   ${sizesForEachScreens(
     [3000, 2700, 2500, 2000, 1700, 1100],
-    [300, 280, 250, 200, 180, 175],
+    [300, 280, 250, 200, 180, 170],
     "width",
     "px"
   )};
@@ -237,7 +258,7 @@ export const RateButton = styled.button`
 `;
 
 export const Text = styled.p`
-  ${withContainer()};
+  ${widthContainer()};
   height: auto;
   text-align: justify;
   color: ${colorsApp.darkGreen};

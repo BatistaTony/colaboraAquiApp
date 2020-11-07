@@ -84,6 +84,16 @@ export const Modal = styled(motion.div)`
     justify-content: flex-end;
   }
 
+  @media (max-height: 700px) {
+    height: 100vh;
+    justify-content: flex-end;
+  }
+
+  @media (max-height: 490px) {
+    height: auto;
+    overflow: auto;
+  }
+
   @media (max-width: 900px) {
     ${flexbox()};
     height: auto;
@@ -114,6 +124,10 @@ export const Modal = styled(motion.div)`
       @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
         position: absolute;
         top: 0;
+      }
+
+      @media (max-height: 490px) {
+        position: relative;
       }
     }
 
@@ -230,14 +244,18 @@ export const DivForm = styled.div`
     }
   }
 
-  @media (max-width: 600px) and (min-height: 745px) {
+  /* @media (max-width: 600px) and (min-height: 745px) {
     height: 100vh;
     ${flexbox("column", "flex-end", "center")};
   }
 
   @media (max-width: 600px) and (max-height: 690px) {
-    height: auto;
+    height: 100vh;
     ${flexbox("column", "flex-end", "center")};
+  } */
+
+  @media (max-height: 490px) {
+    height: auto;
   }
 `;
 
@@ -578,7 +596,7 @@ export const FormSelect = styled(FormGroup)`
   position: relative;
 `;
 
-export const SelectList = styled.ul`
+export const SelectList = styled(motion.ul)`
   list-style: none;
   width: 100%;
   height: ${({ length }) => (length > 4 ? "380px" : "auto")};
@@ -622,11 +640,11 @@ export const SelectList = styled.ul`
   }
 
   @media (max-width: 1930px) {
-    height: ${({ length }) => (length > 5 ? "250px" : "auto")};
+    height: ${({ length }) => (length > 4 ? "250px" : "auto")};
   }
 
   @media (max-width: 1500px) {
-    height: ${({ length }) => (length > 5 ? "185px" : "auto")};
+    height: ${({ length }) => (length > 4 ? "185px" : "auto")};
   }
 
   li {

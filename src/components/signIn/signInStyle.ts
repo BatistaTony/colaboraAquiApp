@@ -14,71 +14,97 @@ export const OverlaySignIn = styled.div`
   background: url(/images/Grupo978.svg);
   background-size: cover;
   overflow: hidden;
+
+  @media (max-height: 490px) {
+    overflow: auto;
+    height: auto;
+  }
 `;
 
 export const ModalSignIn = styled(Modal)`
   grid-template-columns: 69% 35%;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+
   .btnBackSign {
     align-self: center;
     margin-bottom: 3.5rem;
+
     @media (max-width: 1930px) {
       margin-bottom: 3rem;
     }
+
     @media (max-width: 1500px) {
       margin-bottom: 2rem;
     }
   }
+
   @media (max-width: 750px) {
     margin: 0;
     padding: 0;
     overflow: hidden;
   }
+
   .divForm_sign_p {
     .divBtnBackT {
       position: absolute;
       top: 0;
+
+      @media (max-height: 490px) {
+        position: relative;
+      }
     }
+
     @media (max-width: 900px) {
       height: 100vh;
       ${flexbox("column", "center", "center")};
       padding-bottom: 2%;
       box-sizing: border-box;
       padding-right: 0;
+
       @media (max-width: 750px) {
         ${flexbox("column", "flex-end", "center")};
       }
+
       .divBtnBackT {
         padding-top: 15px;
       }
     }
+
     @media (max-width: 900px) {
       border: 0;
       box-shadow: 0 0 0px;
     }
+
     .grid-form-sign {
       grid-template-columns: 100%;
       width: 73%;
       justify-content: center;
       grid-template-rows: repeat(6, auto) auto auto auto;
+
       @media (max-width: 900px) {
         width: 45%;
       }
+
       @media (max-width: 800px) {
         width: 48%;
       }
+
       @media (max-width: 720px) {
         width: 55%;
       }
+
       @media (max-width: 600px) {
         width: 60%;
       }
+
       @media (max-width: 590px) {
         width: 85%;
       }
+
       .frm_gr_gr {
         grid-column: 1/2;
       }
+
       .FormGroup {
         grid-column: 1/2;
         grid-template-columns: 100%;

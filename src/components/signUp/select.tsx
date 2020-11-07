@@ -67,21 +67,23 @@ export default function CustomSelect({
           <img className="customSelect" src="/images/seta.png" alt="" />
         </InputIcon>
 
-        <CSSTransition
-          unmountOnExit
-          addEndListener={() => {}}
-          timout={200}
-          in={showList}
-          classNames="my-node"
-        >
-          <SelectList length={values.length}>
+        {showList && (
+          <SelectList
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            length={values.length}
+          >
             {values.map((value, index) => (
-              <li key={index} onClick={() => chooseValue(value)}>
+              <li
+                className="customSelect"
+                key={index}
+                onClick={() => chooseValue(value)}
+              >
                 {value}
               </li>
             ))}
           </SelectList>
-        </CSSTransition>
+        )}
       </FormSelect>
       {isEmpty && (
         <ErrorMessage className="error_name_">{errorMsg}</ErrorMessage>

@@ -4,9 +4,13 @@ import TextareaRate from "./textareaRate";
 
 interface IProps {
   handleSuggestionValue: any;
+  value: string;
 }
 
-export default function GiveSuggestion({ handleSuggestionValue }: IProps) {
+export default function GiveSuggestion({
+  handleSuggestionValue,
+  value,
+}: IProps) {
   return (
     <GiveSuggestionContianer
       initial={{ opacity: 0, x: -500 }}
@@ -23,6 +27,7 @@ export default function GiveSuggestion({ handleSuggestionValue }: IProps) {
       </p>
 
       <TextareaRate
+        value={value}
         placeholder="Descreva a sugestão"
         name="consumerSuggestion"
         handleChange={(event) => handleSuggestionValue(event)}
