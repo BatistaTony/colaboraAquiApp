@@ -1,5 +1,4 @@
 import Layout from "../components/layout/layout";
-import PrivateRouter from "./privateRouter";
 import ContainerCompanies from "../components/companies/containerCompanies";
 
 function Companies() {
@@ -10,4 +9,4 @@ function Companies() {
   );
 }
 
-export default PrivateRouter(Companies);
+export default Companies;
