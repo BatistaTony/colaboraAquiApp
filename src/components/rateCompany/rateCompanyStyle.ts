@@ -13,7 +13,6 @@ export const Container = styled.div`
   position: relative;
   background: #fff;
   ${flexbox("column", "flex-start", "center")};
-  overflow: auto;
   box-sizing: border-box;
 `;
 

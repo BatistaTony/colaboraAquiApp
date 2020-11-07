@@ -316,7 +316,7 @@ export const ConsumerRateStyle = styled.div`
 
 export const BodyRating = styled.div`
   width: 100%;
-  padding-left: 15px;
+  padding-left: 35px;
   box-sizing: border-box;
   ${flexbox("column", "flex-start", "flex-start")};
 
@@ -324,9 +324,12 @@ export const BodyRating = styled.div`
     ${flexbox("row", "flex-start", "center")};
   }
 
-  @media (max-width: 750px) {
-    padding-left: 10px;
-  }
+  ${sizesForEachScreens(
+    [3000, 2500, 2000, 1500, 750],
+    [30, 25, 20, 15, 10],
+    "padding-left",
+    "px"
+  )}
 `;
 
 const chooseBgForAvatar = (letter: string) => {
@@ -354,23 +357,57 @@ const chooseBgForAvatar = (letter: string) => {
 };
 
 export const ConsumerAvatar = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 100px;
+  height: 100px;
   border-radius: 100%;
   background: ${({ name }) => chooseBgForAvatar(name)};
   ${flexbox()};
   text-align: center;
   color: white;
-  font-size: 12pt;
+  font-size: 35pt;
   ${getFont("Bold")};
+
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 2000, 1700, 1600, 1490, 1390],
+    [95, 85, 75, 65, 55, 50, 35, 30],
+    "width",
+    "px"
+  )};
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 2000, 1700, 1600, 1490, 1390],
+    [95, 85, 75, 65, 55, 50, 35, 30],
+    "height",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [3000, 2500, 2000, 1700, 1600, 1500, 1490, 1390],
+    [32, 28, 25, 21, 17, 14, 13, 12],
+    "font-size",
+    "pt"
+  )};
 `;
 
 export const ConsumerName = styled.p`
   color: ${colorsApp.textPrimary};
-  font-size: 12pt;
+  font-size: 35pt;
   ${getFont("Medium")};
-  height: 30px;
+  height: 100px;
   ${flexbox()};
+
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 2000, 1700, 1600, 1490, 1390],
+    [95, 85, 75, 65, 55, 50, 35, 30],
+    "height",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [3000, 2500, 2000, 1700, 1600, 1500, 1490, 1390],
+    [32, 28, 25, 21, 17, 14, 13, 12],
+    "font-size",
+    "pt"
+  )};
 `;
 
 export const ConsumerStarsRating = styled.div`
@@ -387,28 +424,34 @@ export const ConsumerStarsRating = styled.div`
 export const RateTime = styled.p`
   height: auto;
   color: ${colorsApp.textSecundary};
-  font-size: 9pt;
+  font-size: 21pt;
   ${getFont("Medium")};
-  margin-left: 12px;
+  margin-left: 20px;
 
-  @media (max-width: 750px) {
-    font-size: 8pt;
-    margin-left: 10px;
-  }
+  ${sizesForEachScreens(
+    [3200, 2500, 1930, 1500, 750],
+    [19, 15, 13, 9, 8],
+    "font-size",
+    "pt"
+  )};
+
+  ${sizesForEachScreens([2500, 1500, 750], [17, 15, 10], "margin-left", "px")}
 `;
 
 export const BodyTextRating = styled.p`
   width: 100%;
   height: auto;
-  font-size: 23pt;
+  font-size: 27pt;
   ${getFont()};
   color: ${colorsApp.darkGreen};
   text-align: justify;
-  margin-top: 10px;
+  margin-top: 20px;
+
+  ${sizesForEachScreens([2500, 2000, 1500], [20, 17, 10], "margin-top", "px")}
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 950, 750],
-    [23, 21, 18, 16, 11.5, 11, 10],
+    [3200, 3000, 2500, 1930, 1700, 1500, 1390, 950, 750],
+    [25, 22, 19, 16, 13, 12, 11.5, 11, 10],
     "font-size",
     "pt"
   )};
@@ -416,29 +459,81 @@ export const BodyTextRating = styled.p`
 
 export const ButtonToggleSuggestionText = styled.button`
   color: ${colorsApp.roxo};
-  height: 35px;
-  padding-left: 15px;
-  padding-right: 15px;
+  height: 100px;
+  padding-left: 40px;
+  padding-right: 40px;
   border: none;
   outline: none;
   background: #f1f0f4;
-  font-size: 9pt;
+  font-size: 25pt;
   ${getFont("Medium")};
-  border-radius: 30px;
-  margin-top: 15px;
+  border-radius: 50px;
+  margin-top: 30px;
   cursor: pointer;
+
+  ${sizesForEachScreens(
+    [2500, 2000, 1700, 1500, 1390],
+    [35, 30, 25, 20, 15, 13],
+    "padding-left",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [2500, 2000, 1700, 1500, 1390],
+    [35, 30, 25, 20, 15, 13],
+    "padding-right",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [2500, 2000, 1700, 1500],
+    [35, 30, 25, 20, 15],
+    "border-radius",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [2500, 2000, 1500, 1390],
+    [25, 20, 15, 10],
+    "margin-top",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 2000, 1700, 1600, 1490, 1390],
+    [95, 85, 75, 65, 55, 50, 35, 30],
+    "height",
+    "px"
+  )};
+
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 1930, 1700, 1500, 1390],
+    [23, 20, 17, 14, 12, 11, 9],
+    "font-size",
+    "pt"
+  )};
 `;
 
 export const TextSuggestionRate = styled(motion.div)`
   width: 100%;
   height: auto;
 
-  margin-top: 10px;
-  padding-left: 15px;
-  border-left: 3px solid ${colorsApp.roxo};
-  padding-top: 5px;
-  padding-bottom: 5px;
+  margin-top: 20px;
+  padding-left: 30px;
+  border-left: 5px solid ${colorsApp.roxo};
+  padding-top: 15px;
+  padding-bottom: 15px;
   box-sizing: border-box;
+
+  ${sizesForEachScreens([2500, 2000, 1500], [20, 17, 10], "margin-top", "px")};
+  ${sizesForEachScreens(
+    [2500, 2000, 1500],
+    [25, 20, 15],
+    "padding-left",
+    "px"
+  )};
+
+  ${sizesForEachScreens([2500, 2000, 750], [4, 3, 2.5], "border-width", "px")}
 
   .title_txt_fd_g {
     color: ${colorsApp.roxo};
@@ -447,18 +542,17 @@ export const TextSuggestionRate = styled(motion.div)`
 
   @media (max-width: 750px) {
     padding-left: 10px;
-    border-left: 2.5px solid ${colorsApp.roxo};
   }
 
   p {
-    font-size: 25pt;
+    font-size: 27pt;
     ${getFont("Medium")};
     color: ${colorsApp.darkGreen};
     text-align: justify;
 
     ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500, 950, 750],
-      [23, 21, 18, 16, 11.5, 11, 10],
+      [3200, 3000, 2500, 1930, 1700, 1500, 1390, 950, 750],
+      [25, 22, 19, 16, 13, 12, 11.5, 11, 10],
       "font-size",
       "pt"
     )};
