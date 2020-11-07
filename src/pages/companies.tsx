@@ -167,7 +167,7 @@ function Companies() {
     .filter((company) => company.companyName.match(regex));
 
   return (
-    <Layout title="Empresas">
+    <Layout title="Avaliar">
       <ContentCompanies>
         {!(userState.userName.length > 0) && <SignUp />}
 

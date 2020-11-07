@@ -153,7 +153,7 @@ const RateModal = ({ toggleModal }: IProps) => {
         </ContainerStepOne>
       ) : (
         <GiveSuggestion
-          value={rateData.consumerExperience}
+          value={rateData.consumerSuggestion}
           handleSuggestionValue={handleChange}
         />
       )}

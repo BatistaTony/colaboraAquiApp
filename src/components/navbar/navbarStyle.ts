@@ -410,6 +410,8 @@ export const ButtonMobile = styled.div`
   padding-top: 3px;
   z-index: 3;
   padding-right: ${({ openMenu }) => (openMenu ? "1px" : 0)};
+  position: ${({ openMenu }) => (openMenu ? "fixed" : " ")};
+  right: ${({ openMenu }) => (openMenu ? "3%" : " ")};
 
   @media (max-width: 308px) {
     margin-right: 10px;
@@ -442,9 +444,9 @@ export const ButtonMobile = styled.div`
 export const Overlay = styled(motion.div)`
   width: 100%;
   height: 100vh;
-  padding-top: 170px;
+  padding-top: ${({ openMenu }) => (openMenu ? "170px" : "200px")};
   background: white;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   z-index: 2;

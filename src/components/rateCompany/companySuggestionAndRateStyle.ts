@@ -11,9 +11,9 @@ import { SelectList } from "./../signUp/signUpStyle";
 
 const widthContainer = () => `
 
-width:65%;
+width:63%;
 
-${sizesForEachScreens([1500, 1170, 900], [75, 80, 90], "width", "%")};
+${sizesForEachScreens([1500, 1170, 900], [73, 77, 90], "width", "%")};
 
 `;
 
@@ -38,7 +38,7 @@ export const FilterConsumerRating = styled.div`
 
 export const TotalRating = styled.p`
   height: auto;
-  color: ${colorsApp.textPrimary};
+  color: ${colorsApp.textSecundary};
   font-size: 30pt;
   ${getFont("Medium")};
 
@@ -153,8 +153,8 @@ export const CustomSelectRatingStyle = styled.div`
 
   button {
     font-size: 30pt;
-    ${getFont("Medium")};
-    color: ${colorsApp.textPrimary};
+    ${getFont()};
+    color: ${colorsApp.textSecundary};
     border: none;
     outline: none;
     background: transparent;
@@ -178,7 +178,7 @@ export const CustomSelectRatingStyle = styled.div`
 
     width: 27px;
     height: 23px;
-    margin-top: 10px;
+    margin-top: 7px;
 
     ${sizesForEachScreens(
       [3200, 3000, 2500, 1930, 1500, 550],
@@ -220,10 +220,10 @@ export const SelectRatingList = styled(SelectList)`
   )};
 
   @media (max-width: 550px) {
-    width: 95%;
+    width: 100%;
 
     &:first-child {
-      width: 85%;
+      width: 100%;
     }
   }
 
@@ -242,91 +242,225 @@ export const SelectRatingList = styled(SelectList)`
   @media (max-width: 1500px) {
     height: auto;
   }
+`;
 
-  li {
-    border: none;
-    width: 100%;
-    font-size: 30pt;
-    padding-top: 35px;
-    padding-bottom: 35px;
-    padding-left: 50px;
-    border: none;
+export const ItemSelect = styled.li`
+  border: none;
+  width: 100%;
+  font-size: 30pt;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  padding-left: 50px;
+  border: none;
+  color: ${colorsApp.textPrimary};
+  background: ${({ active }) => (active ? `${colorsApp.orange}` : "white")};
 
-    ${sizesForEachScreens(
-      [3300, 3000, 2700, 2300, 1930, 1500],
-      [30, 25, 20, 18, 14, 12],
-      "padding-bottom",
-      "px"
-    )};
+  ${sizesForEachScreens(
+    [3300, 3000, 2700, 2300, 1930, 1500],
+    [30, 25, 20, 18, 14, 12],
+    "padding-bottom",
+    "px"
+  )};
 
-    ${sizesForEachScreens(
-      [3300, 3000, 2700, 2300, 1930, 1500],
-      [30, 25, 20, 18, 14, 12],
-      "padding-top",
-      "px"
-    )};
+  ${sizesForEachScreens(
+    [3300, 3000, 2700, 2300, 1930, 1500, 1000],
+    [30, 25, 20, 18, 14, 12],
+    "padding-top",
+    "px"
+  )};
 
-    ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930],
-      [35, 30, 25, 20],
-      "padding-left",
-      "px"
-    )}
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 1930, 1000, 950],
+    [35, 30, 25, 20, 15, 10],
+    "padding-left",
+    "px"
+  )}
 
-    ${NormalFontSize()};
+  ${NormalFontSize()};
 
-    @media (max-width: 450px) {
-      font-size: 9pt;
-    }
+  @media (max-width: 450px) {
+    font-size: 9pt;
+  }
 
-    @media (max-width: 390px) {
-      font-size: 8.5pt;
-    }
+  @media (max-width: 390px) {
+    font-size: 8.5pt;
+  }
 
-    &:hover {
-      &:first-child {
-        background: white;
-      }
-    }
-
+  &:hover {
     &:first-child {
       background: white;
-      color: ${colorsApp.textSecundary};
     }
+  }
+
+  &:first-child {
+    background: white;
+    color: ${colorsApp.textSecundary};
   }
 `;
 
-export const ConsumerRateStyle = styled.div``;
+export const ListOfRating = styled.div`
+  width: 100%;
+  margin-top: 30px;
+  height: auto;
+  padding-bottom: 50px;
+`;
 
-export const consumerAvatar = styled.div`
-  width: 100px;
-  height: 100px;
+export const ConsumerRateStyle = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 20px;
+`;
+
+export const BodyRating = styled.div`
+  width: 100%;
+  padding-left: 15px;
+  box-sizing: border-box;
+  ${flexbox("column", "flex-start", "flex-start")};
+
+  .min_bdy_fr_strA_ {
+    ${flexbox("row", "flex-start", "center")};
+  }
+
+  @media (max-width: 750px) {
+    padding-left: 10px;
+  }
+`;
+
+const chooseBgForAvatar = (letter: string) => {
+  switch (letter.toLowerCase()) {
+    case "a" || "b" || "c": {
+      return `${colorsApp.roxo}`;
+    }
+
+    case "d" || "f" || "g": {
+      return `${colorsApp.sucess}`;
+    }
+
+    case "h" || "i" || "j": {
+      return `${colorsApp.textPrimary}`;
+    }
+
+    case "k" || "l" || "m" || "n": {
+      return `${colorsApp.kindaBlue}`;
+    }
+
+    default: {
+      return `${colorsApp.orange}`;
+    }
+  }
+};
+
+export const ConsumerAvatar = styled.div`
+  width: 30px;
+  height: 30px;
   border-radius: 100%;
-  background: ${colorsApp.orange};
+  background: ${({ name }) => chooseBgForAvatar(name)};
   ${flexbox()};
   text-align: center;
   color: white;
+  font-size: 12pt;
   ${getFont("Bold")};
 `;
 
-export const consumerName = styled.h3`
+export const ConsumerName = styled.p`
   color: ${colorsApp.textPrimary};
   font-size: 12pt;
   ${getFont("Medium")};
+  height: 30px;
+  ${flexbox()};
 `;
 
-export const consumerStars = styled.div``;
+export const ConsumerStarsRating = styled.div`
+  .bodyOfStars {
+    padding: 0;
+    background: transparent;
+  }
+  .startOnRating {
+    padding: 0;
+    margin-right: 1px;
+  }
+`;
 
 export const RateTime = styled.p`
   height: auto;
   color: ${colorsApp.textSecundary};
-  font-size: 40pt;
+  font-size: 9pt;
+  ${getFont("Medium")};
+  margin-left: 12px;
+
+  @media (max-width: 750px) {
+    font-size: 8pt;
+    margin-left: 10px;
+  }
+`;
+
+export const BodyTextRating = styled.p`
+  width: 100%;
+  height: auto;
+  font-size: 23pt;
   ${getFont()};
+  color: ${colorsApp.darkGreen};
+  text-align: justify;
+  margin-top: 10px;
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500, 1300, 900, 690, 308],
-    [37, 34, 28, 17, 14, 13, 12, 11],
+    [3200, 3000, 2500, 1930, 1500, 950, 750],
+    [23, 21, 18, 16, 11.5, 11, 10],
     "font-size",
     "pt"
   )};
+`;
+
+export const ButtonToggleSuggestionText = styled.button`
+  color: ${colorsApp.roxo};
+  height: 35px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: none;
+  outline: none;
+  background: #f1f0f4;
+  font-size: 9pt;
+  ${getFont("Medium")};
+  border-radius: 30px;
+  margin-top: 15px;
+  cursor: pointer;
+`;
+
+export const TextSuggestionRate = styled(motion.div)`
+  width: 100%;
+  height: auto;
+
+  margin-top: 10px;
+  padding-left: 15px;
+  border-left: 3px solid ${colorsApp.roxo};
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-sizing: border-box;
+
+  .title_txt_fd_g {
+    color: ${colorsApp.roxo};
+    margin-bottom: 15px;
+  }
+
+  @media (max-width: 750px) {
+    padding-left: 10px;
+    border-left: 2.5px solid ${colorsApp.roxo};
+  }
+
+  p {
+    font-size: 25pt;
+    ${getFont("Medium")};
+    color: ${colorsApp.darkGreen};
+    text-align: justify;
+
+    ${sizesForEachScreens(
+      [3200, 3000, 2500, 1930, 1500, 950, 750],
+      [23, 21, 18, 16, 11.5, 11, 10],
+      "font-size",
+      "pt"
+    )};
+  }
 `;

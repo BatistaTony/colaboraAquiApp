@@ -3,6 +3,7 @@ import { InputIcon, SelectList } from "./../signUp/signUpStyle";
 import { CSSTransition } from "react-transition-group";
 import {
   CustomSelectRatingStyle,
+  ItemSelect,
   SelectRatingList,
 } from "./companySuggestionAndRateStyle";
 
@@ -63,12 +64,16 @@ export default function CustomSelectRating({
         classNames="my-node"
       >
         <SelectRatingList>
-          <li>{whatToDo + ":"}</li>
+          <ItemSelect>{whatToDo + ":"}</ItemSelect>
 
           {values.map((value, index) => (
-            <li key={index} onClick={() => chooseValue(value)}>
+            <ItemSelect
+              key={index}
+              active={value === defaultValueSelect}
+              onClick={() => chooseValue(value)}
+            >
               {value}
-            </li>
+            </ItemSelect>
           ))}
         </SelectRatingList>
       </CSSTransition>

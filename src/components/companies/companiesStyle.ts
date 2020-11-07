@@ -658,10 +658,14 @@ export const StarsRated = styled.div`
   }
 `;
 
+const checkBg = (color: string) => {
+  return color ? "#f1f0f4" : "gray";
+};
+
 export const StarRate = styled.div`
   width: 40px;
   height: 40px;
-  margin-left: 5px;
+  margin-right: 5px;
   ${flexbox()};
 
   ${sizesForEachScreens(
@@ -681,7 +685,8 @@ export const StarRate = styled.div`
   svg {
     width: 100%;
     height: 100%;
-    fill: ${({ isRated }) => (isRated ? `${colorsApp.orange}` : "gray")};
+    fill: ${({ isRated, color }) =>
+      isRated ? `${color || colorsApp.orange}` : checkBg(color)};
   }
 `;
 

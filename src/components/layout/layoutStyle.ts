@@ -12,9 +12,17 @@ const chooseBackgroundByTitle = (title: string) => {
   }
 };
 
+const checkScroll = (title: string) => {
+  if (title === "Avaliar" || title === "ColaboraAqui" || title === "Ranking") {
+    return false;
+  } else {
+    return true;
+  }
+};
+
 export const LayoutStyled = styled.div`
   width: 100%;
-  height: 100vh;
+  height: ${({ title }) => (checkScroll(title) ? "auto" : "100vh")};
   background-size: cover;
   display: grid;
   grid-template-rows: 15% 85%;
@@ -32,7 +40,7 @@ export const LayoutStyled = styled.div`
   }
 
   @media (max-width: 950px) {
-    overflow: ${({ title }) => (title === "Empresas" ? "auto" : "hidden")};
+    overflow: ${({ title }) => (title === "Avaliar" ? "auto" : "hidden")};
   }
 
   @media (max-width: 325px) and (max-height: 550px) {
@@ -40,7 +48,7 @@ export const LayoutStyled = styled.div`
   }
 
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
-    overflow: ${({ title }) => (title === "Empresas" ? "auto" : "hidden")};
+    overflow: ${({ title }) => (title === "Avaliar" ? "auto" : "hidden")};
   }
 `;
 
