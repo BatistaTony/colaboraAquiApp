@@ -257,7 +257,8 @@ export const CompanyLogoDiv = styled.div`
 export const CompanyName = styled.p`
   font-size: 20px;
   ${getFont("Bold")};
-  color: #000;
+  color: ${colorsApp.textPrimary};
+  cursor: pointer;
 
   @media (max-width: 750px) {
     font-size: 15px;
