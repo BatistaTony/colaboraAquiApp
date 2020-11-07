@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CardCompany from "./cardCompany";
 import {
   ButtonSuggest,
@@ -17,6 +17,7 @@ import ListOfCompanies from "./listCompanies";
 import { useSelector } from "react-redux";
 import SignUp from "../signUp/signUp";
 import SearchIcon from "./../companies/searchIcone";
+import axios from "axios";
 
 function ContainerCompanies() {
   const [filterBy, setFilterBy] = useState<string>("Todas");
@@ -144,6 +145,8 @@ function ContainerCompanies() {
       companyStatus: "Privada",
     },
   ]);
+
+  
 
   const userState: IConsumer = useSelector((state) => state.Consumer);
 
