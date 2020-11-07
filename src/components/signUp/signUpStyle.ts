@@ -578,7 +578,7 @@ export const FormSelect = styled(FormGroup)`
   position: relative;
 `;
 
-export const SelectList = styled.ul`
+export const SelectList = styled(motion.ul)`
   list-style: none;
   width: 100%;
   height: ${({ length }) => (length > 4 ? "380px" : "auto")};

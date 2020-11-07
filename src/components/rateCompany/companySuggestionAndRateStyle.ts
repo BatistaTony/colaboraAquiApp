@@ -202,15 +202,18 @@ export const CustomSelectRatingStyle = styled.div`
   }
 `;
 
-export const SelectRatingList = styled(SelectList)`
+export const SelectRatingList = styled(motion.ul)`
+  list-style: none;
+  width: 100%;
   height: auto;
-  justify-self: flex-end;
-  width: 90%;
+  position: absolute;
+  top: 108px;
+  background: white;
   border-radius: 35px;
-
-  &:first-child {
-    width: 80%;
-  }
+  z-index: 10;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 
   ${sizesForEachScreens(
     [2600, 2000, 1500, 1000],
@@ -219,36 +222,32 @@ export const SelectRatingList = styled(SelectList)`
     "px"
   )};
 
-  @media (max-width: 550px) {
-    width: 100%;
-
-    &:first-child {
-      width: 100%;
-    }
-  }
-
-  li {
-    border-bottom: 0px;
-  }
+  ${sizesForEachScreens(
+    [3200, 2500, 1930, 1500, 1370],
+    ["98", "88", "78", "53", "48"],
+    "top",
+    "px"
+  )}
 
   @media (max-width: 3200px) {
-    height: auto;
+    height: ${({ length }) => (length > 5 ? "300px" : "auto")};
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 2500px) {
-    height: auto;
-  }
-
-  @media (max-width: 1930px) {
-    height: auto;
-  }
-
-  @media (max-width: 1500px) {
-    height: auto;
+    height: ${({ length }) => (length > 5 ? "270px" : "auto")};
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 `;
 
 export const ItemSelect = styled.li`
+  cursor: default;
+  box-sizing: border-box;
+  ${getFont()};
   border: none;
   width: 100%;
   font-size: 30pt;
@@ -258,7 +257,6 @@ export const ItemSelect = styled.li`
   border: none;
   color: ${colorsApp.textPrimary};
   background: ${({ active }) => (active ? `${colorsApp.orange}` : "white")};
-  border-color: white;
 
   ${sizesForEachScreens(
     [3300, 3000, 2700, 2300, 1930, 1500],
@@ -538,13 +536,25 @@ export const TextSuggestionRate = styled(motion.div)`
     "px"
   )};
 
-  ${sizesForEachScreens([2500, 2000, 750], [4, 3, 2.5], "border-width", "px")}
-  ${sizesForEachScreens([2500, 2000, 750], [13, 10, 7], "paddin-top", "px")}
-
+  ${sizesForEachScreens([2500, 2000, 750], [4, 3, 2.5], "border-width", "px")};
+  ${sizesForEachScreens([2500, 2000, 1500], [10, 7, 5], "padding-top", "px")};
+  ${sizesForEachScreens(
+    [2500, 2000, 1500],
+    [10, 7, 5],
+    "padding-bottom",
+    "px"
+  )};
 
   .title_txt_fd_g {
     color: ${colorsApp.roxo};
     margin-bottom: 15px;
+
+    ${sizesForEachScreens(
+      [2500, 2000, 1500],
+      [10, 7, 5],
+      "margin-bottom",
+      "px"
+    )};
   }
 
   @media (max-width: 750px) {

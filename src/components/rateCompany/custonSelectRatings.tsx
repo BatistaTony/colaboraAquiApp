@@ -56,14 +56,11 @@ export default function CustomSelectRating({
         <img className="customSelect iconeSeta" src="/images/seta.png" alt="" />
       </InputIcon>
 
-      <CSSTransition
-        unmountOnExit
-        addEndListener={() => {}}
-        timout={200}
-        in={showList}
-        classNames="my-node"
-      >
-        <SelectRatingList>
+      {showList && (
+        <SelectRatingList
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+        >
           <ItemSelect>{whatToDo + ":"}</ItemSelect>
 
           {values.map((value, index) => (
@@ -76,7 +73,7 @@ export default function CustomSelectRating({
             </ItemSelect>
           ))}
         </SelectRatingList>
-      </CSSTransition>
+      )}
     </CustomSelectRatingStyle>
   );
 }
