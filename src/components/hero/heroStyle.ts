@@ -98,6 +98,10 @@ export const BackGroundWithIllustration = styled(motion.div)`
     @media (max-height: 820px) {
       bottom: -35%;
     }
+
+    @media (max-height: 490px) {
+      right: -30%;
+    }
   }
 `;
 
@@ -392,6 +396,10 @@ export const ButtonStartRate = styled(motion.button)`
     "pt"
   )};
 
+  @media (max-width: 850px) and (max-height: 600px) {
+    margin-top: 10%;
+  }
+
   @media (max-width: 750px) {
     margin-top: 10%;
   }
@@ -400,8 +408,8 @@ export const ButtonStartRate = styled(motion.button)`
     margin-top: 4%;
   }
 
-  @media (max-width: 850px) and (max-height: 600px) {
-    margin-top: 10%;
+  @media (max-height: 490px) {
+    margin-top: 4%;
   }
 `;
 

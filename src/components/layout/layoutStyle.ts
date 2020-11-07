@@ -50,6 +50,11 @@ export const LayoutStyled = styled.div`
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
     overflow: ${({ title }) => (title === "Avaliar" ? "auto" : "hidden")};
   }
+
+  @media (max-height: 490px) {
+    height: auto;
+    padding-bottom: 40px;
+  }
 `;
 
 export const GlobalStyle = createGlobalStyle`
