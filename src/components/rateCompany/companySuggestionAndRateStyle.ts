@@ -66,7 +66,7 @@ export const GroupOfSelect = styled.div`
 
     ${sizesForEachScreens(
       [3200, 3000, 2500, 1930, 1500],
-      [450, 400, 320, 290, 200],
+      [450, 400, 320, 290, 170],
       "width",
       "px"
     )};
@@ -227,6 +227,10 @@ export const SelectRatingList = styled(SelectList)`
     }
   }
 
+  li {
+    border-bottom: 0px;
+  }
+
   @media (max-width: 3200px) {
     height: auto;
   }
@@ -254,6 +258,7 @@ export const ItemSelect = styled.li`
   border: none;
   color: ${colorsApp.textPrimary};
   background: ${({ active }) => (active ? `${colorsApp.orange}` : "white")};
+  border-color: white;
 
   ${sizesForEachScreens(
     [3300, 3000, 2700, 2300, 1930, 1500],
@@ -534,6 +539,8 @@ export const TextSuggestionRate = styled(motion.div)`
   )};
 
   ${sizesForEachScreens([2500, 2000, 750], [4, 3, 2.5], "border-width", "px")}
+  ${sizesForEachScreens([2500, 2000, 750], [13, 10, 7], "paddin-top", "px")}
+
 
   .title_txt_fd_g {
     color: ${colorsApp.roxo};

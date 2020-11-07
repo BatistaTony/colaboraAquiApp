@@ -75,6 +75,36 @@ const RateCompany = () => {
       feeling: "Muito Bom",
       suggestion: "",
     },
+    {
+      consumerName: "BirdmanStunna",
+      stars: 3,
+      time: "Hoje",
+      experience:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
+      feeling: "Bom",
+      suggestion: "",
+    },
+
+    {
+      consumerName: "DezarAntonio",
+      stars: 1,
+      time: "Ontem",
+      experience:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
+      feeling: "Muito Ruim",
+      suggestion:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, unde. Dolore, culpa! Officia, eius fugiat nihil debitis modi accusantium corrupti assumenda. Ab ducimus doloribus vel suscipit vitae. Quaerat, nostrum laborum.  ",
+    },
+
+    {
+      consumerName: "TonyTony",
+      stars: 5,
+      time: "7 dias atrás",
+      experience:
+        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
+      feeling: "Muito Bom",
+      suggestion: "",
+    },
   ];
 
   return (
