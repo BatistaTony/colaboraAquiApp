@@ -84,6 +84,11 @@ export const Modal = styled(motion.div)`
     justify-content: flex-end;
   }
 
+  @media (max-height: 490px) {
+    height: auto;
+    overflow: auto;
+  }
+
   @media (max-width: 900px) {
     ${flexbox()};
     height: auto;
@@ -114,6 +119,10 @@ export const Modal = styled(motion.div)`
       @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
         position: absolute;
         top: 0;
+      }
+
+      @media (max-height: 490px) {
+        position: relative;
       }
     }
 
@@ -238,6 +247,10 @@ export const DivForm = styled.div`
   @media (max-width: 600px) and (max-height: 690px) {
     height: auto;
     ${flexbox("column", "flex-end", "center")};
+  }
+
+  @media (max-height: 490px) {
+    height: auto;
   }
 `;
 
@@ -622,11 +635,11 @@ export const SelectList = styled(motion.ul)`
   }
 
   @media (max-width: 1930px) {
-    height: ${({ length }) => (length > 5 ? "250px" : "auto")};
+    height: ${({ length }) => (length > 4 ? "250px" : "auto")};
   }
 
   @media (max-width: 1500px) {
-    height: ${({ length }) => (length > 5 ? "185px" : "auto")};
+    height: ${({ length }) => (length > 4 ? "185px" : "auto")};
   }
 
   li {

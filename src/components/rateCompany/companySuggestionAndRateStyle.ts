@@ -575,3 +575,25 @@ export const TextSuggestionRate = styled(motion.div)`
     )};
   }
 `;
+
+export const DivBtnRatings = styled.div`
+  width: 100%;
+  height: auto;
+  ${flexbox()};
+  margin-bottom: 70px;
+
+  ${sizesForEachScreens(
+    [2500, 2000, 1500],
+    [55, 35, 25],
+    "margin-bottom",
+    "px"
+  )}
+`;
+
+export const ButtonSeeMore = styled(ButtonToggleSuggestionText)`
+  color: ${colorsApp.textPrimary};
+  background: transparent;
+  font-size: 30pt;
+
+  ${NormalFontSize()};
+`;

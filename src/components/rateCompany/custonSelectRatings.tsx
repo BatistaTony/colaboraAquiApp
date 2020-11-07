@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { InputIcon, SelectList } from "./../signUp/signUpStyle";
-import { CSSTransition } from "react-transition-group";
+import { InputIcon } from "./../signUp/signUpStyle";
+
 import {
   CustomSelectRatingStyle,
   ItemSelect,

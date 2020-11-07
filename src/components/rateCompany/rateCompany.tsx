@@ -2,6 +2,8 @@ import { Container, Text } from "./rateCompanyStyle";
 import Data from "../../constants/Data";
 import HeaderCompany from "./headerCompany";
 import {
+  ButtonSeeMore,
+  DivBtnRatings,
   FilterConsumerRating,
   GroupOfSelect,
   ListOfRating,
@@ -140,6 +142,10 @@ const RateCompany = () => {
             <ConsumerRating key={index} data={data} />
           ))}
         </ListOfRating>
+
+        <DivBtnRatings>
+          <ButtonSeeMore>Ver mais...</ButtonSeeMore>
+        </DivBtnRatings>
       </RatingsContainer>
     </Container>
   );

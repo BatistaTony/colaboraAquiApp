@@ -74,7 +74,11 @@ export default function CustomSelect({
             length={values.length}
           >
             {values.map((value, index) => (
-              <li key={index} onClick={() => chooseValue(value)}>
+              <li
+                className="customSelect"
+                key={index}
+                onClick={() => chooseValue(value)}
+              >
                 {value}
               </li>
             ))}
