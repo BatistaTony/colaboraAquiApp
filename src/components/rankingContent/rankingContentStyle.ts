@@ -9,8 +9,10 @@ import {
 export const Container = styled.section`
   width: 100%;
   ${flexbox("column", "flex-start", "center")};
-  overflow: scroll;
+  overflow-y: hidden;
+  overflow-x: hidden;
   background: #fff;
+  height: auto;
 `;
 
 export const StarsDiv = styled.div`
@@ -71,11 +73,9 @@ export const Bold = styled.span`
 `;
 
 export const List = styled.div`
-  width: 100vw;
+  width: 100%;
   height: auto;
-
   position: relative;
-
   margin-top: 50px;
   padding-top: 40px;
   ${flexbox("column", "flex-start", "center")};
@@ -83,6 +83,7 @@ export const List = styled.div`
   @media (max-width: 450px) {
     margin-top: 20px;
   }
+
   background: rgba(75, 85, 186, 0.01);
 
   :after {
@@ -103,44 +104,46 @@ export const CardRankingContainer = styled.div`
   width: 74%;
   min-height: 130px;
   max-height: 200px;
-  min-width: 270px;
-  max-width: 1100px;
   position: relative;
-
   align-self: center;
-
-  background: #fff;
   z-index: 1;
-
-  ${flexbox("column", "space-between", "center")};
   padding: 10px 20px;
-
   margin: 15px auto;
   border-radius: 30px;
   box-sizing: border-box;
   box-shadow: 0px 4px 24px rgba(75, 85, 186, 0.05);
+
+  ${flexbox("column", "space-between", "center")};
+
   @media (max-width: 450px) {
-    height: auto !important;
+    height: auto;
   }
+
   @media (max-width: 750px) {
     height: 200px;
-    min-height: 200px !important;
+    width: 85%;
+    min-height: 200px;
+    padding-bottom: 25px;
   }
+
   @media (min-width: 750px) {
     height: 200px;
     margin: 30px auto;
     min-height: 200px;
   }
+
   @media (min-width: 1000px) {
     ${flexbox("row", "space-between", "center")};
     margin: 40px auto;
     height: 130px !important;
     min-height: 130px;
   }
+
   @media (min-width: 1230px) {
     width: 70% !important;
     background: #fff;
   }
+
   @media (min-width: 1800px) {
     max-width: 1500px;
     height: 200px !important;
@@ -161,13 +164,7 @@ export const FloatCircle = styled.div`
   background: #293133;
 
   border-radius: 100%;
-  border: 4px solid
-    ${({ position, id }) =>
-      id === position - position
-        ? "#4b55ba"
-        : id === position - (position - 1)
-        ? "#FCBE0A"
-        : "#575D5F"};
+  border: 4px solid #575d5f;
 
   p {
     color: #fff;
@@ -197,12 +194,15 @@ export const Content = styled.div`
   width: 100%;
   height: auto;
   ${flexbox("row", "space-between", "center")};
-  @media (max-width: 450px) {
+
+  @media (max-width: 390px) {
     ${flexbox("column", "space-between", "flex-start")};
   }
+
   @media (min-width: 1000px) {
     width: 400px;
   }
+
   @media (min-width: 1800px) {
     width: 50% !important;
   }
@@ -259,6 +259,10 @@ export const CompanyName = styled.p`
   ${getFont("Bold")};
   color: #000;
 
+  @media (max-width: 750px) {
+    font-size: 15px;
+  }
+
   @media (min-width: 1800px) {
     font-size: 35px;
   }
@@ -272,19 +276,22 @@ export const AllAvaliatiins = styled.p`
   @media (min-width: 1800px) {
     font-size: 27px;
   }
+
+  span {
+    ${getFont("Bold")};
+  }
 `;
 
 export const StarContainer = styled.div`
   width: 150px;
   height: 35px;
-
   background: rgba(255, 255, 255, 0.1);
-
   border-radius: 8px;
   box-sizing: border-box;
   align-self: flex-start;
   margin: 20px 0;
 `;
+
 export const Description = styled.p`
   width: 90%;
   height: 120px;
@@ -304,10 +311,10 @@ export const AvaliationsDiv = styled.div`
   ${flexbox("column", "flex-start", "flex-start")};
   border-top: solid 1px rgba(112, 112, 112, 0.12);
 
-  background: #fff;
   @media (max-width: 1000px) {
     margin-left: 0;
   }
+
   @media (min-width: 1000px) {
     width: 100%;
     border: none;
@@ -329,15 +336,21 @@ export const Title = styled.p`
   }
 `;
 export const CardRow = styled.div`
-  width: auto;
+  width: 350px;
   height: auto;
+  grid-column-gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 0.9fr);
 
-  background: #fff;
-  ${flexbox("row", "space-between", "center")};
+  @media (max-width: 750px) {
+    width: 100%;
+    grid-column-gap: 20px;
+
+    grid-template-columns: repeat(3, auto);
+  }
 `;
 export const Avaliation = styled.div`
-  width: auto;
-
+  width: 100%;
   height: auto;
   position: relative;
 
@@ -351,9 +364,13 @@ export const Avaliation = styled.div`
 
   border-radius: 6px;
   margin-right: 5px;
+
   p {
     font-size: 12px;
     ${getFont("Medium")};
+    width: 100%;
+    text-align: center;
+
     color: ${({ color }) =>
       color == "positive"
         ? "rgb(75, 85, 186)"

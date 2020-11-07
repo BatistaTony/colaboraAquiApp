@@ -820,12 +820,6 @@ ${sizesForEachScreens(
     box-shadow: 0 0 0px;
   }
 
-  @media (max-width: 600px) and (max-height: 530px) {
-    overflow: auto;
-    padding-top: 50px;
-    padding-bottom: 30px;
-  }
-
   .div_form_sugs_cmp_et {
     padding-right: 0;
   }

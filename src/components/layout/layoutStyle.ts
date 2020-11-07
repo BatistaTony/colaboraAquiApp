@@ -13,7 +13,7 @@ const chooseBackgroundByTitle = (title: string) => {
 };
 
 const checkScroll = (title: string) => {
-  if (title === "Avaliar" || title === "ColaboraAqui" || title === "Ranking") {
+  if (title === "Avaliar" || title === "ColaboraAqui") {
     return false;
   } else {
     return true;
@@ -28,7 +28,8 @@ export const LayoutStyled = styled.div`
   grid-template-rows: 15% 85%;
   background: ${({ title }) => chooseBackgroundByTitle(title)};
   background-size: 100% 100%;
-  overflow: ${({ title }) => (title === "Avaliar" ? "auto" : "hidden")};
+  overflow: ${({ title }) =>
+    title === "Avaliar" || title === "Ranking" ? "auto" : "hidden"};
   position: absolute;
 
   @media (max-width: 2700px) {
@@ -40,7 +41,8 @@ export const LayoutStyled = styled.div`
   }
 
   @media (max-width: 950px) {
-    overflow: ${({ title }) => (title === "Avaliar" ? "auto" : "hidden")};
+    overflow: ${({ title }) =>
+      title === "Avaliar" || title === "Ranking" ? "auto" : "hidden"};
   }
 
   @media (max-width: 325px) and (max-height: 550px) {
@@ -48,7 +50,8 @@ export const LayoutStyled = styled.div`
   }
 
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
-    overflow: ${({ title }) => (title === "Avaliar" ? "auto" : "hidden")};
+    overflow: ${({ title }) =>
+      title === "Avaliar" || title === "Ranking" ? "auto" : "hidden"};
   }
 
   @media (max-height: 490px) {
