@@ -15,6 +15,7 @@ import {
   AvaliationsDiv,
   Title,
 } from "./rankingContentStyle";
+import Link from "next/link";
 
 import Stars from "../companies/starsRated";
 
@@ -51,7 +52,9 @@ const CardCompany = ({ data, position, index }) => {
           <DivRow>
             <CompanyLogoDiv img={logo}></CompanyLogoDiv>
             <div>
-              <CompanyName>{name}</CompanyName>
+              <Link href="/rate?id=someid">
+                <CompanyName>{name}</CompanyName>
+              </Link>
               <AllAvaliatiins>
                 <span>
                   <RenderAvaliation item={avaliations.all} />{" "}
