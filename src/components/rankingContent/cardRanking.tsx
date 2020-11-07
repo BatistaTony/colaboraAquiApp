@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import {
   CardRankingContainer,
@@ -13,28 +14,34 @@ import {
   Avaliation,
   AvaliationsDiv,
   Title,
-  StarsDiv,
-} from './rankingContentStyle';
-import Star from '../stars/stars';
+} from "./rankingContentStyle";
 
-import Stars from '../companies/starsRated';
+import Stars from "../companies/starsRated";
 
-import RenderAvaliation from '../../constants/renderAvaliation';
+import RenderAvaliation from "../../constants/renderAvaliation";
 
 const CardCompany = ({ data, position, index }) => {
   const { name, avaliations, ranking, logo, stars } = data;
+
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    rootMargin: "-100px 0px",
+  });
 
   const variants = {
     visible: { opacity: 1, y: 0 },
     hidden: { opacity: 0, y: -200 },
   };
 
+  const animationStyle = { opacity: 1, y: 0 };
+
   return (
     <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={variants}
-      style={{ width: '100%', height: '80%' }}
+      ref={ref}
+      initial={{ opacity: 0, y: 100 }}
+      animate={inView ? animationStyle : {}}
+      exit={{ opacity: 0, y: 100 }}
+      style={{ width: "100%", height: "auto" }}
     >
       <CardRankingContainer>
         <FloatCircle position={position} id={index}>
@@ -46,7 +53,9 @@ const CardCompany = ({ data, position, index }) => {
             <div>
               <CompanyName>{name}</CompanyName>
               <AllAvaliatiins>
-                <RenderAvaliation item={avaliations.all} />
+                <span>
+                  <RenderAvaliation item={avaliations.all} />{" "}
+                </span>
                 Avaliações
               </AllAvaliatiins>
             </div>
@@ -56,17 +65,17 @@ const CardCompany = ({ data, position, index }) => {
         <AvaliationsDiv>
           <Title>Avaliações</Title>
           <CardRow>
-            <Avaliation color={'positive'}>
+            <Avaliation color={"positive"}>
               <p>
                 <RenderAvaliation item={avaliations.positive} /> Posituvas
               </p>
             </Avaliation>
-            <Avaliation color={'normal'}>
+            <Avaliation color={"normal"}>
               <p>
                 <RenderAvaliation item={avaliations.normal} /> Normais
               </p>
             </Avaliation>
-            <Avaliation color={'negative'}>
+            <Avaliation color={"negative"}>
               <p>
                 <RenderAvaliation item={avaliations.negative} /> Nevativas
               </p>

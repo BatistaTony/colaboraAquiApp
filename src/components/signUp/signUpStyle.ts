@@ -84,11 +84,6 @@ export const Modal = styled(motion.div)`
     justify-content: flex-end;
   }
 
-  @media (max-height: 700px) {
-    height: 100vh;
-    justify-content: flex-end;
-  }
-
   @media (max-height: 490px) {
     height: auto;
     overflow: auto;
@@ -117,17 +112,13 @@ export const Modal = styled(motion.div)`
         padding-top: 10px;
       }
 
-      @media (max-width: 600px) and (max-height: 690px) {
+      @media (max-width: 600px) and (max-height: 700px) {
         position: relative;
       }
 
       @media (max-width: 750px) and (min-height: 700px) and (max-height: 850px) {
         position: absolute;
         top: 0;
-      }
-
-      @media (max-height: 490px) {
-        position: relative;
       }
     }
 
@@ -143,7 +134,7 @@ export const Modal = styled(motion.div)`
     height: 100vh;
   }
 
-  @media (max-width: 600px) and (max-height: 690px) {
+  @media (max-width: 600px) and (max-height: 700px) {
     height: auto;
   }
 `;
@@ -244,18 +235,14 @@ export const DivForm = styled.div`
     }
   }
 
-  /* @media (max-width: 600px) and (min-height: 745px) {
+  @media (max-width: 600px) and (min-height: 745px) {
     height: 100vh;
     ${flexbox("column", "flex-end", "center")};
   }
 
-  @media (max-width: 600px) and (max-height: 690px) {
-    height: 100vh;
-    ${flexbox("column", "flex-end", "center")};
-  } */
-
-  @media (max-height: 490px) {
+  @media (max-width: 600px) and (max-height: 700px) {
     height: auto;
+    ${flexbox("column", "flex-end", "center")};
   }
 `;
 

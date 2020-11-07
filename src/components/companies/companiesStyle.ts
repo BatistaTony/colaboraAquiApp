@@ -778,19 +778,13 @@ export const OverlaySuggestion = styled.div`
   top: 0;
   ${flexbox()};
   z-index: 999;
-
-  .w_d_itr_ {
-    width: 100%;
-    height: 100%;
-    ${flexbox()};
-  }
 `;
 
 export const ModalSuggestion = styled(motion.div)`
   width: 45%;
   height: auto;
   border-radius: 10px;
-  ${flexbox()};
+  ${flexbox("Column")};
   background: white;
   box-sizing: border-box;
   position: relative;
@@ -974,6 +968,12 @@ export const ButtonCloseSuggestion = styled.button`
   ${sizesForEachScreens([1930, 1500, 1370], [45, 30, 25], "width", "px")};
 
   ${sizesForEachScreens([1930, 1500, 1370], [45, 30, 25], "height", "px")};
+
+  @media (max-width: 600px) and (max-height: 530px) {
+    position: relative;
+    align-self: flex-end;
+    justify-self: flex-end;
+  }
 
   svg {
     width: 80%;

@@ -14,11 +14,6 @@ export const OverlaySignIn = styled.div`
   background: url(/images/Grupo978.svg);
   background-size: cover;
   overflow: hidden;
-
-  @media (max-height: 490px) {
-    overflow: auto;
-    height: auto;
-  }
 `;
 
 export const ModalSignIn = styled(Modal)`
@@ -49,7 +44,7 @@ export const ModalSignIn = styled(Modal)`
       position: absolute;
       top: 0;
 
-      @media (max-height: 490px) {
+      @media (max-width: 600px) and (max-height: 500px) {
         position: relative;
       }
     }
@@ -61,18 +56,23 @@ export const ModalSignIn = styled(Modal)`
       box-sizing: border-box;
       padding-right: 0;
 
-      @media (max-width: 750px) {
-        ${flexbox("column", "flex-end", "center")};
-      }
-
       .divBtnBackT {
         padding-top: 15px;
       }
     }
 
+    @media (max-width: 750px) {
+      ${flexbox("column", "flex-end", "center")};
+    }
+
     @media (max-width: 900px) {
       border: 0;
       box-shadow: 0 0 0px;
+    }
+
+    @media (max-height: 500px) {
+      overflow: auto;
+      height: auto;
     }
 
     .grid-form-sign {
@@ -149,6 +149,10 @@ export const ModalSignIn = styled(Modal)`
         }
         @media (max-width: 600px) {
           margin-top: 50px;
+        }
+
+        @media (max-height: 500px) {
+          margin-top: 30px;
         }
       }
       .textForgetPassword {
