@@ -84,6 +84,11 @@ export const Modal = styled(motion.div)`
     justify-content: flex-end;
   }
 
+  @media (max-height: 700px) {
+    height: 100vh;
+    justify-content: flex-end;
+  }
+
   @media (max-height: 490px) {
     height: auto;
     overflow: auto;
@@ -239,15 +244,15 @@ export const DivForm = styled.div`
     }
   }
 
-  @media (max-width: 600px) and (min-height: 745px) {
+  /* @media (max-width: 600px) and (min-height: 745px) {
     height: 100vh;
     ${flexbox("column", "flex-end", "center")};
   }
 
   @media (max-width: 600px) and (max-height: 690px) {
-    height: auto;
+    height: 100vh;
     ${flexbox("column", "flex-end", "center")};
-  }
+  } */
 
   @media (max-height: 490px) {
     height: auto;
