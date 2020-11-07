@@ -1,14 +1,14 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import {
   colorsApp,
   flexbox,
   getFont,
   sizesForEachScreens,
-} from '../layout/layoutStyle';
+} from "../layout/layoutStyle";
 
 export const Container = styled.section`
   width: 100%;
-  ${flexbox('column', 'flex-start', 'center')};
+  ${flexbox("column", "flex-start", "center")};
   overflow: scroll;
   background: #fff;
 `;
@@ -50,24 +50,24 @@ export const Text = styled.p`
   text-align: center;
   color: ${colorsApp.soDark};
   font-size: 45pt;
-  ${getFont('Medium')};
+  ${getFont("Medium")};
 
   margin-top: 15px;
-  ${sizesForEachScreens([1000, 750, 450, 300], [60, 75, 80, 90], 'width', '%')};
-  ${sizesForEachScreens([1500], [0], 'margin-top', '')};
-  ${sizesForEachScreens([450], [10], 'margin-top', 'px')};
+  ${sizesForEachScreens([1000, 750, 450, 300], [60, 75, 80, 90], "width", "%")};
+  ${sizesForEachScreens([1500], [0], "margin-top", "")};
+  ${sizesForEachScreens([450], [10], "margin-top", "px")};
 
   ${sizesForEachScreens(
     [3200, 2500, 2000, 1500, 1300, 450],
     [40, 35, 28, 17, 14, 13],
-    'font-size',
-    'pt'
+    "font-size",
+    "pt"
   )};
 `;
 
 export const Bold = styled.span`
   color: ${colorsApp.roxo};
-  ${getFont('bold')};
+  ${getFont("bold")};
 `;
 
 export const List = styled.div`
@@ -78,7 +78,7 @@ export const List = styled.div`
 
   margin-top: 50px;
   padding-top: 40px;
-  ${flexbox('column', 'flex-start', 'center')};
+  ${flexbox("column", "flex-start", "center")};
 
   @media (max-width: 450px) {
     margin-top: 20px;
@@ -86,7 +86,7 @@ export const List = styled.div`
   background: rgba(75, 85, 186, 0.01);
 
   :after {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
@@ -112,7 +112,7 @@ export const CardRankingContainer = styled.div`
   background: #fff;
   z-index: 1;
 
-  ${flexbox('column', 'space-between', 'center')};
+  ${flexbox("column", "space-between", "center")};
   padding: 10px 20px;
 
   margin: 15px auto;
@@ -132,7 +132,7 @@ export const CardRankingContainer = styled.div`
     min-height: 200px;
   }
   @media (min-width: 1000px) {
-    ${flexbox('row', 'space-between', 'center')};
+    ${flexbox("row", "space-between", "center")};
     margin: 40px auto;
     height: 130px !important;
     min-height: 130px;
@@ -156,7 +156,7 @@ export const FloatCircle = styled.div`
   top: -20px;
   left: -20px;
 
-  ${flexbox('row', 'center', 'center')};
+  ${flexbox("row", "center", "center")};
 
   background: #293133;
 
@@ -164,14 +164,14 @@ export const FloatCircle = styled.div`
   border: 4px solid
     ${({ position, id }) =>
       id === position - position
-        ? '#4b55ba'
+        ? "#4b55ba"
         : id === position - (position - 1)
-        ? '#FCBE0A'
-        : '#575D5F'};
+        ? "#FCBE0A"
+        : "#575D5F"};
 
   p {
     color: #fff;
-    ${getFont('bold')};
+    ${getFont("bold")};
   }
   @media (max-width: 450px) {
     width: 30px;
@@ -196,9 +196,9 @@ export const FloatCircle = styled.div`
 export const Content = styled.div`
   width: 100%;
   height: auto;
-  ${flexbox('row', 'space-between', 'center')};
+  ${flexbox("row", "space-between", "center")};
   @media (max-width: 450px) {
-    ${flexbox('column', 'space-between', 'flex-start')};
+    ${flexbox("column", "space-between", "flex-start")};
   }
   @media (min-width: 1000px) {
     width: 400px;
@@ -210,7 +210,7 @@ export const Content = styled.div`
 export const DivRow = styled.div`
   width: auto;
   height: auto;
-  ${flexbox('row', 'flex-start', 'center')};
+  ${flexbox("row", "flex-start", "center")};
 
   @media (min-width: 1800px) {
     margin-right: 10px;
@@ -220,10 +220,10 @@ export const DivRow = styled.div`
 export const Row = styled.div`
   width: auto;
   height: auto;
-  ${flexbox('column', 'flex-start', 'center')};
+  ${flexbox("column", "flex-start", "center")};
 
   @media (min-width: 1230px) {
-    ${flexbox('row', 'space-evenly', 'center')};
+    ${flexbox("row", "space-evenly", "center")};
   }
 `;
 
@@ -256,7 +256,7 @@ export const CompanyLogoDiv = styled.div`
 `;
 export const CompanyName = styled.p`
   font-size: 20px;
-  ${getFont('Bold')};
+  ${getFont("Bold")};
   color: #000;
 
   @media (min-width: 1800px) {
@@ -301,7 +301,7 @@ export const AvaliationsDiv = styled.div`
 
   margin-top: 10px;
   margin-left: 10px;
-  ${flexbox('column', 'flex-start', 'flex-start')};
+  ${flexbox("column", "flex-start", "flex-start")};
   border-top: solid 1px rgba(112, 112, 112, 0.12);
 
   background: #fff;
@@ -314,13 +314,13 @@ export const AvaliationsDiv = styled.div`
     width: auto;
     margin-top: 0;
 
-    ${flexbox('column', 'flex-end', 'flex-end')};
+    ${flexbox("column", "flex-end", "flex-end")};
   }
 `;
 
 export const Title = styled.p`
   font-size: 14px;
-  ${getFont('Medium')};
+  ${getFont("Medium")};
   color: #6e6e6e;
   margin: 5px 0;
   align-self: flex-start;
@@ -333,7 +333,7 @@ export const CardRow = styled.div`
   height: auto;
 
   background: #fff;
-  ${flexbox('row', 'space-between', 'center')};
+  ${flexbox("row", "space-between", "center")};
 `;
 export const Avaliation = styled.div`
   width: auto;
@@ -342,24 +342,24 @@ export const Avaliation = styled.div`
   position: relative;
 
   background: ${({ color }) =>
-    color == 'positive'
-      ? 'rgba(75, 85, 186, 0.11)'
-      : color == 'normal'
-      ? 'rgba(252, 190, 10, 0.11)'
-      : 'rgba(249, 63, 63, 0.11)'};
+    color == "positive"
+      ? "rgba(75, 85, 186, 0.11)"
+      : color == "normal"
+      ? "rgba(252, 190, 10, 0.11)"
+      : "rgba(249, 63, 63, 0.11)"};
   padding: 5px;
 
   border-radius: 6px;
   margin-right: 5px;
   p {
     font-size: 12px;
-    ${getFont('Medium')};
+    ${getFont("Medium")};
     color: ${({ color }) =>
-      color == 'positive'
-        ? 'rgb(75, 85, 186)'
-        : color == 'normal'
-        ? 'rgb(252, 190, 10)'
-        : 'rgb(249, 63, 63)'};
+      color == "positive"
+        ? "rgb(75, 85, 186)"
+        : color == "normal"
+        ? "rgb(252, 190, 10)"
+        : "rgb(249, 63, 63)"};
   }
 
   @media (max-width: 450px) {

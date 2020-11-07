@@ -1,8 +1,8 @@
-import React from 'react';
-import { Container, Image, Text, List, Bold } from './rankingContentStyle';
-import CardRanking from './cardRanking';
+import React from "react";
+import { Container, Image, Text, List, Bold } from "./rankingContentStyle";
+import CardRanking from "./cardRanking";
 
-import Data from '../../constants/Data';
+import Data from "../../constants/Data";
 
 export default function RankingContent() {
   const position = Data.length;

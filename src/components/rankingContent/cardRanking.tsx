@@ -28,7 +28,7 @@ const CardCompany = ({ data, position, index }) => {
     visible: { opacity: 1, y: 0 },
     hidden: { opacity: 0, y: -200 },
   };
-
+ 
   return (
     <motion.div
       initial="hidden"
