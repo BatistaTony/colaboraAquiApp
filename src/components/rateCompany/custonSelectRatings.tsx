@@ -3,7 +3,6 @@ import { InputIcon } from "./../signUp/signUpStyle";
 
 import {
   CustomSelectRatingStyle,
-  ItemSelect,
   SelectRatingList,
 } from "./companySuggestionAndRateStyle";
 
@@ -34,8 +33,10 @@ export default function CustomSelectRating({
   useEffect(() => {
     document.addEventListener("click", HideOpenedDiv, true);
 
+    const regex = new RegExp("customSelect", "gi");
+
     function HideOpenedDiv(event) {
-      if (event.target.className !== "customSelect") {
+      if (!event.target.className.match(regex)) {
         setShowList(false);
       }
     }
@@ -60,17 +61,20 @@ export default function CustomSelectRating({
         <SelectRatingList
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
+          className="customSelect"
         >
-          <ItemSelect>{whatToDo + ":"}</ItemSelect>
+          <li className="customSelect">{whatToDo + ":"}</li>
 
           {values.map((value, index) => (
-            <ItemSelect
+            <li
+              className={`customSelect  ${
+                value === defaultValueSelect ? `active` : ""
+              } `}
               key={index}
-              active={value === defaultValueSelect}
               onClick={() => chooseValue(value)}
             >
               {value}
-            </ItemSelect>
+            </li>
           ))}
         </SelectRatingList>
       )}

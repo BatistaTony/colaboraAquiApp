@@ -7,7 +7,6 @@ import {
   NormalFontSize,
   sizesForEachScreens,
 } from "../layout/layoutStyle";
-import { SelectList } from "./../signUp/signUpStyle";
 
 const widthContainer = () => `
 
@@ -214,6 +213,7 @@ export const SelectRatingList = styled(motion.ul)`
   -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 
   ${sizesForEachScreens(
     [2600, 2000, 1500, 1000],
@@ -242,62 +242,68 @@ export const SelectRatingList = styled(motion.ul)`
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-`;
 
-export const ItemSelect = styled.li`
-  cursor: default;
-  box-sizing: border-box;
-  ${getFont()};
-  border: none;
-  width: 100%;
-  font-size: 30pt;
-  padding-top: 35px;
-  padding-bottom: 35px;
-  padding-left: 50px;
-  border: none;
-  color: ${colorsApp.textPrimary};
-  background: ${({ active }) => (active ? `${colorsApp.orange}` : "white")};
-
-  ${sizesForEachScreens(
-    [3300, 3000, 2700, 2300, 1930, 1500],
-    [30, 25, 20, 18, 14, 12],
-    "padding-bottom",
-    "px"
-  )};
-
-  ${sizesForEachScreens(
-    [3300, 3000, 2700, 2300, 1930, 1500, 1000],
-    [30, 25, 20, 18, 14, 12],
-    "padding-top",
-    "px"
-  )};
-
-  ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1000, 950],
-    [35, 30, 25, 20, 15, 10],
-    "padding-left",
-    "px"
-  )}
-
-  ${NormalFontSize()};
-
-  @media (max-width: 450px) {
-    font-size: 9pt;
+  .active {
+    background:${colorsApp.orange};
   }
 
-  @media (max-width: 390px) {
-    font-size: 8.5pt;
-  }
+  li {
+    cursor: default;
+    box-sizing: border-box;
+    ${getFont()};
+    border: none;
+    width: 100%;
+    font-size: 30pt;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    padding-left: 50px;
+    border: none;
+    color: ${colorsApp.textPrimary};
+    transition: 0.5s;
 
-  &:hover {
+    ${sizesForEachScreens(
+      [3300, 3000, 2700, 2300, 1930, 1500],
+      [30, 25, 20, 18, 14, 12],
+      "padding-bottom",
+      "px"
+    )};
+
+    ${sizesForEachScreens(
+      [3300, 3000, 2700, 2300, 1930, 1500, 1000],
+      [30, 25, 20, 18, 14, 12],
+      "padding-top",
+      "px"
+    )};
+
+    ${sizesForEachScreens(
+      [3200, 3000, 2500, 1930, 1000, 950],
+      [35, 30, 25, 20, 15, 10],
+      "padding-left",
+      "px"
+    )}
+
+    ${NormalFontSize()};
+
+    @media (max-width: 450px) {
+      font-size: 9pt;
+    }
+
+    @media (max-width: 390px) {
+      font-size: 8.5pt;
+    }
+
+    &:hover {
+      &:first-child {
+        background: white;
+      }
+
+      background: ${colorsApp.orange};
+    }
+
     &:first-child {
       background: white;
+      color: ${colorsApp.textSecundary};
     }
-  }
-
-  &:first-child {
-    background: white;
-    color: ${colorsApp.textSecundary};
   }
 `;
 
@@ -308,7 +314,7 @@ export const ListOfRating = styled.div`
   padding-bottom: 50px;
 `;
 
-export const ConsumerRateStyle = styled.div`
+export const ConsumerRateStyle = styled(motion.div)`
   width: 100%;
   display: grid;
   grid-template-columns: auto 1fr;
