@@ -3,7 +3,6 @@ import { InputIcon } from "./../signUp/signUpStyle";
 
 import {
   CustomSelectRatingStyle,
-  ItemSelect,
   SelectRatingList,
 } from "./companySuggestionAndRateStyle";
 
