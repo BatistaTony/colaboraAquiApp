@@ -17,6 +17,18 @@ export const Container = styled.div`
   @media (max-height: 790px) {
     height: ${({ length }) => (length ? "150vh" : "auto")};
   }
+
+  @media (max-height: 600px) {
+    height: ${({ length }) => (length ? "170vh" : "auto")};
+  }
+
+  @media (max-height: 546px) {
+    height: ${({ length }) => (length ? "180vh" : "auto")};
+  }
+
+  @media (max-height: 510px) {
+    height: ${({ length }) => (length ? "1000px" : "auto")};
+  }
 `;
 
 const widthContainer = () => `
