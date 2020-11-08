@@ -10,10 +10,25 @@ import {
 export const Container = styled.div`
   width: 100%;
   height: ${({ length }) => (length ? "100vh" : "auto")};
-  position: relative;
   background: #fff;
   ${flexbox("column", "flex-start", "center")};
   box-sizing: border-box;
+
+  @media (max-height: 790px) {
+    height: ${({ length }) => (length ? "150vh" : "auto")};
+  }
+
+  @media (max-height: 600px) {
+    height: ${({ length }) => (length ? "170vh" : "auto")};
+  }
+
+  @media (max-height: 546px) {
+    height: ${({ length }) => (length ? "180vh" : "auto")};
+  }
+
+  @media (max-height: 510px) {
+    height: ${({ length }) => (length ? "1000px" : "auto")};
+  }
 `;
 
 const widthContainer = () => `
