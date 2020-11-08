@@ -219,11 +219,11 @@ const RateCompany = () => {
   };
 
   return (
-    <Container length={filteredRatings.length <= 3}>
+    <Container length={filteredRatings.length < 3}>
       <HeaderCompany data={data} />
       <Text>{data.discription}</Text>
 
-      <RatingsContainer>
+      <RatingsContainer length={filteredRatings.length < 3}>
         <FilterConsumerRating>
           <TotalRating>{ratings.length} avaliações</TotalRating>
 
@@ -246,7 +246,7 @@ const RateCompany = () => {
           </GroupOfSelect>
         </FilterConsumerRating>
 
-        <ListOfRating>
+        <ListOfRating length={filteredRatings.length < 3}>
           {filteredRatings.slice(0, lengthRatings).map((data, index) => (
             <ConsumerRating key={data.id} data={data} />
           ))}

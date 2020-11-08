@@ -244,7 +244,7 @@ export const SelectRatingList = styled(motion.ul)`
   }
 
   .active {
-    background:${colorsApp.orange};
+    background: ${colorsApp.orange};
   }
 
   li {
@@ -310,8 +310,9 @@ export const SelectRatingList = styled(motion.ul)`
 export const ListOfRating = styled.div`
   width: 100%;
   margin-top: 30px;
-  height: auto;
   padding-bottom: 50px;
+
+  height: auto;
 `;
 
 export const ConsumerRateStyle = styled(motion.div)`

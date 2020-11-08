@@ -10,10 +10,13 @@ import {
 export const Container = styled.div`
   width: 100%;
   height: ${({ length }) => (length ? "100vh" : "auto")};
-  position: relative;
   background: #fff;
   ${flexbox("column", "flex-start", "center")};
   box-sizing: border-box;
+
+  @media (max-height: 790px) {
+    height: ${({ length }) => (length ? "150vh" : "auto")};
+  }
 `;
 
 const widthContainer = () => `
