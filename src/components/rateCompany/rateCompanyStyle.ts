@@ -9,7 +9,7 @@ import {
 
 export const Container = styled.div`
   width: 100%;
-  height: auto;
+  height: ${({ length }) => (length ? "100vh" : "auto")};
   position: relative;
   background: #fff;
   ${flexbox("column", "flex-start", "center")};
@@ -262,13 +262,13 @@ export const Text = styled.p`
   height: auto;
   text-align: justify;
   color: ${colorsApp.darkGreen};
-  font-size: 40pt;
+  font-size: 38pt;
   ${getFont()};
   margin-top: 40px;
 
   ${sizesForEachScreens(
-    [3200, 2500, 2000, 1500, 1300, 900, 690, 308],
-    [37, 34, 28, 17, 14, 13, 12, 11],
+    [3200, 2500, 2000, 1700, 1500, 1300, 900, 690],
+    [34, 30, 25, 18, 15, 13.5, 12, 11],
     "font-size",
     "pt"
   )};
