@@ -18,7 +18,7 @@ export const Container = styled.div`
     height: ${({ length }) => (length ? "150vh" : "auto")};
   }
 
-  @media (max-height: 600px) {
+  @media (max-height: 600px) and (max-width: 900px) {
     height: ${({ length }) => (length ? "170vh" : "auto")};
   }
 
