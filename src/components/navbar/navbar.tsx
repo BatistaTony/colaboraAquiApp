@@ -32,15 +32,14 @@ export default function Navbar(props: any) {
   const isLogged = consumerState.userName.length > 0;
 
   const checkActiveForRate = (title: string) => {
-    if (title === "Avaliar") {
-      return true;
-    } else if (title !== "ColaboraAqui" && title !== "Ranking") {
-      return true;
-    } else if (title === consumerState.userName) {
-      return false;
-    } else {
-      return false;
-    }
+    const regex = new RegExp("Avaliar", "gi");
+
+    return (
+      title.match(regex) ||
+      (title !== "ColaboraAqui" &&
+        title !== "Ranking" &&
+        title !== consumerState.userName)
+    );
   };
 
   return (

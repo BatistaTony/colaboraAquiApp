@@ -370,7 +370,8 @@ export const ConsumerAvatar = styled.div`
   width: 100px;
   height: 100px;
   border-radius: 100%;
-  background: ${({ name }) => chooseBgForAvatar(name)};
+  background: ${({ name }) =>
+    name ? chooseBgForAvatar(name) : `${colorsApp.orange}`};
   ${flexbox()};
   text-align: center;
   color: white;
