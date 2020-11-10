@@ -146,8 +146,6 @@ function ContainerCompanies() {
     },
   ]);
 
-  
-
   const userState: IConsumer = useSelector((state) => state.Consumer);
 
   const toggleSuggestion = () => {
@@ -181,7 +179,7 @@ function ContainerCompanies() {
             <mark>Escolhe</mark> a que desejas avaliar.
           </span>
           <span>
-            <mark>Avalie</mark> e sugira melhorias !
+            <mark> Avalie</mark> e sugira melhorias !
           </span>
         </TextCompanies>
         <FilterStyled>

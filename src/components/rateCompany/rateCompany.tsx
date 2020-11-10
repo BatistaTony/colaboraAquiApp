@@ -27,9 +27,9 @@ const initialFilter: IFilter = {
 interface IRating {
   consumerName: string;
   stars: number;
-  time: string;
+  time: string | Date;
   experience: string;
-  feeling: string;
+  feeling: string | number;
   suggestion: string;
 }
 
@@ -62,7 +62,7 @@ const RateCompany = () => {
       id: 1,
       consumerName: "BatistaTony",
       stars: 3,
-      time: "Hoje",
+      time: Date.now(),
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Bom",
@@ -73,7 +73,7 @@ const RateCompany = () => {
       id: 2,
       consumerName: "AndersonKennedy",
       stars: 1,
-      time: "Ontem",
+      time: new Date(),
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Muito Ruim",
@@ -85,7 +85,7 @@ const RateCompany = () => {
       id: 3,
       consumerName: "CaioTony",
       stars: 5,
-      time: "7 dias atrás",
+      time: "Feb 1, 2020",
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Muito Bom",
@@ -95,7 +95,7 @@ const RateCompany = () => {
       id: 4,
       consumerName: "BirdmanStunna",
       stars: 3,
-      time: "Hoje",
+      time: "Abril 1, 2020",
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Bom",
@@ -106,7 +106,7 @@ const RateCompany = () => {
       id: 5,
       consumerName: "DezarAntonio",
       stars: 1,
-      time: "Ontem",
+      time: "Feb 1, 1966",
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Muito Ruim",
@@ -118,7 +118,7 @@ const RateCompany = () => {
       id: 6,
       consumerName: "TonyTony",
       stars: 5,
-      time: "7 dias atrás",
+      time: "Nov 1, 1966",
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Muito Bom",
@@ -128,7 +128,7 @@ const RateCompany = () => {
       id: 7,
       consumerName: "BatistaTony",
       stars: 3,
-      time: "Hoje",
+      time: "Feb 1, 2020",
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Bom",
@@ -139,7 +139,7 @@ const RateCompany = () => {
       id: 8,
       consumerName: "AndersonKennedy",
       stars: 1,
-      time: "Ontem",
+      time: "Feb 1, 2020",
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Muito Ruim",
@@ -151,7 +151,7 @@ const RateCompany = () => {
       id: 9,
       consumerName: "CaioTony",
       stars: 5,
-      time: "7 dias atrás",
+      time: "Feb 1, 2020",
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Muito Bom",
@@ -161,7 +161,7 @@ const RateCompany = () => {
       id: 10,
       consumerName: "BirdmanStunna",
       stars: 3,
-      time: "Hoje",
+      time: "Feb 1, 2020",
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Bom",
@@ -172,7 +172,7 @@ const RateCompany = () => {
       id: 11,
       consumerName: "DezarAntonio",
       stars: 1,
-      time: "Ontem",
+      time: "Feb 1, 2020",
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Pessimo",
@@ -184,7 +184,7 @@ const RateCompany = () => {
       id: 12,
       consumerName: "TonyTony",
       stars: 5,
-      time: "7 dias atrás",
+      time: "Feb 1, 2020",
       experience:
         " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
       feeling: "Normal",
