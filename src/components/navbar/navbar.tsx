@@ -36,6 +36,8 @@ export default function Navbar(props: any) {
       return true;
     } else if (title !== "ColaboraAqui" && title !== "Ranking") {
       return true;
+    } else if (title === consumerState.userName) {
+      return false;
     } else {
       return false;
     }
@@ -71,7 +73,7 @@ export default function Navbar(props: any) {
             <ButtonLogin>Entrar</ButtonLogin>
           </Link>
         ) : (
-          <UserMenu />
+          <UserMenu title={props.title} />
         )}
       </Menu>
 

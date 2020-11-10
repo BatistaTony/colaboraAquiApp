@@ -5,8 +5,14 @@ import { IConsumer } from "../../../types";
 import { useDispatch } from "react-redux";
 import { signOutConsumer } from "./.././../store/actions/consumer";
 import { useEffect } from "react";
+import Link from "next/link";
+import Consumer from "../../store/reducers/consumer";
 
-export default function UserMenu() {
+interface IProps {
+  title: string;
+}
+
+export default function UserMenu({ title }: IProps) {
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
   const [menuUser, setMEnuUser] = useState<boolean>(false);
   const dispatch = useDispatch();
@@ -34,6 +40,7 @@ export default function UserMenu() {
       <UserName
         className="menu_user_name"
         onClick={() => setMEnuUser(!menuUser)}
+        active={title === consumerState.userName}
       >
         <span className="menu_user_name"></span>
         {consumerState.userName}
@@ -62,9 +69,11 @@ export default function UserMenu() {
           className="menu_user_name menu_desk_T"
           nameLength={consumerState.userName.length}
         >
-          <li className="menu_user_name">
-            <img src="/images/profile.png" alt="" /> Meu perfil
-          </li>
+          <Link href="/profile">
+            <li className="menu_user_name">
+              <img src="/images/profile.png" alt="" /> Meu perfil
+            </li>
+          </Link>
           <li className="menu_user_name" onClick={signOut}>
             <img src="/images/logout.png" alt="" /> Sair
           </li>
@@ -78,9 +87,11 @@ export default function UserMenu() {
         className="menu_user_name menu_mobile_"
         nameLength={consumerState.userName.length}
       >
-        <li className="menu_user_name">
-          <img src="/images/profile.png" alt="" /> Meu perfil
-        </li>
+        <Link href="/profile">
+          <li className="menu_user_name">
+            <img src="/images/profile.png" alt="" /> Meu perfil
+          </li>
+        </Link>
         <li className="menu_user_name" onClick={signOut}>
           <img src="/images/logout.png" alt="" /> Sair
         </li>
