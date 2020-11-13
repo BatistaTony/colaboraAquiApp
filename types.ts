@@ -15,3 +15,14 @@ export interface ICompany {
   companyPositionRanking: number;
   companyStatus: string;
 }
+
+export interface IProfile {
+  fullName: string;
+  userName: string;
+  dataNascimento: number;
+  phone: string;
+  email: string;
+  province: string;
+  county: string;
+  isKeepAnonymous: boolean;
+}

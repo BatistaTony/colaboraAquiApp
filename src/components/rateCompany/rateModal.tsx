@@ -1,5 +1,5 @@
 import { useState, Fragment } from "react";
-import CheckBoxRate from "./checboxRate";
+import CustomCheckBox from "./checboxRate";
 import GiveSuggestion from "./giveSuggestion";
 import ModalRateSucess from "./modalSucess";
 
@@ -139,9 +139,9 @@ const RateModal = ({ toggleModal }: IProps) => {
                 animate={{ opacity: 1 }}
                 checked={isGiveSuggestion}
               >
-                <CheckBoxRate
+                <CustomCheckBox
                   onClick={userWillGiveSuggestion}
-                  isGiveSuggestion={isGiveSuggestion}
+                  isChecked={isGiveSuggestion}
                 />
 
                 <p onClick={userWillGiveSuggestion}>

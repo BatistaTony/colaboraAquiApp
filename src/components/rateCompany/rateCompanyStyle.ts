@@ -33,7 +33,7 @@ export const Container = styled.div`
 
 const widthContainer = () => `
 
-width:65%;
+width:75%;
 
 ${sizesForEachScreens([1500, 1170, 900], [75, 80, 90], "width", "%")};
 

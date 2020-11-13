@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   ButtonSignUp,
   DivGridForm,
@@ -7,7 +7,6 @@ import {
   QuestionSignUp,
   FormGroupGrand,
 } from "./signUpStyle";
-import { CSSTransition } from "react-transition-group";
 import { IConsumer } from "../../../types";
 import CustomSelect from "./select";
 import SucessModal from "./sucessModal";

@@ -12,7 +12,7 @@ interface ISelectProps {
   defaultValueSelect: string;
   classNames?: string;
   onClick?: any;
-  whatToDo: string;
+  whatToDo?: string;
 }
 
 export default function CustomSelectRating({
@@ -25,7 +25,7 @@ export default function CustomSelectRating({
 }: ISelectProps) {
   const [showList, setShowList] = useState<boolean>(false);
 
-  const chooseValue = (value: string) => {
+  const chooseValue = (value: string | number) => {
     handleChange(value);
     setShowList(false);
   };
@@ -62,8 +62,13 @@ export default function CustomSelectRating({
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           className="customSelect"
+          tag-type="list-select"
         >
-          <li className="customSelect">{whatToDo + ":"}</li>
+          {whatToDo.length > 0 && (
+            <li tag-type="first" className="customSelect">
+              {whatToDo + ":"}
+            </li>
+          )}
 
           {values.map((value, index) => (
             <li

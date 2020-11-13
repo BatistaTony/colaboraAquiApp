@@ -8,7 +8,6 @@ import {
   UserInfoContainer,
   UserNameProfile,
 } from "./profileStyle";
-import StarOutline from "./starOutline";
 
 export default function HeaderProfile() {
   return (
@@ -32,8 +31,10 @@ export default function HeaderProfile() {
       <div className="divSecond">
         <RatesMadeByUser>
           <NumbersOfUserRates>
-            <img src="/images/icons-star.png" alt="" />
-            <span>03</span> Avaliações
+            <img src="/images/icons8-star.png" alt="" />
+            <p className="btnLabel_hsd_d">
+              <span>03</span> Avaliações
+            </p>
           </NumbersOfUserRates>
           <p className="smplTxt">realizadas até o momento</p>
         </RatesMadeByUser>
