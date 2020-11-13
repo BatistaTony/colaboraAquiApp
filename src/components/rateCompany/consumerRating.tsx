@@ -17,15 +17,7 @@ import { useInView } from "react-intersection-observer";
 import TimeAgo from "react-timeago";
 import portugueseString from "react-timeago/lib/language-strings/pt";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
-
-interface IRating {
-  consumerName: string;
-  stars: number;
-  time: string;
-  experience: string;
-  feeling: string;
-  suggestion?: string;
-}
+import { IRating } from "../../../types";
 
 interface IProps {
   data: IRating;

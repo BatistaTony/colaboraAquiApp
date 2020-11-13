@@ -13,6 +13,7 @@ import {
 import CustomSelectRating from "./custonSelectRatings";
 import { Fragment, useEffect, useState } from "react";
 import ConsumerRating from "./consumerRating";
+import { IRating } from "../../../types";
 
 interface IFilter {
   sortBy: string;
@@ -23,16 +24,6 @@ const initialFilter: IFilter = {
   seeBy: "Todas classificações",
   sortBy: "Mais recentes",
 };
-
-interface IRating {
-  id: number;
-  consumerName: string;
-  stars: number;
-  time: string | Date | number;
-  experience: string;
-  feeling: string | number;
-  suggestion: string;
-}
 
 const RateCompany = () => {
   const data = Data.find((item) => item.id === 1);

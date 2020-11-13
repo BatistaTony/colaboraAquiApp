@@ -26,3 +26,13 @@ export interface IProfile {
   county: string;
   isKeepAnonymous: boolean;
 }
+
+export interface IRating {
+  id: number;
+  consumerName: string;
+  stars: number;
+  time: string | Date | number;
+  experience: string;
+  feeling: string | number;
+  suggestion: string;
+}
