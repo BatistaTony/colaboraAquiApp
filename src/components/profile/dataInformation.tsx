@@ -237,9 +237,11 @@ export default function InformationData() {
           isEmpty={errorIsOn === "province"}
         />
         <SimpleTextForm
-          className={errorIsOn === "province" ? "simple_text" : ""}
+          className={errorIsOn === "province" ? "txtError" : "simple_text"}
         >
-          {errorMsg ? errorMsg : "Apenas para assegurar o teu perfil"}
+          {errorIsOn === "province"
+            ? errorMsg
+            : "Apenas para assegurar o teu perfil"}
         </SimpleTextForm>
       </DivOfFormGroup>
 
@@ -254,8 +256,12 @@ export default function InformationData() {
           isEmpty={errorIsOn === "county"}
           onClick={checkIfGotCounties}
         />
-        <SimpleTextForm className="simple_text">
-          {"Apenas para assegurar o teu perfil"}
+        <SimpleTextForm
+          className={errorIsOn === "county" ? "txtError" : "simple_text"}
+        >
+          {errorIsOn === "county"
+            ? errorMsg
+            : "Apenas para assegurar o teu perfil"}
         </SimpleTextForm>
       </DivOfFormGroup>
 
