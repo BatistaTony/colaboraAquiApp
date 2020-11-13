@@ -9,7 +9,6 @@ import {
   ProfileContainerGrid,
   MenuProfile,
   MenuItemProfile,
-  FormSenha,
   MenuSelectProfile,
 } from "../components/profile/profileStyle";
 import CustomSelectRating from "../components/rateCompany/custonSelectRatings";
