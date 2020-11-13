@@ -1,6 +1,5 @@
 import {
   DivOfFormGroup,
-  FormDataInfo,
   FormGroupUserData,
   SimpleTextForm,
 } from "./profileStyle";
@@ -12,6 +11,7 @@ interface IFormGrouProfile {
   label: string;
   value: string | number;
   type?: string;
+  onKeyUp?: any;
 }
 
 export default function FormGroupProfile({
@@ -21,6 +21,7 @@ export default function FormGroupProfile({
   name,
   value,
   type,
+  onKeyUp,
   ...props
 }: IFormGrouProfile) {
   return (
@@ -32,6 +33,7 @@ export default function FormGroupProfile({
           value={value}
           name={name}
           id={name}
+          onKeyUp={onKeyUp}
           onChange={onChange}
           {...props}
         />
