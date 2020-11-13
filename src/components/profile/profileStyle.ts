@@ -91,7 +91,7 @@ export const HeaderProfileStyle = styled.div`
 
     @media (max-width: 530px) {
       grid-row: 1/1;
-      margin-bottom: 50px;
+      margin-bottom: 20px;
     }
   }
 `;
@@ -550,6 +550,16 @@ export const DivOfFormGroup = styled.div`
       opacity: 0;
     }
   }
+
+  /* &[data-name="fieldPassowrd"] {
+    height: auto;
+  } */
+
+  .txtError {
+    display: block;
+    opacity: 1;
+    color: ${colorsApp.error};
+  }
 `;
 
 export const SimpleTextForm = styled.p`
@@ -632,8 +642,9 @@ export const BtnSaveData = styled.button`
   padding: 20px;
   padding-left: 65px;
   padding-right: 65px;
+  cursor: pointer;
 
-  ${getFont()};
+  ${getFont("Medium")};
 
   ${sizesForEachScreens(
     [3500, 2500, 1500],
