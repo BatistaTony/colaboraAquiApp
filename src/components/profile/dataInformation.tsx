@@ -30,7 +30,7 @@ export default function InformationData() {
   const [profileData, setProfileData] = useState<IProfile>(initialState);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
-  const [userNameAccept, setUserNameAccept] = useState<boolean | null>(null);
+  const [userNameAccept, setUserNameAccept] = useState<boolean | null>(true);
   const provincesAngola = provinces.map((value) => value.state);
   const [counties, setCounties] = useState<Array<string> | null>([]);
 
@@ -164,16 +164,26 @@ export default function InformationData() {
     <FormDataInfo>
       <FormGroupProfile
         onChange={handleChange}
+        errorIsOn={errorIsOn}
         label="Nome completo"
-        msg="Esta informação é totalmente privada, apenas tu podes decidir mostrar ou não"
+        msg={
+          errorIsOn === "fullName"
+            ? errorMsg
+            : "Esta informação é totalmente privada, apenas tu podes decidir mostrar ou não"
+        }
         name="fullName"
         value={profileData.fullName}
       />
 
       <FormGroupProfile
         onChange={handleChange}
+        errorIsOn={errorIsOn}
         label="Nome de usuario"
-        msg="Este é o nome que os outros usuarios verão"
+        msg={
+          errorIsOn === "userName"
+            ? errorMsg
+            : "Este é o nome que os outros usuarios verão"
+        }
         name="userName"
         value={profileData.userName}
         onKeyUp={(event: any) => checkUserName(event.target.value)}
@@ -181,8 +191,13 @@ export default function InformationData() {
 
       <FormGroupProfile
         onChange={handleChange}
+        errorIsOn={errorIsOn}
         label="Data de nascimento"
-        msg="Apenas para assegurar o teu perfil"
+        msg={
+          errorIsOn === "dataNascimento"
+            ? errorMsg
+            : "Apenas para assegurar o teu perfil"
+        }
         name="dataNascimento"
         value={profileData.dataNascimento}
         type="number"
@@ -190,16 +205,22 @@ export default function InformationData() {
 
       <FormGroupProfile
         onChange={handleChange}
+        errorIsOn={errorIsOn}
         label="Telefone"
-        msg="Para o login e recuperação da conta"
+        msg={
+          errorIsOn === "phone"
+            ? errorMsg
+            : "Para o login e recuperação da conta"
+        }
         name="phone"
         value={profileData.phone}
       />
 
       <FormGroupProfile
         onChange={handleChange}
+        errorIsOn={errorIsOn}
         label="Email"
-        msg="Para receber notificações"
+        msg={errorIsOn === "email" ? errorMsg : "Para receber notificações"}
         name="email"
         value={profileData.email}
       />
@@ -208,15 +229,17 @@ export default function InformationData() {
         <label htmlFor="">Província</label>
         <CustomSelect
           defaultValueSelect={profileData.province}
-          errorMsg={errorMsg}
+          errorMsg={""}
           handleChange={(value: string) =>
             handleChooseSelect("province", value)
           }
           values={provincesAngola}
           isEmpty={errorIsOn === "province"}
         />
-        <SimpleTextForm className="simple_text">
-          {"Apenas para assegurar o teu perfil"}
+        <SimpleTextForm
+          className={errorIsOn === "province" ? "simple_text" : ""}
+        >
+          {errorMsg ? errorMsg : "Apenas para assegurar o teu perfil"}
         </SimpleTextForm>
       </DivOfFormGroup>
 
@@ -224,7 +247,7 @@ export default function InformationData() {
         <label htmlFor="">Municipio</label>
         <CustomSelect
           defaultValueSelect={profileData.county}
-          errorMsg={errorMsg}
+          errorMsg={""}
           handleChange={(value: string) => handleChooseSelect("county", value)}
           values={counties}
           disabled={profileData.province === ""}

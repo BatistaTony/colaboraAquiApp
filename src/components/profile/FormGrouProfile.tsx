@@ -12,6 +12,7 @@ interface IFormGrouProfile {
   value: string | number;
   type?: string;
   onKeyUp?: any;
+  errorIsOn: string;
 }
 
 export default function FormGroupProfile({
@@ -22,12 +23,13 @@ export default function FormGroupProfile({
   value,
   type,
   onKeyUp,
+  errorIsOn,
   ...props
 }: IFormGrouProfile) {
   return (
     <DivOfFormGroup data-type={name}>
       <label htmlFor={name}>{label}</label>
-      <FormGroupUserData>
+      <FormGroupUserData isEmpty={name === errorIsOn}>
         <input
           type={type ? type : "text"}
           value={value}
@@ -38,7 +40,7 @@ export default function FormGroupProfile({
           {...props}
         />
       </FormGroupUserData>
-      <SimpleTextForm>{msg}</SimpleTextForm>
+      <SimpleTextForm isError={name === errorIsOn}>{msg}</SimpleTextForm>
     </DivOfFormGroup>
   );
 }

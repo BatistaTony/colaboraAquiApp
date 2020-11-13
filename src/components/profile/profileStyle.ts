@@ -551,10 +551,6 @@ export const DivOfFormGroup = styled.div`
     }
   }
 
-  /* &[data-name="fieldPassowrd"] {
-    height: auto;
-  } */
-
   .txtError {
     display: block;
     opacity: 1;
@@ -564,9 +560,9 @@ export const DivOfFormGroup = styled.div`
 
 export const SimpleTextForm = styled.p`
   ${getFont()};
-  color: ${colorsApp.textSecundary};
+  color: ${({ isError }) =>
+    isError ? `${colorsApp.error}` : `${colorsApp.textSecundary}`};
   font-size: 23pt;
-
   ${sizesForEachScreens(
     [3000, 2500, 1930, 1700, 1500, 1390],
     [20, 17, 15, 13, 10.5, 9.5],
