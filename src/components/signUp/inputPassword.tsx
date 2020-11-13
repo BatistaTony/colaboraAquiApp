@@ -11,6 +11,7 @@ interface IProps {
   errorIsOn: string;
   classNames?: string;
   errorMsg: string;
+  id?: string;
 }
 
 export default function InputPassword({
@@ -18,6 +19,7 @@ export default function InputPassword({
   errorIsOn,
   classNames,
   errorMsg,
+  id,
 }: IProps) {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
@@ -30,7 +32,7 @@ export default function InputPassword({
         <input
           type={showPassword ? "text" : "password"}
           name="password"
-          id="password"
+          id={id ? id : "password"}
           onChange={handleChange}
           placeholder="Senha"
           maxLength={8}

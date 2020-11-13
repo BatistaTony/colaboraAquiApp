@@ -41,7 +41,7 @@ const CardCompany = ({ data, position, index }) => {
         style={{ width: "100%", height: "auto" }}
       >
         <CardRankingContainer>
-          <FloatCircle position={position} id={index}>
+          <FloatCircle position={ranking} id={index}>
             <p>{ranking}º</p>
           </FloatCircle>
           <Content>

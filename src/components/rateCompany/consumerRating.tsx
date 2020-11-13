@@ -12,17 +12,12 @@ import {
   TextSuggestionRate,
   ButtonToggleSuggestionText,
 } from "./companySuggestionAndRateStyle";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
-interface IRating {
-  consumerName: string;
-  stars: number;
-  time: string;
-  experience: string;
-  feeling: string;
-  suggestion?: string;
-}
+import TimeAgo from "react-timeago";
+import portugueseString from "react-timeago/lib/language-strings/pt";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
+import { IRating } from "../../../types";
 
 interface IProps {
   data: IRating;
@@ -39,6 +34,8 @@ export default function ConsumerRating({
   });
 
   const animationStyle = { opacity: 1, y: 0 };
+
+  const formatter = buildFormatter(portugueseString);
 
   return (
     <AnimatePresence>
@@ -61,7 +58,7 @@ export default function ConsumerRating({
                 stars={stars}
               />
             </ConsumerStarsRating>
-            <RateTime>{time}</RateTime>
+            <RateTime>{<TimeAgo date={time} formatter={formatter} />}</RateTime>
           </div>
           <BodyTextRating>{experience}</BodyTextRating>
           {suggestion !== "" && (

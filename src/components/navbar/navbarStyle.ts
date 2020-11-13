@@ -177,7 +177,8 @@ export const ButtonLogin = styled.button`
 export const UserName = styled.p`
   font-size: 25pt;
   ${getFont("Medium")};
-  color: ${colorsApp.textPrimary};
+  color: ${({ active }) =>
+    active ? `${colorsApp.orange}}` : `${colorsApp.textPrimary}`};
   cursor: default;
   ${flexbox()};
   transition: 0.5s;

@@ -10,7 +10,7 @@ import {
 
 const widthContainer = () => `
 
-width:63%;
+width:70%;
 
 ${sizesForEachScreens([1500, 1170, 900], [73, 77, 90], "width", "%")};
 
@@ -28,6 +28,11 @@ export const FilterConsumerRating = styled.div`
   height: auto;
   border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 20px;
+  margin-top: 30px;
+
+  @media (max-width: 1500px) {
+    margin-top: 15px;
+  }
 
   @media (max-width: 680px) {
     flex-direction: column;
@@ -293,14 +298,14 @@ export const SelectRatingList = styled(motion.ul)`
     }
 
     &:hover {
-      &:first-child {
+      &[tag-type="first"] {
         background: white;
       }
 
       background: ${colorsApp.orange};
     }
 
-    &:first-child {
+    &[tag-type="first"] {
       background: white;
       color: ${colorsApp.textSecundary};
     }
@@ -370,7 +375,8 @@ export const ConsumerAvatar = styled.div`
   width: 100px;
   height: 100px;
   border-radius: 100%;
-  background: ${({ name }) => chooseBgForAvatar(name)};
+  background: ${({ name }) =>
+    name ? chooseBgForAvatar(name) : `${colorsApp.orange}`};
   ${flexbox()};
   text-align: center;
   color: white;

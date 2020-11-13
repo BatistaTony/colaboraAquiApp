@@ -377,7 +377,11 @@ export const CompanyList = styled.div`
   }
 
   @media (max-height: 700px) {
-    bottom: 4%;
+    bottom: 3%;
+  }
+
+  @media (max-height: 570px) {
+    bottom: 2%;
   }
 `;
 
