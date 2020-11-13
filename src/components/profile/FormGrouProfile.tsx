@@ -24,7 +24,7 @@ export default function FormGroupProfile({
   ...props
 }: IFormGrouProfile) {
   return (
-    <DivOfFormGroup>
+    <DivOfFormGroup data-type={name}>
       <label htmlFor={name}>{label}</label>
       <FormGroupUserData>
         <input

@@ -101,7 +101,7 @@ export const List = styled.div`
 `;
 
 export const CardRankingContainer = styled.div`
-  width: 74%;
+  width: 80%;
   min-height: 130px;
   max-height: 200px;
   position: relative;
@@ -152,19 +152,32 @@ export const CardRankingContainer = styled.div`
   }
 `;
 
+const AddColorByPosition = (position: number) => {
+  switch (position) {
+    case 1:
+      return `${colorsApp.roxo}`;
+
+    case 2:
+      return `${colorsApp.orange}`;
+
+    case 3:
+      return `#575d5f`;
+
+    default:
+      return `gray`;
+  }
+};
+
 export const FloatCircle = styled.div`
   width: 40px;
   height: 40px;
   position: absolute;
   top: -20px;
   left: -20px;
-
   ${flexbox("row", "center", "center")};
-
   background: #293133;
-
   border-radius: 100%;
-  border: 4px solid #575d5f;
+  border: ${({ position }) => `4px solid ${AddColorByPosition(position)}`};
 
   p {
     color: #fff;
@@ -337,11 +350,19 @@ export const Title = styled.p`
   }
 `;
 export const CardRow = styled.div`
-  width: 350px;
+  width: 600px;
   height: auto;
   grid-column-gap: 15px;
   display: grid;
   grid-template-columns: repeat(3, 0.9fr);
+
+  @media (max-width: 1700px) {
+    width: 500px;
+  }
+
+  @media (max-width: 1500px) {
+    width: 400px;
+  }
 
   @media (max-width: 750px) {
     width: 100%;

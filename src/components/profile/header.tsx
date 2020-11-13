@@ -4,6 +4,7 @@ import {
   InfoWorning,
   NumbersOfUserRates,
   RatesMadeByUser,
+  SimpleTxtOfRates,
   UserAvatarProfile,
   UserInfoContainer,
   UserNameProfile,
@@ -36,7 +37,7 @@ export default function HeaderProfile() {
               <span>03</span> Avaliações
             </p>
           </NumbersOfUserRates>
-          <p className="smplTxt">realizadas até o momento</p>
+          <SimpleTxtOfRates>realizadas até o momento</SimpleTxtOfRates>
         </RatesMadeByUser>
       </div>
     </HeaderProfileStyle>

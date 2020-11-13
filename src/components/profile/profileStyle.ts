@@ -19,17 +19,29 @@ ${sizesForEachScreens([1170, 900], [90, 87], "width", "%")};
 `;
 
 export const ProfileContent = styled.div`
-  margin-top: 150px;
   width: 100%;
   ${flexbox("column")};
   padding-bottom: 120px;
+  margin-top: 18rem;
 
   ${sizesForEachScreens(
-    [3200, 2900, 2500, 1500, 750],
-    [130, 115, 90, 70, 30],
+    [3000, 2500, 2000, 1700, 1500],
+    [16, 13, 10, 8, 5],
     "margin-top",
-    "px"
-  )};
+    "rem"
+  )}
+
+  @media (max-width:1400px) {
+    margin-top: 50px;
+  }
+
+  @media (max-width: 1300px) {
+    margin-top: 40px;
+  }
+
+  @media (max-width: 1000px) {
+    margin-top: 20px;
+  }
 
   ${sizesForEachScreens(
     [3200, 2900, 2500, 1500, 750],
@@ -57,6 +69,11 @@ export const HeaderProfileStyle = styled.div`
     @media (max-width: 650px) {
       width: 100%;
     }
+
+    @media (max-width: 570px) {
+      position: relative;
+      grid-template-columns: auto auto;
+    }
   }
 
   .divSecond {
@@ -66,6 +83,10 @@ export const HeaderProfileStyle = styled.div`
 
     @media (max-width: 908px) {
       margin-top: 15px;
+    }
+
+    @media (max-width: 870px) {
+      justify-content: flex-start;
     }
 
     @media (max-width: 530px) {
@@ -81,29 +102,34 @@ export const UserAvatarProfile = styled(ConsumerAvatar)`
   font-size: 50pt;
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 2000, 1700, 1600, 1490, 1000],
-    [110, 105, 95, 80, 75, 65, 50, 40],
+    [3200, 3000, 2500, 2000, 1700, 1600, 1490, 1000, 570],
+    [110, 105, 95, 80, 75, 65, 50, 40, 35],
     "width",
     "px"
   )};
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 2000, 1700, 1600, 1490, 1000],
-    [110, 105, 95, 80, 75, 65, 50, 40],
+    [3200, 3000, 2500, 2000, 1700, 1600, 1490, 1000, 570],
+    [110, 105, 95, 80, 75, 65, 50, 40, 35],
     "height",
     "px"
   )};
 
   ${sizesForEachScreens(
-    [3000, 2500, 2000, 1700, 1500, 1490, 1000],
-    [40, 35, 33, 29, 24, 21, 15],
+    [3000, 2500, 2000, 1700, 1500, 1490, 1000, 570],
+    [40, 35, 33, 29, 24, 21, 15, 13],
     "font-size",
     "pt"
   )};
+
+  @media (max-width: 550px) {
+    width: 30px !important;
+    height: 30px !important;
+    position: absolute;
+  }
 `;
 
 export const UserInfoContainer = styled.div`
   ${flexbox("column", "flex-start", "flex-start")};
-
   padding-left: 35px;
   box-sizing: border-box;
 
@@ -116,6 +142,10 @@ export const UserInfoContainer = styled.div`
 
   .name_div_and_sgdry_THfdhf {
     ${flexbox()};
+  }
+
+  @media (max-width: 570px) {
+    margin-left: 30px;
   }
 `;
 
@@ -132,8 +162,8 @@ export const UserNameProfile = styled(ConsumerName)`
   ${marginTop()};
 
   ${sizesForEachScreens(
-    [3000, 2500, 2000, 1700, 1500, 1490, 1000],
-    [35, 30, 28, 25, 20, 16.5, 13],
+    [3000, 2500, 2000, 1700, 1500, 1490, 1000, 600],
+    [35, 30, 28, 25, 20, 16.5, 13, 12],
     "font-size",
     "pt"
   )};
@@ -142,8 +172,9 @@ export const UserNameProfile = styled(ConsumerName)`
     width: auto;
   }
 
-  @media (max-width: 550px) {
+  @media (max-width: 570px) {
     width: 90%;
+    margin-top: 0;
   }
 `;
 
@@ -187,12 +218,12 @@ export const InfoWorning = styled.p`
   }
 
   @media (max-width: 550px) {
-    width: 90%;
+    width: 100%;
   }
 `;
 
 export const RatesMadeByUser = styled.div`
-  border-radius: 16px;
+  border-radius: 30px;
   background: #fdfdfe;
   width: auto;
   padding: 20px;
@@ -201,8 +232,8 @@ export const RatesMadeByUser = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
 
   ${sizesForEachScreens(
-    [3000, 2500, 1700],
-    [14, 12.7, 10],
+    [3000, 2500, 1700, 1500],
+    [25, 20, 15, 10],
     "border-radius",
     "px"
   )};
@@ -244,14 +275,40 @@ export const RatesMadeByUser = styled.div`
     )};
   }
 
+  @media (max-width: 870px) {
+    align-self: flex-start;
+  }
+
   @media (max-width: 530px) {
     width: 100%;
     margin-top: 0;
     box-sizing: border-box;
     padding: 15px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    border-radius: 15px;
   }
+`;
+
+export const SimpleTxtOfRates = styled.p`
+  font-size: 27pt;
+  ${getFont("Medium")};
+  color: ${colorsApp.textPrimary};
+
+  @media (max-width: 1500px) {
+    margin-top: 3px;
+  }
+
+  @media (max-width: 530px) {
+    margin-top: 7px;
+  }
+
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 1930, 1700, 1500, 1390],
+    [25, 21, 18, 16, 13, 12, 10],
+    "font-size",
+    "pt"
+  )};
 `;
 
 export const NumbersOfUserRates = styled(UserNameProfile)`
@@ -277,7 +334,7 @@ export const NumbersOfUserRates = styled(UserNameProfile)`
   }
 
   span {
-    ${getFont("SemiBold")};
+    ${getFont("Bold")};
     margin-top: 0;
   }
 
@@ -287,13 +344,13 @@ export const NumbersOfUserRates = styled(UserNameProfile)`
 
     ${sizesForEachScreens(
       [3000, 2500, 2000, 1800, 1670, 1500, 1390],
-      [54, 47, 43, 38, 35, 33, 30],
+      [54, 47, 43, 38, 35, 31, 30],
       "width",
       "px"
     )};
     ${sizesForEachScreens(
       [3000, 2500, 2000, 1800, 1670, 1500, 1390],
-      [54, 47, 43, 38, 35, 33, 30],
+      [54, 47, 43, 38, 35, 31, 30],
       "height",
       "px"
     )};
@@ -349,26 +406,48 @@ export const MenuProfile = styled.ul`
 export const MenuSelectProfile = styled.div`
   display: none;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 
   @media (max-width: 870px) {
-    ${flexbox()};
-  }
-
-  .selectProfile {
-    margin-left: 0;
-    width: 100%;
-    height: auto;
-    margin-left: 0;
     ${flexbox("row", "center", "center")};
 
-    button {
-      text-align: center;
-      width: 100%;
+    .customSelect {
+      width: auto;
+    }
 
-      span {
-        padding-right: 5px;
-        color: ${colorsApp.orange};
+    .selectProfile {
+      margin-left: 0;
+      width: auto;
+      height: auto;
+      margin-left: 0;
+      ${flexbox("row", "center", "center")};
+
+      button {
+        text-align: center;
+        align-self: center;
+        justify-self: center;
+        width: 100%;
+
+        span {
+          padding-right: 5px;
+          color: ${colorsApp.orange};
+          text-align: center;
+
+          @media (max-width: 550px) {
+            font-size: 12pt;
+          }
+        }
+      }
+    }
+
+    .list-select {
+      width: 250px;
+      @media (max-width: 870px) {
+        top: 28px;
+      }
+
+      li {
+        padding-left: 15px;
       }
     }
   }
@@ -391,12 +470,7 @@ export const MenuItemProfile = styled.li`
     color: ${colorsApp.orange};
   }
 
-  ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1700, 1500, 1390],
-    [27, 23, 20, 18, 15, 11, 10.5],
-    "font-size",
-    "pt"
-  )};
+  ${NormalFontSize()};
 `;
 
 export const FormDataInfo = styled.div`
@@ -408,7 +482,12 @@ export const FormDataInfo = styled.div`
   grid-row-gap: 50px;
   justify-content: space-between;
 
-  ${sizesForEachScreens([3000, 2500, 1500], [40, 35, 30], "grid-row-gap", "px")}
+  ${sizesForEachScreens(
+    [3000, 2500, 1500, 800],
+    [40, 35, 30, 40],
+    "grid-row-gap",
+    "px"
+  )}
 
   @media (max-width:700px) {
     ${flexbox("column", "flex-start", "center")};
@@ -433,6 +512,18 @@ export const DivOfFormGroup = styled.div`
     grid-column: 1/3;
   }
 
+  .currentPassword {
+    @media (min-width: 870px) {
+      grid-template-columns: 95% 5%;
+    }
+  }
+
+  &[data-type="fullName"] {
+    @media (max-width: 600px) {
+      height: 115px;
+    }
+  }
+
   label {
     font-size: 30pt;
     ${getFont("Medium")};
@@ -447,6 +538,14 @@ export const DivOfFormGroup = styled.div`
   }
 
   &[data-type="select"] {
+    @media (max-width: 870px) {
+      height: 80px;
+
+      .simple_text {
+        display: none;
+      }
+    }
+
     .simple_text {
       opacity: 0;
     }
@@ -468,9 +567,8 @@ export const SimpleTextForm = styled.p`
 
 export const FormGroupUserData = styled(FormGroup)`
   grid-template-columns: 100%;
+  margin: 0;
 `;
-
-export const FormGroupPassword = styled.div``;
 
 export const OnlinePresence = styled.div`
   width: 100%;
@@ -566,8 +664,4 @@ export const BtnSaveData = styled.button`
     "padding-right",
     "px"
   )};
-`;
-
-export const FormSenha = styled.div`
-  width: 100%;
 `;

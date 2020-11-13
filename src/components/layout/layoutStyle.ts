@@ -25,7 +25,7 @@ export const LayoutStyled = styled.div`
   height: ${({ title }) => (checkScroll(title) ? "auto" : "100vh")};
   background-size: cover;
   display: grid;
-  grid-template-rows: 15% 85%;
+  grid-template-rows: 200px 85%;
   background: ${({ title }) => chooseBackgroundByTitle(title)};
   background-size: 100% 100%;
   overflow: ${({ title }) =>
@@ -33,7 +33,7 @@ export const LayoutStyled = styled.div`
   position: absolute;
 
   @media (max-width: 2700px) {
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 170px 87%;
   }
 
   @media (max-width: 2200px) {

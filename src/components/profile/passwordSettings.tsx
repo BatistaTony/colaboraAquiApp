@@ -21,6 +21,7 @@ export default function PasswordSettings() {
           errorIsOn={""}
           errorMsg={""}
           id="currentPassword"
+          classNames="currentPassword"
           handleChange={() => handleChange}
         />
         <SimpleTextForm className="simple_text">

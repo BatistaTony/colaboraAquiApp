@@ -53,6 +53,7 @@ export default function CustomSelectRating({
       <InputIcon
         className="customSelect"
         onClick={() => setShowList(!showList)}
+        tag-type="inputIcon"
       >
         <img className="customSelect iconeSeta" src="/images/seta.png" alt="" />
       </InputIcon>
@@ -61,7 +62,7 @@ export default function CustomSelectRating({
         <SelectRatingList
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="customSelect"
+          className="customSelect list-select"
           tag-type="list-select"
         >
           {whatToDo.length > 0 && (
