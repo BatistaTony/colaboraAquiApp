@@ -112,7 +112,7 @@ export default function Navbar(props: any) {
                   <ButtonLogin>Entrar</ButtonLogin>
                 </Link>
               ) : (
-                <UserMenu />
+                <UserMenu title={props.title} />
               )}
             </Menu>
           </div>
