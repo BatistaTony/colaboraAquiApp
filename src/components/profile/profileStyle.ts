@@ -91,7 +91,7 @@ export const HeaderProfileStyle = styled.div`
 
     @media (max-width: 530px) {
       grid-row: 1/1;
-      margin-bottom: 50px;
+      margin-bottom: 20px;
     }
   }
 `;
@@ -550,13 +550,19 @@ export const DivOfFormGroup = styled.div`
       opacity: 0;
     }
   }
+
+  .txtError {
+    display: block;
+    opacity: 1;
+    color: ${colorsApp.error};
+  }
 `;
 
 export const SimpleTextForm = styled.p`
   ${getFont()};
-  color: ${colorsApp.textSecundary};
+  color: ${({ isError }) =>
+    isError ? `${colorsApp.error}` : `${colorsApp.textSecundary}`};
   font-size: 23pt;
-
   ${sizesForEachScreens(
     [3000, 2500, 1930, 1700, 1500, 1390],
     [20, 17, 15, 13, 10.5, 9.5],
@@ -632,8 +638,9 @@ export const BtnSaveData = styled.button`
   padding: 20px;
   padding-left: 65px;
   padding-right: 65px;
+  cursor: pointer;
 
-  ${getFont()};
+  ${getFont("Medium")};
 
   ${sizesForEachScreens(
     [3500, 2500, 1500],
