@@ -25,9 +25,10 @@ const initialFilter: IFilter = {
 };
 
 interface IRating {
+  id: number;
   consumerName: string;
   stars: number;
-  time: string | Date;
+  time: string | Date | number;
   experience: string;
   feeling: string | number;
   suggestion: string;
@@ -57,7 +58,7 @@ const RateCompany = () => {
     setLengthRatings(0);
   };
 
-  const ratings = [
+  const ratings: IRating[] = [
     {
       id: 1,
       consumerName: "BatistaTony",
