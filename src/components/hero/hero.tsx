@@ -31,6 +31,7 @@ export default function Hero() {
         initial={{ opacity: 1, y: -1000 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0 }}
+        transition={{ delay: 0.4 }}
       >
         <div className="illustration1_e"></div>
 
@@ -68,9 +69,10 @@ export default function Hero() {
         </Link>
       </DivHero>
       <IllustrationRating
-        initial={{ opacity: 1, x: 1000 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: 1000 }}
+        initial={{ opacity: 1, y: -1000 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0 }}
+        transition={{ delay: 0.4 }}
       >
         <img src="/images/OnlineReview-rafiki.png" alt="" />
       </IllustrationRating>
