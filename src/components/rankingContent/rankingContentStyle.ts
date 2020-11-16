@@ -35,13 +35,13 @@ export const Image = styled.img`
   height: auto;
 
   @media (min-width: 750px) {
-    width: 70%;
-  }
-  @media (min-width: 1000px) {
     width: 60%;
   }
+  @media (min-width: 1000px) {
+    width: 50%;
+  }
   @media (min-width: 1230px) {
-    width: auto;
+    width: 50%;
     height: auto;
   }
 `;
@@ -85,23 +85,10 @@ export const List = styled.div`
   }
 
   background: rgba(75, 85, 186, 0.01);
-
-  :after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    border-top: 80px solid #fff;
-    border-left: 50vw solid transparent;
-    border-right: 50vw solid transparent;
-    border-radius: 0 0 100% 100%;
-  }
 `;
 
 export const CardRankingContainer = styled.div`
-  width: 80%;
+  width: 90%;
   min-height: 130px;
   max-height: 200px;
   position: relative;
@@ -112,6 +99,7 @@ export const CardRankingContainer = styled.div`
   border-radius: 30px;
   box-sizing: border-box;
   box-shadow: 0px 4px 24px rgba(75, 85, 186, 0.05);
+  background: green;
 
   ${flexbox("column", "space-between", "center")};
 
@@ -135,18 +123,18 @@ export const CardRankingContainer = styled.div`
   @media (min-width: 1000px) {
     ${flexbox("row", "space-between", "center")};
     margin: 40px auto;
-    height: 130px !important;
+    height: 130px;
     min-height: 130px;
   }
 
   @media (min-width: 1230px) {
-    width: 70% !important;
+    width: 70%;
     background: #fff;
   }
 
   @media (min-width: 1800px) {
-    max-width: 1500px;
-    height: 200px !important;
+    max-width: 80%;
+    height: 300px;
     padding: 10px 50px;
     border-radius: 32px;
   }
@@ -198,18 +186,22 @@ export const FloatCircle = styled.div`
     top: -30px;
     left: -30px;
     border-size: 6px;
-
     font-size: 28px;
   }
 `;
 
 export const Content = styled.div`
-  width: 100%;
+  width: 55%;
   height: auto;
   ${flexbox("row", "space-between", "center")};
+  background: gray;
 
   @media (max-width: 390px) {
     ${flexbox("column", "space-between", "flex-start")};
+  }
+
+  @media (max-width: 1000px) {
+    width: 100%;
   }
 
   @media (min-width: 1000px) {
@@ -217,7 +209,7 @@ export const Content = styled.div`
   }
 
   @media (min-width: 1800px) {
-    width: 50% !important;
+    width: 30%;
   }
 `;
 export const DivRow = styled.div`
@@ -253,18 +245,28 @@ export const CompanyLogoDiv = styled.div`
   border: 3px solid rgba(75, 85, 186, 0.06);
   margin-right: 10px;
 
-  @media (max-width: 480px) {
-    width: 60px !important;
-    height: 60px !important;
-    margin-bottom: 10px;
-  }
-
   @media (min-width: 1800px) {
-    width: 120px !important;
-    height: 120px !important;
+    width: 140px;
+    height: 140px;
     background-size: 100px;
     border: 6px solid rgba(75, 85, 186, 0.06);
     margin-right: 20px;
+  }
+
+  @media (max-width: 1500px) {
+    width: 130px;
+    height: 130px;
+  }
+
+  @media (max-width: 480px) {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  @media (min-width: 1000px) {
+    width: 120px;
+    height: 120px;
   }
 `;
 export const CompanyName = styled.p`

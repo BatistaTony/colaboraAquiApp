@@ -25,7 +25,8 @@ export const LayoutStyled = styled.div`
   height: ${({ title }) => (checkScroll(title) ? "auto" : "100vh")};
   background-size: cover;
   display: grid;
-  grid-template-rows: 200px 85%;
+  grid-template-rows: ${({ title }) =>
+    title === "Ranking" ? "200px auto" : " 200px 85%"};
   background: ${({ title }) => chooseBackgroundByTitle(title)};
   background-size: 100% 100%;
   overflow: ${({ title }) =>
