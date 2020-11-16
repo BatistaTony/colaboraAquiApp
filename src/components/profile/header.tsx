@@ -1,3 +1,5 @@
+import { useState } from "react";
+import PopUpProfile from "./popupProfile";
 import {
   ActionTitleProfile,
   HeaderProfileStyle,

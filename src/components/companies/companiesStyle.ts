@@ -124,7 +124,7 @@ export const FilterStyled = styled.div`
       padding-left: 30px;
       padding-right: 30px;
       border-radius: 15px;
-      cursor: default;
+      cursor: pointer;
       transition: 0.5s;
       color: ${colorsApp.textSecundary};
 
@@ -190,8 +190,11 @@ export const SearchStyled = styled.div`
   border-radius: 15px;
   grid-template-columns: 10% 90%;
   background: white;
-  box-shadow: 0 0 10px ${colorsApp.orange};
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  transition: 0.5s;
 
   @media (max-width: 3000px) {
     grid-template-columns: 9% 91%;
@@ -199,17 +202,20 @@ export const SearchStyled = styled.div`
 
   @media (max-width: 3000px) {
     border-radius: 10px;
-    box-shadow: 0 0 7px ${colorsApp.orange};
+    -webkit-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 2500px) {
     border-radius: 5px;
-    box-shadow: 0 0 5px ${colorsApp.orange};
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 1500px) {
     border-radius: 5px;
-    box-shadow: 0 0 5px ${colorsApp.orange};
   }
 
   @media (max-width: 850px) {
@@ -218,9 +224,27 @@ export const SearchStyled = styled.div`
     border-radius: 5px;
   }
 
-  &::focus-within {
+  &:focus-within {
     svg {
       fill: ${colorsApp.textPrimary};
+    }
+
+    -webkit-box-shadow: 0 0 10px ${colorsApp.orange};
+    -moz-box-shadow: 0 0 10px ${colorsApp.orange};
+    box-shadow: 0 0 10px ${colorsApp.orange};
+
+    @media (max-width: 3000px) {
+      border-radius: 10px;
+      -webkit-box-shadow: 0 0 7px ${colorsApp.orange};
+      -moz-box-shadow: 0 0 7px ${colorsApp.orange};
+      box-shadow: 0 0 7px ${colorsApp.orange};
+    }
+
+    @media (max-width: 2500px) {
+      border-radius: 5px;
+      -webkit-box-shadow: 0 0 5px ${colorsApp.orange};
+      -moz-box-shadow: 0 0 5px ${colorsApp.orange};
+      box-shadow: 0 0 5px ${colorsApp.orange};
     }
   }
 
@@ -445,6 +469,7 @@ export const Card = styled.div`
   ${flexbox("column", "center", "center")};
   padding: 30px;
   box-sizing: border-box;
+  cursor: pointer;
 
   @media (min-width: 1024px) and (max-width: 1024px) and (min-height: 1366px) and (max-width: 1366px) {
     height: 220px;

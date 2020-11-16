@@ -59,7 +59,7 @@ const CardCompany = ({ data, position, index }) => {
                 </AllAvaliatiins>
               </div>
             </DivRow>
-            <Stars stars={stars} background="orange" />
+            <Stars classNames="fiveStars" stars={stars} background="orange" />
           </Content>
           <AvaliationsDiv>
             <Title>Avaliações</Title>

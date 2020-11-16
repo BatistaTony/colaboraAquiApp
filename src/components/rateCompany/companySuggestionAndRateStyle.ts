@@ -141,6 +141,7 @@ export const CustomSelectRatingStyle = styled.div`
   }
 
   button {
+    cursor: pointer-events;
     span {
       width: auto;
       box-sizing: border-box;
@@ -165,6 +166,7 @@ export const CustomSelectRatingStyle = styled.div`
     box-sizing: border-box;
     text-align: right;
     ${flexbox("row", "flex-end", "center")};
+    cursor: pointer;
 
     ${NormalFontSize()};
 
@@ -179,6 +181,7 @@ export const CustomSelectRatingStyle = styled.div`
 
   .iconeSeta {
     ${flexbox("row", "flex-end", "center")};
+    cursor: pointer;
 
     width: 27px;
     height: 23px;
@@ -265,6 +268,7 @@ export const SelectRatingList = styled(motion.ul)`
     border: none;
     color: ${colorsApp.textPrimary};
     transition: 0.5s;
+    cursor: pointer;
 
     ${sizesForEachScreens(
       [3300, 3000, 2700, 2300, 1930, 1500],
@@ -410,6 +414,7 @@ export const ConsumerName = styled.p`
   ${getFont("Medium")};
   height: 100px;
   ${flexbox()};
+  cursor: default;
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 2000, 1700, 1600, 1490, 1390],

@@ -37,6 +37,7 @@ export const ButtonBack = styled.button`
   outline: none;
   background: transparent;
   ${flexbox("row", "flex-start", "center")};
+  cursor: pointer;
 
   @media (max-width: 750px) {
     margin: 4%;
@@ -155,6 +156,7 @@ export const RatingSingleEmoji = styled.button`
   transition: 0.8s;
   color: #58676a;
   ${flexbox("column", "space-between", "center")};
+  cursor: pointer;
 
   p {
     transition: 0.5s;
@@ -163,6 +165,7 @@ export const RatingSingleEmoji = styled.button`
     margin-top: 30px;
     font-size: 40pt;
     ${({ clicked }) => (clicked ? `${getFont("Bold")}` : `${getFont()}`)}
+    cursor:pointer;
 
     ${sizesForEachScreens(
       [3300, 2000, 1500, 1000, 850, 620, 500, 400],
@@ -182,6 +185,7 @@ export const RatingSingleEmoji = styled.button`
   svg {
     width: 100%;
     height: 100%;
+    cursor: pointer;
 
     .stop1 {
       stop-color: ${({ clicked }) => (clicked ? "#ffd85b" : "#f2e7e4")};
@@ -486,6 +490,7 @@ export const SendRateButton = styled.button`
   width: 500px;
   height: 110px;
   ${getFont("Medium")};
+  cursor: pointer;
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 2000, 1700, 1500, 1000],
@@ -544,7 +549,7 @@ export const GiveSuggestionContianer = styled(motion.div)`
     width: 100%;
     height: auto;
     text-align: center;
-    color: ${colorsApp.darkGreen};
+    color: ${colorsApp.textSecundary};
     font-size: 33pt;
     ${getFont("Medium")};
     margin-top: 15px;
@@ -686,10 +691,7 @@ export const ButtonFinishRate = styled.button`
   width: 40%;
   margin-top: 3%;
   height: 100px;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 
   ${sizesForEachScreens(
     [3200, 2500, 1930, 1500],

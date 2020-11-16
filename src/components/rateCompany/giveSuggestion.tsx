@@ -14,16 +14,16 @@ export default function GiveSuggestion({
   return (
     <GiveSuggestionContianer
       initial={{ opacity: 0, x: -500 }}
-      animate={{ opacity: 1, x: 0 }}
+      animate={{ opacity: 1, x: 0, duration: 0.4 }}
       exit={{ opacity: 0, x: -500 }}
     >
       <RateCompanyText>
         Deixa a Sua
-        <span> SUgestão de melhoria</span>
+        <span> Sugestão de melhoria</span>
       </RateCompanyText>
 
       <p className="textGivSUgg">
-        as sugestões de melhoria fazem de ti um verdadeiro colaborador.
+        as suas sugestões de melhoria fazem de ti um verdadeiro colaborador.
       </p>
 
       <TextareaRate

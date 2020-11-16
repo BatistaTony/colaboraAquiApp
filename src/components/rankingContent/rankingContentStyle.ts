@@ -3,6 +3,7 @@ import {
   colorsApp,
   flexbox,
   getFont,
+  NormalFontSize,
   sizesForEachScreens,
 } from "../layout/layoutStyle";
 
@@ -35,26 +36,27 @@ export const Image = styled.img`
   height: auto;
 
   @media (min-width: 750px) {
-    width: 70%;
-  }
-  @media (min-width: 1000px) {
     width: 60%;
   }
+
+  @media (min-width: 1000px) {
+    width: 50%;
+  }
+
   @media (min-width: 1230px) {
-    width: auto;
+    width: 50%;
     height: auto;
   }
 `;
 export const Text = styled.p`
   width: 60%;
   height: auto;
-
   text-align: center;
   color: ${colorsApp.soDark};
   font-size: 45pt;
   ${getFont("Medium")};
-
   margin-top: 15px;
+
   ${sizesForEachScreens([1000, 750, 450, 300], [60, 75, 80, 90], "width", "%")};
   ${sizesForEachScreens([1500], [0], "margin-top", "")};
   ${sizesForEachScreens([450], [10], "margin-top", "px")};
@@ -85,23 +87,10 @@ export const List = styled.div`
   }
 
   background: rgba(75, 85, 186, 0.01);
-
-  :after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    border-top: 80px solid #fff;
-    border-left: 50vw solid transparent;
-    border-right: 50vw solid transparent;
-    border-radius: 0 0 100% 100%;
-  }
 `;
 
 export const CardRankingContainer = styled.div`
-  width: 80%;
+  width: 90%;
   min-height: 130px;
   max-height: 200px;
   position: relative;
@@ -112,7 +101,6 @@ export const CardRankingContainer = styled.div`
   border-radius: 30px;
   box-sizing: border-box;
   box-shadow: 0px 4px 24px rgba(75, 85, 186, 0.05);
-
   ${flexbox("column", "space-between", "center")};
 
   @media (max-width: 450px) {
@@ -135,18 +123,18 @@ export const CardRankingContainer = styled.div`
   @media (min-width: 1000px) {
     ${flexbox("row", "space-between", "center")};
     margin: 40px auto;
-    height: 130px !important;
+    height: 130px;
     min-height: 130px;
   }
 
   @media (min-width: 1230px) {
-    width: 70% !important;
+    width: 70%;
     background: #fff;
   }
 
   @media (min-width: 1800px) {
-    max-width: 1500px;
-    height: 200px !important;
+    max-width: 80%;
+    height: 300px;
     padding: 10px 50px;
     border-radius: 32px;
   }
@@ -198,13 +186,12 @@ export const FloatCircle = styled.div`
     top: -30px;
     left: -30px;
     border-size: 6px;
-
     font-size: 28px;
   }
 `;
 
 export const Content = styled.div`
-  width: 100%;
+  width: 55%;
   height: auto;
   ${flexbox("row", "space-between", "center")};
 
@@ -216,8 +203,15 @@ export const Content = styled.div`
     width: 400px;
   }
 
+  @media (max-width: 2500px) {
+    width: 45%;
+  }
+
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
   @media (min-width: 1800px) {
-    width: 50% !important;
+    width: 40%;
   }
 `;
 export const DivRow = styled.div`
@@ -251,7 +245,7 @@ export const CompanyLogoDiv = styled.div`
   background-repeat: no-repeat;
   border-radius: 100%;
   border: 3px solid rgba(75, 85, 186, 0.06);
-  margin-right: 10px;
+  margin-right: 20px;
 
   @media (max-width: 480px) {
     width: 60px !important;
@@ -259,12 +253,18 @@ export const CompanyLogoDiv = styled.div`
     margin-bottom: 10px;
   }
 
+  @media (min-width: 1000px) {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+  }
+
   @media (min-width: 1800px) {
     width: 120px !important;
     height: 120px !important;
     background-size: 100px;
     border: 6px solid rgba(75, 85, 186, 0.06);
-    margin-right: 20px;
+    margin-right: 30px;
   }
 `;
 export const CompanyName = styled.p`
@@ -340,21 +340,29 @@ export const AvaliationsDiv = styled.div`
 `;
 
 export const Title = styled.p`
-  font-size: 14px;
+  font-size: 25pt;
   ${getFont("Medium")};
   color: #6e6e6e;
   margin: 5px 0;
   align-self: flex-start;
-  @media (min-width: 1800px) {
-    font-size: 27px;
-  }
+
+  ${sizesForEachScreens(
+    [3200, 3000, 2500, 1930, 1500, 850],
+    [23, 20, 18, 16, 12, 11],
+    "font-size",
+    "pt"
+  )};
 `;
 export const CardRow = styled.div`
-  width: 600px;
+  width: 700px;
   height: auto;
   grid-column-gap: 15px;
   display: grid;
   grid-template-columns: repeat(3, 0.9fr);
+
+  @media (max-width: 2500px) {
+    width: 650px;
+  }
 
   @media (max-width: 1700px) {
     width: 500px;
@@ -388,7 +396,7 @@ export const Avaliation = styled.div`
   margin-right: 5px;
 
   p {
-    font-size: 12px;
+    font-size: 20pt;
     ${getFont("Medium")};
     width: 100%;
     text-align: center;
@@ -399,6 +407,13 @@ export const Avaliation = styled.div`
         : color == "normal"
         ? "rgb(252, 190, 10)"
         : "rgb(249, 63, 63)"};
+
+    ${sizesForEachScreens(
+      [3200, 3000, 2500, 1930, 1500],
+      [23, 20, 18, 15, 10],
+      "font-size",
+      "pt"
+    )};
   }
 
   @media (max-width: 450px) {
@@ -412,8 +427,5 @@ export const Avaliation = styled.div`
   @media (min-width: 1800px) {
     width: auto;
     margin-right: 10px;
-    p {
-      font-size: 22px;
-    }
   }
 `;
