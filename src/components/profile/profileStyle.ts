@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import {
   colorsApp,
@@ -22,12 +23,13 @@ export const ProfileContent = styled.div`
   width: 100%;
   ${flexbox("column")};
   padding-bottom: 120px;
-  margin-top: 18rem;
+  padding-top: 18rem;
+  position: relative;
 
   ${sizesForEachScreens(
-    [3000, 2500, 2000, 1700, 1500],
-    [16, 13, 10, 8, 5],
-    "margin-top",
+    [3000, 2500, 2000, 1700, 1500, 1000],
+    [16, 13, 10, 8, 5, 3],
+    "padding-top",
     "rem"
   )}
 
@@ -380,6 +382,10 @@ export const ProfileContainerGrid = styled.div`
     grid-template-columns: 35% 65%;
   }
 
+  @media (max-width: 1400px) {
+    grid-template-columns: 32% 68%;
+  }
+
   @media (max-width: 870px) {
     grid-template-columns: 100%;
     grid-template-rows: auto;
@@ -671,4 +677,47 @@ export const BtnSaveData = styled.button`
     "padding-right",
     "px"
   )};
+`;
+
+export const PopuProfileStyle = styled(motion.div)`
+  width: 100%;
+  height: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  ${flexbox()};
+  background: #00dd9b;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 20px;
+
+  @media (max-width: 2000px) {
+    margin-top: 25px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  @media (max-width: 1500px) {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    top: -20px;
+  }
+
+  @media (max-width: 1400px) {
+    margin-top: 0;
+    top: -45px;
+  }
+
+  @media (max-width: 1000px) {
+    top: -40px;
+  }
+
+  p {
+    font-size: 30pt;
+    ${getFont("Medium")};
+    color: white;
+
+    ${NormalFontSize()};
+  }
 `;

@@ -9,7 +9,7 @@ import {
 import StarsRatedCompany from "./starsRated";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import Link from "next/link";
+import Router from "next/router";
 
 interface IProps {
   data: ICompany;
@@ -32,6 +32,10 @@ export default function CardCompany({ data }: IProps) {
 
   const animationStyle = { opacity: 1, scale: 1, y: 0 };
 
+  const callPage = () => {
+    Router.push("/rate?id=someid");
+  };
+
   return (
     <AnimatePresence>
       <motion.div
@@ -40,17 +44,16 @@ export default function CardCompany({ data }: IProps) {
         animate={inView ? animationStyle : {}}
         exit={{ opacity: 0, scale: 0.3, y: -100 }}
       >
-        <Card>
+        <Card onClick={callPage}>
           <div className="header_card">
             <div className="div1_er_">
               <CompanyLogo img={companyLogo}></CompanyLogo>
 
               <div className="company_info_">
-                <Link href={`/rate?id=someid`}>
-                  <CompanyName>
-                    #{companyPositionRanking}. {companyName}
-                  </CompanyName>
-                </Link>
+                <CompanyName>
+                  #{companyPositionRanking}. {companyName}
+                </CompanyName>
+
                 <CompanyRateNumbers>
                   <span>{companyRatesNumber}</span> avaliações
                 </CompanyRateNumbers>
@@ -62,8 +65,8 @@ export default function CardCompany({ data }: IProps) {
           </div>
 
           <DescriptionCard>{companyDescription}</DescriptionCard>
-        </Card>
-      </motion.div>
+        </Card>{" "}
+      </motion.div>{" "}
     </AnimatePresence>
   );
 }

@@ -177,7 +177,7 @@ export const RateButton = styled.button`
   border-radius: 15px;
   border: 0;
   outline: none;
-  cursor: pinter;
+  cursor: pointer;
   text-align: center;
   color: #fff;
   font-size: 30pt;
@@ -210,7 +210,7 @@ export const RateButton = styled.button`
   )};
 
   @media (max-width: 1500px) {
-    height: 45px;
+    height: 35px;
     border-radius: 8px;
     font-size: 14pt;
     width: auto;

@@ -14,6 +14,7 @@ import {
 import provinces from "./../../constants/provinces.json";
 import CustomSelect from "../signUp/select";
 import CustomCheckBox from "../rateCompany/checboxRate";
+import PopUpProfile from "./popupProfile";
 
 const initialState: IProfile = {
   county: "Cabinda",
@@ -33,6 +34,7 @@ export default function InformationData() {
   const [userNameAccept, setUserNameAccept] = useState<boolean | null>(true);
   const provincesAngola = provinces.map((value) => value.state);
   const [counties, setCounties] = useState<Array<string> | null>([]);
+  const [showPopUp, setShwoPopUp] = useState<boolean>(false);
 
   const handleChange = (event: any) => {
     setProfileData({
@@ -106,6 +108,14 @@ export default function InformationData() {
     }
   };
 
+  const showPopUpTrick = async () => {
+    setShwoPopUp(true);
+
+    setTimeout(() => {
+      setShwoPopUp(false);
+    }, 4000);
+  };
+
   const checkError = (): boolean => {
     const arrayConsumerData = Object.entries(profileData).reverse();
 
@@ -126,13 +136,13 @@ export default function InformationData() {
       if (userNameAccept) {
         if (checkError()) {
           if (checkDataNascimento()) {
-            alert("Data saved");
+            showPopUpTrick();
           }
         }
       }
     } else if (checkError()) {
       if (checkDataNascimento()) {
-        alert("Data saved");
+        showPopUpTrick();
       }
     }
   };
@@ -162,6 +172,7 @@ export default function InformationData() {
 
   return (
     <FormDataInfo>
+      {showPopUp && <PopUpProfile msg="Perfil actualizado com sucesso" />}
       <FormGroupProfile
         onChange={handleChange}
         errorIsOn={errorIsOn}

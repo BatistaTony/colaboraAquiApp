@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ICompany } from "../../../types";
 import CardCompany from "./cardCompany";
 import { CompanyList, ButtonControl, GroupCard } from "./companiesStyle";
+import Link from "next/link";
 
 interface IProps {
   companies: Array<ICompany>;
