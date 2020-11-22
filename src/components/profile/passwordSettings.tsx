@@ -1,5 +1,6 @@
 import { useState } from "react";
 import InputPassword from "../signUp/inputPassword";
+import PopUpProfile from "./popupProfile";
 import {
   DivOfFormGroup,
   FormDataInfo,
@@ -26,6 +27,7 @@ export default function PasswordSettings() {
   );
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
+  const [showPopUp, setShwoPopUp] = useState<boolean>(false);
 
   const handleChange = (event: any) => {
     setDataPassword({
@@ -35,6 +37,14 @@ export default function PasswordSettings() {
 
     setWhereIsError(null);
     setErrorMsg(null);
+  };
+
+  const showPopUpTrick = async () => {
+    setShwoPopUp(true);
+
+    setTimeout(() => {
+      setShwoPopUp(false);
+    }, 4000);
   };
 
   const checkError = (): boolean => {
@@ -65,6 +75,7 @@ export default function PasswordSettings() {
   const saveData = () => {
     if (checkError()) {
       if (isPasswordEqual()) {
+        showPopUpTrick();
         setDataPassword(initialState);
       }
     }
@@ -72,6 +83,7 @@ export default function PasswordSettings() {
 
   return (
     <FormDataInfo>
+      {showPopUp && <PopUpProfile msg="Senha actualizada com sucesso" />}
       <DivOfFormGroup data-type="select">
         <label htmlFor="currentPassword">Senha actual</label>
         <InputPassword

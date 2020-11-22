@@ -682,3 +682,40 @@ export const BtnSaveData = styled.button`
     "px"
   )};
 `;
+
+export const PopuProfileStyle = styled(motion.div)`
+  width: 100%;
+  height: auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  ${flexbox()};
+  background: #00dd9b;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 20px;
+  @media (max-width: 2000px) {
+    margin-top: 25px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  @media (max-width: 1500px) {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    top: -20px;
+  }
+  @media (max-width: 1400px) {
+    margin-top: 0;
+    top: -45px;
+  }
+  @media (max-width: 1000px) {
+    top: -40px;
+  }
+  p {
+    font-size: 30pt;
+    ${getFont("Medium")};
+    color: white;
+    ${NormalFontSize()};
+  }
+`;
