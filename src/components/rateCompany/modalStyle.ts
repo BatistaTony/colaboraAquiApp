@@ -166,6 +166,7 @@ export const RatingSingleEmoji = styled.button`
     font-size: 40pt;
     ${({ clicked }) => (clicked ? `${getFont("Bold")}` : `${getFont()}`)}
     cursor:pointer;
+    transition: 0.7s;
 
     ${sizesForEachScreens(
       [3300, 2000, 1500, 1000, 850, 620, 500, 400],
@@ -186,13 +187,16 @@ export const RatingSingleEmoji = styled.button`
     width: 100%;
     height: 100%;
     cursor: pointer;
+    transition: 0.7s;
 
     .stop1 {
       stop-color: ${({ clicked }) => (clicked ? "#ffd85b" : "#f2e7e4")};
+      transition: 0.7s;
     }
 
     .stop2 {
       stop-color: ${({ clicked }) => (clicked ? "#fcb12a" : "#c6b5b2")};
+      transition: 0.7s;
     }
 
     #Caminho_599,
@@ -200,6 +204,7 @@ export const RatingSingleEmoji = styled.button`
     #Caminho_613,
     #Caminho_616 {
       stroke: ${({ clicked }) => (clicked ? "#ff5c3a" : "#4d3c37")};
+      transition: 0.7s;
     }
   }
 

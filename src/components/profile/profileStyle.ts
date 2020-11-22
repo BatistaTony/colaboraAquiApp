@@ -680,42 +680,22 @@ export const BtnSaveData = styled.button`
 `;
 
 export const PopuProfileStyle = styled(motion.div)`
-  width: 100%;
+  width: auto;
   height: auto;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding: 15px;
   ${flexbox()};
   background: #00dd9b;
-  position: absolute;
+  position: fixed;
   left: 0;
-  top: 0;
-  margin-top: 20px;
-
-  @media (max-width: 2000px) {
-    margin-top: 25px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-
-  @media (max-width: 1500px) {
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    top: -20px;
-  }
-
-  @media (max-width: 1400px) {
-    margin-top: 0;
-    top: -45px;
-  }
-
-  @media (max-width: 1000px) {
-    top: -40px;
-  }
+  bottom: 0;
+  margin: 20px;
+  border-radius: 5px;
+  padding-right: 20px;
+  padding-left: 20px;
 
   p {
     font-size: 30pt;
-    ${getFont("Medium")};
+    ${getFont()};
     color: white;
 
     ${NormalFontSize()};

@@ -172,7 +172,7 @@ export default function InformationData() {
 
   return (
     <FormDataInfo>
-      {showPopUp && <PopUpProfile msg="Perfil actualizado com sucesso" />}
+      {true && <PopUpProfile msg="Perfil actualizado com sucesso" />}
       <FormGroupProfile
         onChange={handleChange}
         errorIsOn={errorIsOn}

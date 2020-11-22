@@ -3,7 +3,6 @@ import {
   colorsApp,
   flexbox,
   getFont,
-  NormalFontSize,
   sizesForEachScreens,
 } from "../layout/layoutStyle";
 
@@ -32,34 +31,61 @@ export const StarsDiv = styled.div`
 `;
 
 export const Image = styled.img`
-  width: 90%;
+  width: 70%;
   height: auto;
 
   @media (min-width: 750px) {
-    width: 60%;
+    width: 45%;
   }
 
   @media (min-width: 1000px) {
-    width: 50%;
+    width: 40%;
   }
 
   @media (min-width: 1230px) {
-    width: 50%;
+    width: 30%;
     height: auto;
   }
 `;
 export const Text = styled.p`
-  width: 60%;
+  width: 100%;
   height: auto;
   text-align: center;
-  color: ${colorsApp.soDark};
+  color: ${colorsApp.textPrimary};
   font-size: 45pt;
-  ${getFont("Medium")};
-  margin-top: 15px;
+  ${getFont("Bold")};
+  margin-top: 40px;
+  ${flexbox("column")};
 
-  ${sizesForEachScreens([1000, 750, 450, 300], [60, 75, 80, 90], "width", "%")};
-  ${sizesForEachScreens([1500], [0], "margin-top", "")};
-  ${sizesForEachScreens([450], [10], "margin-top", "px")};
+  @media (max-width: 750px) {
+    width: 90%;
+  }
+
+  @media (max-width: 2500px) {
+    margin-top: 30px;
+  }
+
+  @media (max-width: 1500px) {
+    margin-top: 25px;
+  }
+
+  .sec_TExt_fdghd {
+    color: ${colorsApp.textSecundary};
+    ${getFont()};
+    font-size: 40pt;
+
+    span {
+      ${getFont("Medium")};
+      color: ${colorsApp.textPrimary};
+    }
+
+    ${sizesForEachScreens(
+      [3200, 2500, 2000, 1500, 1300, 450],
+      [35, 30, 23, 13, 12, 11],
+      "font-size",
+      "pt"
+    )};
+  }
 
   ${sizesForEachScreens(
     [3200, 2500, 2000, 1500, 1300, 450],
@@ -71,7 +97,6 @@ export const Text = styled.p`
 
 export const Bold = styled.span`
   color: ${colorsApp.roxo};
-  ${getFont("bold")};
 `;
 
 export const List = styled.div`
@@ -79,14 +104,49 @@ export const List = styled.div`
   height: auto;
   position: relative;
   margin-top: 50px;
-  padding-top: 40px;
   ${flexbox("column", "flex-start", "center")};
+  background: rgba(75, 85, 186, 0.01);
 
   @media (max-width: 450px) {
     margin-top: 20px;
   }
+`;
 
-  background: rgba(75, 85, 186, 0.01);
+export const DivCurva = styled.div`
+  width: 100%;
+  background: transparent;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 0;
+  margin-bottom: 65px;
+
+  ${sizesForEachScreens(
+    [3000, 2500, 1500, 1000, 750],
+    [50, 30, 25, 20, 15],
+    "margin-bottom",
+    "px"
+  )}
+
+  .curvaL {
+    width: 100%;
+    height: 200%;
+    border-radius: 100%;
+    background: white;
+    position: absolute;
+    bottom: 10%;
+
+    @media (max-width: 2000px) {
+      height: 150%;
+    }
+
+    ${sizesForEachScreens(
+      [2000, 1600, 1390, 1000],
+      [13, 25, 35, 40],
+      "bottom",
+      "%"
+    )};
+  }
 `;
 
 export const CardRankingContainer = styled.div`
@@ -319,10 +379,8 @@ export const Description = styled.p`
 export const AvaliationsDiv = styled.div`
   width: 100%;
   height: auto;
-
-  margin-top: 10px;
   margin-left: 10px;
-  ${flexbox("column", "flex-start", "flex-start")};
+  ${flexbox("column", "center")};
   border-top: solid 1px rgba(112, 112, 112, 0.12);
 
   @media (max-width: 1000px) {
@@ -347,8 +405,8 @@ export const Title = styled.p`
   align-self: flex-start;
 
   ${sizesForEachScreens(
-    [3200, 3000, 2500, 1930, 1500, 850],
-    [23, 20, 18, 16, 12, 11],
+    [3200, 3000, 2500, 1930, 1500, 850, 600],
+    [23, 20, 18, 16, 12, 11, 10],
     "font-size",
     "pt"
   )};
@@ -409,8 +467,8 @@ export const Avaliation = styled.div`
         : "rgb(249, 63, 63)"};
 
     ${sizesForEachScreens(
-      [3200, 3000, 2500, 1930, 1500],
-      [23, 20, 18, 15, 10],
+      [2500, 1930, 1700, 1500, 1000, 750],
+      [18, 15, 13, 10, 9, 8.5],
       "font-size",
       "pt"
     )};
