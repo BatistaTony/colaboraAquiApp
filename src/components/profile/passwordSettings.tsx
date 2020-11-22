@@ -1,6 +1,5 @@
 import { useState } from "react";
 import InputPassword from "../signUp/inputPassword";
-import PopUpProfile from "./popupProfile";
 import {
   DivOfFormGroup,
   FormDataInfo,

@@ -14,7 +14,6 @@ import {
 import provinces from "./../../constants/provinces.json";
 import CustomSelect from "../signUp/select";
 import CustomCheckBox from "../rateCompany/checboxRate";
-import PopUpProfile from "./popupProfile";
 
 const initialState: IProfile = {
   county: "Cabinda",
