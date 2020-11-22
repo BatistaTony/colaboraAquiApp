@@ -434,7 +434,7 @@ export const CardRow = styled.div`
     width: 100%;
     grid-column-gap: 20px;
 
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 0.94fr);
   }
 `;
 export const Avaliation = styled.div`
@@ -467,18 +467,13 @@ export const Avaliation = styled.div`
         : "rgb(249, 63, 63)"};
 
     ${sizesForEachScreens(
-      [2500, 1930, 1700, 1500, 1000, 750],
-      [18, 15, 13, 10, 9, 8.5],
+      [2500, 1930, 1700, 1500, 1000, 750, 600],
+      [18, 15, 13, 10, 9, 8, 7],
       "font-size",
       "pt"
     )};
   }
 
-  @media (max-width: 450px) {
-    width: 60px;
-    height: 40px;
-    padding: 0 4px;
-  }
   @media (min-width: 1000px) {
     width: auto;
   }
