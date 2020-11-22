@@ -514,6 +514,10 @@ export const DivOfFormGroup = styled.div`
     "px"
   )}
 
+  @media  (max-width:600px) {
+    margin-bottom: 15px;
+  }
+
   &:first-child {
     grid-column: 1/3;
   }
@@ -677,27 +681,4 @@ export const BtnSaveData = styled.button`
     "padding-right",
     "px"
   )};
-`;
-
-export const PopuProfileStyle = styled(motion.div)`
-  width: auto;
-  height: auto;
-  padding: 15px;
-  ${flexbox()};
-  background: #00dd9b;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  margin: 20px;
-  border-radius: 5px;
-  padding-right: 20px;
-  padding-left: 20px;
-
-  p {
-    font-size: 30pt;
-    ${getFont()};
-    color: white;
-
-    ${NormalFontSize()};
-  }
 `;
