@@ -37,7 +37,7 @@ const RateModal = ({ toggleModal }: IProps) => {
   const [isGiveSuggestion, setIsGiveSuggestion] = useState<boolean>(false);
   const [stepRate, setSetpRate] = useState<Number>(1);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
-  const [animateData, setAnimation] = useState({ opacity: 1 });
+  const [animateData, setAnimation] = useState({ opacity: 1, x: 0 });
 
   const handleChange = (event: any) => {
     setRateData({
@@ -54,7 +54,7 @@ const RateModal = ({ toggleModal }: IProps) => {
   };
 
   const changeAnimation = () => {
-    setAnimation({ opacity: 1 });
+    setAnimation({ opacity: 1, x: 1000 });
   };
 
   const checkDisabledButton = (): Boolean => {
@@ -92,7 +92,7 @@ const RateModal = ({ toggleModal }: IProps) => {
 
     setTimeout(() => {
       toggleModal();
-    }, 200);
+    }, 500);
   };
 
   return (
@@ -100,6 +100,7 @@ const RateModal = ({ toggleModal }: IProps) => {
       initial={{ opacity: 0 }}
       animate={animateData}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
       keepCenter={rateData.feeling === ""}
     >
       <ButtonBack onClick={stepRate === 1 ? closeModal : () => nextStep(1)}>

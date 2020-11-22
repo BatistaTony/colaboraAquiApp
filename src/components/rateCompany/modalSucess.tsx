@@ -23,7 +23,7 @@ export default function ModalRateSucess({ toggleModal }: IProps) {
 
     setTimeout(() => {
       toggleModal();
-    }, 200);
+    }, 300);
   };
 
   return (
@@ -31,7 +31,7 @@ export default function ModalRateSucess({ toggleModal }: IProps) {
       <OverlaySuggestion>
         <ModalRateSucesStyle
           initial={{ opacity: 0, y: -500 }}
-          animate={animateData}
+          animate={{ ...animateData }}
           exit={{ opacity: 0 }}
         >
           <IllustrationModalSucessRate>

@@ -209,35 +209,32 @@ export const RateButton = styled.button`
     "px"
   )};
 
-  @media (max-width: 1500px) {
-    height: 35px;
-    border-radius: 8px;
-    font-size: 14pt;
-    width: auto;
-    padding-right: 25px;
-    padding-left: 25px;
-  }
-
   ${sizesForEachScreens(
-    [3000, 2700, 2500, 2000, 1700, 1100],
-    [90, 75, 65, 55, 50, 40],
+    [3000, 2700, 2500, 2000, 1700, 1500, 1100],
+    [90, 75, 65, 55, 50, 45, 40],
     "height",
     "px"
   )}
 
   ${sizesForEachScreens(
-    [3000, 2700, 2500, 2000, 1700, 1100],
-    [300, 280, 250, 200, 180, 170],
+    [3000, 2700, 2500, 2000, 1700, 1500, 1100],
+    [300, 280, 250, 200, 180, 165, 150],
     "width",
     "px"
   )};
 
   ${sizesForEachScreens(
     [3200, 2700, 2200, 1700, 1500, 1100, 750],
-    [27, 24, 20, 18, 15, 13, 12],
+    [27, 24, 20, 18, 14, 13, 12],
     "font-size",
     "pt"
   )};
+
+  @media (max-width: 1500px) {
+    border-radius: 8px;
+    padding-right: 25px;
+    padding-left: 25px;
+  }
 
   img {
     width: 50px;
@@ -250,6 +247,10 @@ export const RateButton = styled.button`
       "height",
       "px"
     )};
+
+    @media (max-width: 1500px) {
+      margin-left: 20px;
+    }
 
     ${sizesForEachScreens(
       [3200, 2700, 2200, 1700, 1500, 1000, 750],
