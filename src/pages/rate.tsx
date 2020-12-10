@@ -27,7 +27,7 @@ function Rate() {
   const getCompany = async () => {
     const query = queryString.parse(router.asPath.split(/\?/)[1]);
 
-    const id: string | number = query.id;
+    const id: string | any = query.id;
 
     let receivedCompany = await firestore.collection("companies").doc(id).get();
 
