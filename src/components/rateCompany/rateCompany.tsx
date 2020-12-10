@@ -127,7 +127,7 @@ const RateCompany = ({ data }: TRateCompany) => {
         console.log(filteredRatings.length);
       }
     }
-  }, []);
+  });
 
   const seeMoreRating = () => {
     if (filteredRatings.length - lengthRatings > 10) {
