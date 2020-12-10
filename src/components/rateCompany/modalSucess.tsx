@@ -44,7 +44,9 @@ export default function ModalRateSucess({ toggleModal }: IProps) {
           <p className="text_modal_rsgf_fdf">
             A sua avaliação ajudará as empresas a melhorarem os seus serviços
           </p>
-          <ButtonFinishRate onClick={finishRate}>Concluir</ButtonFinishRate>
+          <ButtonFinishRate id="finishedTheRate" onClick={finishRate}>
+            Concluir
+          </ButtonFinishRate>
         </ModalRateSucesStyle>
       </OverlaySuggestion>
     </AnimatePresence>

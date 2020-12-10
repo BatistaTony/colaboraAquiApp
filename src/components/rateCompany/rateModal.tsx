@@ -2,6 +2,7 @@ import { useState, Fragment } from "react";
 import CustomCheckBox from "./checboxRate";
 import GiveSuggestion from "./giveSuggestion";
 import ModalRateSucess from "./modalSucess";
+import firebase from "./../../../Firebase";
 
 import {
   ButtonBack,
@@ -30,14 +31,17 @@ const initialSatte: IRateCompany = {
 
 interface IProps {
   toggleModal: any;
+  companyId: string;
 }
 
-const RateModal = ({ toggleModal }: IProps) => {
+const RateModal = ({ toggleModal, companyId }: IProps) => {
   const [rateData, setRateData] = useState<IRateCompany>(initialSatte);
   const [isGiveSuggestion, setIsGiveSuggestion] = useState<boolean>(false);
   const [stepRate, setSetpRate] = useState<Number>(1);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
   const [animateData, setAnimation] = useState({ opacity: 1, x: 0 });
+
+  const firestore = firebase.firestore();
 
   const handleChange = (event: any) => {
     setRateData({
@@ -73,6 +77,25 @@ const RateModal = ({ toggleModal }: IProps) => {
 
   const sendSuggestion = () => {
     if (!checkDisabledButton()) {
+      firestore
+        .collection("companyRates")
+        .add({
+          feeling: rateData.feeling,
+          experience: rateData.consumerExperience,
+          suggestion: rateData.consumerSuggestion,
+          time: Date.now(),
+          companyId: companyId,
+          consumer: firestore.doc("consumer/yXQYfbAIFdLQ7TmkSkNu"),
+        })
+        .then((res) => {
+          if (res.id) {
+            setShowModalSucess(!showModalSucess);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
       setShowModalSucess(!showModalSucess);
     }
   };

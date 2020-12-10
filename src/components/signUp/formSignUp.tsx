@@ -12,11 +12,10 @@ import CustomSelect from "./select";
 import SucessModal from "./sucessModal";
 import InputPassword from "./inputPassword";
 import Link from "next/link";
-import IconTextBox from "./iconNameTextbox";
 import provinces from "./../../constants/provinces.json";
 
 const initialState: IConsumer = {
-  userName: "",
+  phone: "",
   province: "",
   county: "",
   dataNascimento: 0,
@@ -28,33 +27,11 @@ export default function FormSignUp() {
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
-  const [userNameAccept, setUserNameAccept] = useState<boolean | null>(null);
   const provincesAngola = provinces.map((value) => value.state);
   const [counties, setCounties] = useState<Array<string> | null>([]);
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-  };
-
-  const checkUserName = (name: string) => {
-    const nomes = ["tony", "batistatony", "JoaoTOny", "rayThon"];
-
-    const result = nomes.filter((state) => state === name);
-
-    if (result.length) {
-      setWhereIsError("userName");
-      setUserNameAccept(false);
-      setErrorMsg("Este nome já existe, por favor tente outro");
-    } else {
-      setUserNameAccept(true);
-      setErrorMsg("");
-    }
-
-    if (name === "") {
-      setUserNameAccept(null);
-      setWhereIsError("");
-      setErrorMsg("");
-    }
   };
 
   const handleChange = (event: any) => {
@@ -63,10 +40,8 @@ export default function FormSignUp() {
       [event.target.name]: event.target.value,
     });
 
-    if (userNameAccept) {
-      setWhereIsError(null);
-      setErrorMsg(null);
-    }
+    setWhereIsError(null);
+    setErrorMsg(null);
   };
 
   const checkDataNascimento = (): Boolean => {
@@ -101,11 +76,6 @@ export default function FormSignUp() {
         [property]: value,
       });
     }
-
-    if (userNameAccept) {
-      setWhereIsError(null);
-      setErrorMsg(null);
-    }
   };
 
   const checkError = (): boolean => {
@@ -124,12 +94,10 @@ export default function FormSignUp() {
   };
 
   const signUpUser = (): void => {
-    if (consumerData.userName) {
-      if (userNameAccept) {
-        if (checkError()) {
-          if (checkDataNascimento()) {
-            setShowModalSucess(!showModalSucess);
-          }
+    if (consumerData.phone) {
+      if (checkError()) {
+        if (checkDataNascimento()) {
+          setShowModalSucess(!showModalSucess);
         }
       }
     } else if (checkError()) {
@@ -157,27 +125,17 @@ export default function FormSignUp() {
 
       <DivGridForm>
         <FormGroupGrand>
-          <FormGroup
-            isEmpty={errorIsOn === "userName"}
-            nameAccept={userNameAccept}
-            className={userNameAccept === false && "textbox_name"}
-          >
+          <FormGroup isEmpty={errorIsOn === "phone"}>
             <input
               type="text"
-              name="userName"
-              id="userName"
-              onKeyUp={(event: any) => checkUserName(event.target.value)}
+              name="phone"
+              id="phone"
               onChange={handleChange}
-              placeholder="Nome do utilizador"
+              placeholder="Telefone"
               maxLength={15}
             />
-            {userNameAccept != null && (
-              <div className="iconTextBox">
-                <IconTextBox titleImg={errorMsg} userAccept={userNameAccept} />
-              </div>
-            )}
           </FormGroup>
-          {errorIsOn === "userName" && (
+          {errorIsOn === "phone" && (
             <ErrorMessage className="error_name_">{errorMsg}</ErrorMessage>
           )}
         </FormGroupGrand>
@@ -221,6 +179,8 @@ export default function FormSignUp() {
           errorMsg={errorMsg}
           errorIsOn={errorIsOn}
           handleChange={handleChange}
+          name="password"
+          value={consumerData.password}
         />
 
         <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>

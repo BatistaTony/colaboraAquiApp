@@ -17,6 +17,7 @@ interface IProps {
 
 export default function CardCompany({ data }: IProps) {
   const {
+    companyId,
     companyDescription,
     companyLogo,
     companyName,
@@ -33,7 +34,10 @@ export default function CardCompany({ data }: IProps) {
   const animationStyle = { opacity: 1, scale: 1, y: 0 };
 
   const callPage = () => {
-    Router.push("/rate?id=someid");
+    Router.push({
+      pathname: `/rate`,
+      query: { id: companyId },
+    });
   };
 
   return (

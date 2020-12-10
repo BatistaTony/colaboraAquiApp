@@ -27,9 +27,11 @@ export default function UserMenu({ title }: IProps) {
     const regex = RegExp("menu_user_name", "gi");
 
     function HideOpenedDiv(event: MouseEvent) {
-      if ((event.target as Element).className) {
-        if (!(event.target as Element).className.match(regex)) {
-          setMEnuUser(false);
+      if (event.target) {
+        if ((event.target as Element).className) {
+          if (!(event.target as Element).className.match(regex)) {
+            setMEnuUser(false);
+          }
         }
       }
     }
@@ -40,10 +42,10 @@ export default function UserMenu({ title }: IProps) {
       <UserName
         className="menu_user_name"
         onClick={() => setMEnuUser(!menuUser)}
-        active={title === consumerState.userName}
+        active={title === consumerState.phone}
       >
         <span className="menu_user_name"></span>
-        {consumerState.userName}
+        {consumerState.userName ? consumerState.userName : consumerState.phone}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"
@@ -67,7 +69,7 @@ export default function UserMenu({ title }: IProps) {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           className="menu_user_name menu_desk_T"
-          nameLength={consumerState.userName.length}
+          nameLength={consumerState.phone.length}
         >
           <Link href="/profile">
             <li className="menu_user_name">
@@ -85,7 +87,7 @@ export default function UserMenu({ title }: IProps) {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0 }}
         className="menu_user_name menu_mobile_"
-        nameLength={consumerState.userName.length}
+        nameLength={consumerState.phone.length}
       >
         <Link href="/profile">
           <li className="menu_user_name">

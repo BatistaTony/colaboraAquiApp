@@ -1,12 +1,17 @@
 export interface IConsumer {
-  userName: string;
-  province: string;
-  county: string;
+  userName?: string;
+  province?: string;
+  county?: string;
   dataNascimento: number;
-  password: string;
+  password?: string;
+  fullName?: string;
+  phone?: string;
+  email?: string;
+  isKeepAnonymous?: boolean;
 }
 
 export interface ICompany {
+  companyId?: string;
   companyName: string;
   companyLogo: string;
   companyStars: number;
@@ -30,9 +35,8 @@ export interface IProfile {
 export interface IRating {
   id: number;
   consumerName: string;
-  stars: number;
   time: string | Date | number;
   experience: string;
-  feeling: string | number;
+  feeling: string;
   suggestion: string;
 }

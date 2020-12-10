@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IProfile } from "../../../types";
+import { IConsumer } from "../../../types";
 import FormGroupProfile from "./FormGrouProfile";
 import {
   DivOfFormGroup,
@@ -16,7 +16,7 @@ import CustomSelect from "../signUp/select";
 import CustomCheckBox from "../rateCompany/checboxRate";
 import PopUpProfile from "./popupProfile";
 
-const initialState: IProfile = {
+const initialState: IConsumer = {
   county: "Cabinda",
   province: "Cabinda",
   dataNascimento: 1990,
@@ -28,7 +28,7 @@ const initialState: IProfile = {
 };
 
 export default function InformationData() {
-  const [profileData, setProfileData] = useState<IProfile>(initialState);
+  const [profileData, setProfileData] = useState<IConsumer>(initialState);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
   const [userNameAccept, setUserNameAccept] = useState<boolean | null>(true);
