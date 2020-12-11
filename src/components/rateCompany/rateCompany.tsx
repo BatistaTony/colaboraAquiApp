@@ -35,6 +35,7 @@ const RateCompany = ({ data }: TRateCompany) => {
   const [lengthRatings, setLengthRatings] = useState<number>(0);
   const [companyId, setCompanyId] = useState<string>("");
   const firestore = firebase.firestore();
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const classifications = [
     "Todas classificações",
@@ -76,6 +77,29 @@ const RateCompany = ({ data }: TRateCompany) => {
     }
   };
 
+  const getRatingsOne = async () => {
+    const allRatings = await firestore
+      .collection("companyRates")
+      .where("companyId", "==", companyId)
+      .get();
+
+    const result = allRatings.docs.map(async (rate) => {
+      const consumerData = await rate.data().consumer.get();
+
+      return {
+        ...consumerData.data(),
+        consumerName: checkIfAnonymous(
+          consumerData.data().userName,
+          consumerData.data().fullName,
+          consumerData.data().isKeepAnonymous
+        ),
+        ...rate.data(),
+      };
+    });
+
+    Promise.all(result).then((res) => setRatings(res));
+  };
+
   const getRatings = () => {
     if (companyId) {
       firestore
@@ -85,7 +109,6 @@ const RateCompany = ({ data }: TRateCompany) => {
           var savedRatings = [];
 
           queryData.forEach((doc) => {
-            console.log(data.companyId);
             if (doc.data().companyId === companyId) {
               savedRatings.push(doc.data());
             }
@@ -105,29 +128,45 @@ const RateCompany = ({ data }: TRateCompany) => {
             };
           });
 
-          Promise.all(result).then((res) => console.log(res));
           Promise.all(result).then((res) => setRatings(res));
         });
-    } else {
-      console.log("id not exist");
     }
+  };
+
+  const checkChangesOnRAting = () => {
+    firestore.collection("companyRates").onSnapshot((queryShot) => {
+      queryShot.docChanges().forEach((change: any) => {
+        if (
+          change.type === "added" ||
+          change.type === "modified" ||
+          change.type === "removed"
+        ) {
+          setRatings([]);
+          getRatingsOne();
+        }
+      });
+    });
   };
 
   useEffect(() => {
     setCompanyId(data.companyId);
 
-    getRatings();
+    console.log("Render ");
+
+    // getRatings();
+
+    // checkChangesOnRAting();
+
+    getRatingsOne();
 
     if (!lengthRatings) {
       if (filteredRatings.length > 10) {
         setLengthRatings(10);
-        console.log("come");
       } else {
         setLengthRatings(filteredRatings.length);
-        console.log(filteredRatings.length);
       }
     }
-  });
+  }, []);
 
   const seeMoreRating = () => {
     if (filteredRatings.length - lengthRatings > 10) {
