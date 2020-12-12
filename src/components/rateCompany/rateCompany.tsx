@@ -1,5 +1,4 @@
 import { Container, Text } from "./rateCompanyStyle";
-import Data from "../../constants/Data";
 import HeaderCompany from "./headerCompany";
 import {
   ButtonSeeMore,
@@ -15,6 +14,8 @@ import { Fragment, useEffect, useState } from "react";
 import ConsumerRating from "./consumerRating";
 import { ICompany, IRating } from "../../../types";
 import firebase from "./../../../Firebase";
+import { useRouter } from "next/router";
+import queryString from "query-string";
 
 interface IFilter {
   sortBy: string;
@@ -33,9 +34,9 @@ type TRateCompany = {
 const RateCompany = ({ data }: TRateCompany) => {
   const [filterData, setFilter] = useState<IFilter>(initialFilter);
   const [lengthRatings, setLengthRatings] = useState<number>(0);
-  const [companyId, setCompanyId] = useState<string>("");
   const firestore = firebase.firestore();
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const router = useRouter();
 
   const classifications = [
     "Todas classificações",
@@ -65,6 +66,10 @@ const RateCompany = ({ data }: TRateCompany) => {
     }
   });
 
+  const query = queryString.parse(router.asPath.split(/\?/)[1]);
+
+  const companyId: string | any = query.id;
+
   const checkIfAnonymous = (
     userName: string,
     fullName: string,
@@ -77,29 +82,6 @@ const RateCompany = ({ data }: TRateCompany) => {
     }
   };
 
-  const getRatingsOne = async () => {
-    const allRatings = await firestore
-      .collection("companyRates")
-      .where("companyId", "==", companyId)
-      .get();
-
-    const result = allRatings.docs.map(async (rate) => {
-      const consumerData = await rate.data().consumer.get();
-
-      return {
-        ...consumerData.data(),
-        consumerName: checkIfAnonymous(
-          consumerData.data().userName,
-          consumerData.data().fullName,
-          consumerData.data().isKeepAnonymous
-        ),
-        ...rate.data(),
-      };
-    });
-
-    Promise.all(result).then((res) => setRatings(res));
-  };
-
   const getRatings = () => {
     if (companyId) {
       firestore
@@ -110,16 +92,16 @@ const RateCompany = ({ data }: TRateCompany) => {
 
           queryData.forEach((doc) => {
             if (doc.data().companyId === companyId) {
-              savedRatings.push(doc.data());
+              savedRatings.push({ id: doc.id, ...doc.data() });
             }
           });
 
           const result = savedRatings.map(async (item) => {
             let consumer = await item.consumer.get().then((res) => res.data());
-
             return {
               ...item,
               ...consumer,
+              id: item.id,
               consumerName: checkIfAnonymous(
                 consumer.userName,
                 consumer.fullName,
@@ -133,31 +115,8 @@ const RateCompany = ({ data }: TRateCompany) => {
     }
   };
 
-  const checkChangesOnRAting = () => {
-    firestore.collection("companyRates").onSnapshot((queryShot) => {
-      queryShot.docChanges().forEach((change: any) => {
-        if (
-          change.type === "added" ||
-          change.type === "modified" ||
-          change.type === "removed"
-        ) {
-          setRatings([]);
-          getRatingsOne();
-        }
-      });
-    });
-  };
-
   useEffect(() => {
-    setCompanyId(data.companyId);
-
-    console.log("Render ");
-
-    // getRatings();
-
-    // checkChangesOnRAting();
-
-    getRatingsOne();
+    getRatings();
 
     if (!lengthRatings) {
       if (filteredRatings.length > 10) {
@@ -178,7 +137,7 @@ const RateCompany = ({ data }: TRateCompany) => {
 
   return (
     <Container length={filteredRatings.length < 3}>
-      <HeaderCompany data={data} />
+      {data.companyId ? <HeaderCompany data={data} /> : <h1>Loading</h1>}
       <Text>{data.companyDescription}</Text>
 
       <RatingsContainer length={filteredRatings.length < 3}>
@@ -204,26 +163,34 @@ const RateCompany = ({ data }: TRateCompany) => {
           </GroupOfSelect>
         </FilterConsumerRating>
 
-        <ListOfRating length={filteredRatings.length < 3}>
-          {filteredRatings.slice(0, lengthRatings).map((data) => (
-            <ConsumerRating key={data.id} data={data} />
-          ))}
-        </ListOfRating>
+        {filteredRatings.length > 0 ? (
+          <ListOfRating length={filteredRatings.length < 3}>
+            {filteredRatings.slice(0, lengthRatings).map((data) => (
+              <ConsumerRating key={data.id} data={data} />
+            ))}
+          </ListOfRating>
+        ) : (
+          <h1>Loading Rates</h1>
+        )}
 
         <DivBtnRatings>
-          <ButtonSeeMore
-            onClick={lengthRatings !== filteredRatings.length && seeMoreRating}
-          >
-            {lengthRatings === filteredRatings.length ? (
-              <Fragment>
-                {filteredRatings.length === 0
-                  ? "Sem avaliações"
-                  : "Sem mais avaliações"}
-              </Fragment>
-            ) : (
-              "Ver mais..."
-            )}
-          </ButtonSeeMore>
+          {filteredRatings.length > 0 && (
+            <ButtonSeeMore
+              onClick={
+                lengthRatings !== filteredRatings.length && seeMoreRating
+              }
+            >
+              {lengthRatings === filteredRatings.length ? (
+                <Fragment>
+                  {filteredRatings.length === 0
+                    ? "Sem avaliações"
+                    : "Sem mais avaliações"}
+                </Fragment>
+              ) : (
+                "Ver mais..."
+              )}
+            </ButtonSeeMore>
+          )}
         </DivBtnRatings>
       </RatingsContainer>
     </Container>

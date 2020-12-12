@@ -33,8 +33,6 @@ function Rate() {
 
     if (receivedCompany.exists) {
       setData({ companyId: id, ...receivedCompany.data() });
-    } else {
-      console.log("Not exists");
     }
   };
 

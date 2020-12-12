@@ -109,7 +109,7 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
           }
         })
         .catch((err) => {
-          console.log("was an erro ", err);
+          ///will handle some error here
         });
     }
   };

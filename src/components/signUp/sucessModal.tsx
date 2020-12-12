@@ -26,6 +26,8 @@ export default function SucessModal({ dataUser }: IProps) {
     setAnimation({ opacity: 1, y: -800 });
   };
 
+  console.log(dataUser);
+
   const login = () => {
     if (dataUser) {
       changeAnimation();

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {
   colorsApp,
   flexbox,
@@ -235,6 +235,10 @@ export const DivForm = styled.div`
     }
   }
 
+  .erroForm_h {
+    margin-top: -7px;
+  }
+
   @media (max-width: 600px) and (min-height: 745px) {
     height: 100vh;
     ${flexbox("column", "flex-end", "center")};
@@ -358,6 +362,32 @@ export const DivGridForm = styled.div`
     @media (max-width: 1000px) {
       grid-template-columns: 88% 12%;
     }
+  }
+`;
+
+const SpinninerAnimation = keyframes`
+
+    
+    100%{
+        transform: rotate(360deg);
+    }
+`;
+
+export const LoadingAnimation = styled.div`
+  width: 100%;
+  height: 20px;
+  ${flexbox()};
+  grid-column: 1/3;
+  margin-bottom: -10px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: ${colorsApp.orange};
+
+    animation: ${SpinninerAnimation} linear;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
   }
 `;
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ButtonSignUp,
   DivGridForm,
@@ -6,6 +6,7 @@ import {
   FormGroup,
   QuestionSignUp,
   FormGroupGrand,
+  LoadingAnimation,
 } from "./signUpStyle";
 import { IConsumer } from "../../../types";
 import CustomSelect from "./select";
@@ -13,13 +14,17 @@ import SucessModal from "./sucessModal";
 import InputPassword from "./inputPassword";
 import Link from "next/link";
 import provinces from "./../../constants/provinces.json";
+import firebase from "./../../../Firebase";
+import ModalSecretCode from "./modalCode";
+import Spinner from "../spinner/spinner";
+import SpinnerIcon from "../spinner/spinnerIcon";
 
 const initialState: IConsumer = {
-  phone: "",
-  province: "",
-  county: "",
-  dataNascimento: 0,
-  password: "",
+  phone: "+244941551087",
+  province: "Luanda",
+  county: "Luanda",
+  dataNascimento: 2000,
+  password: "12345",
 };
 
 export default function FormSignUp() {
@@ -29,6 +34,10 @@ export default function FormSignUp() {
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
   const provincesAngola = provinces.map((value) => value.state);
   const [counties, setCounties] = useState<Array<string> | null>([]);
+  const [confirmationResult, setConfirmationResult] = useState<any>({});
+  const [showModalCode, setShowModalCode] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const firebaseAuth = firebase.auth();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -42,6 +51,14 @@ export default function FormSignUp() {
 
     setWhereIsError(null);
     setErrorMsg(null);
+  };
+
+  const toggleModalCode = () => {
+    setShowModalCode(!showModalCode);
+  };
+
+  const toggleModalSucess = () => {
+    setShowModalSucess(!showModalSucess);
   };
 
   const checkDataNascimento = (): Boolean => {
@@ -93,17 +110,63 @@ export default function FormSignUp() {
     return emptyProperties.length <= 0;
   };
 
+  const authWithPhone = () => {
+    const appVerify = new firebase.auth.RecaptchaVerifier("sign-in-button", {
+      size: "invisible",
+      callback: (response) => {
+        console.log(response);
+      },
+    });
+
+    firebaseAuth
+      .signInWithPhoneNumber(consumerData.phone, appVerify)
+      .then((response) => {
+        setConfirmationResult(response);
+        setShowModalCode(true);
+        setIsLoading(false);
+        alert(response);
+      })
+      .catch((error) => {
+        if (error.code === "auth/invalid-phone-number") {
+          setWhereIsError("phone");
+          setErrorMsg("Telefone Invalido");
+        } else {
+          setWhereIsError("form");
+          setErrorMsg("Erro de conexão de internet");
+        }
+        setIsLoading(false);
+      });
+  };
+
   const signUpUser = (): void => {
+    setErrorMsg("");
+    setWhereIsError("");
     if (consumerData.phone) {
       if (checkError()) {
         if (checkDataNascimento()) {
-          setShowModalSucess(!showModalSucess);
+          if (checkPasswordLength()) {
+            setIsLoading(true);
+            authWithPhone();
+          }
         }
       }
     } else if (checkError()) {
       if (checkDataNascimento()) {
-        setShowModalSucess(!showModalSucess);
+        if (checkPasswordLength()) {
+          setIsLoading(true);
+          authWithPhone();
+        }
       }
+    }
+  };
+
+  const checkPasswordLength = () => {
+    if (consumerData.password.length >= 6) {
+      return true;
+    } else {
+      setWhereIsError("password");
+      setErrorMsg("Senha muito curta");
+      return false;
     }
   };
 
@@ -121,7 +184,17 @@ export default function FormSignUp() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {showModalSucess && <SucessModal dataUser={consumerData} />}
+      {showModalSucess && (
+        <SucessModal dataUser={{ ...consumerData, password: "" }} />
+      )}
+      {showModalCode && (
+        <ModalSecretCode
+          consumerData={consumerData}
+          confirmationResult={confirmationResult}
+          toggleModalCode={toggleModalCode}
+          toggleModalSucess={toggleModalSucess}
+        />
+      )}
 
       <DivGridForm>
         <FormGroupGrand>
@@ -133,6 +206,7 @@ export default function FormSignUp() {
               onChange={handleChange}
               placeholder="Telefone"
               maxLength={15}
+              value={consumerData.phone}
             />
           </FormGroup>
           {errorIsOn === "phone" && (
@@ -168,6 +242,7 @@ export default function FormSignUp() {
               id="dataNascimento"
               onChange={handleChange}
               placeholder="Ano de nascimento"
+              value={consumerData.dataNascimento}
             />
           </FormGroup>
           {errorIsOn === "dataNascimento" && (
@@ -183,7 +258,25 @@ export default function FormSignUp() {
           value={consumerData.password}
         />
 
-        <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
+        {errorIsOn === "form" && (
+          <ErrorMessage className="error_name_ erroForm_h">
+            {errorMsg}
+          </ErrorMessage>
+        )}
+
+        {isLoading && (
+          <LoadingAnimation>
+            <SpinnerIcon />
+          </LoadingAnimation>
+        )}
+
+        <ButtonSignUp
+          id="sign-in-button"
+          onClick={signUpUser}
+          disabled={isLoading}
+        >
+          Continuar
+        </ButtonSignUp>
         <QuestionSignUp>
           Já tens uma conta ?
           <Link href="/signin">

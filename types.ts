@@ -8,6 +8,7 @@ export interface IConsumer {
   phone?: string;
   email?: string;
   isKeepAnonymous?: boolean;
+  userId?: string;
 }
 
 export interface ICompany {

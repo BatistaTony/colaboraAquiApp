@@ -13,7 +13,6 @@ import {
   ErrorMessage,
   FormGroupGrand,
 } from "../signUp/signUpStyle";
-import { translateProperty } from "../utils";
 import {
   IllustrationObjectSignIn,
   ModalSignIn,
@@ -21,14 +20,15 @@ import {
 } from "./signInStyle";
 import Route from "next/router";
 import Link from "next/link";
+import firebase from "./../../../Firebase";
 
 interface ISign {
-  userName: string;
+  phone: string;
   password: string;
 }
 
 const initialState: ISign = {
-  userName: "",
+  phone: "",
   password: "",
 };
 
@@ -36,6 +36,7 @@ export default function SignInConsumer() {
   const [consumerData, setConsumerData] = useState<ISign>(initialState);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
+  const firebaseAuth = firebase.auth();
 
   const handleChange = (event: any) => {
     setConsumerData({
@@ -61,15 +62,40 @@ export default function SignInConsumer() {
     return emptyProperties.length > 0;
   };
 
+  const checkPasswordLength = () => {
+    if (consumerData.password.length >= 6) {
+      return true;
+    } else {
+      setWhereIsError("password");
+      setErrorMsg("Senha muito curta");
+      return false;
+    }
+  };
+
   const signInUser = () => {
     if (!checkError()) {
-      Route.push("/companies");
+      if (checkPasswordLength()) {
+        const email = `${consumerData.phone}@colabora.com`;
+
+        firebaseAuth
+          .signInWithEmailAndPassword(email, consumerData.password)
+          .then((result) => {
+            console.log(result);
+          })
+          .catch((err) => {
+            console.log(err);
+            console.log(email);
+          });
+        // Route.push("/companies");
+      }
     }
   };
 
   const backToHome = () => {
     Route.push("/");
   };
+
+  console.log(firebaseAuth.currentUser);
 
   return (
     <OverlaySignIn>
@@ -95,11 +121,11 @@ export default function SignInConsumer() {
               >
                 <input
                   type="text"
-                  name="userName"
-                  id="userName"
+                  name="phone"
+                  id="phone"
                   onChange={handleChange}
-                  value={consumerData.userName}
-                  placeholder="Nome do utilizador"
+                  value={consumerData.phone}
+                  placeholder="Telefone"
                 />
               </FormGroup>
               {errorIsOn === "userName" && (
@@ -112,6 +138,7 @@ export default function SignInConsumer() {
               errorIsOn={errorIsOn}
               errorMsg={errorMsg}
               handleChange={handleChange}
+              value={consumerData.password}
             />
 
             <p
