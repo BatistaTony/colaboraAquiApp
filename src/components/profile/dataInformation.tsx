@@ -19,6 +19,7 @@ import firebase from "./../../../Firebase";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { registerConsumer } from "../../store/actions/consumer";
+import InputPassword from "../signUp/inputPassword";
 
 const initialState: IConsumer = {
   county: "",
@@ -29,6 +30,7 @@ const initialState: IConsumer = {
   fullName: "",
   isKeepAnonymous: true,
   userName: "",
+  password: "",
 };
 
 export default function InformationData() {
@@ -39,6 +41,10 @@ export default function InformationData() {
   const provincesAngola = provinces.map((value) => value.state);
   const [counties, setCounties] = useState<Array<string> | null>([]);
   const [showPopUp, setShwoPopUp] = useState<boolean>(false);
+  const [popMsg, setPopUpMsg] = useState<string>(
+    "Perfil actualizado com sucesso"
+  );
+  const [popUpIsError, setPopUpIsError] = useState<boolean>(false);
   const consumerState: IConsumer = useSelector((state) => state.Consumer);
 
   const firestore = firebase.firestore();
@@ -122,7 +128,7 @@ export default function InformationData() {
 
     setTimeout(() => {
       setShwoPopUp(false);
-    }, 4000);
+    }, 5000);
   };
 
   const checkIfPhoneExists = async () => {
@@ -154,6 +160,7 @@ export default function InformationData() {
       phone: profileData.phone,
       dataNascimento: profileData.dataNascimento,
       userName: profileData.userName,
+      password: profileData.password,
     };
 
     const arrayConsumerData = Object.entries(fieldsNotEmpty).reverse();
@@ -168,6 +175,41 @@ export default function InformationData() {
     });
 
     return emptyProperties.length <= 0;
+  };
+
+  const checkIfEmailExist = () => {
+    //check
+  };
+
+  const updatePhoneNumber = () => {
+    if (profileData.phone) {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          user
+            .updateEmail(`${profileData.phone}@colabora.com`)
+            .then(() => {
+              console.log("sucess");
+            })
+            .catch((err) => console.log(err));
+        }
+      });
+    }
+  };
+
+  const checkValidEmail = () => {
+    if (profileData.email) {
+      const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/gi;
+      const result = regex.test(profileData.email.toLowerCase());
+      if (result) {
+        return true;
+      } else {
+        setWhereIsError("email");
+        setErrorMsg("email invalido");
+        return false;
+      }
+    } else {
+      return true;
+    }
   };
 
   const updateDataOnDb = () => {
@@ -195,26 +237,77 @@ export default function InformationData() {
       });
   };
 
+  const isSignedUser = async () => {
+    if (profileData.password) {
+      return await firebase
+        .auth()
+        .signInWithEmailAndPassword(
+          `${consumerState.phone}@colabora.com`,
+          profileData.password
+        )
+        .then((result) => {
+          let email = `${profileData.phone}@colabora.com`;
+          if (email !== firebase.auth().currentUser.email) {
+            updatePhoneNumber();
+          }
+          return true;
+        })
+        .catch((error) => {
+          if (error.code === "auth/user-not-found") {
+            setWhereIsError("password");
+            setErrorMsg("Senha errada");
+            return false;
+          } else if (error.code === "auth/too-many-requests") {
+            setPopUpIsError(true);
+            showPopUpTrick();
+            setPopUpMsg(
+              "Acesso bloqueado por varias tentativas, por favor tente mas tarde"
+            );
+            return false;
+          } else {
+            setPopUpIsError(true);
+            showPopUpTrick();
+            setPopUpMsg("Erro de conexao, verifique a internet");
+            return false;
+          }
+        });
+    }
+  };
+
   const saveData = (): void => {
     if (profileData.userName) {
       if (userNameAccept) {
         if (checkError()) {
-          if (checkDataNascimento()) {
-            checkIfPhoneExists().then((result) => {
-              if (result) {
-                updateDataOnDb();
-              }
-            });
+          if (checkValidEmail()) {
+            if (checkDataNascimento()) {
+              checkIfPhoneExists().then((result) => {
+                if (result) {
+                  isSignedUser().then((result) => {
+                    if (result) {
+                      updateDataOnDb();
+                      setProfileData({ ...profileData, password: "" });
+                    }
+                  });
+                }
+              });
+            }
           }
         }
       }
     } else if (checkError()) {
       if (checkDataNascimento()) {
-        checkIfPhoneExists().then((result) => {
-          if (result) {
-            updateDataOnDb();
-          }
-        });
+        if (checkValidEmail()) {
+          checkIfPhoneExists().then((result) => {
+            if (result) {
+              isSignedUser().then((result) => {
+                if (result) {
+                  updateDataOnDb();
+                  setProfileData({ ...profileData, password: "" });
+                }
+              });
+            }
+          });
+        }
       }
     }
   };
@@ -225,9 +318,8 @@ export default function InformationData() {
   };
 
   const getUSerInfo = () => {
-    console.log(consumerState);
     setProfileData(consumerState);
-    setCountiesToSelect(consumerState.province);
+    // setCountiesToSelect(consumerState.province);
   };
 
   useEffect(() => {
@@ -250,7 +342,7 @@ export default function InformationData() {
 
   return (
     <FormDataInfo>
-      {showPopUp && <PopUpProfile msg="Perfil actualizado com sucesso" />}
+      {showPopUp && <PopUpProfile isError={popUpIsError} msg={popMsg} />}
       <FormGroupProfile
         onChange={handleChange}
         errorIsOn={errorIsOn}
@@ -352,6 +444,24 @@ export default function InformationData() {
             ? errorMsg
             : "Apenas para assegurar o teu perfil"}
         </SimpleTextForm>
+      </DivOfFormGroup>
+
+      <DivOfFormGroup>
+        <label htmlFor="password">Senha</label>
+        <InputPassword
+          errorIsOn={errorIsOn}
+          errorMsg={errorMsg}
+          name="password"
+          id="password"
+          placeholder=""
+          value={profileData.password}
+          handleChange={handleChange}
+        />
+        {errorIsOn !== "password" && (
+          <SimpleTextForm className={"simple_text"}>
+            Para salvar alterações do prefil
+          </SimpleTextForm>
+        )}
       </DivOfFormGroup>
 
       <OnlinePresence>

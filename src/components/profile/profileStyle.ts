@@ -484,7 +484,7 @@ export const FormDataInfo = styled.div`
   height: auto;
   display: grid;
   grid-template-columns: 48% 48%;
-  grid-template-rows: repeat(7, auto);
+  grid-template-rows: repeat(8, auto);
   grid-row-gap: 50px;
   justify-content: space-between;
 
@@ -689,7 +689,7 @@ export const PopuProfileStyle = styled(motion.div)`
   padding-top: 15px;
   padding-bottom: 15px;
   ${flexbox()};
-  background: #00dd9b;
+  background: ${({ isError }) => (isError ? `${colorsApp.error}` : "#00dd9b")};
   position: absolute;
   left: 0;
   top: 0;
@@ -717,5 +717,10 @@ export const PopuProfileStyle = styled(motion.div)`
     ${getFont("Medium")};
     color: white;
     ${NormalFontSize()};
+
+    span {
+      color: ${colorsApp.error};
+      ${getFont("Medium")};
+    }
   }
 `;

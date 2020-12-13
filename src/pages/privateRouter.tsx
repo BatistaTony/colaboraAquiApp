@@ -44,8 +44,8 @@ export default function PrivateRouter(
           Router.push("/");
         }
       });
-    }, [consumer.userId]);
+    }, []);
 
-    return isLogged ? <WrappedComponent /> : <Spinner />;
+    return consumer.userName ? <WrappedComponent /> : <Spinner />;
   };
 }

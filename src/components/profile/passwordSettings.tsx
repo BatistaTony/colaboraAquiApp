@@ -8,6 +8,9 @@ import {
   DivBtnSaveData,
   BtnSaveData,
 } from "./profileStyle";
+import firebase from "./../../../Firebase";
+import { useSelector } from "react-redux";
+import { IConsumer } from "../../../types";
 
 interface IPasswordSettings {
   currentPassword: string;
@@ -28,6 +31,12 @@ export default function PasswordSettings() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
   const [showPopUp, setShwoPopUp] = useState<boolean>(false);
+  const [popMsg, setPopUpMsg] = useState<string>(
+    "Senha actualizada com sucesso"
+  );
+  const [popUpIsError, setPopUpIsError] = useState<boolean>(false);
+
+  const consumerState: IConsumer = useSelector((state) => state.Consumer);
 
   const handleChange = (event: any) => {
     setDataPassword({
@@ -41,10 +50,11 @@ export default function PasswordSettings() {
 
   const showPopUpTrick = async () => {
     setShwoPopUp(true);
+    document.documentElement.scrollTop = 0;
 
     setTimeout(() => {
       setShwoPopUp(false);
-    }, 4000);
+    }, 5000);
   };
 
   const checkError = (): boolean => {
@@ -72,18 +82,77 @@ export default function PasswordSettings() {
     }
   };
 
+  const updatePassword = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        user
+          .updatePassword(passwordData.newPassword)
+          .then(() => {
+            showPopUpTrick();
+            setDataPassword(initialState);
+          })
+          .catch((error) => {
+            if (error.code === "auth/weak-password") {
+              setWhereIsError("newPassword");
+              setErrorMsg("Senha muito curta");
+            } else {
+              setPopUpIsError(true);
+              showPopUpTrick();
+              setPopUpMsg("Erro de conexao, verifique a internet");
+            }
+          });
+      }
+    });
+  };
+
+  const isSignedUser = async () => {
+    if (passwordData.currentPassword) {
+      return await firebase
+        .auth()
+        .signInWithEmailAndPassword(
+          `${consumerState.phone}@colabora.com`,
+          passwordData.currentPassword
+        )
+        .then((result) => {
+          return true;
+        })
+        .catch((error) => {
+          if (error.code === "auth/user-not-found") {
+            setWhereIsError("password");
+            setErrorMsg("Senha errada");
+            return false;
+          } else if (error.code === "auth/too-many-requests") {
+            setPopUpIsError(true);
+            showPopUpTrick();
+            setPopUpMsg(
+              "Acesso bloqueado por varias tentativas, por favor tente mas tarde"
+            );
+            return false;
+          } else {
+            setPopUpIsError(true);
+            showPopUpTrick();
+            setPopUpMsg("Erro de conexao, verifique a internet");
+            return false;
+          }
+        });
+    }
+  };
+
   const saveData = () => {
     if (checkError()) {
       if (isPasswordEqual()) {
-        showPopUpTrick();
-        setDataPassword(initialState);
+        isSignedUser().then((result) => {
+          if (result) {
+            updatePassword();
+          }
+        });
       }
     }
   };
 
   return (
     <FormDataInfo>
-      {showPopUp && <PopUpProfile msg="Senha actualizada com sucesso" />}
+      {showPopUp && <PopUpProfile isError={popUpIsError} msg={popMsg} />}
       <DivOfFormGroup data-type="select">
         <label htmlFor="currentPassword">Senha actual</label>
         <InputPassword

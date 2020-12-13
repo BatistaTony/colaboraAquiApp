@@ -70,7 +70,11 @@ export default function UserMenu({ title }: IProps) {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           className="menu_user_name menu_desk_T"
-          nameLength={consumerState.phone.length}
+          nameLength={
+            consumerState.userName.length
+              ? consumerState.userName.length
+              : consumerState.phone.length
+          }
         >
           <Link href="/profile">
             <li className="menu_user_name">

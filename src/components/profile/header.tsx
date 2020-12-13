@@ -38,7 +38,7 @@ export default function HeaderProfile() {
             if (doc.id === consumerState.userId) {
               saved.push(doc);
             }
-            console.log(saved);
+            setUserRates(saved.length);
           });
       });
     });

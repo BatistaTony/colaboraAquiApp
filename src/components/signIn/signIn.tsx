@@ -111,6 +111,11 @@ export default function SignInConsumer() {
             if (error.code === "auth/user-not-found") {
               setWhereIsError("form");
               setErrorMsg("Utilizador nao existe");
+            } else if (error.code === "auth/too-many-requests") {
+              setWhereIsError("form");
+              setErrorMsg(
+                "Acesso bloqueado por varias tentativas, por favor tente mas tarde"
+              );
             } else {
               setWhereIsError("form");
               setErrorMsg("Problema com a internet, tente novamente");

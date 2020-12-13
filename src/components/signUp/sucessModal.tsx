@@ -15,7 +15,7 @@ import { registerConsumer } from "../../store/actions/consumer";
 import firebase from "./../../../Firebase";
 
 interface IProps {
-  dataUser: IConsumer | any;
+  dataUser: IConsumer;
 }
 
 export default function SucessModal({ dataUser }: IProps) {
@@ -37,8 +37,9 @@ export default function SucessModal({ dataUser }: IProps) {
           registerConsumer({
             userId: userUid,
             ...dataUser,
-            province: dataUser.address.province,
-            county: dataUser.address.county,
+            province: dataUser.province,
+            county: dataUser.county,
+            userName: "ColaboraUser",
           })
         );
       }, 100);
