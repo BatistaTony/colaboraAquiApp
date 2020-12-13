@@ -15,16 +15,20 @@ import provinces from "./../../constants/provinces.json";
 import CustomSelect from "../signUp/select";
 import CustomCheckBox from "../rateCompany/checboxRate";
 import PopUpProfile from "./popupProfile";
+import firebase from "./../../../Firebase";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { registerConsumer } from "../../store/actions/consumer";
 
 const initialState: IConsumer = {
-  county: "Cabinda",
-  province: "Cabinda",
-  dataNascimento: 1990,
-  email: "andersonkennedydev@gmail.com",
-  phone: "9412 345 679",
-  fullName: "Anderson Augusto",
-  isKeepAnonymous: false,
-  userName: "AndersonKennedy",
+  county: "",
+  province: "",
+  dataNascimento: 0,
+  email: "",
+  phone: "",
+  fullName: "",
+  isKeepAnonymous: true,
+  userName: "",
 };
 
 export default function InformationData() {
@@ -35,6 +39,10 @@ export default function InformationData() {
   const provincesAngola = provinces.map((value) => value.state);
   const [counties, setCounties] = useState<Array<string> | null>([]);
   const [showPopUp, setShwoPopUp] = useState<boolean>(false);
+  const consumerState: IConsumer = useSelector((state) => state.Consumer);
+
+  const firestore = firebase.firestore();
+  const dispatch = useDispatch();
 
   const handleChange = (event: any) => {
     setProfileData({
@@ -110,14 +118,45 @@ export default function InformationData() {
 
   const showPopUpTrick = async () => {
     setShwoPopUp(true);
+    document.documentElement.scrollTop = 0;
 
     setTimeout(() => {
       setShwoPopUp(false);
     }, 4000);
   };
 
+  const checkIfPhoneExists = async () => {
+    const emailExists = await firebase
+      .firestore()
+      .collection("consumer")
+      .where("phone", "==", profileData.phone)
+      .get();
+
+    if (emailExists.docs.length) {
+      const result = emailExists.docs.filter((doc) => {
+        return doc.id !== profileData.userId;
+      });
+
+      if (result.length) {
+        setWhereIsError("phone");
+        setErrorMsg("Telefone já existe");
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      return true;
+    }
+  };
+
   const checkError = (): boolean => {
-    const arrayConsumerData = Object.entries(profileData).reverse();
+    const fieldsNotEmpty = {
+      phone: profileData.phone,
+      dataNascimento: profileData.dataNascimento,
+      userName: profileData.userName,
+    };
+
+    const arrayConsumerData = Object.entries(fieldsNotEmpty).reverse();
 
     const emptyProperties = arrayConsumerData.filter((value, index) => {
       if (value[1] === "" || value[1] === 0) {
@@ -131,18 +170,51 @@ export default function InformationData() {
     return emptyProperties.length <= 0;
   };
 
+  const updateDataOnDb = () => {
+    firestore
+      .collection("consumer")
+      .doc(consumerState.userId)
+      .set({
+        address: {
+          province: profileData.province,
+          county: profileData.county,
+        },
+        fullName: profileData.fullName,
+        isKeepAnonymous: profileData.isKeepAnonymous,
+        phone: profileData.phone,
+        userName: profileData.userName,
+        email: profileData.email,
+        dataNascimento: profileData.dataNascimento,
+      })
+      .then((result) => {
+        dispatch(registerConsumer(profileData));
+        showPopUpTrick();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const saveData = (): void => {
     if (profileData.userName) {
       if (userNameAccept) {
         if (checkError()) {
           if (checkDataNascimento()) {
-            showPopUpTrick();
+            checkIfPhoneExists().then((result) => {
+              if (result) {
+                updateDataOnDb();
+              }
+            });
           }
         }
       }
     } else if (checkError()) {
       if (checkDataNascimento()) {
-        showPopUpTrick();
+        checkIfPhoneExists().then((result) => {
+          if (result) {
+            updateDataOnDb();
+          }
+        });
       }
     }
   };
@@ -152,8 +224,14 @@ export default function InformationData() {
     setCounties(result[0].counties);
   };
 
+  const getUSerInfo = () => {
+    console.log(consumerState);
+    setProfileData(consumerState);
+    setCountiesToSelect(consumerState.province);
+  };
+
   useEffect(() => {
-    setCountiesToSelect(profileData.province);
+    getUSerInfo();
   }, []);
 
   const checkIfGotCounties = () => {

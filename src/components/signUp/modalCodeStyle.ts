@@ -21,15 +21,37 @@ export const OverlayModalCode = styled.div`
 `;
 
 export const ModalCodeStyle = styled(motion.div)`
-  width: 30%;
+  width: 35%;
   height: auto;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   background: white;
   padding: 30px;
+  box-sizing: border-box;
+
+  ${sizesForEachScreens(
+    [1500, 1000, 900, 750],
+    [40, 50, 60, 100],
+    "width",
+    "%"
+  )};
+
+  @media (max-width: 750px) {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+
+  .title_modal {
+    width: 100%;
+
+    @media (max-width: 750px) {
+      text-align: left;
+    }
+  }
 
   .text_modal {
     text-align: left;
+    width: 100%;
 
     span {
       ${getFont("Medium")};

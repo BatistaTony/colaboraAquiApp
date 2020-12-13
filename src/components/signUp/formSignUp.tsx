@@ -16,15 +16,14 @@ import Link from "next/link";
 import provinces from "./../../constants/provinces.json";
 import firebase from "./../../../Firebase";
 import ModalSecretCode from "./modalCode";
-import Spinner from "../spinner/spinner";
 import SpinnerIcon from "../spinner/spinnerIcon";
 
 const initialState: IConsumer = {
-  phone: "+244941551087",
-  province: "Luanda",
-  county: "Luanda",
-  dataNascimento: 2000,
-  password: "12345",
+  phone: "",
+  province: "",
+  county: "",
+  dataNascimento: 0,
+  password: "",
 };
 
 export default function FormSignUp() {
@@ -113,9 +112,6 @@ export default function FormSignUp() {
   const authWithPhone = () => {
     const appVerify = new firebase.auth.RecaptchaVerifier("sign-in-button", {
       size: "invisible",
-      callback: (response) => {
-        console.log(response);
-      },
     });
 
     firebaseAuth
@@ -124,7 +120,6 @@ export default function FormSignUp() {
         setConfirmationResult(response);
         setShowModalCode(true);
         setIsLoading(false);
-        alert(response);
       })
       .catch((error) => {
         if (error.code === "auth/invalid-phone-number") {
@@ -138,23 +133,47 @@ export default function FormSignUp() {
       });
   };
 
+  const checkIfPhoneExists = async () => {
+    const emailExists = await firebase
+      .firestore()
+      .collection("consumer")
+      .where("phone", "==", consumerData.phone)
+      .get();
+
+    if (emailExists.docs.length) {
+      setWhereIsError("phone");
+      setErrorMsg("Telefone já existe");
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const signUpUser = (): void => {
-    setErrorMsg("");
-    setWhereIsError("");
+    setErrorMsg(null);
+    setWhereIsError(null);
     if (consumerData.phone) {
       if (checkError()) {
         if (checkDataNascimento()) {
           if (checkPasswordLength()) {
-            setIsLoading(true);
-            authWithPhone();
+            checkIfPhoneExists().then((response) => {
+              if (response) {
+                setIsLoading(true);
+                authWithPhone();
+              }
+            });
           }
         }
       }
     } else if (checkError()) {
       if (checkDataNascimento()) {
         if (checkPasswordLength()) {
-          setIsLoading(true);
-          authWithPhone();
+          checkIfPhoneExists().then((response) => {
+            if (response) {
+              setIsLoading(true);
+              authWithPhone();
+            }
+          });
         }
       }
     }

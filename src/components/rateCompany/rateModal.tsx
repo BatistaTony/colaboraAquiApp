@@ -16,6 +16,8 @@ import {
 } from "./modalStyle";
 import RatingEmojis from "./rateEmojes";
 import TextareaRate from "./textareaRate";
+import { useSelector } from "react-redux";
+import { IConsumer } from "../../../types";
 
 interface IRateCompany {
   feeling: string;
@@ -40,6 +42,8 @@ const RateModal = ({ toggleModal, companyId }: IProps) => {
   const [stepRate, setSetpRate] = useState<Number>(1);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
   const [animateData, setAnimation] = useState({ opacity: 1, x: 0 });
+
+  const consumerState: IConsumer = useSelector((state) => state.Consumer);
 
   const firestore = firebase.firestore();
 
@@ -85,7 +89,7 @@ const RateModal = ({ toggleModal, companyId }: IProps) => {
           suggestion: rateData.consumerSuggestion,
           time: Date.now(),
           companyId: companyId,
-          consumer: firestore.doc("consumer/yXQYfbAIFdLQ7TmkSkNu"),
+          consumer: firestore.doc(`consumer/${consumerState.userId}`),
         })
         .then((res) => {
           if (res.id) {

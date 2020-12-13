@@ -10,11 +10,12 @@ import {
   TextForm,
   Title,
   ErrorMessage,
-  ButtonSignUp,
+  LoadingAnimation,
 } from "./signUpStyle";
 
 import firebase from "./../../../Firebase";
 import { IConsumer } from "../../../types";
+import SpinnerIcon from "../spinner/spinnerIcon";
 
 interface IProps {
   toggleModalCode: any;
@@ -54,15 +55,23 @@ const ModalSecretCode = ({
           .doc(response.user.uid)
           .set({
             fullName: "",
-            isKeepAnonymous: false,
+            isKeepAnonymous: true,
             phone: consumerData.phone ? consumerData.phone : "",
-            userName: consumerData.userName ? consumerData.userName : "",
+            userName: consumerData.userName
+              ? consumerData.userName
+              : "ColaboraUser",
             address: {
               county: consumerData.county ? consumerData.county : "",
               province: consumerData.province ? consumerData.province : "",
             },
+            dataNascimento: consumerData.dataNascimento
+              ? consumerData.dataNascimento
+              : 0,
+            email: "",
           })
           .then((response) => {
+            setIsLoading(false);
+
             toggleModalCode();
             toggleModalSucess();
           });
@@ -70,14 +79,25 @@ const ModalSecretCode = ({
   };
 
   const confirmCode = () => {
-    confirmationResultModal
-      .confirm(secretCode)
-      .then((response) => {
-        authWithFakeEmail();
-      })
-      .catch((error) => {
-        setErrorMsg("Problema com a conexão da internet");
-      });
+    if (secretCode) {
+      setErrorMsg("");
+      setIsLoading(true);
+      confirmationResultModal
+        .confirm(secretCode)
+        .then((response) => {
+          authWithFakeEmail();
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          if (error.code === "auth/invalid-verification-code") {
+            setErrorMsg("codigo errado");
+          } else {
+            setErrorMsg("Problema com a conexão da internet");
+          }
+        });
+    } else {
+      setErrorMsg("Preenche este campo");
+    }
   };
 
   const reSendCode = () => {
@@ -94,8 +114,12 @@ const ModalSecretCode = ({
         setIsLoading(false);
       })
       .catch((error) => {
-        setErrorMsg("Erro de conexão de internet");
         setIsLoading(false);
+        if (error.code === "auth/invalid-verification-code") {
+          setErrorMsg("codigo errado");
+        } else {
+          setErrorMsg("Problema com a conexão da internet");
+        }
       });
   };
 
@@ -108,11 +132,14 @@ const ModalSecretCode = ({
       initial={{ opacity: 0, y: -500 }}
       animate={{ opacity: 1, y: 0 }}
     >
-      <ModalCodeStyle>
-        <Title>Verificacao do telefone</Title>
+      <ModalCodeStyle
+        initial={{ opacity: 0, y: -300 }}
+        animate={{ opacity: 1, y: 0 }}
+      >
+        <Title className="title_modal">Verificação do telefone</Title>
         <TextForm className="text_modal">
-          Foi enviado um codigo para o numero <span>+244941551087</span> , por
-          favor digite no campo abaixo
+          Foi enviado um codigo para o número <span>{consumerData.phone}</span>,
+          por favor digite no campo abaixo.
         </TextForm>
         <FormGroup className="inputCode" isEmpty={errorMsg.length > 0}>
           <input
@@ -127,6 +154,12 @@ const ModalSecretCode = ({
         <ErrorMessage className="error_name_" id="resend-button">
           {errorMsg}
         </ErrorMessage>
+
+        {isLoading && (
+          <LoadingAnimation>
+            <SpinnerIcon />
+          </LoadingAnimation>
+        )}
 
         <GroupBtn>
           <ButtonModal

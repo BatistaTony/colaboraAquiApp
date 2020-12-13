@@ -377,8 +377,8 @@ export const LoadingAnimation = styled.div`
   width: 100%;
   height: 20px;
   ${flexbox()};
-  grid-column: 1/3;
-  margin-bottom: -10px;
+  grid-column: ${({ signIn }) => (signIn ? "1/1" : "1/3")};
+  margin-bottom: ${({ signIn }) => (signIn ? "0" : "-10px")};
 
   svg {
     width: 20px;

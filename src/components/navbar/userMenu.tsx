@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { signOutConsumer } from "./.././../store/actions/consumer";
 import { useEffect } from "react";
 import Link from "next/link";
-import Consumer from "../../store/reducers/consumer";
+import firebase from "./../../../Firebase";
 
 interface IProps {
   title: string;
@@ -19,6 +19,7 @@ export default function UserMenu({ title }: IProps) {
 
   const signOut = () => {
     dispatch(signOutConsumer());
+    firebase.auth().signOut();
   };
 
   useEffect(() => {

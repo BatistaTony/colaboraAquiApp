@@ -12,6 +12,7 @@ import {
   ButtonSignUp,
   ErrorMessage,
   FormGroupGrand,
+  LoadingAnimation,
 } from "../signUp/signUpStyle";
 import {
   IllustrationObjectSignIn,
@@ -21,6 +22,9 @@ import {
 import Route from "next/router";
 import Link from "next/link";
 import firebase from "./../../../Firebase";
+import SpinnerIcon from "../spinner/spinnerIcon";
+import { useDispatch } from "react-redux";
+import { registerConsumer } from "../../store/actions/consumer";
 
 interface ISign {
   phone: string;
@@ -36,7 +40,11 @@ export default function SignInConsumer() {
   const [consumerData, setConsumerData] = useState<ISign>(initialState);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const firebaseAuth = firebase.auth();
+
+  const dispatch = useDispatch();
 
   const handleChange = (event: any) => {
     setConsumerData({
@@ -72,7 +80,22 @@ export default function SignInConsumer() {
     }
   };
 
+  const getUserData = (userId: string) => {
+    firebase
+      .firestore()
+      .collection("consumer")
+      .doc(userId)
+      .get()
+      .then((response) => {
+        dispatch(registerConsumer({ userId: userId, ...response.data() }));
+        Route.push("/companies");
+      });
+  };
+
   const signInUser = () => {
+    setIsLoading(true);
+    setErrorMsg(null);
+    setWhereIsError(null);
     if (!checkError()) {
       if (checkPasswordLength()) {
         const email = `${consumerData.phone}@colabora.com`;
@@ -80,13 +103,19 @@ export default function SignInConsumer() {
         firebaseAuth
           .signInWithEmailAndPassword(email, consumerData.password)
           .then((result) => {
-            console.log(result);
+            console.log(result.user.uid);
+            getUserData(result.user.uid);
+            setIsLoading(false);
           })
-          .catch((err) => {
-            console.log(err);
-            console.log(email);
+          .catch((error) => {
+            if (error.code === "auth/user-not-found") {
+              setWhereIsError("form");
+              setErrorMsg("Utilizador nao existe");
+            } else {
+              setWhereIsError("form");
+              setErrorMsg("Problema com a internet, tente novamente");
+            }
           });
-        // Route.push("/companies");
       }
     }
   };
@@ -94,8 +123,6 @@ export default function SignInConsumer() {
   const backToHome = () => {
     Route.push("/");
   };
-
-  console.log(firebaseAuth.currentUser);
 
   return (
     <OverlaySignIn>
@@ -146,10 +173,26 @@ export default function SignInConsumer() {
                 errorIsOn === "password" && "textFor_fhd_rn"
               } `}
             >
-              Esqueci a senha{" "}
+              Esqueci a senha
             </p>
 
-            <ButtonSignUp className="FormGroup btnLOgin" onClick={signInUser}>
+            {errorIsOn === "form" && (
+              <ErrorMessage className="error_name_ erroForm_h">
+                {errorMsg}
+              </ErrorMessage>
+            )}
+
+            {isLoading && (
+              <LoadingAnimation signIn={true}>
+                <SpinnerIcon />
+              </LoadingAnimation>
+            )}
+
+            <ButtonSignUp
+              disabled={isLoading}
+              className="FormGroup btnLOgin"
+              onClick={signInUser}
+            >
               Entrar
             </ButtonSignUp>
 

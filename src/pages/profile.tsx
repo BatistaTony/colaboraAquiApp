@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IProfile } from "../../types";
+import { IConsumer, IProfile } from "../../types";
 import Layout from "../components/layout/layout";
 import InformationData from "../components/profile/dataInformation";
 import HeaderProfile from "../components/profile/header";
@@ -12,10 +12,12 @@ import {
   MenuSelectProfile,
 } from "../components/profile/profileStyle";
 import CustomSelectRating from "../components/rateCompany/custonSelectRatings";
+import PrivateRouter from "./privateRouter";
+import { useSelector } from "react-redux";
 
-export default function ConsumerProfile() {
+function ConsumerProfile() {
+  const consumerState: IConsumer = useSelector((state) => state.Consumer);
   const [menu, setMenu] = useState<number>(0);
-
   const menus = ["Informações da conta", "Senha"];
 
   const handleChange = (value: string | number) => {
@@ -25,7 +27,7 @@ export default function ConsumerProfile() {
   };
 
   return (
-    <Layout title="BatistaThony">
+    <Layout title={consumerState.userName}>
       <ProfileContent>
         <HeaderProfile />
         <ProfileContainerGrid>
@@ -63,3 +65,5 @@ export default function ConsumerProfile() {
     </Layout>
   );
 }
+
+export default PrivateRouter(ConsumerProfile);
