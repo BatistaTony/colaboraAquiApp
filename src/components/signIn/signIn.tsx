@@ -12,8 +12,8 @@ import {
   ButtonSignUp,
   ErrorMessage,
   FormGroupGrand,
+  LoadingAnimation,
 } from "../signUp/signUpStyle";
-import { translateProperty } from "../utils";
 import {
   IllustrationObjectSignIn,
   ModalSignIn,
@@ -21,14 +21,18 @@ import {
 } from "./signInStyle";
 import Route from "next/router";
 import Link from "next/link";
+import firebase from "./../../../Firebase";
+import SpinnerIcon from "../spinner/spinnerIcon";
+import { useDispatch } from "react-redux";
+import { registerConsumer } from "../../store/actions/consumer";
 
 interface ISign {
-  userName: string;
+  phone: string;
   password: string;
 }
 
 const initialState: ISign = {
-  userName: "",
+  phone: "",
   password: "",
 };
 
@@ -36,6 +40,11 @@ export default function SignInConsumer() {
   const [consumerData, setConsumerData] = useState<ISign>(initialState);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const firebaseAuth = firebase.auth();
+
+  const dispatch = useDispatch();
 
   const handleChange = (event: any) => {
     setConsumerData({
@@ -61,9 +70,58 @@ export default function SignInConsumer() {
     return emptyProperties.length > 0;
   };
 
+  const checkPasswordLength = () => {
+    if (consumerData.password.length >= 6) {
+      return true;
+    } else {
+      setWhereIsError("password");
+      setErrorMsg("Senha muito curta");
+      return false;
+    }
+  };
+
+  const getUserData = (userId: string) => {
+    firebase
+      .firestore()
+      .collection("consumer")
+      .doc(userId)
+      .get()
+      .then((response) => {
+        dispatch(registerConsumer({ userId: userId, ...response.data() }));
+        Route.push("/companies");
+      });
+  };
+
   const signInUser = () => {
+    setIsLoading(true);
+    setErrorMsg(null);
+    setWhereIsError(null);
     if (!checkError()) {
-      Route.push("/companies");
+      if (checkPasswordLength()) {
+        const email = `${consumerData.phone}@colabora.com`;
+
+        firebaseAuth
+          .signInWithEmailAndPassword(email, consumerData.password)
+          .then((result) => {
+            console.log(result.user.uid);
+            getUserData(result.user.uid);
+            setIsLoading(false);
+          })
+          .catch((error) => {
+            if (error.code === "auth/user-not-found") {
+              setWhereIsError("form");
+              setErrorMsg("Utilizador nao existe");
+            } else if (error.code === "auth/too-many-requests") {
+              setWhereIsError("form");
+              setErrorMsg(
+                "Acesso bloqueado por varias tentativas, por favor tente mas tarde"
+              );
+            } else {
+              setWhereIsError("form");
+              setErrorMsg("Problema com a internet, tente novamente");
+            }
+          });
+      }
     }
   };
 
@@ -95,11 +153,11 @@ export default function SignInConsumer() {
               >
                 <input
                   type="text"
-                  name="userName"
-                  id="userName"
+                  name="phone"
+                  id="phone"
                   onChange={handleChange}
-                  value={consumerData.userName}
-                  placeholder="Nome do utilizador"
+                  value={consumerData.phone}
+                  placeholder="Telefone"
                 />
               </FormGroup>
               {errorIsOn === "userName" && (
@@ -112,6 +170,7 @@ export default function SignInConsumer() {
               errorIsOn={errorIsOn}
               errorMsg={errorMsg}
               handleChange={handleChange}
+              value={consumerData.password}
             />
 
             <p
@@ -119,10 +178,26 @@ export default function SignInConsumer() {
                 errorIsOn === "password" && "textFor_fhd_rn"
               } `}
             >
-              Esqueci a senha{" "}
+              Esqueci a senha
             </p>
 
-            <ButtonSignUp className="FormGroup btnLOgin" onClick={signInUser}>
+            {errorIsOn === "form" && (
+              <ErrorMessage className="error_name_ erroForm_h">
+                {errorMsg}
+              </ErrorMessage>
+            )}
+
+            {isLoading && (
+              <LoadingAnimation signIn={true}>
+                <SpinnerIcon />
+              </LoadingAnimation>
+            )}
+
+            <ButtonSignUp
+              disabled={isLoading}
+              className="FormGroup btnLOgin"
+              onClick={signInUser}
+            >
               Entrar
             </ButtonSignUp>
 

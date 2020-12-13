@@ -19,7 +19,9 @@
     "**/*.ts",
     "**/*.tsx",
     "commitlint.config.js",
-    "src/components/rateCompany/emojefaces.js"
+    "src/components/rateCompany/emojefaces.js",
+    "firebase.js",
+    "firebase.js"
   ],
   "exclude": ["node_modules"]
 }

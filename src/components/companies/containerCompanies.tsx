@@ -17,134 +17,31 @@ import ListOfCompanies from "./listCompanies";
 import { useSelector } from "react-redux";
 import SignUp from "../signUp/signUp";
 import SearchIcon from "./../companies/searchIcone";
-import axios from "axios";
+import firebase from "../../../Firebase";
 
 function ContainerCompanies() {
   const [filterBy, setFilterBy] = useState<string>("Todas");
   const [showSuggestion, setShowSuggestion] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
-  const [companies, setCompanies] = useState<Array<ICompany>>([
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 8,
-      companyName: "Movicel",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 150,
-      companyName: "Unitel",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 150,
-      companyName: "ENSA",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 500,
-      companyName: "MINSA",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 150,
-      companyName: "TELECON",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 10,
-      companyName: "ZAP",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 3,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 150,
-      companyName: "DSTV",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 150,
-      companyName: "TVCABO",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 5,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 150,
-      companyName: "ZAp Fibra",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 150,
-      companyName: "TOYOTA",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 4,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 150,
-      companyName: "KUBINGA",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-    {
-      companyPositionRanking: 1,
-      companyRatesNumber: 150,
-      companyName: "TUPUCA",
-      companyLogo: "/images/Movicel-2.png",
-      companyStars: 2,
-      companyDescription:
-        "Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer, Empresa de telecomunicações, mais focada em telefonia movel e um monte de outras coisa qualquer.",
-      companyStatus: "Privada",
-    },
-  ]);
+  const [companies, setCompanies] = useState<Array<ICompany>>([]);
+
+  const firestore = firebase.firestore();
+
+  const getDataCompanies = async () => {
+    let receivedCompanies = await firestore.collection("companies").get();
+
+    const saved = [];
+
+    receivedCompanies.forEach((doc) => {
+      saved.push({ companyId: doc.id, ...doc.data() });
+    });
+
+    setCompanies(saved);
+  };
+
+  useEffect(() => {
+    getDataCompanies();
+  }, []);
 
   const userState: IConsumer = useSelector((state) => state.Consumer);
 
@@ -166,7 +63,7 @@ function ContainerCompanies() {
 
   return (
     <ContentCompanies>
-      {!(userState.userName.length > 0) && <SignUp />}
+      {!(userState.phone.length > 0) && <SignUp />}
 
       {showSuggestion && <Suggestion toggleSuggestion={toggleSuggestion} />}
 
@@ -232,11 +129,13 @@ function ContainerCompanies() {
       </div>
 
       <ListOfCompanies companies={filteredCompanies} search={search} />
-      <ListCompanyMobile companies={companies.length}>
-        {filteredCompanies.map((value: ICompany, index: number) => (
-          <CardCompany key={index} data={value} />
-        ))}
-      </ListCompanyMobile>
+      {companies.length > 0 && (
+        <ListCompanyMobile companies={companies.length}>
+          {filteredCompanies.map((value: ICompany, index: number) => (
+            <CardCompany key={index} data={value} />
+          ))}
+        </ListCompanyMobile>
+      )}
     </ContentCompanies>
   );
 }

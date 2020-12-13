@@ -7,6 +7,7 @@ import {
   DivGridForm,
   FormGroupGrand,
 } from "../../components/signUp/signUpStyle";
+import firebase from "./../../../Firebase";
 
 import { useState } from "react";
 
@@ -46,6 +47,7 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
 
   const [errorMsg, setErrorMsg] = useState<string>("");
+  const firestore = firebase.firestore();
 
   const handleChange = (event: any) => {
     setSuggestionData({
@@ -94,8 +96,21 @@ export default function Suggestion({ toggleSuggestion }: IProps) {
 
   const sendSuggestion = () => {
     if (!checkError()) {
-      alert("suggested");
-      toggleSuggestion();
+      firestore
+        .collection("suggestedCompanies")
+        .add({
+          companyName: "",
+          companyStatus: "",
+          companyDescription: "",
+        })
+        .then((res) => {
+          if (res.id) {
+            toggleSuggestion();
+          }
+        })
+        .catch((err) => {
+          ///will handle some error here
+        });
     }
   };
 

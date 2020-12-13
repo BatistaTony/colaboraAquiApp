@@ -24,7 +24,7 @@ interface IProps {
 }
 
 export default function ConsumerRating({
-  data: { consumerName, experience, feeling, stars, time, suggestion },
+  data: { consumerName, experience, feeling, time, suggestion },
 }: IProps) {
   const [showSuggestion, setShowSuggestion] = useState<boolean>(false);
 
@@ -36,6 +36,8 @@ export default function ConsumerRating({
   const animationStyle = { opacity: 1, y: 0 };
 
   const formatter = buildFormatter(portugueseString);
+
+  const RatingFeelings = ["Horrivel", "Pessimo", "Normal", "Bom", "Muito Bom"];
 
   return (
     <AnimatePresence>
@@ -55,7 +57,7 @@ export default function ConsumerRating({
               <StarsRatedCompany
                 color={colorsApp.roxo}
                 classNames="startOnRating"
-                stars={stars}
+                stars={RatingFeelings.indexOf(feeling) + 1}
               />
             </ConsumerStarsRating>
             <RateTime>{<TimeAgo date={time} formatter={formatter} />}</RateTime>

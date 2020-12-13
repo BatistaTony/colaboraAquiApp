@@ -29,7 +29,7 @@ export default function Navbar(props: any) {
   ];
 
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-  const isLogged = consumerState.userName.length > 0;
+  const isLogged = consumerState.phone.length > 0;
 
   const checkActiveForRate = (title: string) => {
     const regex = new RegExp("Avaliar", "gi");
@@ -38,7 +38,7 @@ export default function Navbar(props: any) {
       title.match(regex) ||
       (title !== "ColaboraAqui" &&
         title !== "Ranking" &&
-        title !== consumerState.userName)
+        title !== consumerState.phone)
     );
   };
 

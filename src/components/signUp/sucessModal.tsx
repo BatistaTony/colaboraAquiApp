@@ -7,11 +7,12 @@ import {
   ButtonSucess,
   IllustrationMobile,
 } from "./signUpStyle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { IConsumer } from "../../../types";
 import { useDispatch } from "react-redux";
 import { registerConsumer } from "../../store/actions/consumer";
+import firebase from "./../../../Firebase";
 
 interface IProps {
   dataUser: IConsumer;
@@ -19,6 +20,8 @@ interface IProps {
 
 export default function SucessModal({ dataUser }: IProps) {
   const [animateData, setAnimation] = useState({ opacity: 1, y: 0 });
+  const [userUid, setUserUid] = useState<string>("");
+  const firebaseAuth = firebase.auth();
 
   const dispatch = useDispatch();
 
@@ -30,10 +33,24 @@ export default function SucessModal({ dataUser }: IProps) {
     if (dataUser) {
       changeAnimation();
       setTimeout(() => {
-        dispatch(registerConsumer(dataUser));
+        dispatch(
+          registerConsumer({
+            userId: userUid,
+            ...dataUser,
+            province: dataUser.province,
+            county: dataUser.county,
+            userName: "ColaboraUser",
+          })
+        );
       }, 100);
     }
   };
+
+  useEffect(() => {
+    setUserUid(firebaseAuth.currentUser.uid);
+
+    console.log(firebaseAuth.currentUser.uid);
+  }, []);
 
   return (
     <AnimatePresence>

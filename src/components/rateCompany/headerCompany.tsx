@@ -10,12 +10,13 @@ import {
 } from "./rateCompanyStyle";
 import RateModal from "./rateModal";
 import Stars from "../companies/starsRated";
+import { ICompany } from "../../../types";
 
 interface IProps {
-  data: any;
+  data: ICompany;
 }
 
-export default function HeaderCompany({ data }) {
+export default function HeaderCompany({ data }: IProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const toggleModal = () => {
@@ -25,20 +26,20 @@ export default function HeaderCompany({ data }) {
   return (
     <Header>
       <HeaderInforCompany>
-        <CompanyLogo img={data.logo} />
+        <CompanyLogo img={data.companyLogo} />
 
         <div className="containerFor_Dgsgdf_Gdfd_df">
           <div className="companyInfo">
             <NameOfComapny>
-              {data.ranking}# {data.name}
+              {data.companyPositionRanking}# {data.companyName}
             </NameOfComapny>
             <Avaliations>
-              <span>{data.avaliations.all}</span> Avaliações{" "}
+              <span>{data.companyRatesNumber}</span> Avaliações{" "}
             </Avaliations>
           </div>
 
           <div className="starsContainer">
-            <Stars stars={data.stars} background="orange" />
+            <Stars stars={data.companyStars} background="orange" />
           </div>
         </div>
       </HeaderInforCompany>
@@ -52,7 +53,7 @@ export default function HeaderCompany({ data }) {
 
       {showModal && (
         <div>
-          <RateModal toggleModal={toggleModal} />
+          <RateModal companyId={data.companyId} toggleModal={toggleModal} />
         </div>
       )}
     </Header>

@@ -105,6 +105,10 @@ export const ModalSignIn = styled(Modal)`
         grid-column: 1/2;
       }
 
+      .erroForm_h {
+        grid-column: 1/2;
+      }
+
       .FormGroup {
         grid-column: 1/2;
         grid-template-columns: 100%;
@@ -116,9 +120,11 @@ export const ModalSignIn = styled(Modal)`
           "px"
         )}
       }
+
       .formPassword {
         grid-template-columns: 93% 7%;
       }
+
       .iconeSee {
         img {
           width: 40px;

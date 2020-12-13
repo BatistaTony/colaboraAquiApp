@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ButtonSignUp,
   DivGridForm,
@@ -6,17 +6,20 @@ import {
   FormGroup,
   QuestionSignUp,
   FormGroupGrand,
+  LoadingAnimation,
 } from "./signUpStyle";
 import { IConsumer } from "../../../types";
 import CustomSelect from "./select";
 import SucessModal from "./sucessModal";
 import InputPassword from "./inputPassword";
 import Link from "next/link";
-import IconTextBox from "./iconNameTextbox";
 import provinces from "./../../constants/provinces.json";
+import firebase from "./../../../Firebase";
+import ModalSecretCode from "./modalCode";
+import SpinnerIcon from "../spinner/spinnerIcon";
 
 const initialState: IConsumer = {
-  userName: "",
+  phone: "",
   province: "",
   county: "",
   dataNascimento: 0,
@@ -28,33 +31,15 @@ export default function FormSignUp() {
   const [errorIsOn, setWhereIsError] = useState<string | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [showModalSucess, setShowModalSucess] = useState<boolean>(false);
-  const [userNameAccept, setUserNameAccept] = useState<boolean | null>(null);
   const provincesAngola = provinces.map((value) => value.state);
   const [counties, setCounties] = useState<Array<string> | null>([]);
+  const [confirmationResult, setConfirmationResult] = useState<any>({});
+  const [showModalCode, setShowModalCode] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const firebaseAuth = firebase.auth();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-  };
-
-  const checkUserName = (name: string) => {
-    const nomes = ["tony", "batistatony", "JoaoTOny", "rayThon"];
-
-    const result = nomes.filter((state) => state === name);
-
-    if (result.length) {
-      setWhereIsError("userName");
-      setUserNameAccept(false);
-      setErrorMsg("Este nome já existe, por favor tente outro");
-    } else {
-      setUserNameAccept(true);
-      setErrorMsg("");
-    }
-
-    if (name === "") {
-      setUserNameAccept(null);
-      setWhereIsError("");
-      setErrorMsg("");
-    }
   };
 
   const handleChange = (event: any) => {
@@ -63,10 +48,16 @@ export default function FormSignUp() {
       [event.target.name]: event.target.value,
     });
 
-    if (userNameAccept) {
-      setWhereIsError(null);
-      setErrorMsg(null);
-    }
+    setWhereIsError(null);
+    setErrorMsg(null);
+  };
+
+  const toggleModalCode = () => {
+    setShowModalCode(!showModalCode);
+  };
+
+  const toggleModalSucess = () => {
+    setShowModalSucess(!showModalSucess);
   };
 
   const checkDataNascimento = (): Boolean => {
@@ -101,11 +92,6 @@ export default function FormSignUp() {
         [property]: value,
       });
     }
-
-    if (userNameAccept) {
-      setWhereIsError(null);
-      setErrorMsg(null);
-    }
   };
 
   const checkError = (): boolean => {
@@ -123,19 +109,83 @@ export default function FormSignUp() {
     return emptyProperties.length <= 0;
   };
 
+  const authWithPhone = () => {
+    const appVerify = new firebase.auth.RecaptchaVerifier("sign-in-button", {
+      size: "invisible",
+    });
+
+    firebaseAuth
+      .signInWithPhoneNumber(consumerData.phone, appVerify)
+      .then((response) => {
+        setConfirmationResult(response);
+        setShowModalCode(true);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        if (error.code === "auth/invalid-phone-number") {
+          setWhereIsError("phone");
+          setErrorMsg("Telefone Invalido");
+        } else {
+          setWhereIsError("form");
+          setErrorMsg("Erro de conexão de internet");
+        }
+        setIsLoading(false);
+      });
+  };
+
+  const checkIfPhoneExists = async () => {
+    const emailExists = await firebase
+      .firestore()
+      .collection("consumer")
+      .where("phone", "==", consumerData.phone)
+      .get();
+
+    if (emailExists.docs.length) {
+      setWhereIsError("phone");
+      setErrorMsg("Telefone já existe");
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const signUpUser = (): void => {
-    if (consumerData.userName) {
-      if (userNameAccept) {
-        if (checkError()) {
-          if (checkDataNascimento()) {
-            setShowModalSucess(!showModalSucess);
+    setErrorMsg(null);
+    setWhereIsError(null);
+    if (consumerData.phone) {
+      if (checkError()) {
+        if (checkDataNascimento()) {
+          if (checkPasswordLength()) {
+            checkIfPhoneExists().then((response) => {
+              if (response) {
+                setIsLoading(true);
+                authWithPhone();
+              }
+            });
           }
         }
       }
     } else if (checkError()) {
       if (checkDataNascimento()) {
-        setShowModalSucess(!showModalSucess);
+        if (checkPasswordLength()) {
+          checkIfPhoneExists().then((response) => {
+            if (response) {
+              setIsLoading(true);
+              authWithPhone();
+            }
+          });
+        }
       }
+    }
+  };
+
+  const checkPasswordLength = () => {
+    if (consumerData.password.length >= 6) {
+      return true;
+    } else {
+      setWhereIsError("password");
+      setErrorMsg("Senha muito curta");
+      return false;
     }
   };
 
@@ -153,31 +203,32 @@ export default function FormSignUp() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {showModalSucess && <SucessModal dataUser={consumerData} />}
+      {showModalSucess && (
+        <SucessModal dataUser={{ ...consumerData, password: "" }} />
+      )}
+      {showModalCode && (
+        <ModalSecretCode
+          consumerData={consumerData}
+          confirmationResult={confirmationResult}
+          toggleModalCode={toggleModalCode}
+          toggleModalSucess={toggleModalSucess}
+        />
+      )}
 
       <DivGridForm>
         <FormGroupGrand>
-          <FormGroup
-            isEmpty={errorIsOn === "userName"}
-            nameAccept={userNameAccept}
-            className={userNameAccept === false && "textbox_name"}
-          >
+          <FormGroup isEmpty={errorIsOn === "phone"}>
             <input
               type="text"
-              name="userName"
-              id="userName"
-              onKeyUp={(event: any) => checkUserName(event.target.value)}
+              name="phone"
+              id="phone"
               onChange={handleChange}
-              placeholder="Nome do utilizador"
+              placeholder="Telefone"
               maxLength={15}
+              value={consumerData.phone}
             />
-            {userNameAccept != null && (
-              <div className="iconTextBox">
-                <IconTextBox titleImg={errorMsg} userAccept={userNameAccept} />
-              </div>
-            )}
           </FormGroup>
-          {errorIsOn === "userName" && (
+          {errorIsOn === "phone" && (
             <ErrorMessage className="error_name_">{errorMsg}</ErrorMessage>
           )}
         </FormGroupGrand>
@@ -210,6 +261,7 @@ export default function FormSignUp() {
               id="dataNascimento"
               onChange={handleChange}
               placeholder="Ano de nascimento"
+              value={consumerData.dataNascimento}
             />
           </FormGroup>
           {errorIsOn === "dataNascimento" && (
@@ -221,9 +273,29 @@ export default function FormSignUp() {
           errorMsg={errorMsg}
           errorIsOn={errorIsOn}
           handleChange={handleChange}
+          name="password"
+          value={consumerData.password}
         />
 
-        <ButtonSignUp onClick={signUpUser}>Continuar</ButtonSignUp>
+        {errorIsOn === "form" && (
+          <ErrorMessage className="error_name_ erroForm_h">
+            {errorMsg}
+          </ErrorMessage>
+        )}
+
+        {isLoading && (
+          <LoadingAnimation>
+            <SpinnerIcon />
+          </LoadingAnimation>
+        )}
+
+        <ButtonSignUp
+          id="sign-in-button"
+          onClick={signUpUser}
+          disabled={isLoading}
+        >
+          Continuar
+        </ButtonSignUp>
         <QuestionSignUp>
           Já tens uma conta ?
           <Link href="/signin">

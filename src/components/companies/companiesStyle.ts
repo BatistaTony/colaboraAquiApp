@@ -463,11 +463,13 @@ export const GroupCard = styled.div`
 
 export const Card = styled.div`
   width: 100%;
-  height: 590px;
+  height: 530px;
   border-radius: 30px;
   background-color: ${colorsApp.cardColor};
-  ${flexbox("column", "center", "center")};
-  padding: 30px;
+  ${flexbox("column", "flex-start", "center")};
+  padding: 25px;
+  padding-top: 45px;
+  padding-bottom: 35px;
   box-sizing: border-box;
   cursor: pointer;
 
@@ -482,36 +484,49 @@ export const Card = styled.div`
   }
 
   @media (max-width: 2924px) {
-    height: auto;
-    padding-top: 60px;
-    padding-bottom: 60px;
+    height: 490px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  @media (max-width: 2500px) {
+    height: 450px;
+    padding-top: 50px;
+    padding-bottom: 50px;
   }
 
   @media (max-width: 1930px) {
     padding-top: 40px;
     padding-bottom: 40px;
+    height: 370px;
   }
 
   @media (max-width: 1700px) {
     padding: 15px;
     padding-top: 30px;
     padding-bottom: 30px;
+    height: 320px;
+  }
+
+  @media (max-width: 1652px) {
+    height: 300px;
   }
 
   @media (max-width: 1500px) {
     padding-top: 30px;
     padding-bottom: 30px;
     border-radius: 15px;
+    height: 220px;
   }
 
   @media (max-width: 1180px) {
     padding-top: 22px;
     padding-bottom: 22px;
+    height: 200px;
   }
 
   @media (max-width: 1000px) {
     padding: 18px;
-    height: auto;
   }
 
   @media (max-width: 950px) {
@@ -521,6 +536,10 @@ export const Card = styled.div`
     box-sizing: border-box;
     padding-left: 10px;
     padding-right: 10px;
+    height: 190px;
+  }
+
+  @media (max-width: 860px) {
     height: auto;
   }
 
@@ -775,6 +794,7 @@ export const ButtonControl = styled.div`
     ${flexbox()};
     border-radius: 100%;
     background: transparent;
+    cursor: pointer;
 
     ${sizesForEachScreens(
       [3000, 2700, 2400, 1930, 1500, 1370],

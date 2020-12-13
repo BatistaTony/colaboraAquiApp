@@ -1,5 +1,4 @@
 import { Container, Text } from "./rateCompanyStyle";
-import Data from "../../constants/Data";
 import HeaderCompany from "./headerCompany";
 import {
   ButtonSeeMore,
@@ -13,7 +12,10 @@ import {
 import CustomSelectRating from "./custonSelectRatings";
 import { Fragment, useEffect, useState } from "react";
 import ConsumerRating from "./consumerRating";
-import { IRating } from "../../../types";
+import { ICompany, IRating } from "../../../types";
+import firebase from "./../../../Firebase";
+import { useRouter } from "next/router";
+import queryString from "query-string";
 
 interface IFilter {
   sortBy: string;
@@ -25,11 +27,16 @@ const initialFilter: IFilter = {
   sortBy: "Mais recentes",
 };
 
-const RateCompany = () => {
-  const data = Data.find((item) => item.id === 1);
+type TRateCompany = {
+  data: ICompany;
+};
 
+const RateCompany = ({ data }: TRateCompany) => {
   const [filterData, setFilter] = useState<IFilter>(initialFilter);
   const [lengthRatings, setLengthRatings] = useState<number>(0);
+  const firestore = firebase.firestore();
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const router = useRouter();
 
   const classifications = [
     "Todas classificações",
@@ -49,142 +56,9 @@ const RateCompany = () => {
     setLengthRatings(0);
   };
 
-  const ratings: IRating[] = [
-    {
-      id: 1,
-      consumerName: "BatistaTony",
-      stars: 3,
-      time: Date.now(),
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Bom",
-      suggestion: "",
-    },
+  const [ratings, setRatings] = useState<IRating[] | any>([]);
 
-    {
-      id: 2,
-      consumerName: "AndersonKennedy",
-      stars: 1,
-      time: new Date(),
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Muito Ruim",
-      suggestion:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, unde. Dolore, culpa! Officia, eius fugiat nihil debitis modi accusantium corrupti assumenda. Ab ducimus doloribus vel suscipit vitae. Quaerat, nostrum laborum.  ",
-    },
-
-    {
-      id: 3,
-      consumerName: "CaioTony",
-      stars: 5,
-      time: "Feb 1, 2020",
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Muito Bom",
-      suggestion: "",
-    },
-    {
-      id: 4,
-      consumerName: "BirdmanStunna",
-      stars: 3,
-      time: "Abril 1, 2020",
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Bom",
-      suggestion: "",
-    },
-
-    {
-      id: 5,
-      consumerName: "DezarAntonio",
-      stars: 1,
-      time: "Feb 1, 1966",
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Muito Ruim",
-      suggestion:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, unde. Dolore, culpa! Officia, eius fugiat nihil debitis modi accusantium corrupti assumenda. Ab ducimus doloribus vel suscipit vitae. Quaerat, nostrum laborum.  ",
-    },
-
-    {
-      id: 6,
-      consumerName: "TonyTony",
-      stars: 5,
-      time: "Nov 1, 1966",
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Muito Bom",
-      suggestion: "",
-    },
-    {
-      id: 7,
-      consumerName: "BatistaTony",
-      stars: 3,
-      time: "Feb 1, 2020",
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Bom",
-      suggestion: "",
-    },
-
-    {
-      id: 8,
-      consumerName: "AndersonKennedy",
-      stars: 1,
-      time: "Feb 1, 2020",
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Muito Ruim",
-      suggestion:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, unde. Dolore, culpa! Officia, eius fugiat nihil debitis modi accusantium corrupti assumenda. Ab ducimus doloribus vel suscipit vitae. Quaerat, nostrum laborum.  ",
-    },
-
-    {
-      id: 9,
-      consumerName: "CaioTony",
-      stars: 5,
-      time: "Feb 1, 2020",
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Muito Bom",
-      suggestion: "",
-    },
-    {
-      id: 10,
-      consumerName: "BirdmanStunna",
-      stars: 3,
-      time: "Feb 1, 2020",
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Bom",
-      suggestion: "",
-    },
-
-    {
-      id: 11,
-      consumerName: "DezarAntonio",
-      stars: 1,
-      time: "Feb 1, 2020",
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Pessimo",
-      suggestion:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, unde. Dolore, culpa! Officia, eius fugiat nihil debitis modi accusantium corrupti assumenda. Ab ducimus doloribus vel suscipit vitae. Quaerat, nostrum laborum.  ",
-    },
-
-    {
-      id: 12,
-      consumerName: "TonyTony",
-      stars: 5,
-      time: "Feb 1, 2020",
-      experience:
-        " Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta modi ipsam, quos veniam nulla quae ipsa doloribus dolorum enim nihil? ",
-      feeling: "Normal",
-      suggestion: "",
-    },
-  ];
-
-  const filteredRatings = ratings.filter((state: IRating) => {
+  let filteredRatings = ratings.filter((state: IRating) => {
     if (filterData.seeBy === "Todas classificações") {
       return state;
     } else if (state.feeling === filterData.seeBy) {
@@ -192,7 +66,58 @@ const RateCompany = () => {
     }
   });
 
+  const query = queryString.parse(router.asPath.split(/\?/)[1]);
+
+  const companyId: string | any = query.id;
+
+  const checkIfAnonymous = (
+    userName: string,
+    fullName: string,
+    isAnonymous: boolean
+  ) => {
+    if (isAnonymous) {
+      return userName;
+    } else {
+      return fullName;
+    }
+  };
+
+  const getRatings = () => {
+    if (companyId) {
+      firestore
+        .collection("companyRates")
+
+        .onSnapshot((queryData) => {
+          var savedRatings = [];
+
+          queryData.forEach((doc) => {
+            if (doc.data().companyId === companyId) {
+              savedRatings.push({ id: doc.id, ...doc.data() });
+            }
+          });
+
+          const result = savedRatings.map(async (item) => {
+            let consumer = await item.consumer.get().then((res) => res.data());
+            return {
+              ...item,
+              ...consumer,
+              id: item.id,
+              consumerName: checkIfAnonymous(
+                consumer.userName,
+                consumer.fullName,
+                consumer.isKeepAnonymous
+              ),
+            };
+          });
+
+          Promise.all(result).then((res) => setRatings(res));
+        });
+    }
+  };
+
   useEffect(() => {
+    getRatings();
+
     if (!lengthRatings) {
       if (filteredRatings.length > 10) {
         setLengthRatings(10);
@@ -200,7 +125,7 @@ const RateCompany = () => {
         setLengthRatings(filteredRatings.length);
       }
     }
-  });
+  }, []);
 
   const seeMoreRating = () => {
     if (filteredRatings.length - lengthRatings > 10) {
@@ -212,8 +137,8 @@ const RateCompany = () => {
 
   return (
     <Container length={filteredRatings.length < 3}>
-      <HeaderCompany data={data} />
-      <Text>{data.discription}</Text>
+      {data.companyId ? <HeaderCompany data={data} /> : <h1>Loading</h1>}
+      <Text>{data.companyDescription}</Text>
 
       <RatingsContainer length={filteredRatings.length < 3}>
         <FilterConsumerRating>
@@ -238,26 +163,34 @@ const RateCompany = () => {
           </GroupOfSelect>
         </FilterConsumerRating>
 
-        <ListOfRating length={filteredRatings.length < 3}>
-          {filteredRatings.slice(0, lengthRatings).map((data, index) => (
-            <ConsumerRating key={data.id} data={data} />
-          ))}
-        </ListOfRating>
+        {filteredRatings.length > 0 ? (
+          <ListOfRating length={filteredRatings.length < 3}>
+            {filteredRatings.slice(0, lengthRatings).map((data) => (
+              <ConsumerRating key={data.id} data={data} />
+            ))}
+          </ListOfRating>
+        ) : (
+          <h1>Loading Rates</h1>
+        )}
 
         <DivBtnRatings>
-          <ButtonSeeMore
-            onClick={lengthRatings !== filteredRatings.length && seeMoreRating}
-          >
-            {lengthRatings === filteredRatings.length ? (
-              <Fragment>
-                {filteredRatings.length === 0
-                  ? "Sem avaliações"
-                  : "Sem mais avaliações"}
-              </Fragment>
-            ) : (
-              "Ver mais..."
-            )}
-          </ButtonSeeMore>
+          {filteredRatings.length > 0 && (
+            <ButtonSeeMore
+              onClick={
+                lengthRatings !== filteredRatings.length && seeMoreRating
+              }
+            >
+              {lengthRatings === filteredRatings.length ? (
+                <Fragment>
+                  {filteredRatings.length === 0
+                    ? "Sem avaliações"
+                    : "Sem mais avaliações"}
+                </Fragment>
+              ) : (
+                "Ver mais..."
+              )}
+            </ButtonSeeMore>
+          )}
         </DivBtnRatings>
       </RatingsContainer>
     </Container>

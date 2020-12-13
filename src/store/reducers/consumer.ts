@@ -6,7 +6,9 @@ const initialState: IConsumer = {
   county: "",
   password: "",
   province: "",
-  userName: "BatistaThony",
+  userName: "",
+  phone: "",
+  userId: ""
 };
 
 interface IAction {
