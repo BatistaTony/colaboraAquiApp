@@ -108,6 +108,8 @@ export default function SignInConsumer() {
             setIsLoading(false);
           })
           .catch((error) => {
+            setIsLoading(false);
+
             if (error.code === "auth/user-not-found") {
               setWhereIsError("form");
               setErrorMsg("Utilizador nao existe");
