@@ -123,7 +123,10 @@ const RateCompany = ({ data }: TRateCompany) => {
         setLengthRatings(10);
       } else {
         setLengthRatings(filteredRatings.length);
+        alert("here");
       }
+    } else {
+      setLengthRatings(filteredRatings.length);
     }
   }, []);
 
@@ -165,7 +168,7 @@ const RateCompany = ({ data }: TRateCompany) => {
 
         {filteredRatings.length > 0 ? (
           <ListOfRating length={filteredRatings.length < 3}>
-            {filteredRatings.slice(0, lengthRatings).map((data) => (
+            {filteredRatings.map((data) => (
               <ConsumerRating key={data.id} data={data} />
             ))}
           </ListOfRating>
