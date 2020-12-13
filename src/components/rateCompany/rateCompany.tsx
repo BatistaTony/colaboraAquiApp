@@ -117,18 +117,19 @@ const RateCompany = ({ data }: TRateCompany) => {
 
   useEffect(() => {
     getRatings();
+  }, []);
 
+  useEffect(() => {
     if (!lengthRatings) {
       if (filteredRatings.length > 10) {
         setLengthRatings(10);
       } else {
         setLengthRatings(filteredRatings.length);
-        alert("here");
       }
     } else {
       setLengthRatings(filteredRatings.length);
     }
-  }, []);
+  }, [ratings]);
 
   const seeMoreRating = () => {
     if (filteredRatings.length - lengthRatings > 10) {
@@ -168,7 +169,7 @@ const RateCompany = ({ data }: TRateCompany) => {
 
         {filteredRatings.length > 0 ? (
           <ListOfRating length={filteredRatings.length < 3}>
-            {filteredRatings.map((data) => (
+            {filteredRatings.slice(0, lengthRatings).map((data) => (
               <ConsumerRating key={data.id} data={data} />
             ))}
           </ListOfRating>
