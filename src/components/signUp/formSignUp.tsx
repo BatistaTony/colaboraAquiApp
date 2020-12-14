@@ -22,7 +22,7 @@ const initialState: IConsumer = {
   phone: "",
   province: "",
   county: "",
-  dataNascimento: 0,
+  dataNascimento: null,
   password: "",
 };
 
@@ -124,7 +124,7 @@ export default function FormSignUp() {
       .catch((error) => {
         if (error.code === "auth/invalid-phone-number") {
           setWhereIsError("phone");
-          setErrorMsg("Telefone Invalido");
+          setErrorMsg("Telefone Invalido  (Ex: +244999999999)");
         } else {
           setWhereIsError("form");
           setErrorMsg("Erro de conexão de internet");
@@ -223,7 +223,7 @@ export default function FormSignUp() {
               name="phone"
               id="phone"
               onChange={handleChange}
-              placeholder="Telefone"
+              placeholder="Telefone  (Ex: +244999999999)"
               maxLength={15}
               value={consumerData.phone}
             />

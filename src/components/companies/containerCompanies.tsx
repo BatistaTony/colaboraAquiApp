@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import CardCompany from "./cardCompany";
 import {
   ButtonSuggest,
@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import SignUp from "../signUp/signUp";
 import SearchIcon from "./../companies/searchIcone";
 import firebase from "../../../Firebase";
+import Loading from "../spinner/loading";
 
 function ContainerCompanies() {
   const [filterBy, setFilterBy] = useState<string>("Todas");
@@ -26,6 +27,7 @@ function ContainerCompanies() {
   const [companies, setCompanies] = useState<Array<ICompany>>([]);
 
   const firestore = firebase.firestore();
+  const userState: IConsumer = useSelector((state) => state.Consumer);
 
   const getDataCompanies = async () => {
     let receivedCompanies = await firestore.collection("companies").get();
@@ -40,10 +42,10 @@ function ContainerCompanies() {
   };
 
   useEffect(() => {
-    getDataCompanies();
-  }, []);
-
-  const userState: IConsumer = useSelector((state) => state.Consumer);
+    if (userState.userId) {
+      getDataCompanies();
+    }
+  }, [userState]);
 
   const toggleSuggestion = () => {
     setShowSuggestion(!showSuggestion);
@@ -73,7 +75,7 @@ function ContainerCompanies() {
             <mark>Pesquise</mark> por empresas ou orgãos.
           </span>
           <span>
-            <mark>Escolhe</mark> a que desejas avaliar.
+            <mark> Escolhe</mark> a que desejas avaliar.
           </span>
           <span>
             <mark> Avalie</mark> e sugira melhorias !
@@ -128,14 +130,23 @@ function ContainerCompanies() {
         </DivBtnMobile>
       </div>
 
-      <ListOfCompanies companies={filteredCompanies} search={search} />
-      {companies.length > 0 && (
-        <ListCompanyMobile companies={companies.length}>
-          {filteredCompanies.map((value: ICompany, index: number) => (
-            <CardCompany key={index} data={value} />
-          ))}
-        </ListCompanyMobile>
+      {filteredCompanies.length <= 0 ? (
+        <Loading desktop={true} />
+      ) : (
+        <ListOfCompanies companies={filteredCompanies} search={search} />
       )}
+
+      <ListCompanyMobile companies={companies.length}>
+        {filteredCompanies.length <= 0 ? (
+          <Loading />
+        ) : (
+          <Fragment>
+            {filteredCompanies.map((value: ICompany, index: number) => (
+              <CardCompany key={index} data={value} />
+            ))}
+          </Fragment>
+        )}
+      </ListCompanyMobile>
     </ContentCompanies>
   );
 }

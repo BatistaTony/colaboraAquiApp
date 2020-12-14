@@ -66,7 +66,7 @@ const CardCompany = ({ data, position, index }) => {
             <CardRow>
               <Avaliation color={"positive"}>
                 <p>
-                  <RenderAvaliation item={avaliations.positive} /> Posituvas
+                  <RenderAvaliation item={avaliations.positive} /> Positivas
                 </p>
               </Avaliation>
               <Avaliation color={"normal"}>
@@ -76,7 +76,7 @@ const CardCompany = ({ data, position, index }) => {
               </Avaliation>
               <Avaliation color={"negative"}>
                 <p>
-                  <RenderAvaliation item={avaliations.negative} /> Nevativas
+                  <RenderAvaliation item={avaliations.negative} /> Negativas
                 </p>
               </Avaliation>
             </CardRow>
