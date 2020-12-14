@@ -939,7 +939,9 @@ ${sizesForEachScreens(
   }
 `;
 
-export const ButtonSuggestForm = styled(ButtonSignUp)``;
+export const ButtonSuggestForm = styled(ButtonSignUp)`
+  cursor: pointer;
+`;
 
 export const TextArea = styled.div`
   height: 100%;
@@ -1005,6 +1007,7 @@ export const ButtonCloseSuggestion = styled.button`
   right: 0;
   margin: 40px;
   ${flexbox()};
+  cursor: pointer;
 
   @media (max-width: 1700px) {
     margin: 30px;

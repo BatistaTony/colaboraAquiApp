@@ -8,7 +8,7 @@ interface IProps {
   search: string;
 }
 
-export default function LisOfCompanies({ companies, search }: IProps) {
+export default function ListOfCompanies({ companies, search }: IProps) {
   const [cardNumber, setCardNumber] = useState<number>(0);
   const [twoCompanies, setTwoCompanies] = useState<Array<ICompany>>([
     companies[cardNumber],
@@ -54,14 +54,16 @@ export default function LisOfCompanies({ companies, search }: IProps) {
 
   return (
     <CompanyList>
-      <ButtonControl>
-        <button onClick={prevGroup}>
-          <img src="images/back.png" alt="" />
-        </button>
-        <button onClick={nextGroup}>
-          <img src="images/next.png" alt="" />
-        </button>
-      </ButtonControl>
+      {companies.length > 0 && (
+        <ButtonControl>
+          <button onClick={prevGroup}>
+            <img src="images/back.png" alt="" />
+          </button>
+          <button onClick={nextGroup}>
+            <img src="images/next.png" alt="" />
+          </button>
+        </ButtonControl>
+      )}
 
       <GroupCard key={cardNumber}>
         {twoCompanies.map(

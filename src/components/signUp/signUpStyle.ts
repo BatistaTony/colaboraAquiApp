@@ -356,6 +356,14 @@ export const DivGridForm = styled.div`
     grid-column: 1/3;
   }
 
+  .erroForm_h {
+    text-align: center;
+    width: 100%;
+    @media (max-width: 700px) {
+      margin-top: 10px;
+    }
+  }
+
   .inputPassword {
     grid-template-columns: 87% 13%;
 
@@ -380,14 +388,20 @@ export const LoadingAnimation = styled.div`
   grid-column: ${({ signIn }) => (signIn ? "1/1" : "1/3")};
   margin-bottom: ${({ signIn }) => (signIn ? "0" : "-10px")};
 
+  @media (max-width: 700px) {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+
   svg {
-    width: 20px;
-    height: 20px;
+    width: 2.3rem;
     fill: ${colorsApp.orange};
 
     animation: ${SpinninerAnimation} linear;
     animation-duration: 0.5s;
     animation-iteration-count: infinite;
+
+    ${sizesForEachScreens([2000, 1500], [1.7, 1.2], "width", "rem")};
   }
 `;
 

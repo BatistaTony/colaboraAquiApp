@@ -79,7 +79,7 @@ export const ModalSignIn = styled(Modal)`
       grid-template-columns: 100%;
       width: 73%;
       justify-content: center;
-      grid-template-rows: repeat(6, auto) auto auto auto;
+      grid-template-rows: repeat(6, auto);
 
       @media (max-width: 900px) {
         width: 45%;
@@ -107,6 +107,11 @@ export const ModalSignIn = styled(Modal)`
 
       .erroForm_h {
         grid-column: 1/2;
+        text-align: center;
+        width: 100%;
+        @media (max-width: 700px) {
+          margin-top: 10px;
+        }
       }
 
       .FormGroup {

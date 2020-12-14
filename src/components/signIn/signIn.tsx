@@ -98,12 +98,15 @@ export default function SignInConsumer() {
     setWhereIsError(null);
     if (!checkError()) {
       if (checkPasswordLength()) {
-        const email = `${consumerData.phone}@colabora.com`;
+        const email = `${
+          consumerData.phone.length > 9
+            ? consumerData.phone
+            : "+244" + consumerData.phone
+        }@colabora.com`;
 
         firebaseAuth
           .signInWithEmailAndPassword(email, consumerData.password)
           .then((result) => {
-            console.log(result.user.uid);
             getUserData(result.user.uid);
             setIsLoading(false);
           })
@@ -159,7 +162,7 @@ export default function SignInConsumer() {
                   id="phone"
                   onChange={handleChange}
                   value={consumerData.phone}
-                  placeholder="Telefone"
+                  placeholder="Telefone (Ex: +244999999999)"
                 />
               </FormGroup>
               {errorIsOn === "userName" && (

@@ -16,6 +16,7 @@ import { ICompany, IRating } from "../../../types";
 import firebase from "./../../../Firebase";
 import { useRouter } from "next/router";
 import queryString from "query-string";
+import Loading from "../spinner/loading";
 
 interface IFilter {
   sortBy: string;
@@ -141,44 +142,40 @@ const RateCompany = ({ data }: TRateCompany) => {
 
   return (
     <Container length={filteredRatings.length < 3}>
-      {data.companyId ? <HeaderCompany data={data} /> : <h1>Loading</h1>}
+      {data.companyId ? <HeaderCompany data={data} /> : <Loading />}
       <Text>{data.companyDescription}</Text>
 
-      <RatingsContainer length={filteredRatings.length < 3}>
-        <FilterConsumerRating>
-          <TotalRating>{ratings.length} avaliações</TotalRating>
+      {data.companyId.length > 0 && (
+        <RatingsContainer length={filteredRatings.length < 3}>
+          <FilterConsumerRating>
+            <TotalRating>{ratings.length} avaliações</TotalRating>
 
-          <GroupOfSelect>
-            <CustomSelectRating
-              values={sortOptions}
-              handleChange={(value: string) => handleChnage("sortBy", value)}
-              whatToDo="ordenar por"
-              defaultValueSelect={filterData.sortBy}
-              classNames="select1"
-            />
+            <GroupOfSelect>
+              <CustomSelectRating
+                values={sortOptions}
+                handleChange={(value: string) => handleChnage("sortBy", value)}
+                whatToDo="ordenar por"
+                defaultValueSelect={filterData.sortBy}
+                classNames="select1"
+              />
 
-            <CustomSelectRating
-              values={classifications}
-              handleChange={(value: string) => handleChnage("seeBy", value)}
-              whatToDo="ver por"
-              defaultValueSelect={filterData.seeBy}
-              classNames="select2"
-            />
-          </GroupOfSelect>
-        </FilterConsumerRating>
+              <CustomSelectRating
+                values={classifications}
+                handleChange={(value: string) => handleChnage("seeBy", value)}
+                whatToDo="ver por"
+                defaultValueSelect={filterData.seeBy}
+                classNames="select2"
+              />
+            </GroupOfSelect>
+          </FilterConsumerRating>
 
-        {filteredRatings.length > 0 ? (
           <ListOfRating length={filteredRatings.length < 3}>
             {filteredRatings.slice(0, lengthRatings).map((data) => (
               <ConsumerRating key={data.id} data={data} />
             ))}
           </ListOfRating>
-        ) : (
-          <h1>Loading Rates</h1>
-        )}
 
-        <DivBtnRatings>
-          {filteredRatings.length > 0 && (
+          <DivBtnRatings>
             <ButtonSeeMore
               onClick={
                 lengthRatings !== filteredRatings.length && seeMoreRating
@@ -194,9 +191,9 @@ const RateCompany = ({ data }: TRateCompany) => {
                 "Ver mais..."
               )}
             </ButtonSeeMore>
-          )}
-        </DivBtnRatings>
-      </RatingsContainer>
+          </DivBtnRatings>
+        </RatingsContainer>
+      )}
     </Container>
   );
 };

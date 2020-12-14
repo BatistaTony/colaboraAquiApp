@@ -128,6 +128,8 @@ export default function InformationData() {
 
     setTimeout(() => {
       setShwoPopUp(false);
+      setPopUpIsError(false);
+      setPopUpMsg("Perfil actualizado com sucesso");
     }, 5000);
   };
 
@@ -173,12 +175,7 @@ export default function InformationData() {
 
       return value[1] === "";
     });
-
     return emptyProperties.length <= 0;
-  };
-
-  const checkIfEmailExist = () => {
-    //check
   };
 
   const updatePhoneNumber = () => {
@@ -230,6 +227,7 @@ export default function InformationData() {
       })
       .then((result) => {
         dispatch(registerConsumer(profileData));
+
         showPopUpTrick();
       })
       .catch((err) => {
@@ -267,7 +265,7 @@ export default function InformationData() {
           } else {
             setPopUpIsError(true);
             showPopUpTrick();
-            setPopUpMsg("Erro de conexao, verifique a internet");
+            setPopUpMsg("Erro de conexão, verifique a internet");
             return false;
           }
         });
@@ -318,13 +316,16 @@ export default function InformationData() {
   };
 
   const getUSerInfo = () => {
-    setProfileData(consumerState);
-    // setCountiesToSelect(consumerState.province);
+    setProfileData({ ...consumerState, password: "" });
   };
 
   useEffect(() => {
     getUSerInfo();
   }, []);
+
+  useEffect(() => {
+    setCountiesToSelect(consumerState.province);
+  }, [consumerState]);
 
   const checkIfGotCounties = () => {
     if (profileData.province === "") {
@@ -453,7 +454,7 @@ export default function InformationData() {
           errorMsg={errorMsg}
           name="password"
           id="password"
-          placeholder=""
+          placeholder=" "
           value={profileData.password}
           handleChange={handleChange}
         />

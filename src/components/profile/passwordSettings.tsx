@@ -54,6 +54,8 @@ export default function PasswordSettings() {
 
     setTimeout(() => {
       setShwoPopUp(false);
+      setPopUpIsError(false);
+      setPopUpMsg("Senha actualizada com sucesso");
     }, 5000);
   };
 
@@ -125,13 +127,13 @@ export default function PasswordSettings() {
             setPopUpIsError(true);
             showPopUpTrick();
             setPopUpMsg(
-              "Acesso bloqueado por varias tentativas, por favor tente mas tarde"
+              "Acesso a esta conta bloqueado por varias tentativas, por favor tente mas tarde !"
             );
             return false;
           } else {
             setPopUpIsError(true);
             showPopUpTrick();
-            setPopUpMsg("Erro de conexao, verifique a internet");
+            setPopUpMsg("Erro de conexão, verifique a internet");
             return false;
           }
         });
