@@ -130,7 +130,7 @@ const RateCompany = ({ data }: TRateCompany) => {
     } else {
       setLengthRatings(filteredRatings.length);
     }
-  }, [ratings]);
+  }, [filteredRatings]);
 
   const seeMoreRating = () => {
     if (filteredRatings.length - lengthRatings > 10) {
