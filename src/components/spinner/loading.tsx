@@ -19,7 +19,12 @@ const Loading = ({ desktop }: IProps) => {
 
   return (
     <LoadinContainer desktop={desktop}>
-      <Lottie options={defaultOptions} isStopped={false} isPaused={false} />
+      <Lottie
+        isClickToPauseDisabled={true}
+        options={defaultOptions}
+        isStopped={false}
+        isPaused={false}
+      />
     </LoadinContainer>
   );
 };
