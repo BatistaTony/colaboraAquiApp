@@ -169,7 +169,7 @@ const ModalSecretCode = ({
           >
             Reenivar
           </ButtonModal>
-          <div>
+          <div className="divBtn_md_code">
             <ButtonModal onClick={toggleModalCode} cancel={true}>
               Cancelar
             </ButtonModal>

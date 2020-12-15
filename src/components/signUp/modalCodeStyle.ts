@@ -62,6 +62,10 @@ export const ModalCodeStyle = styled(motion.div)`
   .inputCode {
     width: 50%;
     margin-top: 10px;
+
+    @media (max-width: 750px) {
+      width: 100%;
+    }
   }
 `;
 
@@ -73,6 +77,14 @@ export const GroupBtn = styled.div`
   .resend {
     margin-left: 0;
     background: ${colorsApp.yelloSecundary};
+  }
+
+  .divBtn_md_code {
+    ${flexbox("row", "space-between", "center")};
+  }
+
+  @media (max-width: 750px) {
+    width: 100%;
   }
 `;
 
