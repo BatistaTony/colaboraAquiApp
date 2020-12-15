@@ -127,7 +127,6 @@ export default function FormSignUp() {
           setErrorMsg("Telefone Invalido  (Ex: +244999999999)");
         } else {
           setWhereIsError("form");
-          console.log(error);
           setErrorMsg("Erro de conexão de internet");
         }
         setIsLoading(false);
