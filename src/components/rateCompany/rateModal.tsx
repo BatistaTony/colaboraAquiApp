@@ -97,7 +97,7 @@ const RateModal = ({ toggleModal, companyId }: IProps) => {
           }
         })
         .catch((err) => {
-          console.log(err);
+          
         });
 
       setShowModalSucess(!showModalSucess);

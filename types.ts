@@ -41,3 +41,25 @@ export interface IRating {
   feeling: string;
   suggestion: string;
 }
+
+export interface IRankingState {
+  companyId: string;
+  companyName: string;
+  companyLogo: string;
+  companyStars: number;
+  companyStatus?: string;
+  companyDescription?: string;
+  companyRates: {
+    normal: number;
+    positives: number;
+    negatives: number;
+  };
+  position: number | string;
+  feelings: {
+    horrivel: number;
+    pessimo: number;
+    normal: number;
+    bom: number;
+    muitoBom: number;
+  };
+}

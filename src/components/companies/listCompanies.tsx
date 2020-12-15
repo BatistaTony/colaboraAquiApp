@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { ICompany } from "../../../types";
+import {  IRankingState } from "../../../types";
 import CardCompany from "./cardCompany";
 import { CompanyList, ButtonControl, GroupCard } from "./companiesStyle";
 
 interface IProps {
-  companies: Array<ICompany>;
+  companies: Array<IRankingState>;
   search: string;
 }
 
 export default function ListOfCompanies({ companies, search }: IProps) {
   const [cardNumber, setCardNumber] = useState<number>(0);
-  const [twoCompanies, setTwoCompanies] = useState<Array<ICompany>>([
+  const [twoCompanies, setTwoCompanies] = useState<Array<IRankingState>>([
     companies[cardNumber],
     companies[cardNumber + 1],
   ]);
@@ -67,7 +67,7 @@ export default function ListOfCompanies({ companies, search }: IProps) {
 
       <GroupCard key={cardNumber}>
         {twoCompanies.map(
-          (value: ICompany, index: number) =>
+          (value: IRankingState, index: number) =>
             value && <CardCompany key={index} data={value} />
         )}
       </GroupCard>

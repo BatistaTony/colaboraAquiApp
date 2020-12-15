@@ -1,4 +1,4 @@
-import { ICompany } from "../../../types";
+import { IRankingState } from "../../../types";
 import {
   Card,
   CompanyLogo,
@@ -10,9 +10,10 @@ import StarsRatedCompany from "./starsRated";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Router from "next/router";
+import { useSelector } from "react-redux";
 
 interface IProps {
-  data: ICompany;
+  data: IRankingState;
 }
 
 export default function CardCompany({ data }: IProps) {
@@ -21,10 +22,11 @@ export default function CardCompany({ data }: IProps) {
     companyDescription,
     companyLogo,
     companyName,
-    companyPositionRanking,
-    companyRatesNumber,
-    companyStars,
   } = data;
+
+  const rankingState: IRankingState[] = useSelector(
+    (state) => state.RankingState
+  );
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -38,6 +40,43 @@ export default function CardCompany({ data }: IProps) {
       pathname: `/rate`,
       query: { id: companyId },
     });
+  };
+
+  const checkIfGotRating = () => {
+    const result = rankingState.filter(
+      (company) => company.companyId === companyId
+    );
+
+    return result;
+  };
+
+  const getRatesProps = () => {
+    return checkIfGotRating().length > 0 && checkIfGotRating()[0];
+  };
+
+  const calcTotal = () => {
+    if (getRatesProps()) {
+      const ratesNumber = getRatesProps().companyRates;
+      const total =
+        ratesNumber.normal + ratesNumber.negatives + ratesNumber.positives;
+      return total;
+    } else {
+      return 0;
+    }
+  };
+
+  const getStarsNumberAndPosition = () => {
+    if (getRatesProps()) {
+      return {
+        stars: getRatesProps().companyStars,
+        position: getRatesProps().position,
+      };
+    } else {
+      return {
+        stars: 0,
+        position: "#",
+      };
+    }
   };
 
   return (
@@ -55,16 +94,19 @@ export default function CardCompany({ data }: IProps) {
 
               <div className="company_info_">
                 <CompanyName>
-                  #{companyPositionRanking}. {companyName}
+                  #{getStarsNumberAndPosition().position}. {companyName}
                 </CompanyName>
 
                 <CompanyRateNumbers>
-                  <span>{companyRatesNumber}</span> avaliações
+                  <span>{calcTotal()}</span> avaliações
                 </CompanyRateNumbers>
               </div>
             </div>
             <div className="start_div_cmpy">
-              <StarsRatedCompany background={""} stars={companyStars} />
+              <StarsRatedCompany
+                background={""}
+                stars={getStarsNumberAndPosition().stars}
+              />
             </div>
           </div>
 

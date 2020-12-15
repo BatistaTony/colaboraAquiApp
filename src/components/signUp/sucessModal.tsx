@@ -48,8 +48,6 @@ export default function SucessModal({ dataUser }: IProps) {
 
   useEffect(() => {
     setUserUid(firebaseAuth.currentUser.uid);
-
-    console.log(firebaseAuth.currentUser.uid);
   }, []);
 
   return (

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IConsumer, IProfile } from "../../types";
+import { IConsumer } from "../../types";
 import Layout from "../components/layout/layout";
 import InformationData from "../components/profile/dataInformation";
 import HeaderProfile from "../components/profile/header";

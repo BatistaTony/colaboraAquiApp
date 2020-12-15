@@ -184,10 +184,6 @@ export default function InformationData() {
         if (user) {
           user
             .updateEmail(`${profileData.phone}@colabora.com`)
-            .then(() => {
-              console.log("sucess");
-            })
-            .catch((err) => console.log(err));
         }
       });
     }
@@ -231,7 +227,7 @@ export default function InformationData() {
         showPopUpTrick();
       })
       .catch((err) => {
-        console.log(err);
+        
       });
   };
 
