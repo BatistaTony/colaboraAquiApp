@@ -37,9 +37,7 @@ export default function HeaderProfile() {
             const saved = [];
             if (doc.id === consumerState.userId) {
               saved.push(doc);
-              console.log(doc.data());
             }
-            console.log(saved);
             setUserRates(saved.length);
           });
       });

@@ -20,9 +20,23 @@ import Link from "next/link";
 import Stars from "../companies/starsRated";
 
 import RenderAvaliation from "../../constants/renderAvaliation";
+import { IRankingState } from "../../../types";
 
-const CardCompany = ({ data, position, index }) => {
-  const { name, avaliations, ranking, logo, stars } = data;
+interface IPropsCard {
+  data: IRankingState;
+}
+
+const CardCompany = ({ data }: IPropsCard) => {
+  const {
+    companyLogo,
+    companyName,
+    companyRates,
+    companyStars,
+    position,
+  } = data;
+
+  const totalRates =
+    companyRates.negatives + companyRates.normal + companyRates.positives;
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -41,42 +55,46 @@ const CardCompany = ({ data, position, index }) => {
         style={{ width: "100%", height: "auto" }}
       >
         <CardRankingContainer>
-          <FloatCircle position={ranking} id={index}>
-            <p>{ranking}º</p>
+          <FloatCircle position={position} id={position}>
+            <p>{position}º</p>
           </FloatCircle>
           <Content>
             <DivRow>
-              <CompanyLogoDiv img={logo}></CompanyLogoDiv>
+              <CompanyLogoDiv img={companyLogo}></CompanyLogoDiv>
               <div>
                 <Link href="/rate?id=someid">
-                  <CompanyName>{name}</CompanyName>
+                  <CompanyName>{companyName}</CompanyName>
                 </Link>
                 <AllAvaliatiins>
                   <span>
-                    <RenderAvaliation item={avaliations.all} />{" "}
+                    <RenderAvaliation item={totalRates} />{" "}
                   </span>
                   Avaliações
                 </AllAvaliatiins>
               </div>
             </DivRow>
-            <Stars classNames="fiveStars" stars={stars} background="orange" />
+            <Stars
+              classNames="fiveStars"
+              stars={companyStars}
+              background="orange"
+            />
           </Content>
           <AvaliationsDiv>
             <Title>Avaliações</Title>
             <CardRow>
               <Avaliation color={"positive"}>
                 <p>
-                  <RenderAvaliation item={avaliations.positive} /> Positivas
+                  <RenderAvaliation item={companyRates.positives} /> Positivas
                 </p>
               </Avaliation>
               <Avaliation color={"normal"}>
                 <p>
-                  <RenderAvaliation item={avaliations.normal} /> Normais
+                  <RenderAvaliation item={companyRates.normal} /> Normais
                 </p>
               </Avaliation>
               <Avaliation color={"negative"}>
                 <p>
-                  <RenderAvaliation item={avaliations.negative} /> Negativas
+                  <RenderAvaliation item={companyRates.negatives} /> Negativas
                 </p>
               </Avaliation>
             </CardRow>

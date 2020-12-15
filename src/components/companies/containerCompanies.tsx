@@ -12,7 +12,7 @@ import {
 import Suggestion from "./suggestion";
 import Layout from "../layout/layout";
 import { InputIcon } from "../signUp/signUpStyle";
-import { ICompany, IConsumer } from "./../../../types";
+import { ICompany, IConsumer, IRankingState } from "./../../../types";
 import ListOfCompanies from "./listCompanies";
 import { useSelector } from "react-redux";
 import SignUp from "../signUp/signUp";
@@ -24,7 +24,7 @@ function ContainerCompanies() {
   const [filterBy, setFilterBy] = useState<string>("Todas");
   const [showSuggestion, setShowSuggestion] = useState<boolean>(false);
   const [search, setSearch] = useState<string>("");
-  const [companies, setCompanies] = useState<Array<ICompany>>([]);
+  const [companies, setCompanies] = useState<Array<IRankingState>>([]);
 
   const firestore = firebase.firestore();
   const userState: IConsumer = useSelector((state) => state.Consumer);
@@ -46,6 +46,12 @@ function ContainerCompanies() {
       getDataCompanies();
     }
   }, [userState]);
+
+  useEffect(() => {
+    if (userState.userId) {
+      getDataCompanies();
+    }
+  }, []);
 
   const toggleSuggestion = () => {
     setShowSuggestion(!showSuggestion);
@@ -141,7 +147,7 @@ function ContainerCompanies() {
           <Loading />
         ) : (
           <Fragment>
-            {filteredCompanies.map((value: ICompany, index: number) => (
+            {filteredCompanies.map((value: IRankingState, index: number) => (
               <CardCompany key={index} data={value} />
             ))}
           </Fragment>

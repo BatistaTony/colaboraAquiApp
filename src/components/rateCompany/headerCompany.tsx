@@ -10,7 +10,8 @@ import {
 } from "./rateCompanyStyle";
 import RateModal from "./rateModal";
 import Stars from "../companies/starsRated";
-import { ICompany } from "../../../types";
+import { ICompany, IRankingState } from "../../../types";
+import { useSelector } from "react-redux";
 
 interface IProps {
   data: ICompany;
@@ -18,9 +19,49 @@ interface IProps {
 
 export default function HeaderCompany({ data }: IProps) {
   const [showModal, setShowModal] = useState<boolean>(false);
+  const rankingState: IRankingState[] = useSelector(
+    (state) => state.RankingState
+  );
 
   const toggleModal = () => {
     setShowModal(!showModal);
+  };
+
+  const checkIfGotRating = () => {
+    const result = rankingState.filter(
+      (company) => company.companyId === data.companyId
+    );
+
+    return result;
+  };
+
+  const getRatesProps = () => {
+    return checkIfGotRating().length > 0 && checkIfGotRating()[0];
+  };
+
+  const calcTotal = () => {
+    if (getRatesProps()) {
+      const ratesNumber = getRatesProps().companyRates;
+      const total =
+        ratesNumber.normal + ratesNumber.negatives + ratesNumber.positives;
+      return total;
+    } else {
+      return 0;
+    }
+  };
+
+  const getStarsNumberAndPosition = () => {
+    if (getRatesProps()) {
+      return {
+        stars: getRatesProps().companyStars,
+        position: getRatesProps().position,
+      };
+    } else {
+      return {
+        stars: 0,
+        position: "#",
+      };
+    }
   };
 
   return (
@@ -31,15 +72,18 @@ export default function HeaderCompany({ data }: IProps) {
         <div className="containerFor_Dgsgdf_Gdfd_df">
           <div className="companyInfo">
             <NameOfComapny>
-              {data.companyPositionRanking}# {data.companyName}
+              #{getStarsNumberAndPosition().position} {data.companyName}
             </NameOfComapny>
             <Avaliations>
-              <span>{data.companyRatesNumber}</span> Avaliações{" "}
+              <span>{calcTotal()}</span> Avaliações{" "}
             </Avaliations>
           </div>
 
           <div className="starsContainer">
-            <Stars stars={data.companyStars} background="orange" />
+            <Stars
+              stars={getStarsNumberAndPosition().stars}
+              background="orange"
+            />
           </div>
         </div>
       </HeaderInforCompany>

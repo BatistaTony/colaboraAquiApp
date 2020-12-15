@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Router from "next/router";
 import { useSelector } from "react-redux";
 import { IConsumer } from "../../types";
@@ -12,7 +12,6 @@ export default function PrivateRouter(
 ) {
   return function () {
     const firebaseAuth = firebase.auth();
-    const [isLogged, setIsLogged] = useState<boolean>(false);
     const dispatch = useDispatch();
 
     const consumer: IConsumer = useSelector((state) => state.Consumer);
@@ -39,7 +38,6 @@ export default function PrivateRouter(
       firebaseAuth.onAuthStateChanged((result) => {
         if (result) {
           updateUserState(result.uid);
-          setIsLogged(true);
         } else {
           Router.push("/");
         }
