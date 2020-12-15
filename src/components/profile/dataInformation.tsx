@@ -182,8 +182,7 @@ export default function InformationData() {
     if (profileData.phone) {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          user
-            .updateEmail(`${profileData.phone}@colabora.com`)
+          user.updateEmail(`${profileData.phone}@colabora.com`);
         }
       });
     }
@@ -211,14 +210,16 @@ export default function InformationData() {
       .doc(consumerState.userId)
       .set({
         address: {
-          province: profileData.province,
-          county: profileData.county,
+          province: profileData.province ? profileData.province : "",
+          county: profileData.county ? profileData.county : "",
         },
-        fullName: profileData.fullName,
-        isKeepAnonymous: profileData.isKeepAnonymous,
+        fullName: profileData.fullName ? profileData.fullName : "",
+        isKeepAnonymous: profileData.isKeepAnonymous
+          ? profileData.isKeepAnonymous
+          : "",
         phone: profileData.phone,
         userName: profileData.userName,
-        email: profileData.email,
+        email: profileData.email ? profileData.email : "",
         dataNascimento: profileData.dataNascimento,
       })
       .then((result) => {
@@ -226,9 +227,7 @@ export default function InformationData() {
 
         showPopUpTrick();
       })
-      .catch((err) => {
-        
-      });
+      .catch((err) => {});
   };
 
   const isSignedUser = async () => {

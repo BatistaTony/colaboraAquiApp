@@ -1,5 +1,6 @@
 import Layout from "../components/layout/layout";
 import ContainerCompanies from "../components/companies/containerCompanies";
+import RankingLoader from "./rankingContent";
 
 function Companies() {
   return (
@@ -9,4 +10,4 @@ function Companies() {
   );
 }
 
-export default Companies;
+export default RankingLoader(Companies);
