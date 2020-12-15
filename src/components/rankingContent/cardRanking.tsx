@@ -62,7 +62,7 @@ const CardCompany = ({ data }: IPropsCard) => {
             <DivRow>
               <CompanyLogoDiv img={companyLogo}></CompanyLogoDiv>
               <div>
-                <Link href="/rate?id=someid">
+                <Link href={`/rate?id=${data.companyId}`}>
                   <CompanyName>{companyName}</CompanyName>
                 </Link>
                 <AllAvaliatiins>
