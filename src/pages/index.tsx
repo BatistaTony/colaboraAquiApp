@@ -180,7 +180,6 @@ export default function Index() {
     });
 
     setRankingState(savedRanking);
-    console.log(savedRanking);
   };
 
   useEffect(() => {
@@ -189,12 +188,10 @@ export default function Index() {
 
   useEffect(() => {
     getRanking();
-    console.log(rankingState);
     dispatch(addRanking(rankingState));
   }, [allCompaniesRates]);
 
   useEffect(() => {
-    console.log(rankingState);
     dispatch(addRanking(rankingState));
   }, [rankingState]);
 
