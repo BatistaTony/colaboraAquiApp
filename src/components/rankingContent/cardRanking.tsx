@@ -69,7 +69,7 @@ const CardCompany = ({ data }: IPropsCard) => {
                   <span>
                     <RenderAvaliation item={totalRates} />{" "}
                   </span>
-                  Avaliações
+                  {totalRates > 1 ? "Avaliações" : "Avaliação"}
                 </AllAvaliatiins>
               </div>
             </DivRow>
@@ -84,17 +84,20 @@ const CardCompany = ({ data }: IPropsCard) => {
             <CardRow>
               <Avaliation color={"positive"}>
                 <p>
-                  <RenderAvaliation item={companyRates.positives} /> Positivas
+                  <RenderAvaliation item={companyRates.positives} />{" "}
+                  {companyRates.positives > 1 ? " Positivas" : " Positiva"}
                 </p>
               </Avaliation>
               <Avaliation color={"normal"}>
                 <p>
-                  <RenderAvaliation item={companyRates.normal} /> Normais
+                  <RenderAvaliation item={companyRates.normal} />
+                  {companyRates.normal > 1 ? " Normais" : " Normal"}
                 </p>
               </Avaliation>
               <Avaliation color={"negative"}>
                 <p>
-                  <RenderAvaliation item={companyRates.negatives} /> Negativas
+                  <RenderAvaliation item={companyRates.negatives} />{" "}
+                  {companyRates.negatives > 1 ? " Negativas" : " Negativa"}
                 </p>
               </Avaliation>
             </CardRow>

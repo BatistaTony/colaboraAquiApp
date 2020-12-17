@@ -455,7 +455,7 @@ export default function InformationData() {
         />
         {errorIsOn !== "password" && (
           <SimpleTextForm className={"simple_text"}>
-            Para salvar alterações do prefil
+            Para salvar alterações do perfil
           </SimpleTextForm>
         )}
       </DivOfFormGroup>
