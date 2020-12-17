@@ -3,6 +3,7 @@ import { store, persistor } from "../store/index";
 import App from "next/app";
 import { GlobalStyle } from "../components/layout/layoutStyle";
 import { PersistGate } from "redux-persist/integration/react";
+import "aos/dist/aos.css";
 
 export default class MyApp extends App {
   render() {

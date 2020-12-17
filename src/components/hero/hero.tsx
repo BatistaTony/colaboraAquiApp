@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useEffect } from "react";
 import {
   ButtonStartRate,
   HeroStyle,
@@ -11,12 +11,10 @@ import {
   DivHero,
   BackGroundWithIllustration,
 } from "./heroStyle";
-import Route from "next/router";
-import { useSelector } from "react-redux";
-import { IConsumer } from "../../../types";
 import { StepsHero } from "./hero.data";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import AOS from "aos";
 
 export default function Hero() {
   const animateStep = [
@@ -25,17 +23,28 @@ export default function Hero() {
     { y: 20, transition: 0.5, delay: 0.4 },
   ];
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <HeroStyle>
-      <BackGroundWithIllustration
-        initial={{ opacity: 1, y: 1000 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.7 }}
-      >
-        <div className="illustration1_e"></div>
+      <BackGroundWithIllustration>
+        <div
+          data-aos="fade-up-right"
+          data-aos-offset="200"
+          data-aos-duration="2000"
+          data-aos-delay="40"
+          className="illustration1_e"
+        ></div>
 
-        <div className="illustration2_e"></div>
+        <div
+          data-aos="fade-up-left"
+          data-aos-offset="200"
+          data-aos-duration="2000"
+          data-aos-delay="40"
+          className="illustration2_e"
+        ></div>
       </BackGroundWithIllustration>
 
       <DivHero>
@@ -69,10 +78,11 @@ export default function Hero() {
         </Link>
       </DivHero>
       <IllustrationRating
-        initial={{ opacity: 1, y: 1000 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.7 }}
+        data-aos="fade-up-left"
+        data-aos-offset="200"
+        data-aos-duration="2000"
+        data-aos-delay="50"
+        className="illustration2_e"
       >
         <img src="/images/OnlineReview-rafiki.png" alt="" />
       </IllustrationRating>
