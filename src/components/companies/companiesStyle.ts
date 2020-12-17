@@ -343,6 +343,7 @@ export const ButtonSuggest = styled.button`
   padding-left: 50px;
   padding-right: 50px;
   right: 4%;
+  cursor: pointer;
 
   ${getFont()};
 

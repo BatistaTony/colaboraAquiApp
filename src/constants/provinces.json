@@ -15,23 +15,182 @@
   },
   {
     "state": "Uige",
-    "counties": ["Quimbele", "Maq. Do Zombo", "Negage", "Uige"]
+    "counties": [
+      "Alto Cauale",
+      "Ambuíla",
+      "Bembe",
+      "Buengas",
+      "Bungo",
+      "Damba",
+      "Macocola",
+      "Mucaba",
+      "Negage",
+      "Puri",
+      "Quimbele",
+      "Quitexe",
+      "Sanza Pombo",
+      "Songo",
+      "Uíge",
+      "Maq do Zombo"
+    ]
   },
-  { "state": "Malanje", "counties": ["Malanje"] },
-  { "state": "Cabinda", "counties": ["Cabinda"] },
-  { "state": "Moxico", "counties": ["Cazombo", "Lucasse", "Chiume"] },
-  { "state": "Kwanza Norte", "counties": ["Lucala"] },
-  { "state": "Kwanza Sul", "counties": ["Quibala", "Gabela", "Sumbe"] },
-  { "state": "Lunda Norte", "counties": ["Cuango", "Luremo"] },
-  { "state": "Lunda Sul", "counties": ["Saurimo", "Luau", "Luena"] },
-  { "state": "Benguela", "counties": ["Lobito", "Benguela", "Cubal"] },
-  { "state": "Huambo", "counties": ["Huambo", "Wama", "Cuima"] },
-  { "state": "Zaire", "counties": ["M'Banza Congo", "Soyo"] },
-  { "state": "Huila", "counties": ["Lubango", "Chiange"] },
-  { "state": "Namibe", "counties": ["Namibe", "Tombua"] },
+  {
+    "state": "Malanje",
+    "counties": [
+      "Cacuso",
+      "Calandula",
+      "Cambundi-Catembo",
+      "Cangandala",
+      "Caombo",
+      "Cuaba Nzogo",
+      "Cunda-Diaza",
+      "Luquembo",
+      "Malange",
+      "Marimba",
+      "Massango",
+      "Caculama-Mucari",
+      "Quela",
+      "Quirima"
+    ]
+  },
+  {
+    "state": "Cabinda",
+    "counties": ["Cabinda", "Belize", "Buco-Zau", "Cacongo"]
+  },
+  {
+    "state": "Moxico",
+    "counties": [
+      "Alto Zambeze",
+      "Bundas",
+      "Camanongue",
+      "Cameia",
+      "Luau",
+      "Lucano",
+      "Luchazes",
+      "Léua",
+      "Moxico"
+    ]
+  },
+  {
+    "state": "Kwanza Norte",
+    "counties": [
+      "Ambaca",
+      "Banga",
+      "Bolongongo",
+      "Cambambe",
+      "Cazengo",
+      "Golungo Alto",
+      "Gonguembo",
+      "Lucala",
+      "Quiculungo",
+      "Samba Caju"
+    ]
+  },
+  {
+    "state": "Kwanza Sul",
+    "counties": [
+      "Amboim",
+      "Cassongue",
+      "Conda",
+      "Ebo",
+      "Libolo",
+      "Mussende",
+      "Porto Amboim",
+      "Quibala",
+      "Quilenda",
+      "Seles",
+      "Sumbe",
+      "Waku Kungo"
+    ]
+  },
+  {
+    "state": "Lunda Norte",
+    "counties": [
+      "Cambulo",
+      "Capenda-Camulemba",
+      "Caungula",
+      "Chitato",
+      "Cuango",
+      "Cuilo",
+      "Lóvua",
+      "Lubalo",
+      "Lucapa",
+      "Xá Muteba"
+    ]
+  },
+  {
+    "state": "Lunda Sul",
+    "counties": ["Cacolo", "Dala", "Muconda", "Saurimo"]
+  },
+  {
+    "state": "Benguela",
+    "counties": [
+      "Balombo",
+      "Baía Farta",
+      "Benguela",
+      "Bocoio",
+      "Caimbambo",
+      "Catumbela",
+      "Chongoroi",
+      "Cubal",
+      "Ganda",
+      "Lobito"
+    ]
+  },
+  {
+    "state": "Huambo",
+    "counties": [
+      "Bailundo",
+      "Catchiungo",
+      "Caála",
+      "Ekunha",
+      "Huambo",
+      "Londuimbale",
+      "Longongo",
+      "Mungo",
+      "Tchicala-Tcholoanga",
+      "Tchindjenje",
+      "Ucuma"
+    ]
+  },
+  {
+    "state": "Zaire",
+    "counties": [
+      "Cuimba",
+      "M'Banza Kongo",
+      "Noqui",
+      "N'Zeto",
+      "Soyo",
+      "Tomboco"
+    ]
+  },
+  {
+    "state": "Huila",
+    "counties": [
+      "Caconda",
+      "Cacula",
+      "Caluquembe",
+      "Chiange",
+      "Chibia",
+      "Chicomba",
+      "Chipindo",
+      "Humpata",
+      "Jamba",
+      "Kuvango",
+      "Lubango",
+      "Matala",
+      "Quilengues",
+      "Quipungo"
+    ]
+  },
+  {
+    "state": "Namibe",
+    "counties": ["Bibala", "Camulo", "Namibe", "Tômbua", "Virei"]
+  },
   {
     "state": "Bengo",
     "counties": [
+      "Ambriz",
       "Dande",
       "Dembos",
       "Bula Atumba",
@@ -39,10 +198,43 @@
       "Pango Aluquêm"
     ]
   },
-  { "state": "Bié", "counties": ["Kuito", "Munhango"] },
-  { "state": "Cunene", "counties": ["Cahama", "Ondjiva"] },
+  {
+    "state": "Bié",
+    "counties": [
+      "Andulo",
+      "Camacupa",
+      "Catabola",
+      "Chinguar",
+      "Chitembo",
+      "Cuemba",
+      "Cunhinga",
+      "Kuito",
+      "Nharea"
+    ]
+  },
+  {
+    "state": "Cunene",
+    "counties": [
+      "Cahama",
+      "Cuanhama",
+      "Curoca",
+      "Cuvelay",
+      "Namacunde",
+      "Ombadja"
+    ]
+  },
   {
     "state": "Kwando Kubango",
-    "counties": ["Mavinga", "Caiundo", "Luiana", "Cuito Cuanavale"]
+    "counties": [
+      "Calai",
+      "Cuangar",
+      "Cuchi",
+      "Cuito Cuanavale",
+      "Dirico",
+      "Longa",
+      "Mavinga",
+      "Menongue",
+      "Rivungo"
+    ]
   }
 ]
