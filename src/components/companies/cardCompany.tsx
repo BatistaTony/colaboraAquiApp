@@ -11,18 +11,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Router from "next/router";
 import { useSelector } from "react-redux";
+import RenderAvaliation from "../../constants/renderAvaliation";
 
 interface IProps {
   data: IRankingState;
 }
 
 export default function CardCompany({ data }: IProps) {
-  const {
-    companyId,
-    companyDescription,
-    companyLogo,
-    companyName,
-  } = data;
+  const { companyId, companyDescription, companyLogo, companyName } = data;
 
   const rankingState: IRankingState[] = useSelector(
     (state) => state.RankingState
@@ -98,7 +94,8 @@ export default function CardCompany({ data }: IProps) {
                 </CompanyName>
 
                 <CompanyRateNumbers>
-                  <span>{calcTotal()}</span> avaliações
+                  <span>{<RenderAvaliation item={calcTotal()} />}</span>{" "}
+                  {calcTotal() > 1 ? " avaliações" : " avaliação"}
                 </CompanyRateNumbers>
               </div>
             </div>
@@ -111,8 +108,8 @@ export default function CardCompany({ data }: IProps) {
           </div>
 
           <DescriptionCard>{companyDescription}</DescriptionCard>
-        </Card>{" "}
-      </motion.div>{" "}
+        </Card>
+      </motion.div>
     </AnimatePresence>
   );
 }

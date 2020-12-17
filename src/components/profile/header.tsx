@@ -28,17 +28,18 @@ export default function HeaderProfile() {
   const [userRates, setUserRates] = useState<number>(0);
 
   const getUserRates = () => {
+    let saved = 0;
     firestore.collection("companyRates").onSnapshot((queryData) => {
       queryData.forEach((doc) => {
         doc
           .data()
           .consumer.get()
           .then((doc) => {
-            const saved = [];
             if (doc.id === consumerState.userId) {
-              saved.push(doc);
+              saved = saved + 1;
             }
-            setUserRates(saved.length);
+            console.log(saved);
+            setUserRates(saved);
           });
       });
     });
@@ -90,7 +91,8 @@ export default function HeaderProfile() {
           <NumbersOfUserRates>
             <img src="/images/icons8-star.png" alt="" />
             <p className="btnLabel_hsd_d">
-              <span>{userRates}</span> Avaliações
+              <span>{userRates}</span>{" "}
+              {userRates > 1 ? " Avaliações" : " Avaliação"}
             </p>
           </NumbersOfUserRates>
           <SimpleTxtOfRates>realizadas até o momento</SimpleTxtOfRates>

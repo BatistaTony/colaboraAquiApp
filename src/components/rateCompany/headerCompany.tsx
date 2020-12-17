@@ -12,6 +12,7 @@ import RateModal from "./rateModal";
 import Stars from "../companies/starsRated";
 import { ICompany, IRankingState } from "../../../types";
 import { useSelector } from "react-redux";
+import RenderAvaliation from "../../constants/renderAvaliation";
 
 interface IProps {
   data: ICompany;
@@ -75,7 +76,10 @@ export default function HeaderCompany({ data }: IProps) {
               #{getStarsNumberAndPosition().position} {data.companyName}
             </NameOfComapny>
             <Avaliations>
-              <span>{calcTotal()}</span> Avaliações{" "}
+              <span>
+                <RenderAvaliation item={calcTotal()} />
+              </span>
+              {calcTotal() > 1 ? " Avaliações" : " Avaliação"}
             </Avaliations>
           </div>
 

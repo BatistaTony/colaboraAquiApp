@@ -17,6 +17,7 @@ import firebase from "./../../../Firebase";
 import { useRouter } from "next/router";
 import queryString from "query-string";
 import Loading from "../spinner/loading";
+import RenderAvaliation from "../../constants/renderAvaliation";
 
 interface IFilter {
   sortBy: string;
@@ -148,7 +149,10 @@ const RateCompany = ({ data }: TRateCompany) => {
       {data.companyId.length > 0 && (
         <RatingsContainer length={filteredRatings.length < 3}>
           <FilterConsumerRating>
-            <TotalRating>{ratings.length} avaliações</TotalRating>
+            <TotalRating>
+              <RenderAvaliation item={ratings.length} />{" "}
+              {ratings.length > 1 ? "avaliações" : "avaliação"}
+            </TotalRating>
 
             <GroupOfSelect>
               <CustomSelectRating
