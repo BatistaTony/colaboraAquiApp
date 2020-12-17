@@ -17,7 +17,7 @@ export const HeroStyle = styled.div`
   z-index: ${({ showSignUp }) => (showSignUp ? "99" : "1")};
 `;
 
-export const BackGroundWithIllustration = styled(motion.div)`
+export const BackGroundWithIllustration = styled.div`
   width: 100%;
   height: 110vh;
   position: fixed;
@@ -413,7 +413,7 @@ export const ButtonStartRate = styled(motion.button)`
   }
 `;
 
-export const IllustrationRating = styled(motion.div)`
+export const IllustrationRating = styled.div`
   position: absolute;
   width: auto;
   right: -2%;
