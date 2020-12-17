@@ -38,7 +38,6 @@ export default function HeaderProfile() {
             if (doc.id === consumerState.userId) {
               saved = saved + 1;
             }
-            console.log(saved);
             setUserRates(saved);
           });
       });
