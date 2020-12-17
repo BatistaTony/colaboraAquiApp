@@ -80,7 +80,7 @@ const RateCompany = ({ data }: TRateCompany) => {
     if (isAnonymous) {
       return userName;
     } else {
-      return fullName;
+      return fullName ? fullName : userName;
     }
   };
 
