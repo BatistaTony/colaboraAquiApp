@@ -351,27 +351,48 @@ export const BodyRating = styled.div`
   )}
 `;
 
-const chooseBgForAvatar = (letter: string) => {
-  switch (letter.toLowerCase()) {
-    case "a" || "b" || "c": {
-      return `${colorsApp.roxo}`;
-    }
+const colorsAvatar = [
+  {
+    letters: ["a", "b", "c", "d"],
+    color: colorsApp.roxo,
+  },
+  {
+    letters: ["e", "f", "g", "h"],
+    color: colorsApp.sucess,
+  },
+  {
+    letters: ["i", "j", "k", "l"],
+    color: colorsApp.textPrimary,
+  },
+  {
+    letters: ["m", "n", "o", "p"],
+    color: colorsApp.kindaBlue,
+  },
+  {
+    letters: ["q", "r", "s", "t"],
+    color: colorsApp.cardColor,
+  },
+  {
+    letters: ["u", "v", "w", "x"],
+    color: colorsApp.orange,
+  },
+];
 
-    case "d" || "f" || "g": {
-      return `${colorsApp.sucess}`;
-    }
+const chooseBgForAvatar = (name: string) => {
+  let letter = name[0].toLowerCase();
 
-    case "h" || "i" || "j": {
-      return `${colorsApp.textPrimary}`;
-    }
+  const color = colorsAvatar.filter(
+    (item) =>
+      letter === item.letters[0] ||
+      letter === item.letters[1] ||
+      letter === item.letters[2] ||
+      letter === item.letters[3]
+  );
 
-    case "k" || "l" || "m" || "n": {
-      return `${colorsApp.kindaBlue}`;
-    }
-
-    default: {
-      return `${colorsApp.orange}`;
-    }
+  if (color.length) {
+    return color[0].color;
+  } else {
+    return colorsApp.orange;
   }
 };
 
@@ -379,13 +400,12 @@ export const ConsumerAvatar = styled.div`
   width: 100px;
   height: 100px;
   border-radius: 100%;
-  background: ${({ name }) =>
-    name ? chooseBgForAvatar(name) : `${colorsApp.orange}`};
   ${flexbox()};
   text-align: center;
   color: white;
   font-size: 35pt;
   ${getFont("Bold")};
+  background-color: ${({ name }) => `${chooseBgForAvatar(name)}`};
 
   ${sizesForEachScreens(
     [3200, 3000, 2500, 2000, 1700, 1600, 1490, 1390],

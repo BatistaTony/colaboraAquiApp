@@ -47,9 +47,7 @@ export default function ConsumerRating({
         animate={inView ? animationStyle : {}}
         exit={{ opacity: 0, y: 100 }}
       >
-        <ConsumerAvatar name={consumerName[0]}>
-          {consumerName[0]}
-        </ConsumerAvatar>
+        <ConsumerAvatar name={consumerName}>{consumerName[0]}</ConsumerAvatar>
         <BodyRating>
           <ConsumerName>{consumerName}</ConsumerName>
           <div className="min_bdy_fr_strA_">
